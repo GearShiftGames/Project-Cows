@@ -6,52 +6,70 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Project_Cows.Source.System;
 
-namespace Project_Cows {
+namespace Project_Cows.Source.Application {
 	public class Application : Game {
 		// Application class for the game, contains the game loop and game structure.
 		// ================
 
 		// Variables
-		private GraphicsDeviceManager graphics;
-		private SpriteBatch spriteBatch;
+		private GraphicsDeviceManager h_graphicsDevice;
+
+		private Settings m_settings;
 
 
 
 		// Methods
 		public Application() {
 			// Application constructor
-			graphics = new GraphicsDeviceManager(this);
+			h_graphicsDevice = new GraphicsDeviceManager(this);
 			Content.RootDirectory = "Content";
+
+			m_settings = new Settings();
 		}
 
 		protected override void Initialize() {
-			// Any application initialisation is performed in here
+			// Initialise the application
 
 			// Set up window
+			h_graphicsDevice.IsFullScreen = m_settings.m_fullscreen;
+			if(m_settings.m_fullscreen) {
+				h_graphicsDevice.PreferredBackBufferWidth = GraphicsDevice.DisplayMode.Width;
+				h_graphicsDevice.PreferredBackBufferHeight = GraphicsDevice.DisplayMode.Height;
+			} else {
+				h_graphicsDevice.PreferredBackBufferWidth = m_settings.m_screenWidth;
+				h_graphicsDevice.PreferredBackBufferHeight = m_settings.m_screenHeight;
+			}
+			
+			h_graphicsDevice.ApplyChanges();
 			
 			base.Initialize();
 		}
 
 		protected override void LoadContent() {
-			// Create a new SpriteBatch, which can be used to draw textures.
-			spriteBatch = new SpriteBatch(GraphicsDevice);
-
-			// TODO: use this.Content to load your game content here
+			// Load any game content
 		}
 
 		protected override void UnloadContent() {
-			// TODO: Unload any non ContentManager content here
+			// Unload any game content
 		}
 
 		protected override void Update(GameTime gameTime) {
 			// Get user input and update the game
 
-			// Input
+			// Update input handlers
 			if(GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
 				Exit();
 
-			// Update
+			if(Keyboard.GetState().IsKeyDown(Keys.F)) {
+				m_settings.m_fullscreen = !m_settings.m_fullscreen;
+				h_graphicsDevice.IsFullScreen = m_settings.m_fullscreen;
+				h_graphicsDevice.ApplyChanges();
+			}
+
+			// Update objects
+
 			base.Update(gameTime);
 		}
 
@@ -60,6 +78,9 @@ namespace Project_Cows {
 
 			// Clear the screen with a blank colour
 			GraphicsDevice.Clear(Color.CornflowerBlue);
+
+			// Render sprites
+
 
 			base.Draw(gameTime);
 		}
