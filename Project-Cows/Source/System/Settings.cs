@@ -6,16 +6,15 @@
 using System;
 using System.Collections.Generic;
 
-
 namespace Project_Cows.Source.System {
 	public class Settings {
 		// Settings class, used to keep track of the current game settings.
 		// ================
 
 		// Variables
-		public bool m_fullscreen;
-		public int m_screenWidth;
-		public int m_screenHeight;
+		public bool m_fullscreen;			// Fullscreen state of the application window
+		public int m_screenWidth;			// Resolution width of the window
+		public int m_screenHeight;			// Resolution height of the window
 
 		// Methods
 		public Settings() {

@@ -19,7 +19,6 @@ namespace Project_Cows.Source.Application {
 		private Settings m_settings;
 
 
-
 		// Methods
 		public Application() {
 			// Application constructor
@@ -59,9 +58,13 @@ namespace Project_Cows.Source.Application {
 			// Get user input and update the game
 
 			// Update input handlers
-			if(GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-				Exit();
 
+			// Close window (temp)
+			if(GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape)) {
+				Exit();
+			}
+
+			// Toggle fullscreen
 			if(Keyboard.GetState().IsKeyDown(Keys.F)) {
 				m_settings.m_fullscreen = !m_settings.m_fullscreen;
 				h_graphicsDevice.IsFullScreen = m_settings.m_fullscreen;
