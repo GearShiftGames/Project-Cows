@@ -41,6 +41,8 @@
   <ItemGroup>
     <Compile Include="Source\Application\Application.cs" />
     <Compile Include="Source\System\Graphics\Sprite.cs" />
+    <Compile Include="Source\System\Input\TouchHandler.cs" />
+    <Compile Include="Source\System\Input\TouchZone.cs" />
     <Compile Include="Source\System\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Source\System\Settings.cs" />
@@ -59,7 +61,6 @@
     <MonoGameContentReference Include="Content\Content.mgcb" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Source\System\Input\" />
     <Folder Include="Source\System\StateMachine\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
