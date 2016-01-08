@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Project_Cows.Source.System;
+using Project_Cows.Source.System.Input;
 
 namespace Project_Cows.Source.Application {
 	public class Application : Game {
@@ -14,9 +15,10 @@ namespace Project_Cows.Source.Application {
 		// ================
 
 		// Variables
-		private GraphicsDeviceManager h_graphicsDevice;
+		private GraphicsDeviceManager h_graphicsDevice;		// Output graphics device
+		private TouchHandler h_touchHandler;				// Touch input handler
 
-		private Settings m_settings;
+		private Settings m_settings;						// Game settings
 
 
 		// Methods
@@ -24,6 +26,8 @@ namespace Project_Cows.Source.Application {
 			// Application constructor
 			h_graphicsDevice = new GraphicsDeviceManager(this);
 			Content.RootDirectory = "Content";
+
+			h_touchHandler = new TouchHandler();
 
 			m_settings = new Settings();
 		}
@@ -58,6 +62,7 @@ namespace Project_Cows.Source.Application {
 			// Get user input and update the game
 
 			// Update input handlers
+			h_touchHandler.Update();
 
 			// Close window (temp)
 			if(GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape)) {
