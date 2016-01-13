@@ -17,7 +17,7 @@ namespace Project_Cows.Source.System.StateMachine {
 		// ================
 
 		// Variables
-		protected bool m_stateToChange;
+		protected GameState m_nextState;
 		protected ExecutionState m_currentExecutionState;
 
 		// Methods

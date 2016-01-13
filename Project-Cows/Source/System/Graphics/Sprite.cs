@@ -28,6 +28,7 @@ namespace Project_Cows.Source.System.Graphics {
 
 		public Sprite(Texture2D texture_, Vector2 position_, float rotation_, float scale_) {
 			// Sprite constructor
+			// ================
 			m_texture = texture_;
 			m_position = position_;
 			m_rotation = rotation_;

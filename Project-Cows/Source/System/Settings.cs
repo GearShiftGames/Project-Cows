@@ -19,6 +19,7 @@ namespace Project_Cows.Source.System {
 		// Methods
 		public Settings() {
 			// Settings constructor
+			// ================
 
 			// TODO:
 			// Check if a settings file exists
@@ -33,11 +34,17 @@ namespace Project_Cows.Source.System {
 		}
 
 		public bool LoadSettings() {
+			// Loads game settings in from a text file
+			// ================
+
 			// TODO: Write code to load game settings from a text file
 			return true;
 		}
 
 		public bool SaveSettings() {
+			// Writes game settings to a text file
+			// ================
+
 			// TODO: Write code to save game settings to a text file
 			return true;
 		}

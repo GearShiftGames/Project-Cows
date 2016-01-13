@@ -21,11 +21,14 @@ namespace Project_Cows.Source.System.Input {
 		// Methods
 		public TouchHandler() {
 			// TouchHandler constructor
+			// ================
 			m_touches = new List<TouchLocation>();
 			Update();
 		}
 
 		public void Update() {
+			// Updates the touch handler with new data
+			// ================
 			m_collection = TouchPanel.GetState();
 			m_touches.Clear();
 
@@ -35,7 +38,6 @@ namespace Project_Cows.Source.System.Input {
 		}
 
 		// Getters
-		// TODO: Possibly re-write method to return a single touch, and then remove it from the array
 		public List<TouchLocation> GetTouches() { return m_touches; }
 	}
 }

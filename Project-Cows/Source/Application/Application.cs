@@ -29,6 +29,7 @@ namespace Project_Cows.Source.Application {
 		// Methods
 		public Application() {
 			// Application constructor
+			// ================
 			h_graphicsDeviceHandler = new GraphicsDeviceManager(this);
 			Content.RootDirectory = "Content";
 
@@ -39,6 +40,7 @@ namespace Project_Cows.Source.Application {
 
 		protected override void Initialize() {
 			// Initialise the application
+			// ================
 
 			// Set up window
 			h_graphicsDeviceHandler.IsFullScreen = m_settings.m_fullscreen;
@@ -63,15 +65,31 @@ namespace Project_Cows.Source.Application {
 
 		protected override void LoadContent() {
 			// Load any game content
+			// ================
 		}
 
 		protected override void UnloadContent() {
 			// Unload any game content
+			// ================
 		}
 
 		protected override void Update(GameTime gameTime) {
 			// Get user input and update the game
+			// ================
 
+			// Close window - TEMP
+			if(Keyboard.GetState().IsKeyDown(Keys.Escape)) {
+				Exit();
+			}
+
+			// Toggle fullscreen - TEMP
+			if(Keyboard.GetState().IsKeyDown(Keys.F)) {
+				m_settings.m_fullscreen = !m_settings.m_fullscreen;
+				h_graphicsDeviceHandler.IsFullScreen = m_settings.m_fullscreen;
+				h_graphicsDeviceHandler.ApplyChanges();
+			}
+
+			// Update current state based on its execution state
 			switch(m_currentState.GetExecutionState()) {
 				case ExecutionState.INITIALISING:
 					// State is initialising
@@ -86,13 +104,13 @@ namespace Project_Cows.Source.Application {
 				case ExecutionState.CHANGING:
 					// State has finished and needs to be changed
 					switch(m_currentState.GetNextState()) {
-						case GameState.IN_GAME:
-							// TODO: Return any needed data from state (lack of pointers)
-							// TODO: Set m_currentState to In Game State
-							break;
 						case GameState.MAIN_MENU:
 							// TODO: Return any needed data from state (lack of pointers)
 							// TODO: Set m_currentState to Menu State
+							break;
+						case GameState.IN_GAME:
+							// TODO: Return any needed data from state (lack of pointers)
+							// TODO: Set m_currentState to In Game State
 							break;
 						case GameState.VICTORY_SCREEN:
 							// TODO: Return any needed data from state (lack of pointers)
@@ -100,34 +118,17 @@ namespace Project_Cows.Source.Application {
 							break;
 					}
 					break;
+				default:
+					goto case ExecutionState.INITIALISING;
 			}
-
-			
-
-			// Update input handlers
-			h_touchHandler.Update();
-
-			// Close window (temp)
-			if(GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape)) {
-				Exit();
-			}
-
-			// Toggle fullscreen
-			if(Keyboard.GetState().IsKeyDown(Keys.F)) {
-				m_settings.m_fullscreen = !m_settings.m_fullscreen;
-				h_graphicsDeviceHandler.IsFullScreen = m_settings.m_fullscreen;
-				h_graphicsDeviceHandler.ApplyChanges();
-			}
-
-			// Update objects
 
 			base.Update(gameTime);
 		}
 
 		protected override void Draw(GameTime gameTime) {
 			// Render graphics to the screen each frame
+			// ================
 
-			// Clear the screen with a blank colour
 			switch(m_currentState.GetExecutionState()) {
 				case ExecutionState.INITIALISING:
 					// State is initialising
@@ -144,12 +145,11 @@ namespace Project_Cows.Source.Application {
 
 					// State changing, render nothing
 					break;
+				default:
+					goto case ExecutionState.INITIALISING;
 			}
-			m_currentState.Draw(GraphicsDevice);
-			//GraphicsDevice.Clear(Color.CornflowerBlue);
 
-			// Render sprites
-
+			m_currentState.Draw(GraphicsDevice);				// TEMP
 
 			base.Draw(gameTime);
 		}

@@ -14,6 +14,8 @@ namespace Project_Cows {
 
 		[STAThread]
 		static void Main() {
+			// Main function
+			// ================
 			using (var app = new Application()) {
 				app.Run();
 			}
