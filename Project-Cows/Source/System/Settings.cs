@@ -27,7 +27,7 @@ namespace Project_Cows.Source.System {
 				// If not, set to default
 			// Save settings to file
 
-			m_fullscreen = true;
+			m_fullscreen = false;
 			m_screenWidth = 1920;
 			m_screenHeight = 1080;
 		}

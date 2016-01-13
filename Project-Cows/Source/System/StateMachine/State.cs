@@ -5,6 +5,11 @@
 
 using System;
 using System.Collections.Generic;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+
+using Project_Cows.Source.System.Input;
+
 
 namespace Project_Cows.Source.System.StateMachine {
 	abstract class State {
@@ -12,35 +17,45 @@ namespace Project_Cows.Source.System.StateMachine {
 		// ================
 
 		// Variables
-		private bool m_stateToChange;
-		private bool m_initialised;
-
+		protected bool m_stateToChange;
+		protected ExecutionState m_currentExecutionState;
 
 		// Methods
 		public State() { }
 
 		public abstract void Initialise();
 
-		public abstract void Update();
+		public abstract void Update(ref TouchHandler touchHandler_);
 
-		public abstract void Draw();
+		public abstract void Draw(GraphicsDevice graphicsDevice_);
 
-		public abstract bool IsStateToChange();
-
+		// NOTE: Possibly should be public, for access within Application class
+		// NOTE: If public, should possibly return variables for use in other states
 		protected abstract void CleanUp();
 
 
 		// Getters
 		public abstract GameState GetNextState();
 
-		
+		public abstract ExecutionState GetExecutionState();
 
 		// Setters
+
 	}
 
 	enum GameState {
+		// Enum for each type of game state
+		// ================
 		MAIN_MENU,
 		IN_GAME,
 		VICTORY_SCREEN
+	}
+
+	enum ExecutionState {
+		// Enum for the current state of each game state (initialising, running, changing, etc.)
+		// ================
+		INITIALISING,
+		RUNNING,
+		CHANGING
 	}
 }
