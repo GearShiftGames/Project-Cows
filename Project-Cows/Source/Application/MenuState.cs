@@ -25,6 +25,7 @@ namespace Project_Cows.Source.Application {
 		public MenuState() : base() {
 			// MenuState constructor
 			// ================
+			m_currentState = GameState.MAIN_MENU;
 
 			m_currentExecutionState = ExecutionState.INITIALISING;
 		}
@@ -36,8 +37,8 @@ namespace Project_Cows.Source.Application {
 			// Set menu screen
 			m_currentScreen = MenuScreenState.MAIN_MENU;
 
-			// Set next state
-			m_nextState = GameState.MAIN_MENU;
+			// Set initial next state
+			m_nextState = GameState.IN_GAME;
 
 			// Change exectution state
 			m_currentExecutionState = ExecutionState.RUNNING;
@@ -53,6 +54,8 @@ namespace Project_Cows.Source.Application {
 			// NOTE: Possibly expand this state with subclasses/states for each screen, depending on
 			//       how cluttered this class becomes
 			foreach(TouchLocation tl in touchHandler_.GetTouches()) {
+				m_currentExecutionState = ExecutionState.CHANGING;
+				break;
 				switch(m_currentScreen) {
 					case MenuScreenState.MAIN_MENU:
 						// TODO:
@@ -118,7 +121,7 @@ namespace Project_Cows.Source.Application {
 			// ================
 			
 			// Clear the screen
-			graphicsDevice_.Clear(Color.CornflowerBlue);
+			graphicsDevice_.Clear(Color.Crimson);
 
 			// Render graphics
 			switch(m_currentScreen) {
@@ -148,6 +151,8 @@ namespace Project_Cows.Source.Application {
 		}
 
 		// Getters
+		public override GameState GetState() { return m_currentState; }
+
 		public override GameState GetNextState() { return m_nextState; }
 
 		public override ExecutionState GetExecutionState() { return m_currentExecutionState; }

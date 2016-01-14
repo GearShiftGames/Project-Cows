@@ -40,7 +40,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Source\Application\Application.cs" />
+    <Compile Include="Source\Application\InGameState.cs" />
     <Compile Include="Source\Application\MenuState.cs" />
+    <Compile Include="Source\Application\VictoryState.cs" />
     <Compile Include="Source\System\Graphics\Sprite.cs" />
     <Compile Include="Source\System\Input\TouchHandler.cs" />
     <Compile Include="Source\System\Input\TouchZone.cs" />

@@ -17,6 +17,7 @@ namespace Project_Cows.Source.System.StateMachine {
 		// ================
 
 		// Variables
+		protected GameState m_currentState;
 		protected GameState m_nextState;
 		protected ExecutionState m_currentExecutionState;
 
@@ -35,11 +36,16 @@ namespace Project_Cows.Source.System.StateMachine {
 
 
 		// Getters
+		public abstract GameState GetState();
+
+		// NOTE: Possibly need not be overridden
 		public abstract GameState GetNextState();
 
+		// NOTE: Possibly need not be overridden
 		public abstract ExecutionState GetExecutionState();
 
 		// Setters
+		public void SetExecutionState(ExecutionState executionState_) { m_currentExecutionState = executionState_; }
 
 	}
 

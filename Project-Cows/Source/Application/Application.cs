@@ -24,7 +24,8 @@ namespace Project_Cows.Source.Application {
 
 		private State m_currentState;								// Current state being executed
 		private MenuState m_menuState;								// Game state: Menu screen
-
+		private InGameState m_inGameState;							// Game state: In game state
+		private VictoryState m_victoryState;						// Game state: Victory state
 
 		// Methods
 		public Application() {
@@ -56,6 +57,8 @@ namespace Project_Cows.Source.Application {
 
 			// Initialise states
 			m_menuState = new MenuState();
+			m_inGameState = new InGameState();
+			m_victoryState = new VictoryState();
 
 			// Set initial state
 			m_currentState = m_menuState;
@@ -103,18 +106,36 @@ namespace Project_Cows.Source.Application {
 					break;
 				case ExecutionState.CHANGING:
 					// State has finished and needs to be changed
-					switch(m_currentState.GetNextState()) {
+
+					// Change state to initialising
+					m_currentState.SetExecutionState(ExecutionState.INITIALISING);
+
+					// Set state to current state
+					switch(m_currentState.GetState()) {
 						case GameState.MAIN_MENU:
-							// TODO: Return any needed data from state (lack of pointers)
-							// TODO: Set m_currentState to Menu State
+							m_menuState = (MenuState)m_currentState;
 							break;
 						case GameState.IN_GAME:
-							// TODO: Return any needed data from state (lack of pointers)
-							// TODO: Set m_currentState to In Game State
+							m_inGameState = (InGameState)m_currentState;
 							break;
 						case GameState.VICTORY_SCREEN:
-							// TODO: Return any needed data from state (lack of pointers)
-							// TODO: Set m_currentState to Victory Screen State
+							m_victoryState = (VictoryState)m_currentState;
+							break;
+					}
+
+					// Change state
+					switch(m_currentState.GetNextState()) {
+						case GameState.MAIN_MENU:
+							// Set new state
+							m_currentState = m_menuState;
+							break;
+						case GameState.IN_GAME:
+							// Set new state
+							m_currentState = m_inGameState;
+							break;
+						case GameState.VICTORY_SCREEN:
+							// Set new state
+							m_currentState = m_victoryState;
 							break;
 					}
 					break;
@@ -138,7 +159,7 @@ namespace Project_Cows.Source.Application {
 				case ExecutionState.RUNNING:
 					// State is currently running
 
-					//m_currentState.Draw(GraphicsDevice);
+					m_currentState.Draw(GraphicsDevice);
 					break;
 				case ExecutionState.CHANGING:
 					// State has finished and needs to be changed
