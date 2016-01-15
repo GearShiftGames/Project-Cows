@@ -23,3 +23,5 @@ C:\Users\deano\OneDrive\University Files\Third Year\Prototype Game Development\P
 C:\Users\deano\OneDrive\University Files\Third Year\Prototype Game Development\Projects\Project-Cows\Project-Cows\obj\x86\Debug\Project-Cows.csprojResolveAssemblyReference.cache
 C:\Users\deano\OneDrive\University Files\Third Year\Prototype Game Development\Projects\Project-Cows\Project-Cows\obj\x86\Debug\Project-Cows.exe
 C:\Users\deano\OneDrive\University Files\Third Year\Prototype Game Development\Projects\Project-Cows\Project-Cows\obj\x86\Debug\Project-Cows.pdb
+M:\Uni Stuff\Year 3\Prototype Game Development\Project Cows\Project-Cows\obj\x86\Debug\Project-Cows.exe
+M:\Uni Stuff\Year 3\Prototype Game Development\Project Cows\Project-Cows\obj\x86\Debug\Project-Cows.pdb
