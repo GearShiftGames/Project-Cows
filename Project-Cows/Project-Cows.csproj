@@ -48,6 +48,7 @@
     <Compile Include="Source\System\Graphics\Particles\ParticleFX.cs" />
     <Compile Include="Source\System\Graphics\Sprites\AnimatedSprite.cs" />
     <Compile Include="Source\System\Graphics\Sprites\Sprite.cs" />
+    <Compile Include="Source\System\Input\ControlScheme.cs" />
     <Compile Include="Source\System\Input\TouchHandler.cs" />
     <Compile Include="Source\System\Input\TouchZone.cs" />
     <Compile Include="Source\System\Program.cs" />

@@ -5,6 +5,7 @@
 
 using System;
 using System.Collections.Generic;
+using Microsoft.Xna.Framework.Input.Touch;
 
 namespace Project_Cows.Source.System.Input {
     class ControlScheme {
@@ -25,9 +26,11 @@ namespace Project_Cows.Source.System.Input {
             m_braking = false;
         }
 
-        public void Update(ref TouchHandler touchHandler_) {
+        public void Update(List<TouchLocation> touches_) {
             // Updates the variables
             // ================
+
+
 
         }
 
