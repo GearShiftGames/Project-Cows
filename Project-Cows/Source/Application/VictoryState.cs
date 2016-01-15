@@ -50,8 +50,12 @@ namespace Project_Cows.Source.Application {
 			touchHandler_.Update();
 
 			foreach(TouchLocation tl in touchHandler_.GetTouches()) {
+
+				// NOTE: TEMP CODE
 				m_currentExecutionState = ExecutionState.CHANGING;
 				break;
+				// /NOTE
+
 				// TODO: Run code based on what button/area is touched
 			}
 			

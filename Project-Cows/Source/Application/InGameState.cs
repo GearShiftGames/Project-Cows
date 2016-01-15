@@ -50,8 +50,12 @@ namespace Project_Cows.Source.Application {
 			touchHandler_.Update();
 
 			foreach(TouchLocation tl in touchHandler_.GetTouches()) {
+				
+				// NOTE: TEMP CODE
 				m_currentExecutionState = ExecutionState.CHANGING;
 				break;
+				// /NOTE
+
 				// TODO:
 				// Check touch input for each touch zone of the screen
 				// Check if touch zone has had three simultaneous touches

@@ -54,8 +54,12 @@ namespace Project_Cows.Source.Application {
 			// NOTE: Possibly expand this state with subclasses/states for each screen, depending on
 			//       how cluttered this class becomes
 			foreach(TouchLocation tl in touchHandler_.GetTouches()) {
+
+				// NOTE: TEMP CODE
 				m_currentExecutionState = ExecutionState.CHANGING;
 				break;
+
+				// /NOTE
 				switch(m_currentScreen) {
 					case MenuScreenState.MAIN_MENU:
 						// TODO:
