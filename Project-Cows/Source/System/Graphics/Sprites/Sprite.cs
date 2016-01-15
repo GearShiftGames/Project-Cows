@@ -11,7 +11,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 
 namespace Project_Cows.Source.System.Graphics {
-	class Sprite {
+	public class Sprite {
 		// Basic sprite class, for drawing images to the screen
 		// ================
 
