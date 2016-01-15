@@ -6,6 +6,7 @@
 using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
 using Project_Cows.Source.System.Input;
@@ -24,9 +25,9 @@ namespace Project_Cows.Source.System.StateMachine {
 		// Methods
 		public State() { }
 
-		public abstract void Initialise();
+		public abstract void Initialise(ContentManager content_);
 
-		public abstract void Update(ref TouchHandler touchHandler_);
+		public abstract void Update(ref TouchHandler touchHandler_, GameTime gameTime_);
 
 		public abstract void Draw(GraphicsDevice graphicsDevice_);
 

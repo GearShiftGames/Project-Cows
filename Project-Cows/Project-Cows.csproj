@@ -43,7 +43,11 @@
     <Compile Include="Source\Application\InGameState.cs" />
     <Compile Include="Source\Application\MenuState.cs" />
     <Compile Include="Source\Application\VictoryState.cs" />
-    <Compile Include="Source\System\Graphics\Sprite.cs" />
+    <Compile Include="Source\System\Graphics\GraphicsHandler.cs" />
+    <Compile Include="Source\System\Graphics\Particles\Particle.cs" />
+    <Compile Include="Source\System\Graphics\Particles\ParticleFX.cs" />
+    <Compile Include="Source\System\Graphics\Sprites\AnimatedSprite.cs" />
+    <Compile Include="Source\System\Graphics\Sprites\Sprite.cs" />
     <Compile Include="Source\System\Input\TouchHandler.cs" />
     <Compile Include="Source\System\Input\TouchZone.cs" />
     <Compile Include="Source\System\Program.cs" />

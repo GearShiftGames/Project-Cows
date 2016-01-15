@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
 using Project_Cows.Source.System;
+using Project_Cows.Source.System.Graphics;
 using Project_Cows.Source.System.Input;
 using Project_Cows.Source.System.StateMachine;
 
@@ -17,6 +18,7 @@ namespace Project_Cows.Source.Application {
 		// ================
 
 		// Variables
+        // QUESTION: Are variables not private by default? Why are they explicity declared?
 		private GraphicsDeviceManager h_graphicsDeviceHandler;		// Graphics device handler
 		private TouchHandler h_touchHandler;						// Touch input handler
 
@@ -26,6 +28,8 @@ namespace Project_Cows.Source.Application {
 		private MenuState m_menuState;								// Game state: Menu screen
 		private InGameState m_inGameState;							// Game state: In game state
 		private VictoryState m_victoryState;						// Game state: Victory state
+
+        GraphicsHandler m_graphicsHandler;
 
 		// Methods
 		public Application() {
@@ -55,13 +59,15 @@ namespace Project_Cows.Source.Application {
 			
 			h_graphicsDeviceHandler.ApplyChanges();
 
+            m_graphicsHandler = new GraphicsHandler(GraphicsDevice, Content);
+
 			// Initialise states
 			m_menuState = new MenuState();
-			m_inGameState = new InGameState();
+            m_inGameState = new InGameState(m_graphicsHandler);
 			m_victoryState = new VictoryState();
 
 			// Set initial state
-			m_currentState = m_menuState;
+			m_currentState = m_inGameState;
 			
 			base.Initialize();
 		}
@@ -69,7 +75,7 @@ namespace Project_Cows.Source.Application {
 		protected override void LoadContent() {
 			// Load any game content
 			// ================
-		}
+          }
 
 		protected override void UnloadContent() {
 			// Unload any game content
@@ -98,11 +104,11 @@ namespace Project_Cows.Source.Application {
 					// State is initialising
 
 					// TODO: Pass along variables necessary for use
-					m_currentState.Initialise();
+					m_currentState.Initialise(Content);
 					break;
 				case ExecutionState.RUNNING:
 					// State is currently running
-					m_currentState.Update(ref h_touchHandler);
+					m_currentState.Update(ref h_touchHandler, gameTime);
 					break;
 				case ExecutionState.CHANGING:
 					// State has finished and needs to be changed

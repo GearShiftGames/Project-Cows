@@ -6,6 +6,7 @@
 using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Input.Touch;
@@ -31,7 +32,7 @@ namespace Project_Cows.Source.Application {
 			m_currentExecutionState = ExecutionState.INITIALISING;
 		}
 
-		public override void Initialise() {
+		public override void Initialise(ContentManager content_) {
 			// Initialise victory state
 			// ================
 
@@ -42,7 +43,8 @@ namespace Project_Cows.Source.Application {
 			m_currentExecutionState = ExecutionState.RUNNING;
 		}
 
-		public override void Update(ref TouchHandler touchHandler_) {
+        public override void Update(ref TouchHandler touchHandler_, GameTime gameTime_)
+        {
 			// Update victory state
 			// ================
 
