@@ -26,6 +26,7 @@ namespace Project_Cows.Source.Application {
 		public MenuState() : base() {
 			// MenuState constructor
 			// ================
+
 			m_currentState = GameState.MAIN_MENU;
 
 			m_currentExecutionState = ExecutionState.INITIALISING;
@@ -54,14 +55,14 @@ namespace Project_Cows.Source.Application {
 			touchHandler_.Update();
 
 			// NOTE: Possibly expand this state with subclasses/states for each screen, depending on
-			//       how cluttered this class becomes
+			//       how cluttered this class becomes -Dean
 			foreach(TouchLocation tl in touchHandler_.GetTouches()) {
 
-				// NOTE: TEMP CODE
+				// NOTE: TEMP CODE -Dean
 				m_currentExecutionState = ExecutionState.CHANGING;
 				break;
-
 				// /NOTE
+
 				switch(m_currentScreen) {
 					case MenuScreenState.MAIN_MENU:
 						// TODO:

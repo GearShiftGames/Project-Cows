@@ -19,7 +19,7 @@ namespace Project_Cows.Source.Application {
 		// Class to handle the victory state of the game
 		// ================
 
-		// Varaibles
+		// Variables
 
 
 		// Methods
@@ -53,7 +53,7 @@ namespace Project_Cows.Source.Application {
 
 			foreach(TouchLocation tl in touchHandler_.GetTouches()) {
 
-				// NOTE: TEMP CODE
+				// NOTE: TEMP CODE -Dean
 				m_currentExecutionState = ExecutionState.CHANGING;
 				break;
 				// /NOTE

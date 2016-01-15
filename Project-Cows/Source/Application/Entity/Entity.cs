@@ -17,7 +17,7 @@ namespace Project_Cows.Source.Application.Entity {
         // Variables
         protected Sprite m_sprite;
         protected Vector2 m_position;
-        // NOTE: vector needed for velocity, however it could be either x/y or forward/right vectors
+        // NOTE: vector needed for velocity, however it could be either x/y or forward/right vectors -Dean
         //       (I may be talking a bunch of shite with this...)
 
         // Methods

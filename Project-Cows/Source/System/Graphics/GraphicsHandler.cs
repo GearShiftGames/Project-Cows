@@ -1,4 +1,8 @@
-﻿using Microsoft.Xna.Framework;
+﻿// Project Cows -- GearShift Games
+// Written by N. Headley, 2016
+// ================
+
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Content;
@@ -25,7 +29,7 @@ namespace Project_Cows.Source.System.Graphics {
             m_spriteBatch.End();
         }
 
-        // Draws a Sprite from all it's variables information
+        // Draws a Sprite from all its variables information
         public void DrawSprite(Sprite sprite_) {
             Rectangle scale = new Rectangle((int)sprite_.GetPosition().X,
                                             (int)sprite_.GetPosition().Y,

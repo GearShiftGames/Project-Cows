@@ -20,10 +20,12 @@ namespace Project_Cows.Source.Application {
         private int m_playerID;
 
         // Methods
-        public Player() {
+        public Player(int id_ = 999) {
             // Player constructor
             // ================
 
+            m_controlScheme = new ControlScheme();
+            m_playerID = id_;
         }
 
         public void Update(List<TouchLocation> touches_) {

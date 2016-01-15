@@ -32,17 +32,17 @@ namespace Project_Cows.Source.System.StateMachine {
 		public abstract void Draw(GraphicsDevice graphicsDevice_);
 
 		// NOTE: Possibly should be public, for access within Application class
-		// NOTE: If public, should possibly return variables for use in other states
+		//       If public, should possibly return variables for use in other states -Dean
 		protected abstract void CleanUp();
 
 
 		// Getters
 		public abstract GameState GetState();
 
-		// NOTE: Possibly need not be overridden
+		// NOTE: Possibly need not be overridden -Dean
 		public abstract GameState GetNextState();
 
-		// NOTE: Possibly need not be overridden
+		// NOTE: Possibly need not be overridden -Dean
 		public abstract ExecutionState GetExecutionState();
 
 		// Setters

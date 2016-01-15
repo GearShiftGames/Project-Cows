@@ -29,6 +29,7 @@ namespace Project_Cows.Source.System.Graphics.Sprites {
 		public Sprite(Texture2D texture_, Vector2 position_, float rotation_, float scale_) {
 			// Sprite constructor
 			// ================
+
 			m_texture = texture_;
 			m_position = position_;
 			m_rotation = rotation_;
@@ -68,7 +69,7 @@ namespace Project_Cows.Source.System.Graphics.Sprites {
 
 		public void SetRotationRadians(float radians_) { m_rotation = radians_ * (180 / 3.1415f); }
 
-		// WARNING: no validation is performed, so scale could be set to 0
+		// WARNING: no validation is performed, so scale could be set to 0 -Dean
 		public void SetScale(float scale_) { m_scale = scale_; }
 
 	}

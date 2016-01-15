@@ -1,5 +1,6 @@
 ﻿// Project Cows -- GearShift Games
 // Written by D. Sinclair, 2016
+//            N. Headley, 2016
 // ================
 // InGameState.cs
 
@@ -22,7 +23,10 @@ namespace Project_Cows.Source.Application {
 		// ================
 
 		// Variables
-        GraphicsHandler m_graphicsHandler;
+
+        // QUESTION: Surely the GraphicsHandler should be passed into the Draw function every frame? -Dean
+        GraphicsHandler h_graphicsHandler;
+
         AnimatedSprite m_sprite;
 
 		// Methods
@@ -30,7 +34,7 @@ namespace Project_Cows.Source.Application {
 			// InGameState constructor
 			// ================
 
-            m_graphicsHandler = graphicsHandler_;
+            h_graphicsHandler = graphicsHandler_;
 
 			m_currentState = GameState.IN_GAME;
 
@@ -63,8 +67,7 @@ namespace Project_Cows.Source.Application {
 			m_currentExecutionState = ExecutionState.RUNNING;
 		}
 
-        public override void Update(ref TouchHandler touchHandler_, GameTime gameTime_)
-        {
+        public override void Update(ref TouchHandler touchHandler_, GameTime gameTime_) {
 			// Update in game state
 			// ================
 
@@ -73,7 +76,7 @@ namespace Project_Cows.Source.Application {
 
 			foreach(TouchLocation tl in touchHandler_.GetTouches()) {
 				
-				// NOTE: TEMP CODE
+				// NOTE: TEMP CODE -Dean
 				m_currentExecutionState = ExecutionState.CHANGING;
 				break;
 				// /NOTE
@@ -112,19 +115,18 @@ namespace Project_Cows.Source.Application {
                                                             particles[i].getPosition().Y), Color.White);
                 }
             }*/
-       
 
 			// Clear the screen
 			graphicsDevice_.Clear(Color.Beige);
 
 			// Render graphics
 			// TODO: Render sprites in the game
-            m_graphicsHandler.StartDrawing();
+            h_graphicsHandler.StartDrawing();
 
-            m_graphicsHandler.DrawAnimatedSprite(m_sprite);
-            m_graphicsHandler.DrawText("Hi i'm some text.", new Vector2(100.0f, 100.0f), Color.Red);
+            h_graphicsHandler.DrawAnimatedSprite(m_sprite);
+            h_graphicsHandler.DrawText("Hi i'm some text.", new Vector2(100.0f, 100.0f), Color.Red);                // TEMP
 
-            m_graphicsHandler.StopDrawing();
+            h_graphicsHandler.StopDrawing();
 		}
 
 		protected override void CleanUp() {

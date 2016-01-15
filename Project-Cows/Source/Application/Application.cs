@@ -1,5 +1,6 @@
 ﻿// Project Cows -- GearShift Games
 // Written by D. Sinclair, 2016
+//            N. Headley, 2016
 // ================
 // Application.cs
 
@@ -18,7 +19,8 @@ namespace Project_Cows.Source.Application {
 		// ================
 
 		// Variables
-        // QUESTION: Are variables not private by default? Why are they explicity declared?
+        // QUESTION: Are variables not private by default? Why are they explicity declared? -Nathan
+
 		private GraphicsDeviceManager h_graphicsDeviceHandler;		// Graphics device handler
 		private TouchHandler h_touchHandler;						// Touch input handler
 
@@ -29,7 +31,7 @@ namespace Project_Cows.Source.Application {
 		private InGameState m_inGameState;							// Game state: In game state
 		private VictoryState m_victoryState;						// Game state: Victory state
 
-        GraphicsHandler m_graphicsHandler;
+        GraphicsHandler m_graphicsHandler;                          // Deals with rendering of graphics
 
 		// Methods
 		public Application() {
@@ -67,7 +69,7 @@ namespace Project_Cows.Source.Application {
 			m_victoryState = new VictoryState();
 
 			// Set initial state
-			m_currentState = m_inGameState;
+			m_currentState = m_inGameState;                                                                     // NOTE: Change for testing -Dean
 			
 			base.Initialize();
 		}
@@ -175,8 +177,6 @@ namespace Project_Cows.Source.Application {
 				default:
 					goto case ExecutionState.INITIALISING;
 			}
-
-			m_currentState.Draw(GraphicsDevice);				// TEMP
 
 			base.Draw(gameTime);
 		}
