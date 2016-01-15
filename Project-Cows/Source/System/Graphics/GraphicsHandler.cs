@@ -3,6 +3,8 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Content;
 
+using Project_Cows.Source.System.Graphics.Sprites;
+
 namespace Project_Cows.Source.System.Graphics {
     
     public class GraphicsHandler {
