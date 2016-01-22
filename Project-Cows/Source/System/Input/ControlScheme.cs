@@ -8,6 +8,8 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework.Input.Touch;
 using Microsoft.Xna.Framework;
 
+using Project_Cows.Source.System.Graphics.Sprites;
+
 namespace Project_Cows.Source.System.Input {
     class ControlScheme {
         // Interface to take user input and return the control output
@@ -19,6 +21,9 @@ namespace Project_Cows.Source.System.Input {
         private Quadrent m_quadrent;                    // Area of the screen which is being used
         private Vector2 m_homeSteeringPosition;         // The centre-point of the screen
         private float m_steeringMaxDistance;            // The maximum distance the indicator can move
+
+        public Sprite m_controlInterfaceSprite;
+        public Sprite m_steeringIndicatorSprite;
 
         // TODO: Add relevant sprites with getters/setters for UI
 
@@ -53,12 +58,13 @@ namespace Project_Cows.Source.System.Input {
             // Updates the variables
             // ================
             bool performedSteering = false;
+            float steeringDistance = 0;
 
             // TODO: Process touches to control outputs for use by the player
             foreach (TouchLocation tl in touches_) {
                 if (!performedSteering) {
                     // TODO: Process steering
-                    float steeringDistance = m_homeSteeringPosition.X - tl.Position.X;              // Centre-point minus the touch position
+                    steeringDistance = m_homeSteeringPosition.X - tl.Position.X;              // Centre-point minus the touch position
 
                     // Clamps the distance within the max
                     if (steeringDistance > m_steeringMaxDistance) {
@@ -74,6 +80,8 @@ namespace Project_Cows.Source.System.Input {
                     // TODO: Process braking
                     m_braking = true;
                 }
+
+                m_steeringIndicatorSprite.SetPosition(new Vector2(m_homeSteeringPosition.X - steeringDistance, m_homeSteeringPosition.Y));
             }
 
         }

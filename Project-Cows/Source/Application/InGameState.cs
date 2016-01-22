@@ -41,11 +41,22 @@ namespace Project_Cows.Source.Application {
 		public override void Initialise(ContentManager content_) {
 			// Initialise in game state
 			// ================
+            m_players = new List<Player>();
+            m_players.Clear();
+            m_players.Add(new Player(Quadrent.TOP_LEFT, 1));
 
             // Initialise sprites
             m_animatedSprites.Add(new AnimatedSprite
                 (content_.Load<Texture2D>("animZombie"), 
                 new Vector2(50.0f, 50.0f), 51, 108, 250));
+
+            // TEMP:
+            m_players[0].m_controlScheme.m_steeringIndicatorSprite = new Sprite(content_.Load<Texture2D>("controlTemp"), new Vector2(100.0f, 100.0f), 0, 1, true);
+            m_players[0].m_controlScheme.m_controlInterfaceSprite = new Sprite(content_.Load<Texture2D>("controlTempBG"), new Vector2(100.0f, 100.0f), 0, 1, true);
+
+            m_players[0].m_controlScheme.m_steeringIndicatorSprite.SetPosition(new Vector2(200.0f, 200.0f));
+            m_players[0].m_controlScheme.m_controlInterfaceSprite.SetPosition(new Vector2(200.0f, 200.0f));
+            // /TEMP
 
 			// Set initial next state
 			m_nextState = GameState.VICTORY_SCREEN;
@@ -68,7 +79,10 @@ namespace Project_Cows.Source.Application {
 				// Check if touch zone has had three simultaneous touches
 					// Penalise player
 				// Change values based on touch locations
+                
 			}
+
+            m_players[0].m_controlScheme.Update(touchHandler_.GetTouches());                // Temp
 
 			// Update game objects
 			// TODO: perform collision checks, etc.
@@ -115,6 +129,10 @@ namespace Project_Cows.Source.Application {
                 }
             }
             graphicsHandler_.DrawText("INGAME STATE", new Vector2(100.0f, 100.0f), Color.Red);
+
+            graphicsHandler_.DrawSprite(m_players[0].m_controlScheme.m_controlInterfaceSprite);             // Temp
+            graphicsHandler_.DrawSprite(m_players[0].m_controlScheme.m_steeringIndicatorSprite);            // Temp
+            
 
             graphicsHandler_.StopDrawing();
 		}
