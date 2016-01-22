@@ -10,6 +10,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
 using Project_Cows.Source.System.Input;
+using Project_Cows.Source.Application;
 
 
 namespace Project_Cows.Source.System.StateMachine {
@@ -21,6 +22,8 @@ namespace Project_Cows.Source.System.StateMachine {
 		protected GameState m_currentState;
 		protected GameState m_nextState;
 		protected ExecutionState m_currentExecutionState;
+
+        protected List<Player> m_players;
 
 		// Methods
 		public State() { }

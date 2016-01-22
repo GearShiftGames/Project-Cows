@@ -75,11 +75,6 @@ namespace Project_Cows.Source.Application {
 			touchHandler_.Update();
 
 			foreach(TouchLocation tl in touchHandler_.GetTouches()) {
-				
-				// NOTE: TEMP CODE -Dean
-				m_currentExecutionState = ExecutionState.CHANGING;
-				break;
-				// /NOTE
 
 				// TODO:
 				// Check touch input for each touch zone of the screen

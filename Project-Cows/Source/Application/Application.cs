@@ -23,6 +23,7 @@ namespace Project_Cows.Source.Application {
 
 		private GraphicsDeviceManager h_graphicsDeviceHandler;		// Graphics device handler
 		private TouchHandler h_touchHandler;						// Touch input handler
+        private GraphicsHandler h_graphicsHandler;                  // Deals with rendering of graphics
 
 		private Settings m_settings;								// Game settings
 
@@ -30,8 +31,6 @@ namespace Project_Cows.Source.Application {
 		private MenuState m_menuState;								// Game state: Menu screen
 		private InGameState m_inGameState;							// Game state: In game state
 		private VictoryState m_victoryState;						// Game state: Victory state
-
-        GraphicsHandler m_graphicsHandler;                          // Deals with rendering of graphics
 
 		// Methods
 		public Application() {
@@ -61,11 +60,11 @@ namespace Project_Cows.Source.Application {
 			
 			h_graphicsDeviceHandler.ApplyChanges();
 
-            m_graphicsHandler = new GraphicsHandler(GraphicsDevice, Content);
+            h_graphicsHandler = new GraphicsHandler(GraphicsDevice, Content);
 
 			// Initialise states
 			m_menuState = new MenuState();
-            m_inGameState = new InGameState(m_graphicsHandler);
+            m_inGameState = new InGameState(h_graphicsHandler);
 			m_victoryState = new VictoryState();
 
 			// Set initial state
