@@ -24,6 +24,7 @@ namespace Project_Cows.Source.Application {
         private GraphicsHandler h_graphicsHandler;                  // Deals with rendering of graphics
 
 		private Settings m_settings;								// Game settings
+        private bool debugging = false;
 
 		private State m_currentState;								// Current state being executed
 		private MenuState m_menuState;								// Game state: Menu screen
@@ -84,6 +85,11 @@ namespace Project_Cows.Source.Application {
 		protected override void Update(GameTime gameTime) {
 			// Get user input and update the game
 			// ================
+
+            // Debug toggle
+            if (Keyboard.GetState().IsKeyDown(Keys.F1)) {
+                debugging = !debugging;
+            }
 
 			// Close window - TEMP
 			if(Keyboard.GetState().IsKeyDown(Keys.Escape)) {
@@ -165,6 +171,9 @@ namespace Project_Cows.Source.Application {
 					// State is currently running
 
 					m_currentState.Draw(GraphicsDevice, ref h_graphicsHandler);
+                    if (debugging) {
+                        h_graphicsHandler.Debug(m_currentState.ToString(), Color.Red);
+                    }
 					break;
 				case ExecutionState.CHANGING:
 					// State has finished and needs to be changed
