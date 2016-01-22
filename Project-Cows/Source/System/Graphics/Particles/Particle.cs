@@ -1,8 +1,7 @@
 ﻿/* Project Cows -- GearShift Games
  * Written by N. Headley 2015
  * ================
- * Particle Class
- */
+ * Particle.cs
 
 /* Change Log
  * 

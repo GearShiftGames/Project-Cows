@@ -19,8 +19,6 @@ namespace Project_Cows.Source.Application {
 		// ================
 
 		// Variables
-        // QUESTION: Are variables not private by default? Why are they explicity declared? -Nathan
-
 		private GraphicsDeviceManager h_graphicsDeviceHandler;		// Graphics device handler
 		private TouchHandler h_touchHandler;						// Touch input handler
         private GraphicsHandler h_graphicsHandler;                  // Deals with rendering of graphics
@@ -63,9 +61,9 @@ namespace Project_Cows.Source.Application {
             h_graphicsHandler = new GraphicsHandler(GraphicsDevice, Content);
 
 			// Initialise states
-			m_menuState = new MenuState();
-            m_inGameState = new InGameState(h_graphicsHandler);
-			m_victoryState = new VictoryState();
+            m_menuState = new MenuState();
+            m_inGameState = new InGameState();
+            m_victoryState = new VictoryState();
 
 			// Set initial state
 			m_currentState = m_inGameState;                                                                     // NOTE: Change for testing -Dean
@@ -109,7 +107,7 @@ namespace Project_Cows.Source.Application {
 					break;
 				case ExecutionState.RUNNING:
 					// State is currently running
-					m_currentState.Update(ref h_touchHandler, gameTime);
+					m_currentState.Update(ref h_touchHandler, gameTime, ref h_graphicsHandler);
 					break;
 				case ExecutionState.CHANGING:
 					// State has finished and needs to be changed
@@ -166,7 +164,7 @@ namespace Project_Cows.Source.Application {
 				case ExecutionState.RUNNING:
 					// State is currently running
 
-					m_currentState.Draw(GraphicsDevice);
+					m_currentState.Draw(GraphicsDevice, ref h_graphicsHandler);
 					break;
 				case ExecutionState.CHANGING:
 					// State has finished and needs to be changed

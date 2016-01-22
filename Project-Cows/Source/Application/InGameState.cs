@@ -13,6 +13,7 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Input.Touch;
 
 using Project_Cows.Source.System.Graphics;
+using Project_Cows.Source.System.Graphics.Particles;
 using Project_Cows.Source.System.Graphics.Sprites;
 using Project_Cows.Source.System.Input;
 using Project_Cows.Source.System.StateMachine;
@@ -23,18 +24,14 @@ namespace Project_Cows.Source.Application {
 		// ================
 
 		// Variables
-
-        // QUESTION: Surely the GraphicsHandler should be passed into the Draw function every frame? -Dean
-        GraphicsHandler h_graphicsHandler;
-
-        AnimatedSprite m_sprite;
+        private List<AnimatedSprite> m_animatedSprites = new List<AnimatedSprite>();
+        private List<Sprite> m_sprites = new List<Sprite>();
+        private List<Particle> m_particles = new List<Particle>();
 
 		// Methods
-		public InGameState(GraphicsHandler graphicsHandler_) : base() {
+		public InGameState() : base() {
 			// InGameState constructor
 			// ================
-
-            h_graphicsHandler = graphicsHandler_;
 
 			m_currentState = GameState.IN_GAME;
 
@@ -46,19 +43,9 @@ namespace Project_Cows.Source.Application {
 			// ================
 
             // Initialise sprites
-            m_sprite = new AnimatedSprite(content_.Load<Texture2D>("animZombie"), new Vector2(50.0f, 50.0f), 51, 108, 250);
-
-            // FIXME: Move me to appropriate gamestate
-            /*PFX.update(gameTime.ElapsedGameTime.TotalMilliseconds);
-            particles = PFX.GetParticles();*/
-            // ENDFIXME:
-            /*if (m_sprite.GetCurrentState() == 1)
-            {
-                if (gameTime.TotalGameTime.TotalMilliseconds - m_sprite.GetLastTime() > m_sprite.GetFrameTime())
-                {
-                    m_sprite.ChangeFrame(gameTime.TotalGameTime.TotalMilliseconds);
-                }
-            }*/
+            m_animatedSprites.Add(new AnimatedSprite
+                (content_.Load<Texture2D>("animZombie"), 
+                new Vector2(50.0f, 50.0f), 51, 108, 250));
 
 			// Set initial next state
 			m_nextState = GameState.VICTORY_SCREEN;
@@ -67,7 +54,7 @@ namespace Project_Cows.Source.Application {
 			m_currentExecutionState = ExecutionState.RUNNING;
 		}
 
-        public override void Update(ref TouchHandler touchHandler_, GameTime gameTime_) {
+        public override void Update(ref TouchHandler touchHandler_, GameTime gameTime_, ref GraphicsHandler graphicsHandler_) {
 			// Update in game state
 			// ================
 
@@ -87,41 +74,49 @@ namespace Project_Cows.Source.Application {
 			// TODO: perform collision checks, etc.
 
 			// Update sprites
-			// TODO: animate sprites, etc.
-            if (m_sprite.GetCurrentState() == 1)
-            {
-                if (gameTime_.TotalGameTime.TotalMilliseconds - m_sprite.GetLastTime() > m_sprite.GetFrameTime())
-                {
-                    m_sprite.ChangeFrame(gameTime_.TotalGameTime.TotalMilliseconds);
+            foreach(AnimatedSprite anim in m_animatedSprites) {
+                // If currently animating
+                if (anim.GetCurrentState() == 1) {
+                    // Change the frame
+                    if (gameTime_.TotalGameTime.TotalMilliseconds - anim.GetLastTime() > anim.GetFrameTime()) {
+                        anim.ChangeFrame(gameTime_.TotalGameTime.TotalMilliseconds);
+                    }
                 }
             }
+
+            // Update particles
+            m_particles = graphicsHandler_.UpdatePFX(gameTime_.ElapsedGameTime.TotalMilliseconds);
+
 		}
 
-		public override void Draw(GraphicsDevice graphicsDevice_) {
+		public override void Draw(GraphicsDevice graphicsDevice_, ref GraphicsHandler graphicsHandler_) {
 			// Render objects to the screen
 			// ================
-
-            /*Random rnd = new Random();
-            for (int i = 0; i < particles.Count; i++)
-            {
-                if (particles[i].getLife() > 0)
-                {
-                    spriteBatch.Draw(particleTexts[rnd.Next(0, 6)], new Vector2(particles[i].getPosition().X,
-                                                            particles[i].getPosition().Y), Color.White);
-                }
-            }*/
 
 			// Clear the screen
 			graphicsDevice_.Clear(Color.Beige);
 
 			// Render graphics
-			// TODO: Render sprites in the game
-            h_graphicsHandler.StartDrawing();
+            graphicsHandler_.StartDrawing();
 
-            h_graphicsHandler.DrawAnimatedSprite(m_sprite);
-            h_graphicsHandler.DrawText("Hi i'm some text.", new Vector2(100.0f, 100.0f), Color.Red);                // TEMP
+            foreach (AnimatedSprite anim_ in m_animatedSprites) {
+                if (anim_.IsVisible()) {
+                    graphicsHandler_.DrawAnimatedSprite(anim_);
+                }
+            }
+            foreach (Sprite sprite_ in m_sprites) {
+                if (sprite_.IsVisible()) {
+                    graphicsHandler_.DrawSprite(sprite_);
+                }
+            }
+            foreach (Particle part_ in m_particles) {
+                if (part_.GetLife() > 0) {
+                    //graphicsHandler_.DrawParticle(/*texture,*/ part_.GetPosition(), Color.White);
+                }
+            }
+            graphicsHandler_.DrawText("INGAME STATE", new Vector2(100.0f, 100.0f), Color.Red);
 
-            h_graphicsHandler.StopDrawing();
+            graphicsHandler_.StopDrawing();
 		}
 
 		protected override void CleanUp() {

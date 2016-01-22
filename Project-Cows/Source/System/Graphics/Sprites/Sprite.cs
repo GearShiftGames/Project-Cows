@@ -21,12 +21,13 @@ namespace Project_Cows.Source.System.Graphics.Sprites {
 		private Vector2 m_origin;			// Origin of the sprite
 		private float m_rotation;			// Rotation of the sprite, in degrees
 		private float m_scale;				// Scaling of the sprite
+        private bool m_visible;             // Visibility of the sprite, default = true
 
 
 		// Methods
 		public Sprite() { }
 
-		public Sprite(Texture2D texture_, Vector2 position_, float rotation_, float scale_) {
+		public Sprite(Texture2D texture_, Vector2 position_, float rotation_, float scale_, bool visible_ = true) {
 			// Sprite constructor
 			// ================
 
@@ -34,6 +35,7 @@ namespace Project_Cows.Source.System.Graphics.Sprites {
 			m_position = position_;
 			m_rotation = rotation_;
 			m_scale = scale_;
+            m_visible = visible_;
 
 			// Set origin to centre of texture
 			m_origin.X = m_position.X + (m_texture.Width / 2);
@@ -42,35 +44,72 @@ namespace Project_Cows.Source.System.Graphics.Sprites {
 
 
 		// Getters
-		public Texture2D GetTexture() { return m_texture; }
+		public Texture2D GetTexture() { 
+            return m_texture; 
+        }
 
-		public Vector2 GetPosition() { return m_position; }
+		public Vector2 GetPosition() { 
+            return m_position; 
+        }
 
-		public Vector2 GetOrigin() { return m_origin; }
+		public Vector2 GetOrigin() { 
+            return m_origin; 
+        }
 
-		public float GetRotationDegrees() { return m_rotation; }
+		public float GetRotationDegrees() { 
+            return m_rotation; 
+        }
 
 		// TODO: Create universal function to convert deg -> rad, and vice versa
-		public float GetRotationRadians() { return (m_rotation * (3.1415f / 180)); }
+		public float GetRotationRadians() { 
+            return (m_rotation * (3.1415f / 180)); 
+        }
 
-		public float GetScale() { return m_scale; }
+		public float GetScale() { 
+            return m_scale; 
+        }
 
-		public float GetWidth() { return m_texture.Width; }
+        public bool IsVisible() {
+            return m_visible;
+        }
 
-		public float GetHeight() { return m_texture.Height; }
+		public float GetWidth() { 
+            return m_texture.Width; 
+        }
+
+		public float GetHeight() { 
+            return m_texture.Height; 
+        }
 
 
 		// Setters
-		public void SetTexture(Texture2D texture_) { m_texture = texture_; }
+		public void SetTexture(Texture2D texture_) { 
+            m_texture = texture_; 
+        }
 
-		public void SetPosition(Vector2 position_) { m_position = position_; }
+		public void SetPosition(Vector2 position_) { 
+            m_position = position_; 
+        }
 
-		public void SetRotationDegrees(float degrees_) { m_rotation = degrees_; }
+		public void SetRotationDegrees(float degrees_) { 
+            m_rotation = degrees_; 
+        }
 
-		public void SetRotationRadians(float radians_) { m_rotation = radians_ * (180 / 3.1415f); }
+		public void SetRotationRadians(float radians_) { 
+            m_rotation = radians_ * (180 / 3.1415f); 
+        }
 
-		// WARNING: no validation is performed, so scale could be set to 0 -Dean
-		public void SetScale(float scale_) { m_scale = scale_; }
+		public void SetScale(float scale_) {
+            if (scale_ > 0) {
+                m_scale = scale_;
+            } else {
+                m_scale = 1.0f;
+            }
+        }
+
+        public void SetVisible(bool visible_) {
+            m_visible = visible_;
+        }
 
 	}
 }

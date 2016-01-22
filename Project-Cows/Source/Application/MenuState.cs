@@ -1,5 +1,6 @@
 ﻿// Project Cows -- GearShift Games
 // Written by D. Sinclair, 2016
+//            N. Headley, 2016
 // ================
 // MenuState.cs
 
@@ -11,6 +12,9 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Input.Touch;
 
+using Project_Cows.Source.System.Graphics;
+using Project_Cows.Source.System.Graphics.Particles;
+using Project_Cows.Source.System.Graphics.Sprites;
 using Project_Cows.Source.System.Input;
 using Project_Cows.Source.System.StateMachine;
 
@@ -21,9 +25,12 @@ namespace Project_Cows.Source.Application {
 
 		// Variables
 		private MenuScreenState m_currentScreen;
+        private List<AnimatedSprite> m_animatedSprites = new List<AnimatedSprite>();
+        private List<Sprite> m_sprites = new List<Sprite>();
+        private List<Particle> m_particles = new List<Particle>();
 
 		// Methods
-		public MenuState() : base() {
+        public MenuState() : base() {
 			// MenuState constructor
 			// ================
 
@@ -37,6 +44,8 @@ namespace Project_Cows.Source.Application {
 			// Initialise menu state
 			// ================
 
+            //Initialise sprites
+
 			// Set menu screen
 			m_currentScreen = MenuScreenState.MAIN_MENU;
 
@@ -47,7 +56,7 @@ namespace Project_Cows.Source.Application {
 			m_currentExecutionState = ExecutionState.RUNNING;
 		}
 
-		public override void Update(ref TouchHandler touchHandler_, GameTime gameTime_) {
+		public override void Update(ref TouchHandler touchHandler_, GameTime gameTime_, ref GraphicsHandler graphicsHandler_) {
 			// Update menu state
 			// ================
 
@@ -121,16 +130,30 @@ namespace Project_Cows.Source.Application {
 					break;
 			}
 
+            // Update sprites
+            foreach (AnimatedSprite anim in m_animatedSprites) {
+                // If currently animating
+                if (anim.GetCurrentState() == 1) {
+                    // Change the frame
+                    if (gameTime_.TotalGameTime.TotalMilliseconds - anim.GetLastTime() > anim.GetFrameTime()) {
+                        anim.ChangeFrame(gameTime_.TotalGameTime.TotalMilliseconds);
+                    }
+                }
+            }
+
+            // Update particles
+            m_particles = graphicsHandler_.UpdatePFX(gameTime_.ElapsedGameTime.TotalMilliseconds);
+
+
 		}
 
-		public override void Draw(GraphicsDevice graphicsDevice_) {
+		public override void Draw(GraphicsDevice graphicsDevice_, ref GraphicsHandler graphicsHandler_) {
 			// Render objects to the screen
 			// ================
 			
 			// Clear the screen
 			graphicsDevice_.Clear(Color.Crimson);
 
-			// Render graphics
 			switch(m_currentScreen) {
 				case MenuScreenState.MAIN_MENU:
 					// TODO: Render screen
@@ -148,6 +171,28 @@ namespace Project_Cows.Source.Application {
 					// TODO: Render screen
 					break;
 			}
+
+            // Render graphics
+            graphicsHandler_.StartDrawing();
+
+            foreach (AnimatedSprite anim_ in m_animatedSprites) {
+                if (anim_.IsVisible()) {
+                    graphicsHandler_.DrawAnimatedSprite(anim_);
+                }
+            }
+            foreach (Sprite sprite_ in m_sprites) {
+                if (sprite_.IsVisible()) {
+                    graphicsHandler_.DrawSprite(sprite_);
+                }
+            }
+            foreach (Particle part_ in m_particles) {
+                if (part_.GetLife() > 0) {
+                    //graphicsHandler_.DrawParticle(/*texture,*/ part_.GetPosition(), Color.White);
+                }
+            }
+            graphicsHandler_.DrawText("MENU STATE", new Vector2(100.0f, 100.0f), Color.Red);
+
+            graphicsHandler_.StopDrawing();
 		}
 
 		protected override void CleanUp() {

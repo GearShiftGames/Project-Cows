@@ -1,17 +1,7 @@
-﻿/* Project Cows -- GearShift Games
- * Written by N. Headley 2015
- * ================
- * Animated Sprite Class
- */
-
-/* Change Log
- * 
- * 25/11/15 - Works with different animations in one sprite sheet
- *              - startAnimation(line number) will decide which animation to play
- *  
- * 15/01/16 - Changed all variable and method names to be inline with naming conventions
- * 
- */
+﻿// Project Cows -- GearShift Games
+// Written by N. Headley 2015
+// ================
+// AnimatedSprite.cs
 
 using System;
 using System.Collections.Generic;
@@ -20,8 +10,9 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 
 namespace Project_Cows.Source.System.Graphics.Sprites {
-
     public class AnimatedSprite : Sprite {
+        // AnimatedSprite class, holds data for/manages animated sprites.
+        // ================
 
         // Variables
         int m_frameWidth,         // Width of each frame in pixels
@@ -34,10 +25,13 @@ namespace Project_Cows.Source.System.Graphics.Sprites {
         double m_frameTime,       // Interval between each frame in milliseconds (1000ms = 1s)
                 m_lastTime;       // The time that the last animation occurred
 
-        // Initializer
-        public AnimatedSprite(Texture2D spriteSheet_, Vector2 position_, int width_, int height_, double time_, float scale_ = 1) {
+        // Methods
+        public AnimatedSprite(Texture2D spriteSheet_, Vector2 position_, int width_, int height_, double time_, bool visible_ = true, float scale_ = 1) {
+            // AnimatedSprite constructor
+            // ================
             SetTexture(spriteSheet_);
             SetPosition(position_);
+            SetVisible(visible_);
             m_frameWidth = width_;
             m_frameHeight = height_;
             m_horizontalFrames = GetTexture().Width / m_frameWidth;
@@ -46,8 +40,9 @@ namespace Project_Cows.Source.System.Graphics.Sprites {
             m_currentState = 1;
         }
 
-        // Method to change which frame is displaying
         public void ChangeFrame(double time_) {
+            // Change the frame that is rendering
+            // ================
             if (m_currentHorizontal < m_horizontalFrames - 1) {
                 m_currentHorizontal++;
             } else {
@@ -56,14 +51,16 @@ namespace Project_Cows.Source.System.Graphics.Sprites {
             m_lastTime = time_;
         }
 
-        // Method to start animating, takes in which animation to start
         public void StartAnimation(int animation_) {
+            // Start animating a specific animation
+            // ================
             m_currentVertical = animation_;
             m_currentState = 1;
         }
 
-        // Method to stop animating
         public void StopAnimation() {
+            // Stop animating
+            // ================
             m_currentVertical = 0;
             m_currentState = 0;
         }

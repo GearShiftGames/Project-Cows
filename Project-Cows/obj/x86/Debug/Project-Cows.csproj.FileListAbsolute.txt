@@ -25,3 +25,31 @@ M:\Uni Stuff\Year 3\Prototype Game Development\Project Cows\Project-Cows\bin\Win
 M:\Uni Stuff\Year 3\Prototype Game Development\Project Cows\Project-Cows\obj\x86\Debug\Project-Cows.csprojResolveAssemblyReference.cache
 M:\Uni Stuff\Year 3\Prototype Game Development\Project Cows\Project-Cows\obj\x86\Debug\Project-Cows.exe
 M:\Uni Stuff\Year 3\Prototype Game Development\Project Cows\Project-Cows\obj\x86\Debug\Project-Cows.pdb
+M:\Project Cows\Project-Cows\obj\x86\Debug\Project-Cows.exe
+M:\Project Cows\Project-Cows\obj\x86\Debug\Project-Cows.pdb
+M:\Project Cows\Project-Cows\bin\Windows\Debug\Content\animZombie.xnb
+M:\Project Cows\Project-Cows\bin\Windows\Debug\Content\basic_font.xnb
+M:\Project Cows\Project-Cows\bin\Windows\Debug\Project-Cows.exe
+M:\Project Cows\Project-Cows\bin\Windows\Debug\Project-Cows.pdb
+M:\Project Cows\Project-Cows\bin\Windows\Debug\MonoGame.Framework.dll
+M:\Project Cows\Project-Cows\bin\Windows\Debug\SharpDX.MediaFoundation.dll
+M:\Project Cows\Project-Cows\bin\Windows\Debug\SharpDX.dll
+M:\Project Cows\Project-Cows\bin\Windows\Debug\SharpDX.XAudio2.dll
+M:\Project Cows\Project-Cows\bin\Windows\Debug\SharpDX.Direct3D11.dll
+M:\Project Cows\Project-Cows\bin\Windows\Debug\SharpDX.DXGI.dll
+M:\Project Cows\Project-Cows\bin\Windows\Debug\SharpDX.Direct2D1.dll
+M:\Project Cows\Project-Cows\bin\Windows\Debug\SharpDX.XInput.dll
+M:\Project Cows\Project-Cows\bin\Windows\Debug\SharpDX.RawInput.dll
+M:\Project Cows\Project-Cows\bin\Windows\Debug\SharpDX.Direct3D9.dll
+M:\Project Cows\Project-Cows\bin\Windows\Debug\MonoGame.Framework.xml
+M:\Project Cows\Project-Cows\bin\Windows\Debug\SharpDX.MediaFoundation.xml
+M:\Project Cows\Project-Cows\bin\Windows\Debug\SharpDX.xml
+M:\Project Cows\Project-Cows\bin\Windows\Debug\SharpDX.XAudio2.xml
+M:\Project Cows\Project-Cows\bin\Windows\Debug\SharpDX.Direct3D11.xml
+M:\Project Cows\Project-Cows\bin\Windows\Debug\SharpDX.DXGI.xml
+M:\Project Cows\Project-Cows\bin\Windows\Debug\SharpDX.Direct2D1.xml
+M:\Project Cows\Project-Cows\bin\Windows\Debug\SharpDX.XInput.xml
+M:\Project Cows\Project-Cows\bin\Windows\Debug\SharpDX.RawInput.xml
+M:\Project Cows\Project-Cows\bin\Windows\Debug\SharpDX.Direct3D9.xml
+M:\Project Cows\Project-Cows\obj\x86\Debug\Project-Cows.csprojResolveAssemblyReference.cache
+M:\Project Cows\Project-Cows\bin\Windows\Debug\Content\pixel.xnb
