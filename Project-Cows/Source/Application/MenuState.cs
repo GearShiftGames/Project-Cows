@@ -67,10 +67,7 @@ namespace Project_Cows.Source.Application {
 			//       how cluttered this class becomes -Dean
 			foreach(TouchLocation tl in touchHandler_.GetTouches()) {
 
-				// NOTE: TEMP CODE -Dean
-				m_currentExecutionState = ExecutionState.CHANGING;
-				break;
-				// /NOTE
+				
 
 				switch(m_currentScreen) {
 					case MenuScreenState.MAIN_MENU:

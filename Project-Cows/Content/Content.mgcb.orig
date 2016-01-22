@@ -41,18 +41,11 @@
 /processorParam:TextureFormat=Color
 /build:pixel.png
 
+<<<<<<< HEAD
 #begin animation.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:TextureFormat=Color
-/build:animation.png
-
+=======
 #begin controlTemp.png
+>>>>>>> ea366b447ca0ee93fe02f1401358ffaf5094fc89
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -61,6 +54,9 @@
 /processorParam:PremultiplyAlpha=True
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:TextureFormat=Color
+<<<<<<< HEAD
+/build:animation.png
+=======
 /build:controlTemp.png
 
 #begin controlTempBG.png
@@ -73,4 +69,5 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:TextureFormat=Color
 /build:controlTempBG.png
+>>>>>>> ea366b447ca0ee93fe02f1401358ffaf5094fc89
 

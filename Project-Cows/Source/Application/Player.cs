@@ -16,7 +16,7 @@ namespace Project_Cows.Source.Application {
         // ================
 
         // Variables
-        private ControlScheme m_controlScheme;
+        public ControlScheme m_controlScheme;
         private int m_playerID;
 
         // Methods

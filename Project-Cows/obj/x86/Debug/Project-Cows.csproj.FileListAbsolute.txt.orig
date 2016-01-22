@@ -53,7 +53,10 @@ M:\Project Cows\Project-Cows\bin\Windows\Debug\SharpDX.RawInput.xml
 M:\Project Cows\Project-Cows\bin\Windows\Debug\SharpDX.Direct3D9.xml
 M:\Project Cows\Project-Cows\obj\x86\Debug\Project-Cows.csprojResolveAssemblyReference.cache
 M:\Project Cows\Project-Cows\bin\Windows\Debug\Content\pixel.xnb
+<<<<<<< HEAD
+M:\Project Cows\Project-Cows\bin\Windows\Debug\Content\animation.xnb
+=======
 M:\Uni Stuff\Year 3\Prototype Game Development\Project Cows\Project-Cows\bin\Windows\Debug\Content\pixel.xnb
 M:\Uni Stuff\Year 3\Prototype Game Development\Project Cows\Project-Cows\bin\Windows\Debug\Content\controlTemp.xnb
 M:\Uni Stuff\Year 3\Prototype Game Development\Project Cows\Project-Cows\bin\Windows\Debug\Content\controlTempBG.xnb
-M:\Project Cows\Project-Cows\bin\Windows\Debug\Content\animation.xnb
+>>>>>>> ea366b447ca0ee93fe02f1401358ffaf5094fc89
