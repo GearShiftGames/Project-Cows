@@ -20,7 +20,6 @@ namespace Project_Cows.Source.System.Graphics {
 
         // Variables
         private ParticleHandler m_particleHandler;
-        private List<Particle> particles = new List<Particle>();
         private SpriteBatch m_spriteBatch;
         private SpriteFont m_font;
 
@@ -60,13 +59,14 @@ namespace Project_Cows.Source.System.Graphics {
             // ================
             Rectangle destination = new Rectangle((int)animSprite_.GetPosition().X,
                                                   (int)animSprite_.GetPosition().Y,
-                                                    animSprite_.GetFrameWidth(),
-                                                    animSprite_.GetFrameHeight());
+                                                  (int)(animSprite_.GetFrameWidth() * animSprite_.GetScale()),
+                                                  (int)(animSprite_.GetFrameHeight() * animSprite_.GetScale()));
             Rectangle source = new Rectangle(animSprite_.GetFrameWidth() * animSprite_.GetCurrentHorizontal(),
                                              animSprite_.GetFrameHeight() * animSprite_.GetCurrentVertical(),
                                              animSprite_.GetFrameWidth(),
                                              animSprite_.GetFrameHeight());
-            m_spriteBatch.Draw(animSprite_.GetTexture(), destination, source, Color.White);
+            // FIXME: Origin doesn't work> - Nathan
+            m_spriteBatch.Draw(animSprite_.GetTexture(), destination, source, Color.White, animSprite_.GetRotationRadians(), animSprite_.GetOrigin(), SpriteEffects.None, 0);
         }
 
         public void DrawText(string text_, Vector2 position_, Color colour_) {
@@ -92,6 +92,10 @@ namespace Project_Cows.Source.System.Graphics {
             // Draw a particle
             // ================
             m_spriteBatch.Draw(texture_, position_, colour_);
+        }
+
+        public void Debug() {
+
         }
 
     }

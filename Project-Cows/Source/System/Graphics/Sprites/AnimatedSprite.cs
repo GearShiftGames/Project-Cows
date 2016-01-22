@@ -26,12 +26,15 @@ namespace Project_Cows.Source.System.Graphics.Sprites {
                 m_lastTime;       // The time that the last animation occurred
 
         // Methods
-        public AnimatedSprite(Texture2D spriteSheet_, Vector2 position_, int width_, int height_, double time_, bool visible_ = true, float scale_ = 1) {
+        public AnimatedSprite(Texture2D spriteSheet_, Vector2 position_, int width_, int height_, double time_, bool visible_ = true, float rotation_ = 0, float scale_ = 1) {
             // AnimatedSprite constructor
             // ================
             SetTexture(spriteSheet_);
             SetPosition(position_);
+            SetRotationDegrees(rotation_);
+            SetScale(scale_);
             SetVisible(visible_);
+            SetOrigin(new Vector2(position_.X + (m_frameWidth / 2), position_.Y + (m_frameHeight / 2)));
             m_frameWidth = width_;
             m_frameHeight = height_;
             m_horizontalFrames = GetTexture().Width / m_frameWidth;

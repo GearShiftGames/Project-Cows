@@ -1,13 +1,7 @@
-﻿/* Project Cows -- GearShift Games
- * Written by N. Headley 2015
- * ================
- * Particle.cs
-
-/* Change Log
- * 
- * 15/01/16 - Changed all variable and method names to be inline with naming conventions
- * 
- */
+﻿// Project Cows -- GearShift Games
+// Written by N. Headley 2015
+// ================
+// Particle.cs
 
 using System;
 using System.Collections.Generic;
@@ -16,8 +10,9 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 
 namespace Project_Cows.Source.System.Graphics.Particles {
-
     public class Particle {
+        // Particle Class, holds data on single particles
+        // ================
 
         // Variables
         Vector2 m_position,

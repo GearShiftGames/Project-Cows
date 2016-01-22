@@ -23,23 +23,22 @@ namespace Project_Cows.Source.System.Graphics.Sprites {
 		private float m_scale;				// Scaling of the sprite
         private bool m_visible;             // Visibility of the sprite, default = true
 
-
 		// Methods
-		public Sprite() { }
+        public Sprite() {}
 
 		public Sprite(Texture2D texture_, Vector2 position_, float rotation_, float scale_, bool visible_ = true) {
 			// Sprite constructor
 			// ================
 
-			m_texture = texture_;
-			m_position = position_;
-			m_rotation = rotation_;
-			m_scale = scale_;
-            m_visible = visible_;
+			SetTexture(texture_);
+			SetPosition(position_);
+			SetRotationDegrees(rotation_);
+			SetScale(scale_);
+            SetVisible(visible_);
 
 			// Set origin to centre of texture
-			m_origin.X = m_position.X + (m_texture.Width / 2);
-			m_origin.Y = m_position.Y + (m_texture.Height / 2);
+			SetOrigin(new Vector2(m_position.X + (m_texture.Width / 2), 
+                                m_position.Y + (m_texture.Height / 2)));
 		}
 
 
@@ -109,6 +108,10 @@ namespace Project_Cows.Source.System.Graphics.Sprites {
 
         public void SetVisible(bool visible_) {
             m_visible = visible_;
+        }
+
+        public void SetOrigin(Vector2 position_) {
+            m_origin = position_;
         }
 
 	}
