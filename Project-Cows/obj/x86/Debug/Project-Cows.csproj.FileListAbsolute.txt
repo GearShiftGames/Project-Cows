@@ -53,3 +53,4 @@ M:\Project Cows\Project-Cows\bin\Windows\Debug\SharpDX.RawInput.xml
 M:\Project Cows\Project-Cows\bin\Windows\Debug\SharpDX.Direct3D9.xml
 M:\Project Cows\Project-Cows\obj\x86\Debug\Project-Cows.csprojResolveAssemblyReference.cache
 M:\Project Cows\Project-Cows\bin\Windows\Debug\Content\pixel.xnb
+M:\Project Cows\Project-Cows\bin\Windows\Debug\Content\animation.xnb

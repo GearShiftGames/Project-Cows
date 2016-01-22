@@ -43,8 +43,8 @@ namespace Project_Cows.Source.Application {
 			// ================
 
             // Initialise sprites
-            m_animatedSprites.Add(new AnimatedSprite(content_.Load<Texture2D>("animZombie"), 
-                new Vector2(0.0f, 0.0f), 51, 108, 250, true, 30, 2.0f));
+            m_animatedSprites.Add(new AnimatedSprite(content_.Load<Texture2D>("animation"), 
+                new Vector2(0.0f, 0.0f), 10, 10, 250, true, 0, 50));
 
 			// Set initial next state
 			m_nextState = GameState.VICTORY_SCREEN;
