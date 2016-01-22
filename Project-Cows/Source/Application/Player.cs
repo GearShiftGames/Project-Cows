@@ -20,11 +20,11 @@ namespace Project_Cows.Source.Application {
         private int m_playerID;
 
         // Methods
-        public Player(int id_ = 999) {
+        public Player(Quadrent quadrent_, int id_ = 999) {
             // Player constructor
             // ================
 
-            m_controlScheme = new ControlScheme();
+            m_controlScheme = new ControlScheme(quadrent_);
             m_playerID = id_;
         }
 
