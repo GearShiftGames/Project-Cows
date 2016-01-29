@@ -16,7 +16,7 @@ namespace Project_Cows.Source.System.Input {
         // ================
 
         // Variables
-        private double m_steeringValue;                 // Steering value, between -1 (left) and 1 (right)
+        private float m_steeringValue;                  // Steering value, between -1 (left) and 1 (right)
         private bool m_braking;                         // True/False whether the car is braking
         private Quadrent m_quadrent;                    // Area of the screen which is being used
         private Vector2 m_homeSteeringPosition;         // The centre-point of the controls
@@ -95,7 +95,7 @@ namespace Project_Cows.Source.System.Input {
         }
 
         // Getters
-        public double GetSteeringValue() { return m_steeringValue; }
+        public float GetSteeringValue() { return m_steeringValue; }
 
         public bool GetBraking() { return m_braking; }
 

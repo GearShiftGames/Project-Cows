@@ -33,6 +33,9 @@ namespace Project_Cows.Source.Application.Entity {
         }
 
         private Vector2 RotatePoint(Vector2 point_, Vector2 origin_) {
+            // Returns the position of a point rotated around an origin
+            // ================
+
             Vector2 translatedPoint = new Vector2();
 
             translatedPoint.X = (float)(origin_.X + (point_.X - origin_.X) * Math.Cos(m_rotation)
@@ -44,24 +47,32 @@ namespace Project_Cows.Source.Application.Entity {
         }
 
         private Vector2 UpperLeftCorner() {
+            // Returns the position of the upper left corner
+            // ================
             Vector2 upperLeft = new Vector2(m_boundingBox.Left, m_boundingBox.Top);
             upperLeft = RotatePoint(upperLeft, upperLeft - m_origin);
             return upperLeft;
         }
 
         private Vector2 UpperRightCorner() {
+            // Returns the position of the upper right corner
+            // ================
             Vector2 upperRight = new Vector2(m_boundingBox.Right, m_boundingBox.Top);
             upperRight = RotatePoint(upperRight, upperRight + new Vector2(-m_origin.X, m_origin.Y));
             return upperRight;
         }
 
         private Vector2 LowerLeftCorner() {
+            // Returns the position of the lower left corner
+            // ================
             Vector2 lowerLeft = new Vector2(m_boundingBox.Left, m_boundingBox.Bottom);
             lowerLeft = RotatePoint(lowerLeft, lowerLeft + new Vector2(m_origin.X, -m_origin.Y));
             return lowerLeft;
         }
 
         private Vector2 LowerRightCorner() {
+            // Returns the position of the lower right corner
+            // ================
             Vector2 lowerRight = new Vector2(m_boundingBox.Right, m_boundingBox.Bottom);
             lowerRight = RotatePoint(lowerRight, lowerRight +- m_origin);
             return lowerRight;
@@ -108,6 +119,8 @@ namespace Project_Cows.Source.Application.Entity {
     }
 
     enum Corner {
+        // Enum for the four corners of a rectangle
+        // ================
         UPPER_LEFT,
         UPPER_RIGHT,
         LOWER_LEFT,
