@@ -13,13 +13,13 @@ namespace Project_Cows.Source.Application.Entity {
         // ================
 
         // Variables
-
+        
 
         // Methods
         public Vehicle() : base() {
             // Vehicle constructor
             // ================
-
+            
 
         }
 

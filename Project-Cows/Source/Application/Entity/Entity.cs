@@ -16,7 +16,9 @@ namespace Project_Cows.Source.Application.Entity {
 
         // Variables
         protected Sprite m_sprite;                  // Sprite for the entity
+        protected EntityCollider m_collider;        // Physics collider for the entity
         protected Vector2 m_position;               // Position of the entity
+        protected float m_rotation;                 // Rotation of the entity, in degrees
         protected bool m_visible;                   // Whether the entity is visible or not
         protected bool m_collidable;                // Whether the entity is collidable
 
@@ -24,6 +26,14 @@ namespace Project_Cows.Source.Application.Entity {
         public Entity() {
             // Entity constructor
             // ================
+            
+            // Set position
+            // Set rotation
+            // Set sprite
+            // Set sprite
+            // Set collider
+            m_visible = true;
+            m_collidable = true;
 
         }
 

@@ -10,6 +10,10 @@ using Microsoft.Xna.Framework;
 
 namespace Project_Cows.Source.System.Graphics
 {
+    // NOTE: Currently transitioning class to Application.Entity.EntityCollider,
+    //       RotatedRectangle is not a graphics object. -Dean
+    // NOTE: Collision checks should probably be moved to a game object handler? -Dean
+
     class RotatedRectangle
     {
         public Rectangle collisionRectangle;
