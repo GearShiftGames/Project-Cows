@@ -28,6 +28,8 @@ namespace Project_Cows.Source.Application {
         private List<Sprite> m_sprites = new List<Sprite>();
         private List<Particle> m_particles = new List<Particle>();
 
+        Texture2D carTexture, squareTexture; 
+
 		// Methods
 		public InGameState() : base() {
 			// InGameState constructor
@@ -41,9 +43,13 @@ namespace Project_Cows.Source.Application {
 		public override void Initialise(ContentManager content_) {
 			// Initialise in game state
 			// ================
+            carTexture = content_.Load<Texture2D>("car");
+            squareTexture = content_.Load<Texture2D>("square");
+
             m_players = new List<Player>();
             m_players.Clear();
-            m_players.Add(new Player(Quadrent.TOP_LEFT, 1));
+            m_players.Add(new Player(carTexture, new Vector2(500, 500), 45, 0, Quadrent.TOP_LEFT, 1));
+
 
             // Initialise sprites
             m_animatedSprites.Add(new AnimatedSprite(content_.Load<Texture2D>("animation"), 
@@ -100,6 +106,49 @@ namespace Project_Cows.Source.Application {
             // Update particles
             m_particles = graphicsHandler_.UpdatePFX(gameTime_.ElapsedGameTime.TotalMilliseconds);
 
+            //TEMP: Controlling the player
+            #region Player Controller
+            KeyboardState CurrentKeyboard = Keyboard.GetState();
+
+            //car wants to break
+            if (CurrentKeyboard.IsKeyDown(Keys.Down))
+            {
+                if (!CurrentKeyboard.IsKeyDown(Keys.Space))
+                {
+                    m_players[0].breaking = true;
+                }
+                else m_players[0].breaking = false;
+            }
+
+            //turn right
+            if (CurrentKeyboard.IsKeyDown(Keys.Right))
+            {
+                m_players[0].turnRight = true;
+
+                if (CurrentKeyboard.IsKeyDown(Keys.Space))
+                {
+                    m_players[0].breaking = true;
+                }
+            }
+            //no point checking if turning left if turning right is true
+            else if (CurrentKeyboard.IsKeyDown(Keys.Left))
+            {
+                m_players[0].turnLeft = true;
+
+                if (CurrentKeyboard.IsKeyDown(Keys.Space))
+                {
+                    m_players[0].breaking = true;
+                }
+            }
+
+            if (CurrentKeyboard.IsKeyDown(Keys.Space))
+            {
+                m_players[0].breaking = true;
+            }
+
+            m_players[0].Update(touchHandler_.GetTouches());
+            #endregion
+
 		}
 
 		public override void Draw(GraphicsDevice graphicsDevice_, ref GraphicsHandler graphicsHandler_) {
@@ -114,12 +163,12 @@ namespace Project_Cows.Source.Application {
 
             foreach (AnimatedSprite anim_ in m_animatedSprites) {
                 if (anim_.IsVisible()) {
-                    graphicsHandler_.DrawAnimatedSprite(anim_);
+                   // graphicsHandler_.DrawAnimatedSprite(anim_);
                 }
             }
             foreach (Sprite sprite_ in m_sprites) {
                 if (sprite_.IsVisible()) {
-                    graphicsHandler_.DrawSprite(sprite_);
+                    //graphicsHandler_.DrawSprite(sprite_);
                 }
             }
             foreach (Particle part_ in m_particles) {
@@ -131,8 +180,19 @@ namespace Project_Cows.Source.Application {
 
             graphicsHandler_.DrawSprite(m_players[0].m_controlScheme.m_controlInterfaceSprite);             // Temp
             graphicsHandler_.DrawSprite(m_players[0].m_controlScheme.m_steeringIndicatorSprite);            // Temp
-            
 
+            m_players[0].m_carBounds.m_Rotation = m_players[0].m_carBounds.m_Rotation - (m_players[0].slide * m_players[0].sliding) * 2;
+
+            //cars collision rect
+            //Rectangle AdjustsedPos = new Rectangle(m_players[0].m_carBounds.X + (m_players[0].m_carBounds.Width / 2), m_players[0].m_carBounds.Y + (m_players[0].m_carBounds.Height / 2), m_players[0].m_carBounds.Width, m_players[0].m_carBounds.Height);
+            //graphicsHandler_.m_spriteBatch.Draw(squareTexture, AdjustsedPos, m_players[0].m_carBounds.collisionRectangle, Color.Red, m_players[0].m_carBounds.m_Rotation, m_players[0].center, SpriteEffects.None, 0);
+
+            //the moving car sprite
+            //AdjustsedPos = new Rectangle(m_players[0].m_carBounds.X + (m_players[0].m_carBounds.Width / 2), m_players[0].m_carBounds.Y + (m_players[0].m_carBounds.Height / 2), m_players[0].m_carBounds.Width, m_players[0].m_carBounds.Height);
+            graphicsHandler_.m_spriteBatch.Draw(m_players[0].m_car.GetTexture(), m_players[0].position, null, Color.Red, m_players[0].m_carBounds.m_Rotation, m_players[0].center, 1.0f, SpriteEffects.None, 0);
+            
+            //graphicsHandler_.DrawSprite(m_players[0].m_car);
+           
             graphicsHandler_.StopDrawing();
 		}
 

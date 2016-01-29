@@ -57,3 +57,11 @@ M:\Uni Stuff\Year 3\Prototype Game Development\Project Cows\Project-Cows\bin\Win
 M:\Uni Stuff\Year 3\Prototype Game Development\Project Cows\Project-Cows\bin\Windows\Debug\Content\controlTemp.xnb
 M:\Uni Stuff\Year 3\Prototype Game Development\Project Cows\Project-Cows\bin\Windows\Debug\Content\controlTempBG.xnb
 M:\Project Cows\Project-Cows\bin\Windows\Debug\Content\animation.xnb
+\\vmwfil04\Students$\1301504\Project Cows\Project-Cows\obj\x86\Debug\Project-Cows.exe
+\\vmwfil04\Students$\1301504\Project Cows\Project-Cows\obj\x86\Debug\Project-Cows.pdb
+\\vmwfil04\Students$\1301504\Project Cows\Project-Cows\obj\x86\Debug\Project-Cows.csprojResolveAssemblyReference.cache
+M:\Project Cows\Project-Cows\bin\Windows\Debug\Content\car.xnb
+M:\Project Cows\Project-Cows\bin\Windows\Debug\Content\controlTemp.xnb
+M:\Project Cows\Project-Cows\bin\Windows\Debug\Content\controlTempBG.xnb
+M:\Project Cows\Project-Cows\bin\Windows\Debug\Content\Square.xnb
+M:\Project Cows\Project-Cows\bin\Windows\Debug\Content\purpleCar.xnb
