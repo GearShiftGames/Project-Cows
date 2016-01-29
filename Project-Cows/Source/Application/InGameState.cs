@@ -39,11 +39,11 @@ namespace Project_Cows.Source.Application {
 		}
 
 		public override void Initialise(ContentManager content_) {
-			// Initialise in game state
+			// Initialise in-game state
 			// ================
             m_players = new List<Player>();
             m_players.Clear();
-            m_players.Add(new Player(Quadrent.TOP_LEFT, 1));
+            m_players.Add(new Player(Quadrent.BOTTOM_LEFT, 1));
 
             // Initialise sprites
             m_animatedSprites.Add(new AnimatedSprite(content_.Load<Texture2D>("animation"), 
@@ -114,12 +114,12 @@ namespace Project_Cows.Source.Application {
 
             foreach (AnimatedSprite anim_ in m_animatedSprites) {
                 if (anim_.IsVisible()) {
-                    graphicsHandler_.DrawAnimatedSprite(anim_);
+                    //graphicsHandler_.DrawAnimatedSprite(anim_);
                 }
             }
             foreach (Sprite sprite_ in m_sprites) {
                 if (sprite_.IsVisible()) {
-                    graphicsHandler_.DrawSprite(sprite_);
+                    //graphicsHandler_.DrawSprite(sprite_);
                 }
             }
             foreach (Particle part_ in m_particles) {

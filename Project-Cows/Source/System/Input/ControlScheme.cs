@@ -19,7 +19,7 @@ namespace Project_Cows.Source.System.Input {
         private double m_steeringValue;                 // Steering value, between -1 (left) and 1 (right)
         private bool m_braking;                         // True/False whether the car is braking
         private Quadrent m_quadrent;                    // Area of the screen which is being used
-        private Vector2 m_homeSteeringPosition;         // The centre-point of the screen
+        private Vector2 m_homeSteeringPosition;         // The centre-point of the controls
         private float m_steeringMaxDistance;            // The maximum distance the indicator can move
 
         public Sprite m_controlInterfaceSprite;
@@ -60,6 +60,8 @@ namespace Project_Cows.Source.System.Input {
             bool performedSteering = false;
             float steeringDistance = 0;
 
+			m_steeringIndicatorSprite.SetPosition(m_homeSteeringPosition);
+
             // TODO: Process touches to control outputs for use by the player
             foreach (TouchLocation tl in touches_) {
                 if (!performedSteering) {
@@ -91,7 +93,6 @@ namespace Project_Cows.Source.System.Input {
             // ================
             m_steeringValue = steeringDistance_ / m_steeringMaxDistance;
         }
-
 
         // Getters
         public double GetSteeringValue() { return m_steeringValue; }

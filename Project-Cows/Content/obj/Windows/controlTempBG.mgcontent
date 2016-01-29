@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>M:/Uni Stuff/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/controlTempBG.png</SourceFile>
-  <SourceTime>2016-01-22T14:40:59.9943365+00:00</SourceTime>
-  <DestFile>M:/Uni Stuff/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/bin/Windows/controlTempBG.xnb</DestFile>
-  <DestTime>2016-01-22T14:41:15.4687653+00:00</DestTime>
+  <SourceFile>C:/Users/deano/OneDrive/University Files/Third Year/Prototype Game Development/Projects/Project-Cows/Project-Cows/Content/controlTempBG.png</SourceFile>
+  <SourceTime>2016-01-29T11:18:56+00:00</SourceTime>
+  <DestFile>C:/Users/deano/OneDrive/University Files/Third Year/Prototype Game Development/Projects/Project-Cows/Project-Cows/Content/bin/Windows/controlTempBG.xnb</DestFile>
+  <DestTime>2016-01-29T11:53:40.3452472+00:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2015-04-29T18:14:44+01:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
