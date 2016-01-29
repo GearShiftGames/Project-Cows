@@ -4,6 +4,10 @@
   <SourceTime>2016-01-22T10:58:30+00:00</SourceTime>
   <DestFile>C:/Users/deano/OneDrive/University Files/Third Year/Prototype Game Development/Projects/Project-Cows/Project-Cows/Content/bin/Windows/animZombie.xnb</DestFile>
   <DestTime>2016-01-29T11:53:39.4454961+00:00</DestTime>
+  <SourceFile>M:/Project Cows/Project-Cows/Content/animZombie.bmp</SourceFile>
+  <SourceTime>2016-01-29T09:57:54.2206751+00:00</SourceTime>
+  <DestFile>M:/Project Cows/Project-Cows/Content/bin/Windows/animZombie.xnb</DestFile>
+  <DestTime>2016-01-29T10:09:04.7640717+00:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2015-04-29T18:14:44+01:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

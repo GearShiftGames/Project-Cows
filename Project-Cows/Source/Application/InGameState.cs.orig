@@ -43,9 +43,7 @@ namespace Project_Cows.Source.Application {
 		public override void Initialise(ContentManager content_) {
 			// Initialise in-game state
 			// ================
-			
-			carTexture = content_.Load<Texture2D>("car");
-            squareTexture = content_.Load<Texture2D>("square");
+<<<<<<< HEAD
 
 			// Initialise players
             m_players = new List<Player>();
@@ -53,11 +51,15 @@ namespace Project_Cows.Source.Application {
             m_players.Add(new Player(Quadrent.BOTTOM_LEFT, 1));
 			m_players[0].m_controlScheme.SetSteeringSprite(new Sprite(content_.Load<Texture2D>("controlTemp"), new Vector2(100.0f, 100.0f), 0, 1, true));
 			m_players[0].m_controlScheme.SetInterfaceSprite(new Sprite(content_.Load<Texture2D>("controlTempBG"), new Vector2(100.0f, 100.0f), 0, 1, true));
-            
+=======
+            carTexture = content_.Load<Texture2D>("car");
+            squareTexture = content_.Load<Texture2D>("square");
 
             m_players = new List<Player>();
             m_players.Clear();
             m_players.Add(new Player(carTexture, new Vector2(500, 500), 45, 0, Quadrent.TOP_LEFT, 1));
+
+>>>>>>> 10d28f60d88590304accba9158bd66a001622c20
 
             // Initialise sprites
             m_animatedSprites.Add(new AnimatedSprite(content_.Load<Texture2D>("animation"), 
@@ -171,7 +173,11 @@ namespace Project_Cows.Source.Application {
 
             foreach (AnimatedSprite anim_ in m_animatedSprites) {
                 if (anim_.IsVisible()) {
+<<<<<<< HEAD
                     //graphicsHandler_.DrawAnimatedSprite(anim_);
+=======
+                   // graphicsHandler_.DrawAnimatedSprite(anim_);
+>>>>>>> 10d28f60d88590304accba9158bd66a001622c20
                 }
             }
             foreach (Sprite sprite_ in m_sprites) {

@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<<<<<<< HEAD
   <SourceFile>C:/Users/deano/OneDrive/University Files/Third Year/Prototype Game Development/Projects/Project-Cows/Project-Cows/Content/controlTempBG.png</SourceFile>
   <SourceTime>2016-01-29T11:18:56+00:00</SourceTime>
   <DestFile>C:/Users/deano/OneDrive/University Files/Third Year/Prototype Game Development/Projects/Project-Cows/Project-Cows/Content/bin/Windows/controlTempBG.xnb</DestFile>
   <DestTime>2016-01-29T11:53:40.3452472+00:00</DestTime>
+=======
   <SourceFile>M:/Project Cows/Project-Cows/Content/controlTempBG.png</SourceFile>
   <SourceTime>2016-01-29T09:57:54.2674757+00:00</SourceTime>
   <DestFile>M:/Project Cows/Project-Cows/Content/bin/Windows/controlTempBG.xnb</DestFile>
   <DestTime>2016-01-29T10:09:06.1524895+00:00</DestTime>
+>>>>>>> 10d28f60d88590304accba9158bd66a001622c20
   <Importer>TextureImporter</Importer>
   <ImporterTime>2015-04-29T18:14:44+01:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

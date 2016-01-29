@@ -21,7 +21,7 @@ namespace Project_Cows.Source.System.Graphics {
 
         // Variables
         public ParticleHandler m_particleHandler;
-        private SpriteBatch m_spriteBatch;
+        public SpriteBatch m_spriteBatch;
         private SpriteFont m_font;
 
         // Methods
