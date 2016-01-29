@@ -41,20 +41,24 @@ namespace Project_Cows.Source.Application {
 		public override void Initialise(ContentManager content_) {
 			// Initialise in-game state
 			// ================
+
+			// Initialise players
             m_players = new List<Player>();
             m_players.Clear();
             m_players.Add(new Player(Quadrent.BOTTOM_LEFT, 1));
+			m_players[0].m_controlScheme.SetSteeringSprite(new Sprite(content_.Load<Texture2D>("controlTemp"), new Vector2(100.0f, 100.0f), 0, 1, true));
+			m_players[0].m_controlScheme.SetInterfaceSprite(new Sprite(content_.Load<Texture2D>("controlTempBG"), new Vector2(100.0f, 100.0f), 0, 1, true));
 
             // Initialise sprites
             m_animatedSprites.Add(new AnimatedSprite(content_.Load<Texture2D>("animation"), 
                 new Vector2(0.0f, 0.0f), 10, 10, 250, true, 0, 50));
 
             // TEMP:
-            m_players[0].m_controlScheme.m_steeringIndicatorSprite = new Sprite(content_.Load<Texture2D>("controlTemp"), new Vector2(100.0f, 100.0f), 0, 1, true);
-            m_players[0].m_controlScheme.m_controlInterfaceSprite = new Sprite(content_.Load<Texture2D>("controlTempBG"), new Vector2(100.0f, 100.0f), 0, 1, true);
+            //m_players[0].m_controlScheme.m_steeringIndicatorSprite = new Sprite(content_.Load<Texture2D>("controlTemp"), new Vector2(100.0f, 100.0f), 0, 1, true);
+            //m_players[0].m_controlScheme.m_controlInterfaceSprite = new Sprite(content_.Load<Texture2D>("controlTempBG"), new Vector2(100.0f, 100.0f), 0, 1, true);
 
-            m_players[0].m_controlScheme.m_steeringIndicatorSprite.SetPosition(new Vector2(200.0f, 200.0f));
-            m_players[0].m_controlScheme.m_controlInterfaceSprite.SetPosition(new Vector2(200.0f, 200.0f));
+            //m_players[0].m_controlScheme.m_steeringIndicatorSprite.SetPosition(new Vector2(200.0f, 200.0f));
+            //m_players[0].m_controlScheme.m_controlInterfaceSprite.SetPosition(new Vector2(200.0f, 200.0f));
             // /TEMP
 
 			// Set initial next state

@@ -83,7 +83,7 @@ namespace Project_Cows.Source.System.Input {
                     m_braking = true;
                 }
 
-                m_steeringIndicatorSprite.SetPosition(new Vector2(m_homeSteeringPosition.X - steeringDistance, m_homeSteeringPosition.Y));
+				m_steeringIndicatorSprite.SetPosition(new Vector2(m_homeSteeringPosition.X - steeringDistance + m_steeringIndicatorSprite.GetWidth() * 2f, m_homeSteeringPosition.Y));
             }
 
         }
@@ -100,7 +100,32 @@ namespace Project_Cows.Source.System.Input {
         public bool GetBraking() { return m_braking; }
 
         // Setters
+		public void SetSteeringSprite(Sprite sprite_) {
+			m_steeringIndicatorSprite = sprite_;
 
+			switch(m_quadrent) {
+				case Quadrent.TOP_LEFT:
+					m_homeSteeringPosition = new Vector2(400 + sprite_.GetWidth(), 400);         // Temp hard-coding
+					break;
+				case Quadrent.TOP_RIGHT:
+					m_homeSteeringPosition = new Vector2(800 + sprite_.GetWidth(), 400);         // Temp hard-coding
+					break;
+				case Quadrent.BOTTOM_LEFT:
+					m_homeSteeringPosition = new Vector2(400 + sprite_.GetWidth(), 800);         // Temp hard-coding
+					break;
+				case Quadrent.BOTTOM_RIGHT:
+					m_homeSteeringPosition = new Vector2(800 + sprite_.GetWidth(), 800);         // Temp hard-coding
+					break;
+			}
+			m_steeringIndicatorSprite.SetPosition(m_homeSteeringPosition);
+		}
+
+		public void SetInterfaceSprite(Sprite sprite_) {
+			m_controlInterfaceSprite = sprite_;
+			
+			m_controlInterfaceSprite.SetPosition(m_homeSteeringPosition);
+
+		}
     }
 
     enum Quadrent {
@@ -111,4 +136,5 @@ namespace Project_Cows.Source.System.Input {
         BOTTOM_LEFT,
         BOTTOM_RIGHT
     }
+
 }
