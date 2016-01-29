@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>M:/Project Cows/Project-Cows/Content/purpleCar.png</SourceFile>
-  <SourceTime>2016-01-29T12:29:40.5224994+00:00</SourceTime>
-  <DestFile>M:/Project Cows/Project-Cows/Content/bin/Windows/purpleCar.xnb</DestFile>
-  <DestTime>2016-01-29T12:31:03.7204582+00:00</DestTime>
+  <SourceFile>C:/Users/deano/OneDrive/University Files/Third Year/Prototype Game Development/Projects/Project-Cows/Project-Cows/Content/purpleCar.png</SourceFile>
+  <SourceTime>2016-01-29T13:44:11.8784512+00:00</SourceTime>
+  <DestFile>C:/Users/deano/OneDrive/University Files/Third Year/Prototype Game Development/Projects/Project-Cows/Project-Cows/Content/bin/Windows/purpleCar.xnb</DestFile>
+  <DestTime>2016-01-29T14:02:52.4539941+00:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2015-04-29T18:14:44+01:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
