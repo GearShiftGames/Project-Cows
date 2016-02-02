@@ -23,6 +23,7 @@ namespace Project_Cows.Source.Application.Entity {
         private const float MAX_SPEED = 5.0f;
         private const float ACCELERATION_RATE = 0.1f;
         private const float DECELERATION_RATE = -0.1f;
+		private const float STEERING_SENSITIVITY = 5.0f;
         
         // Methods
         public Vehicle(Texture2D texture_, Vector2 position_, float rotation_) : base(texture_, position_, rotation_) {
@@ -44,7 +45,7 @@ namespace Project_Cows.Source.Application.Entity {
                 float turn = m_steeringValue * -1;
 
                 if (!m_braking) {
-                    turn *= ACCELERATION_RATE * m_velocity;
+                    turn *= ACCELERATION_RATE * m_velocity * STEERING_SENSITIVITY;
                 }
 
                 SetRotationDegrees(GetRotationDegrees() + turn);

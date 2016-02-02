@@ -50,7 +50,7 @@ namespace Project_Cows.Source.Application {
 			// Initialise players
             m_players = new List<Player>();
             m_players.Clear();
-            m_players.Add(new Player(carTexture, new Vector2(500, 500), 45, 0, Quadrent.BOTTOM_LEFT, 1));
+            m_players.Add(new Player(carTexture, new Vector2(20, 20), 0, 0, Quadrent.BOTTOM_LEFT, 1));
 			m_players[0].m_controlScheme.SetSteeringSprite(new Sprite(content_.Load<Texture2D>("controlTemp"), new Vector2(100.0f, 100.0f), 0, 1, true));
 			m_players[0].m_controlScheme.SetInterfaceSprite(new Sprite(content_.Load<Texture2D>("controlTempBG"), new Vector2(100.0f, 100.0f), 0, 1, true));
 

@@ -58,7 +58,10 @@ namespace Project_Cows.Source.System.Input {
             // Updates the variables
             // ================
             bool performedSteering = false;
-            float steeringDistance = 0;
+			bool performedBraking = false;
+            //float steeringDistance = 0;
+			m_steeringValue = 0;
+			m_braking = false;
 
 			m_steeringIndicatorSprite.SetPosition(m_homeSteeringPosition);
 
@@ -66,7 +69,7 @@ namespace Project_Cows.Source.System.Input {
             foreach (TouchLocation tl in touches_) {
                 if (!performedSteering) {
                     // TODO: Process steering
-                    steeringDistance = m_homeSteeringPosition.X - tl.Position.X;              // Centre-point minus the touch position
+                    float steeringDistance = m_homeSteeringPosition.X - tl.Position.X;              // Centre-point minus the touch position
 
                     // Clamps the distance within the max
                     if (steeringDistance > m_steeringMaxDistance) {
@@ -77,14 +80,18 @@ namespace Project_Cows.Source.System.Input {
 
                     CalculateSteeringValue(steeringDistance);
 
+					m_steeringIndicatorSprite.SetPosition(new Vector2(m_homeSteeringPosition.X - steeringDistance + m_steeringIndicatorSprite.GetWidth() * 2f, m_homeSteeringPosition.Y));
+
                     performedSteering = true;
-                } else {
+                } else if(!performedBraking) {
                     // TODO: Process braking
                     m_braking = true;
+					performedBraking = true;
                 }
 
-				m_steeringIndicatorSprite.SetPosition(new Vector2(m_homeSteeringPosition.X - steeringDistance + m_steeringIndicatorSprite.GetWidth() * 2f, m_homeSteeringPosition.Y));
+				
             }
+
 
         }
 
