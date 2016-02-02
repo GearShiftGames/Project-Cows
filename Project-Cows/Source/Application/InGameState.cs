@@ -90,7 +90,9 @@ namespace Project_Cows.Source.Application {
                 
 			}
 
-            m_players[0].m_controlScheme.Update(touchHandler_.GetTouches());                // Temp
+            //m_players[0].m_controlScheme.Update(touchHandler_.GetTouches());                // Temp
+
+			m_players[0].Update(touchHandler_.GetTouches());
 
 			// Update game objects
 			// TODO: perform collision checks, etc.
@@ -114,7 +116,7 @@ namespace Project_Cows.Source.Application {
             KeyboardState CurrentKeyboard = Keyboard.GetState();
 
             //car wants to break
-            if (CurrentKeyboard.IsKeyDown(Keys.Down))
+            /*if (CurrentKeyboard.IsKeyDown(Keys.Down))
             {
                 if (!CurrentKeyboard.IsKeyDown(Keys.Space))
                 {
@@ -147,7 +149,7 @@ namespace Project_Cows.Source.Application {
             if (CurrentKeyboard.IsKeyDown(Keys.Space))
             {
                 m_players[0].breaking = true;
-            }
+            }*/
 
             m_players[0].Update(touchHandler_.GetTouches());
             #endregion
@@ -184,7 +186,7 @@ namespace Project_Cows.Source.Application {
             graphicsHandler_.DrawSprite(m_players[0].m_controlScheme.m_controlInterfaceSprite);             // Temp
             graphicsHandler_.DrawSprite(m_players[0].m_controlScheme.m_steeringIndicatorSprite);            // Temp
 
-            m_players[0].m_carBounds.m_Rotation = m_players[0].m_carBounds.m_Rotation - (m_players[0].slide * m_players[0].sliding) * 2;
+            //m_players[0].m_carBounds.m_Rotation = m_players[0].m_carBounds.m_Rotation - (m_players[0].slide * m_players[0].sliding) * 2;
 
             //cars collision rect
             //Rectangle AdjustsedPos = new Rectangle(m_players[0].m_carBounds.X + (m_players[0].m_carBounds.Width / 2), m_players[0].m_carBounds.Y + (m_players[0].m_carBounds.Height / 2), m_players[0].m_carBounds.Width, m_players[0].m_carBounds.Height);
@@ -192,8 +194,8 @@ namespace Project_Cows.Source.Application {
 
             //the moving car sprite
             //AdjustsedPos = new Rectangle(m_players[0].m_carBounds.X + (m_players[0].m_carBounds.Width / 2), m_players[0].m_carBounds.Y + (m_players[0].m_carBounds.Height / 2), m_players[0].m_carBounds.Width, m_players[0].m_carBounds.Height);
-            graphicsHandler_.m_spriteBatch.Draw(m_players[0].m_car.GetTexture(), m_players[0].position, null, Color.Red, m_players[0].m_carBounds.m_Rotation, m_players[0].center, 1.0f, SpriteEffects.None, 0);
-            
+            //graphicsHandler_.m_spriteBatch.Draw(m_players[0].m_car.GetTexture(), m_players[0].position, null, Color.Red, m_players[0].m_carBounds.m_Rotation, m_players[0].center, 1.0f, SpriteEffects.None, 0);
+			graphicsHandler_.DrawSprite(m_players[0].GetVehicle().GetSprite());
             //graphicsHandler_.DrawSprite(m_players[0].m_car);
            
             graphicsHandler_.StopDrawing();

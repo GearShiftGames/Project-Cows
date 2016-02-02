@@ -35,12 +35,43 @@ namespace Project_Cows.Source.Application.Entity {
 
         }
 
+		public void UpdateSprite() {
+			// Updates the position and rotation of the entity's sprite
+			m_sprite.SetPosition(m_position);
+			m_sprite.SetRotationDegrees(m_rotation);
+		}
+
         // Getters
         public Sprite GetSprite() { return m_sprite; }
 
+		public EntityCollider GetCollider() { return m_collider; }
+
+		public Vector2 GetPosition() { return m_position; }
+
+		public float GetRotationDegrees() {
+			return m_rotation;
+		}
+
+		public float GetRotationRadians() {
+			// Returns the entity's rotation, in radians
+			float rad = m_rotation * (3.1415f / 180);
+			return rad;
+		}
+
+		public bool GetCollidable() { return m_collidable; }
 
         // Setters
         public void SetSprite(Sprite sprite_) { m_sprite = sprite_; }
+
+		public void SetPosition(Vector2 position_) { m_position = position_; }
+
+		public void SetRotationDegrees(float degrees_) {
+			m_rotation = degrees_;
+		}
+
+		public void SetRotationRadians(float radians_) {
+			m_rotation = radians_ * (180 / 3.1415f);
+		}
 
     }
 }

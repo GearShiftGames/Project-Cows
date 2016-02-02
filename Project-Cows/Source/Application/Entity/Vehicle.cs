@@ -20,7 +20,7 @@ namespace Project_Cows.Source.Application.Entity {
         private float m_steeringValue;
         private bool m_braking;
 
-        private const float MAX_SPEED = 10.0f;
+        private const float MAX_SPEED = 5.0f;
         private const float ACCELERATION_RATE = 0.1f;
         private const float DECELERATION_RATE = -0.1f;
         
@@ -41,13 +41,13 @@ namespace Project_Cows.Source.Application.Entity {
 
             // Set rotation according to the steering value (touch distance)
             if (m_velocity > 1.0f) {
-                float turn = m_steeringValue / 50;
+                float turn = m_steeringValue * -1;
 
                 if (!m_braking) {
                     turn *= ACCELERATION_RATE * m_velocity;
                 }
 
-                m_rotation += turn;
+                SetRotationDegrees(GetRotationDegrees() + turn);
             }
 
             // Check if braking
@@ -67,16 +67,20 @@ namespace Project_Cows.Source.Application.Entity {
                 }
             }
 
-            //Vector2 direction = new Vector2((float)Math.Cos(Math.))
+			Vector2 direction = new Vector2((float)Math.Cos(GetRotationRadians()), (float)Math.Sin(GetRotationRadians()));
+
+			direction.Normalize();
+
+			SetPosition(GetPosition() + direction * m_velocity);
 
             // TODO: Set direction, position, rotation etc.
             // NOTE: Look at code from MonoGame-UI-Touch-Prototype -Dean
-            
+			UpdateSprite();
         }
 
 
         // Getters
-
+		
 
         // Setters
 

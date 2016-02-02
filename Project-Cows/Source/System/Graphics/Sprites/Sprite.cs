@@ -37,8 +37,8 @@ namespace Project_Cows.Source.System.Graphics.Sprites {
             SetVisible(visible_);
 
 			// Set origin to centre of texture
-			SetOrigin(new Vector2(m_position.X + (m_texture.Width / 2), 
-                                m_position.Y + (m_texture.Height / 2)));
+			SetOrigin(new Vector2(m_texture.Width / 2, 
+                                m_texture.Height / 2));
 		}
 
 
@@ -59,7 +59,7 @@ namespace Project_Cows.Source.System.Graphics.Sprites {
             return m_rotation; 
         }
 
-		// TODO: Create universal function to convert deg -> rad, and vice versa
+		// TODO: Create universal function to convert deg -> rad, and vice versa -Dean
 		public float GetRotationRadians() { 
             return (m_rotation * (3.1415f / 180)); 
         }

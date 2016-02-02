@@ -91,7 +91,7 @@ namespace Project_Cows.Source.System.Input {
         private void CalculateSteeringValue(float steeringDistance_) {
             // Processes inputs to get the steering value
             // ================
-            m_steeringValue = steeringDistance_ / m_steeringMaxDistance;
+            m_steeringValue = (steeringDistance_ / m_steeringMaxDistance);
         }
 
         // Getters
