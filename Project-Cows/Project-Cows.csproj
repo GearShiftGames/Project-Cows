@@ -48,6 +48,8 @@
     <Compile Include="Source\Application\Physics\CollisionHandler.cs" />
     <Compile Include="Source\Application\Player.cs" />
     <Compile Include="Source\Application\VictoryState.cs" />
+    <Compile Include="Source\System\Debug.cs" />
+    <Compile Include="Source\System\FrameCounter.cs" />
     <Compile Include="Source\System\Graphics\GraphicsHandler.cs" />
     <Compile Include="Source\System\Graphics\Particles\Particle.cs" />
     <Compile Include="Source\System\Graphics\Particles\ParticleHandler.cs" />

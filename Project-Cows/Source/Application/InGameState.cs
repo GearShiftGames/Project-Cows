@@ -154,23 +154,11 @@ namespace Project_Cows.Source.Application {
                 }
             }
 
-            graphicsHandler_.DrawSprite(m_players[0].m_controlScheme.m_controlInterfaceSprite);             // Temp
-            graphicsHandler_.DrawSprite(m_players[0].m_controlScheme.m_steeringIndicatorSprite);            // Temp
-
-            //m_players[0].m_carBounds.m_Rotation = m_players[0].m_carBounds.m_Rotation - (m_players[0].slide * m_players[0].sliding) * 2;
-
-            //cars collision rect
-            //Rectangle AdjustsedPos = new Rectangle(m_players[0].m_carBounds.X + (m_players[0].m_carBounds.Width / 2), m_players[0].m_carBounds.Y + (m_players[0].m_carBounds.Height / 2), m_players[0].m_carBounds.Width, m_players[0].m_carBounds.Height);
-            //graphicsHandler_.m_spriteBatch.Draw(squareTexture, AdjustsedPos, m_players[0].m_carBounds.collisionRectangle, Color.Red, m_players[0].m_carBounds.m_Rotation, m_players[0].center, SpriteEffects.None, 0);
-
-            //the moving car sprite
-            //AdjustsedPos = new Rectangle(m_players[0].m_carBounds.X + (m_players[0].m_carBounds.Width / 2), m_players[0].m_carBounds.Y + (m_players[0].m_carBounds.Height / 2), m_players[0].m_carBounds.Width, m_players[0].m_carBounds.Height);
-            //graphicsHandler_.m_spriteBatch.Draw(m_players[0].m_car.GetTexture(), m_players[0].position, null, Color.Red, m_players[0].m_carBounds.m_Rotation, m_players[0].center, 1.0f, SpriteEffects.None, 0);
-			graphicsHandler_.DrawSprite(m_players[0].GetVehicle().GetSprite());
-			graphicsHandler_.DrawSprite(m_players[0].GetVehicle().GetCollider().m_debugSprite);
-			graphicsHandler_.DrawSprite(m_players[1].GetVehicle().GetSprite());
-			graphicsHandler_.DrawSprite(m_players[1].GetVehicle().GetCollider().m_debugSprite);
-
+			foreach(Player pl in m_players) {
+				graphicsHandler_.DrawSprite(pl.GetVehicle().GetSprite());
+				graphicsHandler_.DrawSprite(pl.m_controlScheme.m_controlInterfaceSprite);
+				graphicsHandler_.DrawSprite(pl.m_controlScheme.m_steeringIndicatorSprite);
+			}
            
             graphicsHandler_.StopDrawing();
 		}

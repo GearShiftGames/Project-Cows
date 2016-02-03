@@ -81,10 +81,15 @@ namespace Project_Cows.Source.Application {
 			// Get user input and update the game
 			// ================
 
-            // Debug toggle
-            if (Keyboard.GetState().IsKeyDown(Keys.F1)) {
-				Settings.m_debug = !Settings.m_debug;
-            }
+			// Activate debug screen
+			if(Keyboard.GetState().IsKeyDown(Keys.F1)) {
+				Settings.m_debug = true;
+			}
+
+			// Deactivate debug screen
+			if(Keyboard.GetState().IsKeyDown(Keys.F2)) {
+				Settings.m_debug = false;
+			}
 
 			// Close window - TEMP
 			if(Keyboard.GetState().IsKeyDown(Keys.Escape)) {
@@ -102,13 +107,20 @@ namespace Project_Cows.Source.Application {
 			switch(m_currentState.GetExecutionState()) {
 				case ExecutionState.INITIALISING:
 					// State is initialising
-
+					
 					// TODO: Pass along variables necessary for use
 					m_currentState.Initialise(Content);
 					break;
 				case ExecutionState.RUNNING:
 					// State is currently running
 					m_currentState.Update(ref h_touchHandler, gameTime, ref h_graphicsHandler);
+
+					// Calculate the FPS
+					FrameCounter.Update((float)gameTime.ElapsedGameTime.TotalSeconds);
+
+					// Display the FPS and current state on the debug screen
+					Debug.AddText(new DebugText(FrameCounter.AverageFramesPerSecond.ToString(), new Vector2(Settings.m_screenWidth - 75, 10), Color.Red));
+					Debug.AddText(new DebugText("State: " + m_currentState.ToString().Substring(32), new Vector2(10.0f, 30.0f)));
 					break;
 				case ExecutionState.CHANGING:
 					// State has finished and needs to be changed
@@ -166,9 +178,11 @@ namespace Project_Cows.Source.Application {
 					// State is currently running
 
 					m_currentState.Draw(GraphicsDevice, ref h_graphicsHandler);
-					if(Settings.m_debug) {
+
+					Debug.Render(ref h_graphicsHandler);
+					/*if(Settings.m_debug) {
                         h_graphicsHandler.Debug(m_currentState.ToString(), Color.Red);
-                    }
+                    }*/
 					break;
 				case ExecutionState.CHANGING:
 					// State has finished and needs to be changed

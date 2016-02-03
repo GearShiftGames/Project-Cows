@@ -76,6 +76,12 @@ namespace Project_Cows.Source.System.Graphics {
             m_spriteBatch.DrawString(m_font, text_, position_, colour_);
         }
 
+		public void DrawText(DebugText text_) {
+			// Draw text with standard font, using DebugText
+			// ================
+			m_spriteBatch.DrawString(m_font, text_.GetText(), text_.GetPosition(), text_.GetColor());
+		}
+
         public void DrawText(string text_, Vector2 position_, Color colour_, SpriteFont font_) {
             // Draw text with custom font
             // ================
