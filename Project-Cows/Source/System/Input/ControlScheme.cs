@@ -9,6 +9,7 @@ using Microsoft.Xna.Framework.Input.Touch;
 using Microsoft.Xna.Framework;
 
 using Project_Cows.Source.System.Graphics.Sprites;
+using Project_Cows.Source.System;
 
 namespace Project_Cows.Source.System.Input {
     class ControlScheme {
@@ -37,20 +38,6 @@ namespace Project_Cows.Source.System.Input {
             m_steeringValue = 0;
             m_braking = false;
 
-            switch (m_quadrent) {
-                case Quadrent.TOP_LEFT:
-                    m_homeSteeringPosition = new Vector2(400, 400);         // Temp hard-coding
-                    break;
-                case Quadrent.TOP_RIGHT:
-                    m_homeSteeringPosition = new Vector2(800, 400);         // Temp hard-coding
-                    break;
-                case Quadrent.BOTTOM_LEFT:
-                    m_homeSteeringPosition = new Vector2(400, 800);         // Temp hard-coding
-                    break;
-                case Quadrent.BOTTOM_RIGHT:
-                    m_homeSteeringPosition = new Vector2(800, 800);         // Temp hard-coding
-                    break;
-            }
             m_steeringMaxDistance = 200;
         }
 
@@ -80,7 +67,7 @@ namespace Project_Cows.Source.System.Input {
 
                     CalculateSteeringValue(steeringDistance);
 
-					m_steeringIndicatorSprite.SetPosition(new Vector2(m_homeSteeringPosition.X - steeringDistance + m_steeringIndicatorSprite.GetWidth() * 2f, m_homeSteeringPosition.Y));
+					m_steeringIndicatorSprite.SetPosition(new Vector2(m_homeSteeringPosition.X - steeringDistance, m_homeSteeringPosition.Y));
 
                     performedSteering = true;
                 } else if(!performedBraking) {
@@ -98,7 +85,11 @@ namespace Project_Cows.Source.System.Input {
         private void CalculateSteeringValue(float steeringDistance_) {
             // Processes inputs to get the steering value
             // ================
-            m_steeringValue = (steeringDistance_ / m_steeringMaxDistance);
+            m_steeringValue = steeringDistance_ / m_steeringMaxDistance;
+
+			if(m_quadrent == Quadrent.BOTTOM_LEFT || m_quadrent == Quadrent.BOTTOM_RIGHT) {
+				m_steeringValue = -m_steeringValue;
+			}
         }
 
         // Getters
@@ -112,16 +103,16 @@ namespace Project_Cows.Source.System.Input {
 
 			switch(m_quadrent) {
 				case Quadrent.TOP_LEFT:
-					m_homeSteeringPosition = new Vector2(400 + sprite_.GetWidth(), 400);         // Temp hard-coding
+					m_homeSteeringPosition = new Vector2(400 - sprite_.GetWidth(), 100);         // Temp hard-coding
 					break;
 				case Quadrent.TOP_RIGHT:
-					m_homeSteeringPosition = new Vector2(800 + sprite_.GetWidth(), 400);         // Temp hard-coding
+					m_homeSteeringPosition = new Vector2(Settings.m_screenWidth - 400 + sprite_.GetWidth(), 100);         // Temp hard-coding
 					break;
 				case Quadrent.BOTTOM_LEFT:
-					m_homeSteeringPosition = new Vector2(400 + sprite_.GetWidth(), 800);         // Temp hard-coding
+					m_homeSteeringPosition = new Vector2(400 - sprite_.GetWidth(), Settings.m_screenHeight - 100);         // Temp hard-coding
 					break;
 				case Quadrent.BOTTOM_RIGHT:
-					m_homeSteeringPosition = new Vector2(800 + sprite_.GetWidth(), 800);         // Temp hard-coding
+					m_homeSteeringPosition = new Vector2(Settings.m_screenWidth - 400 + sprite_.GetWidth(), Settings.m_screenHeight - 100);         // Temp hard-coding
 					break;
 			}
 			m_steeringIndicatorSprite.SetPosition(m_homeSteeringPosition);

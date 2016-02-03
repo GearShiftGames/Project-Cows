@@ -21,10 +21,10 @@ namespace Project_Cows.Source.Application.Entity {
         private bool m_braking;
 
         private const float MAX_SPEED = 5.0f;
-        private const float ACCELERATION_RATE = 0.1f;
-        private const float DECELERATION_RATE = -0.1f;
+        private const float ACCELERATION_RATE = 0.05f;
+        private const float DECELERATION_RATE = -0.05f;
 		private const float STEERING_SENSITIVITY = 5.0f;
-        
+
         // Methods
         public Vehicle(Texture2D texture_, Vector2 position_, float rotation_) : base(texture_, position_, rotation_) {
             // Vehicle constructor
@@ -42,7 +42,7 @@ namespace Project_Cows.Source.Application.Entity {
 
             // Set rotation according to the steering value (touch distance)
             if (m_velocity > 1.0f) {
-                float turn = m_steeringValue * -1;
+                float turn = m_steeringValue;
 
                 if (!m_braking) {
                     turn *= ACCELERATION_RATE * m_velocity * STEERING_SENSITIVITY;
@@ -74,8 +74,7 @@ namespace Project_Cows.Source.Application.Entity {
 
 			SetPosition(GetPosition() + direction * m_velocity);
 
-            // TODO: Set direction, position, rotation etc.
-            // NOTE: Look at code from MonoGame-UI-Touch-Prototype -Dean
+			// Update position and rotation of the vehicle's sprite
 			UpdateSprite();
         }
 

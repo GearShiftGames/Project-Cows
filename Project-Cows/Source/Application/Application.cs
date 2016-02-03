@@ -23,7 +23,6 @@ namespace Project_Cows.Source.Application {
 		private TouchHandler h_touchHandler;						// Touch input handler
         private GraphicsHandler h_graphicsHandler;                  // Deals with rendering of graphics
 
-		private Settings m_settings;								// Game settings
         private bool debugging = false;
 
 		private State m_currentState;								// Current state being executed
@@ -39,8 +38,6 @@ namespace Project_Cows.Source.Application {
 			Content.RootDirectory = "Content";
 
 			h_touchHandler = new TouchHandler();
-
-			m_settings = new Settings();
 		}
 
 		protected override void Initialize() {
@@ -48,13 +45,13 @@ namespace Project_Cows.Source.Application {
 			// ================
 
 			// Set up window
-			h_graphicsDeviceHandler.IsFullScreen = m_settings.m_fullscreen;
-			if(m_settings.m_fullscreen) {
+			h_graphicsDeviceHandler.IsFullScreen = Settings.m_fullscreen;
+			if(Settings.m_fullscreen) {
 				h_graphicsDeviceHandler.PreferredBackBufferWidth = GraphicsDevice.DisplayMode.Width;
 				h_graphicsDeviceHandler.PreferredBackBufferHeight = GraphicsDevice.DisplayMode.Height;
 			} else {
-				h_graphicsDeviceHandler.PreferredBackBufferWidth = m_settings.m_screenWidth;
-				h_graphicsDeviceHandler.PreferredBackBufferHeight = m_settings.m_screenHeight;
+				h_graphicsDeviceHandler.PreferredBackBufferWidth = Settings.m_screenWidth;
+				h_graphicsDeviceHandler.PreferredBackBufferHeight = Settings.m_screenHeight;
 			}
 			
 			h_graphicsDeviceHandler.ApplyChanges();
@@ -67,7 +64,7 @@ namespace Project_Cows.Source.Application {
             m_victoryState = new VictoryState();
 
 			// Set initial state
-			m_currentState = m_inGameState;                                                                     // NOTE: Change for testing -Dean
+			m_currentState = m_inGameState;											// NOTE: Change for testing -Dean
 			
 			base.Initialize();
 		}
@@ -98,8 +95,8 @@ namespace Project_Cows.Source.Application {
 
 			// Toggle fullscreen - TEMP
 			if(Keyboard.GetState().IsKeyDown(Keys.F)) {
-				m_settings.m_fullscreen = !m_settings.m_fullscreen;
-				h_graphicsDeviceHandler.IsFullScreen = m_settings.m_fullscreen;
+				Settings.m_fullscreen = !Settings.m_fullscreen;
+				h_graphicsDeviceHandler.IsFullScreen = Settings.m_fullscreen;
 				h_graphicsDeviceHandler.ApplyChanges();
 			}
 
