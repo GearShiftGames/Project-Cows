@@ -100,16 +100,5 @@ namespace Project_Cows.Source.System.Graphics {
             // ================
             m_spriteBatch.Draw(texture_, position_, colour_);
         }
-
-        public void Debug(String state_, Color colour_) {
-            // Output some variables to screen for debugging
-            // ================
-            m_spriteBatch.Begin();
-            DrawText("Debugging", new Vector2(10.0f, 10.0f), colour_);
-            DrawText("State: " + state_.Substring(32), new Vector2(10.0f, 30.0f), colour_);
-            DrawText("State: " + state_.Substring(32), new Vector2(10.0f, 30.0f), colour_);
-            m_spriteBatch.End();
-        }
-
     }
 }

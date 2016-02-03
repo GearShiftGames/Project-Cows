@@ -118,12 +118,12 @@ namespace Project_Cows.Source.Application {
                     }
                 }
             }
-
+			
 			foreach(Player pl in m_players) {
 				pl.UpdateSprites();
 			}
-
-            // Update particles
+            
+			// Update particles
             m_particles = graphicsHandler_.UpdatePFX(gameTime_.ElapsedGameTime.TotalMilliseconds);
 
 		}
@@ -159,7 +159,7 @@ namespace Project_Cows.Source.Application {
 				graphicsHandler_.DrawSprite(pl.m_controlScheme.m_controlInterfaceSprite);
 				graphicsHandler_.DrawSprite(pl.m_controlScheme.m_steeringIndicatorSprite);
 			}
-           
+
             graphicsHandler_.StopDrawing();
 		}
 
