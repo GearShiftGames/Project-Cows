@@ -45,6 +45,7 @@
     <Compile Include="Source\Application\Entity\Vehicle.cs" />
     <Compile Include="Source\Application\InGameState.cs" />
     <Compile Include="Source\Application\MenuState.cs" />
+    <Compile Include="Source\Application\Physics\CollisionHandler.cs" />
     <Compile Include="Source\Application\Player.cs" />
     <Compile Include="Source\Application\VictoryState.cs" />
     <Compile Include="Source\System\Graphics\GraphicsHandler.cs" />

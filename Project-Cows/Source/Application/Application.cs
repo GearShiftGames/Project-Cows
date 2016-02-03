@@ -23,8 +23,6 @@ namespace Project_Cows.Source.Application {
 		private TouchHandler h_touchHandler;						// Touch input handler
         private GraphicsHandler h_graphicsHandler;                  // Deals with rendering of graphics
 
-        private bool debugging = false;
-
 		private State m_currentState;								// Current state being executed
 		private MenuState m_menuState;								// Game state: Menu screen
 		private InGameState m_inGameState;							// Game state: In game state
@@ -85,7 +83,7 @@ namespace Project_Cows.Source.Application {
 
             // Debug toggle
             if (Keyboard.GetState().IsKeyDown(Keys.F1)) {
-                debugging = !debugging;
+				Settings.m_debug = !Settings.m_debug;
             }
 
 			// Close window - TEMP
@@ -168,7 +166,7 @@ namespace Project_Cows.Source.Application {
 					// State is currently running
 
 					m_currentState.Draw(GraphicsDevice, ref h_graphicsHandler);
-                    if (debugging) {
+					if(Settings.m_debug) {
                         h_graphicsHandler.Debug(m_currentState.ToString(), Color.Red);
                     }
 					break;

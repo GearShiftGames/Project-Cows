@@ -12,6 +12,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Input.Touch;
 
+using Project_Cows.Source.Application.Physics;
 using Project_Cows.Source.System.Graphics;
 using Project_Cows.Source.System.Graphics.Particles;
 using Project_Cows.Source.System.Graphics.Sprites;
@@ -28,7 +29,9 @@ namespace Project_Cows.Source.Application {
         private List<Sprite> m_sprites = new List<Sprite>();
         private List<Particle> m_particles = new List<Particle>();
 
-        Texture2D carTexture, squareTexture; 
+		//private CollisionHandler h_collisionHandler;
+
+        private Texture2D carTexture, squareTexture, colliderTexture;
 
 		// Methods
 		public InGameState() : base() {
@@ -46,13 +49,18 @@ namespace Project_Cows.Source.Application {
 			
 			carTexture = content_.Load<Texture2D>("car");
             squareTexture = content_.Load<Texture2D>("square");
+			colliderTexture = content_.Load<Texture2D>("carCollider");
 
 			// Initialise players
             m_players = new List<Player>();
             m_players.Clear();
-            m_players.Add(new Player(carTexture, new Vector2(20, 20), 0, 0, Quadrent.TOP_LEFT, 1));
+			m_players.Add(new Player(colliderTexture, carTexture, new Vector2(20, 20), 0, 0, Quadrent.BOTTOM_RIGHT, 1));
+			m_players.Add(new Player(colliderTexture, carTexture, new Vector2(20, 120), 0, 0, Quadrent.BOTTOM_LEFT, 2));
+
 			m_players[0].m_controlScheme.SetSteeringSprite(new Sprite(content_.Load<Texture2D>("controlTemp"), new Vector2(100.0f, 100.0f), 0, 1, true));
 			m_players[0].m_controlScheme.SetInterfaceSprite(new Sprite(content_.Load<Texture2D>("controlTempBG"), new Vector2(100.0f, 100.0f), 0, 1, true));
+			m_players[1].m_controlScheme.SetSteeringSprite(new Sprite(content_.Load<Texture2D>("controlTemp"), new Vector2(100.0f, 100.0f), 0, 1, true));
+			m_players[1].m_controlScheme.SetInterfaceSprite(new Sprite(content_.Load<Texture2D>("controlTempBG"), new Vector2(100.0f, 100.0f), 0, 1, true));
 
             // Initialise sprites
             m_animatedSprites.Add(new AnimatedSprite(content_.Load<Texture2D>("animation"), 
@@ -72,19 +80,30 @@ namespace Project_Cows.Source.Application {
 			// Update touch input handler
 			touchHandler_.Update();
 
+			// Create lists to contain touches for each player
+			List<List<TouchLocation>> playerTouches = new List<List<TouchLocation>>();
+			for(int p = 0; p < m_players.Count; ++p) {
+				playerTouches.Add(new List<TouchLocation>());
+			}
+			
+			// Iterate through each player and sort out which touches are for which player
 			foreach(TouchLocation tl in touchHandler_.GetTouches()) {
+				for(int index = 0; index < playerTouches.Count; ++index) {
+					if(m_players[index].m_controlScheme.GetTouchZone().IsInsideZone(tl.Position)) {
+						playerTouches[index].Add(tl);
+					}
+				}
 
 				// TODO:
-				// Check touch input for each touch zone of the screen
 				// Check if touch zone has had three simultaneous touches
-					// Penalise player
-				// Change values based on touch locations
-                
+				// Penalise player
+				// NOTE: This should probably be done in the respective players' ControlScheme object -Dean
 			}
 
-            //m_players[0].m_controlScheme.Update(touchHandler_.GetTouches());                // Temp
-
-			m_players[0].Update(touchHandler_.GetTouches());
+			// Update each player
+			for(int index = 0; index < m_players.Count; ++index) {
+				m_players[index].Update(playerTouches[index]);
+			}
 
 			// Update game objects
 			// TODO: perform collision checks, etc.
@@ -100,51 +119,12 @@ namespace Project_Cows.Source.Application {
                 }
             }
 
+			foreach(Player pl in m_players) {
+				pl.UpdateSprites();
+			}
+
             // Update particles
             m_particles = graphicsHandler_.UpdatePFX(gameTime_.ElapsedGameTime.TotalMilliseconds);
-
-            //TEMP: Controlling the player
-            #region Player Controller
-            KeyboardState CurrentKeyboard = Keyboard.GetState();
-
-            //car wants to break
-            /*if (CurrentKeyboard.IsKeyDown(Keys.Down))
-            {
-                if (!CurrentKeyboard.IsKeyDown(Keys.Space))
-                {
-                    m_players[0].breaking = true;
-                }
-                else m_players[0].breaking = false;
-            }
-
-            //turn right
-            if (CurrentKeyboard.IsKeyDown(Keys.Right))
-            {
-                m_players[0].turnRight = true;
-
-                if (CurrentKeyboard.IsKeyDown(Keys.Space))
-                {
-                    m_players[0].breaking = true;
-                }
-            }
-            //no point checking if turning left if turning right is true
-            else if (CurrentKeyboard.IsKeyDown(Keys.Left))
-            {
-                m_players[0].turnLeft = true;
-
-                if (CurrentKeyboard.IsKeyDown(Keys.Space))
-                {
-                    m_players[0].breaking = true;
-                }
-            }
-
-            if (CurrentKeyboard.IsKeyDown(Keys.Space))
-            {
-                m_players[0].breaking = true;
-            }*/
-
-            m_players[0].Update(touchHandler_.GetTouches());
-            #endregion
 
 		}
 
@@ -187,7 +167,10 @@ namespace Project_Cows.Source.Application {
             //AdjustsedPos = new Rectangle(m_players[0].m_carBounds.X + (m_players[0].m_carBounds.Width / 2), m_players[0].m_carBounds.Y + (m_players[0].m_carBounds.Height / 2), m_players[0].m_carBounds.Width, m_players[0].m_carBounds.Height);
             //graphicsHandler_.m_spriteBatch.Draw(m_players[0].m_car.GetTexture(), m_players[0].position, null, Color.Red, m_players[0].m_carBounds.m_Rotation, m_players[0].center, 1.0f, SpriteEffects.None, 0);
 			graphicsHandler_.DrawSprite(m_players[0].GetVehicle().GetSprite());
-            //graphicsHandler_.DrawSprite(m_players[0].m_car);
+			graphicsHandler_.DrawSprite(m_players[0].GetVehicle().GetCollider().m_debugSprite);
+			graphicsHandler_.DrawSprite(m_players[1].GetVehicle().GetSprite());
+			graphicsHandler_.DrawSprite(m_players[1].GetVehicle().GetCollider().m_debugSprite);
+
            
             graphicsHandler_.StopDrawing();
 		}

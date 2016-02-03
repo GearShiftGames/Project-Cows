@@ -6,13 +6,12 @@
 
 using System;
 using System.Collections.Generic;
-
 using Microsoft.Xna.Framework;
-
-using Project_Cows.Source.System.Graphics;
+using Microsoft.Xna.Framework.Graphics;
+using Project_Cows.Source.System.Graphics.Sprites;
 
 namespace Project_Cows.Source.Application.Entity {
-    class EntityCollider {
+    public class EntityCollider {
         // Class for the entity box collider
         // ================
 
@@ -21,8 +20,10 @@ namespace Project_Cows.Source.Application.Entity {
         private Vector2 m_origin;
         private float m_rotation;
 
+		public Sprite m_debugSprite;
+
         // Methods
-        public EntityCollider(Rectangle box_, float rotation_) {
+        public EntityCollider(Texture2D collider_, Rectangle box_, float rotation_) {
             // EntityCollider constructor
             // ================
 
@@ -30,7 +31,14 @@ namespace Project_Cows.Source.Application.Entity {
             m_rotation = rotation_;
 
             m_origin = new Vector2((int)m_boundingBox.Width / 2, (int)m_boundingBox.Height / 2);
-        }
+       
+			m_debugSprite = new Sprite(collider_, GetPosition(), m_rotation, 1.0f);
+		}
+
+		public void UpdateSprite() {
+			m_debugSprite.SetPosition(GetPosition());
+			m_debugSprite.SetRotationDegrees(m_rotation);
+		}
 
         private Vector2 RotatePoint(Vector2 point_, Vector2 origin_) {
             // Returns the position of a point rotated around an origin
@@ -109,16 +117,20 @@ namespace Project_Cows.Source.Application.Entity {
         // Setters
         public void SetPosition(Vector2 position_) {
             m_boundingBox.X = (int)position_.X - m_boundingBox.Width/2;
-            m_boundingBox.Y = (int)position_.Y - m_boundingBox.Height/2;
+			m_boundingBox.Y = (int)position_.Y - m_boundingBox.Height/2;
         }
 
-        public void SetRotation(float rotation_) {
-            m_rotation = rotation_;
+        public void SetRotationDegrees(float degrees_) {
+            m_rotation = degrees_;
         }
+
+		public void SetRotationRadians(float radians_) {
+			m_rotation = radians_ * (180 / 3.1415f);
+		}
 
     }
 
-    enum Corner {
+    public enum Corner {
         // Enum for the four corners of a rectangle
         // ================
         UPPER_LEFT,

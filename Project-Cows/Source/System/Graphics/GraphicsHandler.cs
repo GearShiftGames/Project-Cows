@@ -20,8 +20,8 @@ namespace Project_Cows.Source.System.Graphics {
         // ================
 
         // Variables
-        public ParticleHandler m_particleHandler;
-        public SpriteBatch m_spriteBatch;
+        private ParticleHandler m_particleHandler;
+        private SpriteBatch m_spriteBatch;
         private SpriteFont m_font;
 
         // Methods

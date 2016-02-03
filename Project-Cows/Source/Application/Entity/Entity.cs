@@ -23,22 +23,35 @@ namespace Project_Cows.Source.Application.Entity {
         protected bool m_collidable;                // Whether the entity is collidable
 
         // Methods
-        public Entity(Texture2D texture_, Vector2 position_, float rotation_) {
+        public Entity(Texture2D collider_, Texture2D texture_, Vector2 position_, float rotation_) {
             // Entity constructor
             // ================
 
             m_position = position_;
             m_rotation = rotation_;
             m_sprite = new Sprite(texture_, m_position, m_rotation, 1.0f);
-            m_collider = new EntityCollider(new Rectangle((int)m_position.X, (int)m_position.Y, (int)m_sprite.GetWidth(), (int)m_sprite.GetHeight()), m_rotation);
+            m_collider = new EntityCollider(collider_, new Rectangle((int)m_position.X, (int)m_position.Y, (int)m_sprite.GetWidth(), (int)m_sprite.GetHeight()), m_rotation);
             m_collidable = true;
 
         }
 
-		public void UpdateSprite() {
+		public void UpdateCollider() {
+			// Updates the position and rotation of the entity's collider
+			// ================
+
+			m_collider.SetPosition(m_position);
+			m_collider.SetRotationDegrees(m_rotation);
+		}
+
+		public void UpdateSprites() {
 			// Updates the position and rotation of the entity's sprite
+			// ================
+
 			m_sprite.SetPosition(m_position);
 			m_sprite.SetRotationDegrees(m_rotation);
+
+			// Update collider sprite
+			m_collider.UpdateSprite();
 		}
 
         // Getters
@@ -49,11 +62,16 @@ namespace Project_Cows.Source.Application.Entity {
 		public Vector2 GetPosition() { return m_position; }
 
 		public float GetRotationDegrees() {
+			// Returns the entity's rotation, in degrees
+			// ================
+
 			return m_rotation;
 		}
 
 		public float GetRotationRadians() {
 			// Returns the entity's rotation, in radians
+			// ================
+			
 			float rad = m_rotation * (3.1415f / 180);
 			return rad;
 		}

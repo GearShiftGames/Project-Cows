@@ -22,6 +22,7 @@ namespace Project_Cows.Source.System.Input {
         private Quadrent m_quadrent;                    // Area of the screen which is being used
         private Vector2 m_homeSteeringPosition;         // The centre-point of the controls
         private float m_steeringMaxDistance;            // The maximum distance the indicator can move
+		private TouchZone m_touchZone;					// The area of the screen where touches are processed
 
         public Sprite m_controlInterfaceSprite;
         public Sprite m_steeringIndicatorSprite;
@@ -39,6 +40,26 @@ namespace Project_Cows.Source.System.Input {
             m_braking = false;
 
             m_steeringMaxDistance = 200;
+
+			// Set touch zone
+			switch(m_quadrent){
+				case Quadrent.TOP_LEFT:
+					m_touchZone = new TouchZone(new Vector2(0, 0),
+												new Vector2(Settings.m_screenWidth / 2, Settings.m_screenHeight / 2));
+					break;
+				case Quadrent.TOP_RIGHT:
+					m_touchZone = new TouchZone(new Vector2(Settings.m_screenWidth / 2, 0),
+												new Vector2(Settings.m_screenWidth, Settings.m_screenHeight / 2));
+					break;
+				case Quadrent.BOTTOM_LEFT:
+					m_touchZone = new TouchZone(new Vector2(0, Settings.m_screenHeight / 2),
+												new Vector2(Settings.m_screenWidth / 2, Settings.m_screenHeight));
+					break;
+				case Quadrent.BOTTOM_RIGHT:
+					m_touchZone = new TouchZone(new Vector2(Settings.m_screenWidth / 2, Settings.m_screenHeight / 2),
+												new Vector2(Settings.m_screenWidth, Settings.m_screenHeight));
+					break;
+			}
         }
 
         public void Update(List<TouchLocation> touches_) {
@@ -96,6 +117,8 @@ namespace Project_Cows.Source.System.Input {
         public float GetSteeringValue() { return m_steeringValue; }
 
         public bool GetBraking() { return m_braking; }
+
+		public TouchZone GetTouchZone() { return m_touchZone; }
 
         // Setters
 		public void SetSteeringSprite(Sprite sprite_) {

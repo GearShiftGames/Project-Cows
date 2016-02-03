@@ -20,15 +20,16 @@ namespace Project_Cows.Source.Application.Entity {
         private float m_steeringValue;
         private bool m_braking;
 
-        private const float MAX_SPEED = 5.0f;
+        private const float MAX_SPEED = 10.0f;
         private const float ACCELERATION_RATE = 0.05f;
-        private const float DECELERATION_RATE = -0.05f;
+        private const float DECELERATION_RATE = -0.15f;
 		private const float STEERING_SENSITIVITY = 5.0f;
 
         // Methods
-        public Vehicle(Texture2D texture_, Vector2 position_, float rotation_) : base(texture_, position_, rotation_) {
+        public Vehicle(Texture2D collider_, Texture2D texture_, Vector2 position_, float rotation_) : base(collider_, texture_, position_, rotation_) {
             // Vehicle constructor
             // ================
+
             m_velocity = 0.0f;
             m_steeringValue = 0.0f;
             m_braking = false;
@@ -61,7 +62,7 @@ namespace Project_Cows.Source.Application.Entity {
                 }
             } else {
                 // Accelerate
-                if (m_velocity < MAX_SPEED) {
+                if(m_velocity < MAX_SPEED) {
                     m_velocity += ACCELERATION_RATE;
                 } else if (m_velocity > MAX_SPEED) {
                     m_velocity = MAX_SPEED;
@@ -75,7 +76,7 @@ namespace Project_Cows.Source.Application.Entity {
 			SetPosition(GetPosition() + direction * m_velocity);
 
 			// Update position and rotation of the vehicle's sprite
-			UpdateSprite();
+			UpdateCollider();
         }
 
 
