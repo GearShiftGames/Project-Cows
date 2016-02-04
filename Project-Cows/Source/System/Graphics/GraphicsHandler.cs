@@ -50,8 +50,8 @@ namespace Project_Cows.Source.System.Graphics {
             // ================
             Rectangle scale = new Rectangle((int)sprite_.GetPosition().X,
                                             (int)sprite_.GetPosition().Y,
-                                            (int)(sprite_.GetWidth() * sprite_.GetScale()),
-                                            (int)(sprite_.GetHeight() * sprite_.GetScale()));
+                                            (int)(sprite_.GetWidth() * sprite_.GetScale().X),
+                                            (int)(sprite_.GetHeight() * sprite_.GetScale().Y));
             m_spriteBatch.Draw(sprite_.GetTexture(), scale, null, Color.White, sprite_.GetRotationRadians(), sprite_.GetOrigin(), SpriteEffects.None, 0);
         }
 
@@ -60,8 +60,8 @@ namespace Project_Cows.Source.System.Graphics {
             // ================
             Rectangle destination = new Rectangle((int)animSprite_.GetPosition().X,
                                                   (int)animSprite_.GetPosition().Y,
-                                                  (int)(animSprite_.GetFrameWidth() * animSprite_.GetScale()),
-                                                  (int)(animSprite_.GetFrameHeight() * animSprite_.GetScale()));
+                                                  (int)(animSprite_.GetFrameWidth() * animSprite_.GetScale().X),
+                                                  (int)(animSprite_.GetFrameHeight() * animSprite_.GetScale().Y));
             Rectangle source = new Rectangle(animSprite_.GetFrameWidth() * animSprite_.GetCurrentHorizontal(),
                                              animSprite_.GetFrameHeight() * animSprite_.GetCurrentVertical(),
                                              animSprite_.GetFrameWidth(),

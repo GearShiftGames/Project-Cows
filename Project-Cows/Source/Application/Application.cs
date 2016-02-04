@@ -96,9 +96,16 @@ namespace Project_Cows.Source.Application {
 				Exit();
 			}
 
-			// Toggle fullscreen - TEMP
-			if(Keyboard.GetState().IsKeyDown(Keys.F)) {
-				Settings.m_fullscreen = !Settings.m_fullscreen;
+			// Set fullscreen mode
+			if(Keyboard.GetState().IsKeyDown(Keys.F11) && !Settings.m_fullscreen) {
+				Settings.m_fullscreen = true;
+				h_graphicsDeviceHandler.IsFullScreen = Settings.m_fullscreen;
+				h_graphicsDeviceHandler.ApplyChanges();
+			}
+
+			// Set windowed mode
+			if(Keyboard.GetState().IsKeyDown(Keys.F12) && Settings.m_fullscreen) {
+				Settings.m_fullscreen = false;
 				h_graphicsDeviceHandler.IsFullScreen = Settings.m_fullscreen;
 				h_graphicsDeviceHandler.ApplyChanges();
 			}

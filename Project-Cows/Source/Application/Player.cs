@@ -7,6 +7,7 @@
 using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input.Touch;
 
@@ -27,11 +28,11 @@ namespace Project_Cows.Source.Application {
 		private Vehicle m_vehicle;
 
         // Methods
-        public Player(Texture2D collider_, Texture2D texture_, Vector2 position_, float rotation_, float speed_, Quadrent quadrent_, int id_ = 999) {
+        public Player(ContentManager content_, Texture2D texture_, Vector2 position_, float rotation_, float speed_, Quadrent quadrent_, int id_ = 999) {
 			// Player constructor
 			// ================
 
-			m_vehicle = new Vehicle(collider_, texture_, position_, rotation_);
+			m_vehicle = new Vehicle(content_, texture_, position_, rotation_);
 			
             m_controlScheme = new ControlScheme(quadrent_);
             m_playerID = id_;

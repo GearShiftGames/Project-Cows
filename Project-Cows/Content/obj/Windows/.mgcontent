@@ -14,5 +14,7 @@
     <File>C:/Users/deano/OneDrive/University Files/Third Year/Prototype Game Development/Projects/Project-Cows/Project-Cows/Content/Square.png</File>
     <File>C:/Users/deano/OneDrive/University Files/Third Year/Prototype Game Development/Projects/Project-Cows/Project-Cows/Content/purpleCar.png</File>
     <File>C:/Users/deano/OneDrive/University Files/Third Year/Prototype Game Development/Projects/Project-Cows/Project-Cows/Content/carCollider.png</File>
+    <File>C:/Users/deano/OneDrive/University Files/Third Year/Prototype Game Development/Projects/Project-Cows/Project-Cows/Content/entityCollided.png</File>
+    <File>C:/Users/deano/OneDrive/University Files/Third Year/Prototype Game Development/Projects/Project-Cows/Project-Cows/Content/entityUncollided.png</File>
   </SourceFiles>
 </SourceFileCollection>

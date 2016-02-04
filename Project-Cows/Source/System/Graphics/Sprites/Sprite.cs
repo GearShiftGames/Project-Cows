@@ -20,13 +20,13 @@ namespace Project_Cows.Source.System.Graphics.Sprites {
 		private Vector2 m_position;			// Position of the sprite on the screen
 		private Vector2 m_origin;			// Origin of the sprite
 		private float m_rotation;			// Rotation of the sprite, in degrees
-		private float m_scale;				// Scaling of the sprite
+		private Vector2 m_scale;			// Scaling of the sprite
         private bool m_visible;             // Visibility of the sprite, default = true
 
 		// Methods
         public Sprite() {}
 
-		public Sprite(Texture2D texture_, Vector2 position_, float rotation_, float scale_, bool visible_ = true) {
+		public Sprite(Texture2D texture_, Vector2 position_, float rotation_, Vector2 scale_, bool visible_ = true) {
 			// Sprite constructor
 			// ================
 
@@ -64,7 +64,7 @@ namespace Project_Cows.Source.System.Graphics.Sprites {
             return (m_rotation * (3.1415f / 180)); 
         }
 
-		public float GetScale() { 
+		public Vector2 GetScale() { 
             return m_scale; 
         }
 
@@ -100,11 +100,19 @@ namespace Project_Cows.Source.System.Graphics.Sprites {
 
 		public void SetScale(float scale_) {
             if (scale_ > 0) {
-                m_scale = scale_;
+                m_scale = new Vector2(scale_, scale_);
             } else {
-                m_scale = 1.0f;
+                m_scale = new Vector2(1.0f, 1.0f);
             }
         }
+
+		public void SetScale(Vector2 scale_) {
+			if(scale_.X > 0 && scale_.Y > 0) {
+				m_scale = scale_;
+			} else {
+				m_scale = new Vector2(1.0f, 1.0f);
+			}
+		}
 
         public void SetVisible(bool visible_) {
             m_visible = visible_;

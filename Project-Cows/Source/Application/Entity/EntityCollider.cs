@@ -20,10 +20,10 @@ namespace Project_Cows.Source.Application.Entity {
         private Vector2 m_origin;
         private float m_rotation;
 
-		public Sprite m_debugSprite;
+		private Sprite m_debugSprite;
 
         // Methods
-        public EntityCollider(Texture2D collider_, Rectangle box_, float rotation_) {
+        public EntityCollider(Texture2D texture_, Rectangle box_, float rotation_) {
             // EntityCollider constructor
             // ================
 
@@ -32,7 +32,9 @@ namespace Project_Cows.Source.Application.Entity {
 
             m_origin = new Vector2((int)m_boundingBox.Width / 2, (int)m_boundingBox.Height / 2);
        
-			m_debugSprite = new Sprite(collider_, GetPosition(), m_rotation, 1.0f);
+			Vector2 scale = new Vector2((float)m_boundingBox.Width / (float)texture_.Width, (float)m_boundingBox.Height / (float)texture_.Height);
+			m_debugSprite = new Sprite(texture_, GetPosition(), m_rotation, scale);
+			
 		}
 
 		public void UpdateSprite() {
@@ -43,7 +45,6 @@ namespace Project_Cows.Source.Application.Entity {
         private Vector2 RotatePoint(Vector2 point_, Vector2 origin_) {
             // Returns the position of a point rotated around an origin
             // ================
-
             Vector2 translatedPoint = new Vector2();
 
             translatedPoint.X = (float)(origin_.X + (point_.X - origin_.X) * Math.Cos(m_rotation)
@@ -98,6 +99,10 @@ namespace Project_Cows.Source.Application.Entity {
         public float GetHeight() {
             return m_boundingBox.Height;
         }
+
+		public Sprite GetDebugSprite() {
+			return m_debugSprite;
+		}
 
         public Vector2 GetCornerPosition(Corner corner) {
             switch (corner) {

@@ -6,8 +6,10 @@
 using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
+using Project_Cows.Source.System;
 using Project_Cows.Source.System.Graphics.Sprites;
 
 namespace Project_Cows.Source.Application.Entity {
@@ -23,15 +25,17 @@ namespace Project_Cows.Source.Application.Entity {
         protected bool m_collidable;                // Whether the entity is collidable
 
         // Methods
-        public Entity(Texture2D collider_, Texture2D texture_, Vector2 position_, float rotation_) {
+        public Entity(ContentManager content_, Texture2D texture_, Vector2 position_, float rotation_) {
             // Entity constructor
             // ================
 
             m_position = position_;
             m_rotation = rotation_;
-            m_sprite = new Sprite(texture_, m_position, m_rotation, 1.0f);
-            m_collider = new EntityCollider(collider_, new Rectangle((int)m_position.X, (int)m_position.Y, (int)m_sprite.GetWidth(), (int)m_sprite.GetHeight()), m_rotation);
-            m_collidable = true;
+			m_sprite = new Sprite(texture_, m_position, m_rotation, new Vector2(1.0f, 1.0f));
+			m_collidable = true;
+
+			Texture2D debugTexture = content_.Load<Texture2D>("entityUncollided");
+            m_collider = new EntityCollider(debugTexture, new Rectangle((int)m_position.X, (int)m_position.Y, (int)m_sprite.GetWidth(), (int)m_sprite.GetHeight()), m_rotation);
 
         }
 
@@ -41,6 +45,8 @@ namespace Project_Cows.Source.Application.Entity {
 
 			m_collider.SetPosition(m_position);
 			m_collider.SetRotationDegrees(m_rotation);
+
+			Debug.AddSprite(m_collider.GetDebugSprite());
 		}
 
 		public void UpdateSprites() {

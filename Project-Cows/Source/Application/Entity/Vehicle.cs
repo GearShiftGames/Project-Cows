@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace Project_Cows.Source.Application.Entity {
@@ -26,7 +27,7 @@ namespace Project_Cows.Source.Application.Entity {
 		private const float STEERING_SENSITIVITY = 5.0f;
 
         // Methods
-        public Vehicle(Texture2D collider_, Texture2D texture_, Vector2 position_, float rotation_) : base(collider_, texture_, position_, rotation_) {
+		public Vehicle(ContentManager content_, Texture2D texture_, Vector2 position_, float rotation_) : base(content_, texture_, position_, rotation_) {
             // Vehicle constructor
             // ================
 
@@ -38,6 +39,7 @@ namespace Project_Cows.Source.Application.Entity {
         public void Update(float steeringValue_, bool braking_) {
             // Updates the vehicle
             // ================
+
             m_steeringValue = steeringValue_;
             m_braking = braking_;
 
