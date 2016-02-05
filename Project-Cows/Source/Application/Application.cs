@@ -50,6 +50,7 @@ namespace Project_Cows.Source.Application {
 			} else {
 				h_graphicsDeviceHandler.PreferredBackBufferWidth = Settings.m_screenWidth;
 				h_graphicsDeviceHandler.PreferredBackBufferHeight = Settings.m_screenHeight;
+                
 			}
 			
 			h_graphicsDeviceHandler.ApplyChanges();
