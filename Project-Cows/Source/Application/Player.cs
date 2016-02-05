@@ -27,6 +27,10 @@ namespace Project_Cows.Source.Application {
         private int m_playerID;
 		private Vehicle m_vehicle;
 
+        private bool m_keyLeft;
+        private bool m_keyRight;
+        private bool m_keyBraking;
+
         // Methods
         public Player(ContentManager content_, Texture2D texture_, Vector2 position_, float rotation_, float speed_, Quadrent quadrent_, int id_ = 999) {
 			// Player constructor
@@ -44,7 +48,18 @@ namespace Project_Cows.Source.Application {
 
             m_controlScheme.Update(touches_);
 
-			m_vehicle.Update(m_controlScheme.GetSteeringValue(), m_controlScheme.GetBraking());
+            if (!m_keyLeft && !m_keyRight && !m_keyBraking) {
+                m_vehicle.Update(m_controlScheme.GetSteeringValue(), m_controlScheme.GetBraking());
+            } else {
+                float turn = 0;
+                if (m_keyLeft) {
+                    turn -= 1;
+                }
+                if (m_keyRight) {
+                    turn += 1;
+                }
+                m_vehicle.Update(turn, m_keyBraking);
+            }
         }
 
 		public void UpdateSprites() {
@@ -53,6 +68,12 @@ namespace Project_Cows.Source.Application {
 
 			m_vehicle.UpdateSprites();
 		}
+
+        public void KeyboardMove(bool left_, bool right_, bool braking_) {
+            m_keyLeft = left_;
+            m_keyRight = right_;
+            m_keyBraking = braking_;
+        }
 
 		// Getters
 		public Vehicle GetVehicle() { return m_vehicle; }

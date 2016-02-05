@@ -99,6 +99,19 @@ namespace Project_Cows.Source.Application {
 
 			// Update each player
 			for(int index = 0; index < m_players.Count; ++index) {
+                bool left = false;
+                bool right = false;
+                bool brake = false;
+                if (Keyboard.GetState().IsKeyDown(Keys.Left)) {
+                    left = true;
+                }
+                if (Keyboard.GetState().IsKeyDown(Keys.Right)) {
+                    right = true;
+                }
+                if (Keyboard.GetState().IsKeyDown(Keys.Space)) {
+                    brake = true;
+                }
+                m_players[index].KeyboardMove(left, right, brake);
 				m_players[index].Update(playerTouches[index]);
 			}
 
