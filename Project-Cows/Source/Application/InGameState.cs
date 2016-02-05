@@ -12,12 +12,14 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Input.Touch;
 
+using Project_Cows.Source.Application.Entity;
 using Project_Cows.Source.Application.Physics;
 using Project_Cows.Source.System.Graphics;
 using Project_Cows.Source.System.Graphics.Particles;
 using Project_Cows.Source.System.Graphics.Sprites;
 using Project_Cows.Source.System.Input;
 using Project_Cows.Source.System.StateMachine;
+using Project_Cows.Source.System;
 
 namespace Project_Cows.Source.Application {
 	class InGameState : State {
@@ -29,7 +31,9 @@ namespace Project_Cows.Source.Application {
         private List<Sprite> m_sprites = new List<Sprite>();
         private List<Particle> m_particles = new List<Particle>();
 
-        private Texture2D carTexture, squareTexture, colliderTexture;
+        private Checkpoint m_checkpoint1;
+
+        private Texture2D carTexture, squareTexture, checkpointTexture;
 
 		// Methods
 		public InGameState() : base() {
@@ -47,6 +51,7 @@ namespace Project_Cows.Source.Application {
 			
 			carTexture = content_.Load<Texture2D>("car");
             squareTexture = content_.Load<Texture2D>("square");
+            checkpointTexture = content_.Load<Texture2D>("checkpoint");
 
 			// Initialise players
             m_players = new List<Player>();
@@ -58,6 +63,9 @@ namespace Project_Cows.Source.Application {
 			m_players[0].m_controlScheme.SetInterfaceSprite(new Sprite(content_.Load<Texture2D>("controlTempBG"), new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
 			m_players[1].m_controlScheme.SetSteeringSprite(new Sprite(content_.Load<Texture2D>("controlTemp"), new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
 			m_players[1].m_controlScheme.SetInterfaceSprite(new Sprite(content_.Load<Texture2D>("controlTempBG"), new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
+
+            // Checkpoints...
+            m_checkpoint1 = new Checkpoint(0, content_, checkpointTexture, new Vector2(500f, 500f), 0.0f);
 
             // Initialise sprites
             m_animatedSprites.Add(new AnimatedSprite(content_.Load<Texture2D>("animation"), 
@@ -117,6 +125,7 @@ namespace Project_Cows.Source.Application {
 
 			// Update game objects
 			// TODO: perform collision checks, etc.
+            
 
 			// Update sprites
             foreach(AnimatedSprite anim in m_animatedSprites) {
@@ -164,6 +173,9 @@ namespace Project_Cows.Source.Application {
                 }
             }
 
+            graphicsHandler_.DrawSprite(m_checkpoint1.GetSprite());
+
+            // Render player vehicles
 			foreach(Player pl in m_players) {
 				graphicsHandler_.DrawSprite(pl.GetVehicle().GetSprite());
 				graphicsHandler_.DrawSprite(pl.m_controlScheme.m_controlInterfaceSprite);
