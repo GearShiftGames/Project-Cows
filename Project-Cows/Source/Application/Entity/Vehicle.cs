@@ -24,7 +24,7 @@ namespace Project_Cows.Source.Application.Entity {
         private const float MAX_SPEED = 5.0f;
         private const float ACCELERATION_RATE = 0.05f;
         private const float DECELERATION_RATE = -0.15f;
-		private const float STEERING_SENSITIVITY = 5.0f;
+		private const float STEERING_SENSITIVITY = 10.0f;
 
         // Methods
 		public Vehicle(ContentManager content_, Texture2D texture_, Vector2 position_, float rotation_) : base(content_, texture_, position_, rotation_) {

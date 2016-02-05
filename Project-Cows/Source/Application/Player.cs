@@ -27,6 +27,9 @@ namespace Project_Cows.Source.Application {
         private int m_playerID;
 		private Vehicle m_vehicle;
 
+        public int m_currentCheckpoint;
+        public int m_currentLap;
+
         private bool m_keyLeft;
         private bool m_keyRight;
         private bool m_keyBraking;
@@ -40,6 +43,9 @@ namespace Project_Cows.Source.Application {
 			
             m_controlScheme = new ControlScheme(quadrent_);
             m_playerID = id_;
+
+            m_currentCheckpoint = 0;
+            m_currentLap = 1;
         }
 
         public void Update(List<TouchLocation> touches_) {

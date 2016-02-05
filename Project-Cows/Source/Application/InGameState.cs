@@ -28,10 +28,9 @@ namespace Project_Cows.Source.Application {
 
 		// Variables
         private List<AnimatedSprite> m_animatedSprites = new List<AnimatedSprite>();
-        private List<Sprite> m_sprites = new List<Sprite>();
         private List<Particle> m_particles = new List<Particle>();
 
-        private Checkpoint m_checkpoint1;
+        private List<Checkpoint> m_checkpoints = new List<Checkpoint>();
         private Texture2D carTexture, squareTexture, checkpointTexture, backgroundTexture;
         private Sprite m_background;
 
@@ -63,15 +62,23 @@ namespace Project_Cows.Source.Application {
             m_players = new List<Player>();
             m_players.Clear();
 			m_players.Add(new Player(content_, carTexture, new Vector2(100, 500), 0, 0, Quadrent.BOTTOM_RIGHT, 1));
-			m_players.Add(new Player(content_, carTexture, new Vector2(100, 600), 270, 0, Quadrent.BOTTOM_LEFT, 2));
+			//m_players.Add(new Player(content_, carTexture, new Vector2(100, 600), 270, 0, Quadrent.BOTTOM_LEFT, 2));
 
 			m_players[0].m_controlScheme.SetSteeringSprite(new Sprite(content_.Load<Texture2D>("controlTemp"), new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
 			m_players[0].m_controlScheme.SetInterfaceSprite(new Sprite(content_.Load<Texture2D>("controlTempBG"), new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
-			m_players[1].m_controlScheme.SetSteeringSprite(new Sprite(content_.Load<Texture2D>("controlTemp"), new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
-			m_players[1].m_controlScheme.SetInterfaceSprite(new Sprite(content_.Load<Texture2D>("controlTempBG"), new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
+			//m_players[1].m_controlScheme.SetSteeringSprite(new Sprite(content_.Load<Texture2D>("controlTemp"), new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
+			//m_players[1].m_controlScheme.SetInterfaceSprite(new Sprite(content_.Load<Texture2D>("controlTempBG"), new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
           
             // Checkpoints...
-            m_checkpoint1 = new Checkpoint(0, content_, checkpointTexture, new Vector2(500f, 500f), 0.0f);
+            m_checkpoints.Add(new Checkpoint(0, content_, checkpointTexture, new Vector2(500f, 500f), 0.0f));
+            m_checkpoints.Add(new Checkpoint(1, content_, checkpointTexture, new Vector2(600f, 500f), 0.0f));
+            m_checkpoints.Add(new Checkpoint(2, content_, checkpointTexture, new Vector2(700f, 500f), 0.0f));
+            m_checkpoints.Add(new Checkpoint(3, content_, checkpointTexture, new Vector2(800f, 500f), 0.0f));
+            m_checkpoints.Add(new Checkpoint(4, content_, checkpointTexture, new Vector2(900f, 500f), 0.0f));
+            m_checkpoints.Add(new Checkpoint(5, content_, checkpointTexture, new Vector2(1000f, 500f), 0.0f));
+            m_checkpoints.Add(new Checkpoint(6, content_, checkpointTexture, new Vector2(1100f, 500f), 0.0f));
+            m_checkpoints.Add(new Checkpoint(7, content_, checkpointTexture, new Vector2(1200f, 500f), 0.0f));
+            m_checkpoints.Add(new Checkpoint(8, content_, checkpointTexture, new Vector2(1300f, 500f), 0.0f));
 
             // Initialise sprites
             m_animatedSprites.Add(new AnimatedSprite(content_.Load<Texture2D>("animation"), 
@@ -122,20 +129,28 @@ namespace Project_Cows.Source.Application {
                 if (Keyboard.GetState().IsKeyDown(Keys.Right)) {
                     right = true;
                 }
-                if (Keyboard.GetState().IsKeyDown(Keys.Space)) {
+                if (Keyboard.GetState().IsKeyDown(Keys.Space) || Keyboard.GetState().IsKeyDown(Keys.Down)) {
                     brake = true;
                 }
-                if (index == 0)
-                { 
-                    m_players[index].KeyboardMove(left, right, true); 
-                }else
-                    m_players[index].KeyboardMove(left, right, brake); 
+
+                m_players[index].KeyboardMove(left, right, brake); 
 				m_players[index].Update(playerTouches[index]);
 			}
 
 			// Update game objects
 			// TODO: perform collision checks, etc.
-            
+
+            foreach(Checkpoint cp in m_checkpoints){
+                if (CollisionHandler.CheckForCollision(m_players[0].GetVehicle().GetCollider(), cp.GetCollider())) {
+                    if (cp.GetID() == 0 && m_players[0].m_currentCheckpoint == m_checkpoints.Count - 1) {
+                        ++m_players[0].m_currentLap;
+                    }
+                    m_players[0].m_currentCheckpoint = cp.GetID();
+                }
+            }
+
+            Debug.AddText(new DebugText("Lap: " + m_players[0].m_currentLap.ToString(), new Vector2(20.0f, 90.0f)));
+            Debug.AddText(new DebugText("Checkpoint: " + m_players[0].m_currentCheckpoint.ToString(), new Vector2(20.0f, 110.0f)));
 
 			// Update sprites
             foreach(AnimatedSprite anim in m_animatedSprites) {
@@ -160,40 +175,36 @@ namespace Project_Cows.Source.Application {
 		public override void Draw(GraphicsDevice graphicsDevice_, ref GraphicsHandler graphicsHandler_) {
 			// Render objects to the screen
 			// ================
-
-            //NOTE:: COLLISION DETECTION DOESNT APPEAR TO WORK ANYMORE
-            if(CollisionHandler.CheckForCollision(m_players[0].GetVehicle().GetCollider(), m_players[1].GetVehicle().GetCollider()))
-            {
-                m_players[1].GetVehicle().GetSprite().SetTexture(squareTexture);
-            }
-            else m_players[1].GetVehicle().GetSprite().SetTexture(carTexture);
           
 			// Clear the screen
 			graphicsDevice_.Clear(Color.Beige);
 
-			// Render graphics
+            // Start rendering graphics
             graphicsHandler_.StartDrawing();
 
-            //Draw the background first gdamn it
+            // Render background
             graphicsHandler_.DrawSprite(m_background);
 
+            // Render animated sprites      TEMP
             foreach (AnimatedSprite anim_ in m_animatedSprites) {
                 if (anim_.IsVisible()) {
                     //graphicsHandler_.DrawAnimatedSprite(anim_);
                 }
             }
-            foreach (Sprite sprite_ in m_sprites) {
-                if (sprite_.IsVisible()) {
-                    //graphicsHandler_.DrawSprite(sprite_);
-                }
-            }
+
+            // Render particles             TEMP
             foreach (Particle part_ in m_particles) {
                 if (part_.GetLife() > 0) {
                     //graphicsHandler_.DrawParticle(/*texture,*/ part_.GetPosition(), Color.White);
                 }
             }
 
-            graphicsHandler_.DrawSprite(m_checkpoint1.GetSprite());
+
+            // Render checkpoints
+            // NOTE: Eventually make these only appear in debug mode
+            foreach (Checkpoint cp in m_checkpoints) {
+                graphicsHandler_.DrawSprite(cp.GetSprite());
+            }
 
             // Render player vehicles
 			foreach(Player pl in m_players) {
@@ -202,6 +213,7 @@ namespace Project_Cows.Source.Application {
 				graphicsHandler_.DrawSprite(pl.m_controlScheme.m_steeringIndicatorSprite);
 			}
 
+            // Stop rendering graphics
             graphicsHandler_.StopDrawing();
 		}
 

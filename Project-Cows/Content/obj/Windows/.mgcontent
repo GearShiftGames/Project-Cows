@@ -4,20 +4,20 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>M:/Project Cows/Project-Cows/Content/animZombie.bmp</File>
-    <File>M:/Project Cows/Project-Cows/Content/basic_font.spritefont</File>
-    <File>M:/Project Cows/Project-Cows/Content/pixel.png</File>
-    <File>M:/Project Cows/Project-Cows/Content/animation.png</File>
-    <File>M:/Project Cows/Project-Cows/Content/controlTemp.png</File>
-    <File>M:/Project Cows/Project-Cows/Content/controlTempBG.png</File>
-    <File>M:/Project Cows/Project-Cows/Content/car.png</File>
-    <File>M:/Project Cows/Project-Cows/Content/Square.png</File>
-    <File>M:/Project Cows/Project-Cows/Content/purpleCar.png</File>
-    <File>M:/Project Cows/Project-Cows/Content/carCollider.png</File>
-    <File>M:/Project Cows/Project-Cows/Content/entityCollided.png</File>
-    <File>M:/Project Cows/Project-Cows/Content/entityUncollided.png</File>
-    <File>M:/Project Cows/Project-Cows/Content/V2_Background_Grass.png</File>
-    <File>M:/Project Cows/Project-Cows/Content/corner.png</File>
+    <File>M:/Uni Stuff/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/animZombie.bmp</File>
+    <File>M:/Uni Stuff/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/basic_font.spritefont</File>
+    <File>M:/Uni Stuff/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/pixel.png</File>
+    <File>M:/Uni Stuff/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/animation.png</File>
+    <File>M:/Uni Stuff/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/controlTemp.png</File>
+    <File>M:/Uni Stuff/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/controlTempBG.png</File>
+    <File>M:/Uni Stuff/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/car.png</File>
+    <File>M:/Uni Stuff/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Square.png</File>
+    <File>M:/Uni Stuff/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/purpleCar.png</File>
+    <File>M:/Uni Stuff/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/carCollider.png</File>
+    <File>M:/Uni Stuff/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/entityCollided.png</File>
+    <File>M:/Uni Stuff/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/entityUncollided.png</File>
+    <File>M:/Uni Stuff/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/V2_Background_Grass.png</File>
+    <File>M:/Uni Stuff/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/corner.png</File>
     <File>M:/Uni Stuff/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/checkpoint.png</File>
   </SourceFiles>
 </SourceFileCollection>
