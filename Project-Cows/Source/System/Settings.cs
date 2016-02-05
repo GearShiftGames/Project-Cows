@@ -12,11 +12,11 @@ namespace Project_Cows.Source.System {
 		// ================
 
 		// Variables
-		public static bool m_fullscreen = false;			// Fullscreen state of the application window
+		public static bool m_fullscreen = true;			// Fullscreen state of the application window
 		public static int m_screenWidth = 1920;				// Resolution width of the window
 		public static int m_screenHeight = 1080;			// Resolution height of the window
 
-		public static bool m_debug = false;
+		public static bool m_debug = true;
 
 		// Methods
 		public static bool LoadSettings() {

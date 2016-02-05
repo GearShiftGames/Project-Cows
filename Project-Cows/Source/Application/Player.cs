@@ -44,7 +44,7 @@ namespace Project_Cows.Source.Application {
             m_controlScheme = new ControlScheme(quadrent_);
             m_playerID = id_;
 
-            m_currentCheckpoint = 0;
+            m_currentCheckpoint = -1;
             m_currentLap = 1;
         }
 
@@ -82,6 +82,10 @@ namespace Project_Cows.Source.Application {
         }
 
 		// Getters
+        public int GetID() {
+            return m_playerID;
+        }
+
 		public Vehicle GetVehicle() { return m_vehicle; }
 
 		// Setters
