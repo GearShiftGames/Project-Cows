@@ -34,8 +34,9 @@ namespace Project_Cows.Source.Application.Entity {
 			m_sprite = new Sprite(texture_, m_position, m_rotation, new Vector2(1.0f, 1.0f));
 			m_collidable = true;
 
-			Texture2D debugTexture = content_.Load<Texture2D>("entityUncollided");
-            m_collider = new EntityCollider(debugTexture, new Rectangle((int)m_position.X, (int)m_position.Y, (int)m_sprite.GetWidth(), (int)m_sprite.GetHeight()), m_rotation);
+            Texture2D debugTexture = content_.Load<Texture2D>("entityUncollided");
+            Texture2D cornerTexture = content_.Load<Texture2D>("corner");
+            m_collider = new EntityCollider(cornerTexture, debugTexture, new Rectangle((int)m_position.X, (int)m_position.Y, (int)m_sprite.GetWidth(), (int)m_sprite.GetHeight()), m_rotation);
 
         }
 

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>M:/Uni Stuff/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/animZombie.bmp</SourceFile>
-  <SourceTime>2016-01-15T16:02:36.4804712+00:00</SourceTime>
-  <DestFile>M:/Uni Stuff/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/bin/Windows/animZombie.xnb</DestFile>
-  <DestTime>2016-02-05T13:35:41.5821102+00:00</DestTime>
+  <SourceFile>M:/Project Cows/Project-Cows/Content/animZombie.bmp</SourceFile>
+  <SourceTime>2016-01-29T09:57:54.2206751+00:00</SourceTime>
+  <DestFile>M:/Project Cows/Project-Cows/Content/bin/Windows/animZombie.xnb</DestFile>
+  <DestTime>2016-02-05T10:08:13.7113397+00:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2015-04-29T18:14:44+01:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

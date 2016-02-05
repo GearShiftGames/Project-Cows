@@ -32,10 +32,10 @@ namespace Project_Cows.Source.Application.Physics {
 			rectangleAxis.Add(entityA_.GetCornerPosition(Corner.UPPER_RIGHT) - entityA_.GetCornerPosition(Corner.LOWER_RIGHT));
 			rectangleAxis.Add(entityB_.GetCornerPosition(Corner.UPPER_LEFT) - entityB_.GetCornerPosition(Corner.LOWER_LEFT));
 			rectangleAxis.Add(entityB_.GetCornerPosition(Corner.UPPER_LEFT) - entityB_.GetCornerPosition(Corner.UPPER_RIGHT));
-
+           
 			// Loop through each axis, if one doesn't collide, there is no collision
 			foreach(Vector2 axis in rectangleAxis) {
-				if(!IsAxisCollision(entityB_, axis)) {
+				if(!IsAxisCollision(entityA_, entityB_, axis)) {
 					return false;
 				}
 			}
@@ -43,16 +43,17 @@ namespace Project_Cows.Source.Application.Physics {
 			return true;
 		}
 
-		private static bool IsAxisCollision(EntityCollider entityB_, Vector2 axis_) {
+        private static bool IsAxisCollision(EntityCollider entityA_,EntityCollider entityB_, Vector2 axis_)
+        {
 			// Determines if a collision has occurred on an axis of one of the planes parallel to the entity
 			// ================
 
 			// Project the corners of the collider B on to the axis and get a scalar value of that project
 			List<int> colliderAScalars = new List<int>();
-			colliderAScalars.Add(GenerateScalar(entityB_.GetCornerPosition(Corner.UPPER_LEFT), axis_));
-			colliderAScalars.Add(GenerateScalar(entityB_.GetCornerPosition(Corner.UPPER_RIGHT), axis_));
-			colliderAScalars.Add(GenerateScalar(entityB_.GetCornerPosition(Corner.LOWER_LEFT), axis_));
-			colliderAScalars.Add(GenerateScalar(entityB_.GetCornerPosition(Corner.LOWER_RIGHT), axis_));
+			colliderAScalars.Add(GenerateScalar(entityA_.GetCornerPosition(Corner.UPPER_LEFT), axis_));
+			colliderAScalars.Add(GenerateScalar(entityA_.GetCornerPosition(Corner.UPPER_RIGHT), axis_));
+			colliderAScalars.Add(GenerateScalar(entityA_.GetCornerPosition(Corner.LOWER_LEFT), axis_));
+			colliderAScalars.Add(GenerateScalar(entityA_.GetCornerPosition(Corner.LOWER_RIGHT), axis_));
 
 			// Project the corners of the collider A onto the axis and get a scalar value of that project
 			List<int> colliderBScalars = new List<int>();
