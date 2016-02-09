@@ -1,5 +1,6 @@
 ﻿// Project Cows -- GearShift Games
 // Written by D. Sinclair, 2016
+//            N. Headley, 2016
 // ================
 // Application.cs
 
@@ -8,6 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
 using Project_Cows.Source.System;
+using Project_Cows.Source.System.Graphics;
 using Project_Cows.Source.System.Input;
 using Project_Cows.Source.System.StateMachine;
 
@@ -19,8 +21,7 @@ namespace Project_Cows.Source.Application {
 		// Variables
 		private GraphicsDeviceManager h_graphicsDeviceHandler;		// Graphics device handler
 		private TouchHandler h_touchHandler;						// Touch input handler
-
-		private Settings m_settings;								// Game settings
+        private GraphicsHandler h_graphicsHandler;                  // Deals with rendering of graphics
 
 		private State m_currentState;								// Current state being executed
 		private MenuState m_menuState;								// Game state: Menu screen
@@ -35,8 +36,6 @@ namespace Project_Cows.Source.Application {
 			Content.RootDirectory = "Content";
 
 			h_touchHandler = new TouchHandler();
-
-			m_settings = new Settings();
 		}
 
 		protected override void Initialize() {
@@ -44,24 +43,27 @@ namespace Project_Cows.Source.Application {
 			// ================
 
 			// Set up window
-			h_graphicsDeviceHandler.IsFullScreen = m_settings.m_fullscreen;
-			if(m_settings.m_fullscreen) {
+			h_graphicsDeviceHandler.IsFullScreen = Settings.m_fullscreen;
+			if(Settings.m_fullscreen) {
 				h_graphicsDeviceHandler.PreferredBackBufferWidth = GraphicsDevice.DisplayMode.Width;
 				h_graphicsDeviceHandler.PreferredBackBufferHeight = GraphicsDevice.DisplayMode.Height;
 			} else {
-				h_graphicsDeviceHandler.PreferredBackBufferWidth = m_settings.m_screenWidth;
-				h_graphicsDeviceHandler.PreferredBackBufferHeight = m_settings.m_screenHeight;
+				h_graphicsDeviceHandler.PreferredBackBufferWidth = Settings.m_screenWidth;
+				h_graphicsDeviceHandler.PreferredBackBufferHeight = Settings.m_screenHeight;
+                
 			}
 			
 			h_graphicsDeviceHandler.ApplyChanges();
 
+            h_graphicsHandler = new GraphicsHandler(GraphicsDevice, Content);
+
 			// Initialise states
-			m_menuState = new MenuState();
-			m_inGameState = new InGameState();
-			m_victoryState = new VictoryState();
+            m_menuState = new MenuState();
+            m_inGameState = new InGameState();
+            m_victoryState = new VictoryState();
 
 			// Set initial state
-			m_currentState = m_menuState;
+			m_currentState = m_inGameState;											// NOTE: Change for testing -Dean
 			
 			base.Initialize();
 		}
@@ -69,7 +71,7 @@ namespace Project_Cows.Source.Application {
 		protected override void LoadContent() {
 			// Load any game content
 			// ================
-		}
+          }
 
 		protected override void UnloadContent() {
 			// Unload any game content
@@ -80,15 +82,32 @@ namespace Project_Cows.Source.Application {
 			// Get user input and update the game
 			// ================
 
+			// Activate debug screen
+			if(Keyboard.GetState().IsKeyDown(Keys.F1)) {
+				Settings.m_debug = true;
+			}
+
+			// Deactivate debug screen
+			if(Keyboard.GetState().IsKeyDown(Keys.F2)) {
+				Settings.m_debug = false;
+			}
+
 			// Close window - TEMP
 			if(Keyboard.GetState().IsKeyDown(Keys.Escape)) {
 				Exit();
 			}
 
-			// Toggle fullscreen - TEMP
-			if(Keyboard.GetState().IsKeyDown(Keys.F)) {
-				m_settings.m_fullscreen = !m_settings.m_fullscreen;
-				h_graphicsDeviceHandler.IsFullScreen = m_settings.m_fullscreen;
+			// Set fullscreen mode
+			if(Keyboard.GetState().IsKeyDown(Keys.F11) && !Settings.m_fullscreen) {
+				Settings.m_fullscreen = true;
+				h_graphicsDeviceHandler.IsFullScreen = Settings.m_fullscreen;
+				h_graphicsDeviceHandler.ApplyChanges();
+			}
+
+			// Set windowed mode
+			if(Keyboard.GetState().IsKeyDown(Keys.F12) && Settings.m_fullscreen) {
+				Settings.m_fullscreen = false;
+				h_graphicsDeviceHandler.IsFullScreen = Settings.m_fullscreen;
 				h_graphicsDeviceHandler.ApplyChanges();
 			}
 
@@ -96,13 +115,16 @@ namespace Project_Cows.Source.Application {
 			switch(m_currentState.GetExecutionState()) {
 				case ExecutionState.INITIALISING:
 					// State is initialising
-
+					
 					// TODO: Pass along variables necessary for use
-					m_currentState.Initialise();
+					m_currentState.Initialise(Content);
 					break;
 				case ExecutionState.RUNNING:
 					// State is currently running
-					m_currentState.Update(ref h_touchHandler);
+					m_currentState.Update(ref h_touchHandler, gameTime, ref h_graphicsHandler);
+
+					
+					Debug.AddText(new DebugText("State: " + m_currentState.ToString().Substring(32), new Vector2(10.0f, 30.0f)));
 					break;
 				case ExecutionState.CHANGING:
 					// State has finished and needs to be changed
@@ -158,8 +180,15 @@ namespace Project_Cows.Source.Application {
 					break;
 				case ExecutionState.RUNNING:
 					// State is currently running
+					m_currentState.Draw(GraphicsDevice, ref h_graphicsHandler);
 
-					m_currentState.Draw(GraphicsDevice);
+					// Calculate the FPS
+					FrameCounter.Update((float)gameTime.ElapsedGameTime.TotalSeconds);
+
+					// Display the FPS and current state on the debug screen
+					Debug.AddText(new DebugText(FrameCounter.AverageFramesPerSecond.ToString(), new Vector2(Settings.m_screenWidth - 75, 10), Color.Red));
+
+					Debug.Render(ref h_graphicsHandler);
 					break;
 				case ExecutionState.CHANGING:
 					// State has finished and needs to be changed
@@ -169,8 +198,6 @@ namespace Project_Cows.Source.Application {
 				default:
 					goto case ExecutionState.INITIALISING;
 			}
-
-			m_currentState.Draw(GraphicsDevice);				// TEMP
 
 			base.Draw(gameTime);
 		}

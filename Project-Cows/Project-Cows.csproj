@@ -40,10 +40,24 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Source\Application\Application.cs" />
+    <Compile Include="Source\Application\Entity\Checkpoint.cs" />
+    <Compile Include="Source\Application\Entity\Entity.cs" />
+    <Compile Include="Source\Application\Entity\EntityCollider.cs" />
+    <Compile Include="Source\Application\Entity\Vehicle.cs" />
     <Compile Include="Source\Application\InGameState.cs" />
     <Compile Include="Source\Application\MenuState.cs" />
+    <Compile Include="Source\Application\Physics\CollisionHandler.cs" />
+    <Compile Include="Source\Application\Player.cs" />
     <Compile Include="Source\Application\VictoryState.cs" />
-    <Compile Include="Source\System\Graphics\Sprite.cs" />
+    <Compile Include="Source\System\Debug.cs" />
+    <Compile Include="Source\System\FrameCounter.cs" />
+    <Compile Include="Source\System\Graphics\GraphicsHandler.cs" />
+    <Compile Include="Source\System\Graphics\Particles\Particle.cs" />
+    <Compile Include="Source\System\Graphics\Particles\ParticleHandler.cs" />
+    <Compile Include="Source\System\Graphics\RotatedRectangle.cs" />
+    <Compile Include="Source\System\Graphics\Sprites\AnimatedSprite.cs" />
+    <Compile Include="Source\System\Graphics\Sprites\Sprite.cs" />
+    <Compile Include="Source\System\Input\ControlScheme.cs" />
     <Compile Include="Source\System\Input\TouchHandler.cs" />
     <Compile Include="Source\System\Input\TouchZone.cs" />
     <Compile Include="Source\System\Program.cs" />
@@ -64,9 +78,7 @@
   <ItemGroup>
     <MonoGameContentReference Include="Content\Content.mgcb" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Source\Application\Entity\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

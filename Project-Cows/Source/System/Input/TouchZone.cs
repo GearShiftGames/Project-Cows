@@ -21,6 +21,7 @@ namespace Project_Cows.Source.System.Input {
 		public TouchZone(Vector2 min_, Vector2 max_) {
 			// TouchZone constructor
 			// ================
+
 			SetMin(min_);
 			SetMax(max_);
 		}
@@ -28,6 +29,7 @@ namespace Project_Cows.Source.System.Input {
 		public TouchZone(TouchZone zone_) {
 			// TouchZone constructor
 			// ================
+
 			SetMin(zone_.GetMin());
 			SetMax(zone_.GetMax());
 		}
@@ -35,6 +37,7 @@ namespace Project_Cows.Source.System.Input {
 		public bool IsInsideZone(Vector2 position_) {
 			// Checks whether the position is within the touch zone
 			// ================
+
 			if(position_.X < m_min.X)
 				return false;
 			if(position_.X > m_max.X)

@@ -17,11 +17,11 @@ namespace Project_Cows.Source.System.Input {
 		private TouchCollection m_collection;
 		private List<TouchLocation> m_touches;
 
-
 		// Methods
 		public TouchHandler() {
 			// TouchHandler constructor
 			// ================
+
 			m_touches = new List<TouchLocation>();
 			Update();
 		}
@@ -29,6 +29,7 @@ namespace Project_Cows.Source.System.Input {
 		public void Update() {
 			// Updates the touch handler with new data
 			// ================
+
 			m_collection = TouchPanel.GetState();
 			m_touches.Clear();
 
