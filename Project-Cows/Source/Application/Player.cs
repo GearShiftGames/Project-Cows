@@ -64,6 +64,7 @@ namespace Project_Cows.Source.Application {
                 }
                 if (m_keyRight) {
                     turn += 1;
+                  
                 }
                 m_vehicle.Update(turn, m_keyBraking);
             }
