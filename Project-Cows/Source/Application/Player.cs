@@ -15,6 +15,7 @@ using Project_Cows.Source.System.Graphics.Sprites;
 using Project_Cows.Source.System.Input;
 
 using Project_Cows.Source.Application.Entity;
+using Project_Cows.Source.Application.Track;
 
 namespace Project_Cows.Source.Application {
     class Player {
@@ -27,7 +28,7 @@ namespace Project_Cows.Source.Application {
         private int m_playerID;
 		private Vehicle m_vehicle;
 
-        public int m_currentCheckpoint;
+        public Checkpoint m_currentCheckpoint;
         public int m_currentLap;
 
         private bool m_keyLeft;
@@ -44,7 +45,7 @@ namespace Project_Cows.Source.Application {
             m_controlScheme = new ControlScheme(quadrent_);
             m_playerID = id_;
 
-            m_currentCheckpoint = -1;
+            m_currentCheckpoint = Checkpoint.First;
             m_currentLap = 1;
         }
 

@@ -13,6 +13,7 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Input.Touch;
 
 using Project_Cows.Source.Application.Entity;
+using Project_Cows.Source.Application.Track;
 using Project_Cows.Source.Application.Physics;
 using Project_Cows.Source.System.Graphics;
 using Project_Cows.Source.System.Graphics.Particles;
@@ -27,11 +28,12 @@ namespace Project_Cows.Source.Application {
 		// ================
 
 		// Variables
+        private TrackHandler h_trackHandler = new TrackHandler();
         private List<AnimatedSprite> m_animatedSprites = new List<AnimatedSprite>();
         private List<Particle> m_particles = new List<Particle>();
 
-        private List<Checkpoint> m_checkpoints = new List<Checkpoint>();
-        private Texture2D carTexture, squareTexture, checkpointTexture, backgroundTexture;
+        //private List<Checkpoint> m_checkpoints = new List<Checkpoint>();
+        private Texture2D carTexture, squareTexture, backgroundTexture;
         private Sprite m_background;
 
         private List<int> m_rankings = new List<int>();
@@ -53,12 +55,11 @@ namespace Project_Cows.Source.Application {
 			carTexture = content_.Load<Texture2D>("car");
             squareTexture = content_.Load<Texture2D>("square");
             backgroundTexture = content_.Load<Texture2D>("V2_Background_Grass");
-            checkpointTexture = content_.Load<Texture2D>("checkpoint");
 
             Vector2 BackgroundScale = new Vector2((float)backgroundTexture.Width / (float)Settings.m_screenWidth);
             m_background = new Sprite(backgroundTexture, new Vector2(Settings.m_screenWidth / 2, Settings.m_screenHeight / 2), 0.0f, BackgroundScale);
 
-            
+            h_trackHandler.Initialise(content_);
 
 			// Initialise players
             m_players = new List<Player>();
@@ -71,25 +72,7 @@ namespace Project_Cows.Source.Application {
 			m_players[1].m_controlScheme.SetSteeringSprite(new Sprite(content_.Load<Texture2D>("controlTemp"), new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
 			m_players[1].m_controlScheme.SetInterfaceSprite(new Sprite(content_.Load<Texture2D>("controlTempBG"), new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
           
-            // Checkpoints...
-            m_checkpoints.Add(new Checkpoint(0, content_, checkpointTexture, new Vector2(500f, 300f), 0.0f));
-            m_checkpoints.Add(new Checkpoint(1, content_, checkpointTexture, new Vector2(600f, 300f), 0.0f));
-            m_checkpoints.Add(new Checkpoint(2, content_, checkpointTexture, new Vector2(700f, 300f), 0.0f));
-            m_checkpoints.Add(new Checkpoint(3, content_, checkpointTexture, new Vector2(800f, 300f), 0.0f));
-            m_checkpoints.Add(new Checkpoint(4, content_, checkpointTexture, new Vector2(900f, 300f), 0.0f));
-            m_checkpoints.Add(new Checkpoint(5, content_, checkpointTexture, new Vector2(1000f, 300f), 0.0f));
-            m_checkpoints.Add(new Checkpoint(6, content_, checkpointTexture, new Vector2(1100f, 300f), 0.0f));
-            m_checkpoints.Add(new Checkpoint(7, content_, checkpointTexture, new Vector2(1200f, 300f), 0.0f));
-            m_checkpoints.Add(new Checkpoint(8, content_, checkpointTexture, new Vector2(1300f, 500f), 0.0f));
-            m_checkpoints.Add(new Checkpoint(9, content_, checkpointTexture, new Vector2(1200f, 700f), 0.0f));
-            m_checkpoints.Add(new Checkpoint(10, content_, checkpointTexture, new Vector2(1100f, 700f), 0.0f));
-            m_checkpoints.Add(new Checkpoint(11, content_, checkpointTexture, new Vector2(1000f, 700f), 0.0f));
-            m_checkpoints.Add(new Checkpoint(12, content_, checkpointTexture, new Vector2(900f, 700f), 0.0f));
-            m_checkpoints.Add(new Checkpoint(13, content_, checkpointTexture, new Vector2(800f, 700f), 0.0f));
-            m_checkpoints.Add(new Checkpoint(14, content_, checkpointTexture, new Vector2(700f, 700f), 0.0f));
-            m_checkpoints.Add(new Checkpoint(15, content_, checkpointTexture, new Vector2(600f, 700f), 0.0f));
-            m_checkpoints.Add(new Checkpoint(16, content_, checkpointTexture, new Vector2(500f, 700f), 0.0f));
-            m_checkpoints.Add(new Checkpoint(17, content_, checkpointTexture, new Vector2(400f, 500f), 0.0f));
+            
 
             // Initialise sprites
             m_animatedSprites.Add(new AnimatedSprite(content_.Load<Texture2D>("animation"), 
@@ -150,12 +133,12 @@ namespace Project_Cows.Source.Application {
 
 			// Update game objects
 			// TODO: perform collision checks, etc.
-            foreach(Player p in m_players){
-                foreach(Checkpoint cp in m_checkpoints){
+            /*foreach(Player p in m_players){
+                foreach(Checkpoint cp in h_trackHandler.m_checkpoints){
                     if (CollisionHandler.CheckForCollision(p.GetVehicle().GetCollider(), cp.GetCollider())) {
                         if (cp.GetID() - p.m_currentCheckpoint == 1){
                             p.m_currentCheckpoint = cp.GetID();
-                        } else if (cp.GetID() == 0 && p.m_currentCheckpoint == m_checkpoints.Count - 1) {
+                        } else if (cp.GetID() == 0 && p.m_currentCheckpoint == h_trackHandler.m_checkpoints.Count - 1) {
                             p.m_currentCheckpoint = cp.GetID();
                             ++p.m_currentLap;
                         }
@@ -165,40 +148,12 @@ namespace Project_Cows.Source.Application {
                 Debug.AddText(new DebugText("Player " + p.GetID(), new Vector2(20.0f + 150 * p.GetID(), 70.0f)));
                 Debug.AddText(new DebugText("Lap: " + p.m_currentLap.ToString(), new Vector2(20.0f + 150 * p.GetID(), 90.0f)));
                 Debug.AddText(new DebugText("Checkpoint: " + p.m_currentCheckpoint.ToString(), new Vector2(20.0f + 150 * p.GetID(), 110.0f)));
-            }
+            }*/
 
-            // Get rankings
-            m_rankings.Clear();
-            while (m_rankings.Count != m_players.Count) {
-                int highestID = 0;
-                int highestScore = 0;
+            h_trackHandler.Update(m_players);
 
-                // Check for highest score (i.e. front-most non-ranked player)
-                foreach(Player p in m_players) {
-                    int checkpointScore = p.m_currentLap * (m_checkpoints.Count - 1) + p.m_currentCheckpoint;
-                    if (checkpointScore > highestScore) {
-                        bool ranked = false;
-                        foreach (int i in m_rankings) {
-                            if (p.GetID() == i) {
-                                ranked = true;
-                            }
-                        }
-
-                        if (!ranked) {
-                            highestScore = checkpointScore;
-                            highestID = p.GetID();
-                        }
-                    }
-                }
-
-                // Add front-most player to rankings
-                m_rankings.Add(highestID);
-            }
-
-            Debug.AddText(new DebugText("1st - Player " + m_rankings[0].ToString(), new Vector2(1500f, 50f)));
-            Debug.AddText(new DebugText("2nd - Player " + m_rankings[1].ToString(), new Vector2(1500f, 70f)));
-            //Debug.AddText(new DebugText("1st - " + m_rankings[2].ToString(), new Vector2(1500f, 90f)));
-            //Debug.AddText(new DebugText("1st - " + m_rankings[3].ToString(), new Vector2(1500f, 110f)));
+            
+            
             
 
 			// Update sprites
@@ -216,8 +171,8 @@ namespace Project_Cows.Source.Application {
 				p.UpdateSprites();
 			}
 
-            foreach (Checkpoint cp in m_checkpoints) {
-                cp.UpdateSprites();
+            foreach (CheckpointContainer cp in h_trackHandler.m_checkpoints) {
+                cp.GetEntity().UpdateSprites();
             }
             
 			// Update particles
@@ -252,12 +207,7 @@ namespace Project_Cows.Source.Application {
                 }
             }
 
-
-            // Render checkpoints
-            // NOTE: Eventually make these only appear in debug mode
-            foreach (Checkpoint cp in m_checkpoints) {
-                graphicsHandler_.DrawSprite(cp.GetSprite());
-            }
+            h_trackHandler.Draw();
 
             // Render player vehicles
 			foreach(Player p in m_players) {

@@ -44,14 +44,8 @@ namespace Project_Cows.Source.Application {
 
 			// Set up window
 			h_graphicsDeviceHandler.IsFullScreen = Settings.m_fullscreen;
-			if(Settings.m_fullscreen) {
-				h_graphicsDeviceHandler.PreferredBackBufferWidth = GraphicsDevice.DisplayMode.Width;
-				h_graphicsDeviceHandler.PreferredBackBufferHeight = GraphicsDevice.DisplayMode.Height;
-			} else {
-				h_graphicsDeviceHandler.PreferredBackBufferWidth = Settings.m_screenWidth;
-				h_graphicsDeviceHandler.PreferredBackBufferHeight = Settings.m_screenHeight;
-                
-			}
+			h_graphicsDeviceHandler.PreferredBackBufferWidth = Settings.m_screenWidth;
+			h_graphicsDeviceHandler.PreferredBackBufferHeight = Settings.m_screenHeight;
 			
 			h_graphicsDeviceHandler.ApplyChanges();
 
