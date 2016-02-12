@@ -58,19 +58,18 @@ namespace Project_Cows.Source.Application {
             Vector2 BackgroundScale = new Vector2((float)backgroundTexture.Width / (float)Settings.m_screenWidth);
             m_background = new Sprite(backgroundTexture, new Vector2(Settings.m_screenWidth / 2, Settings.m_screenHeight / 2), 0.0f, BackgroundScale);
 
-            
-
 			// Initialise players
             m_players = new List<Player>();
             m_players.Clear();
 			m_players.Add(new Player(content_, carTexture, new Vector2(100, 300), 0, 0, Quadrent.BOTTOM_RIGHT, 1));
-			m_players.Add(new Player(content_, carTexture, new Vector2(100, 600), 270, 0, Quadrent.BOTTOM_LEFT, 2));
+			//m_players.Add(new Player(content_, carTexture, new Vector2(100, 600), 270, 0, Quadrent.BOTTOM_LEFT, 2));
 
 			m_players[0].m_controlScheme.SetSteeringSprite(new Sprite(content_.Load<Texture2D>("controlTemp"), new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
 			m_players[0].m_controlScheme.SetInterfaceSprite(new Sprite(content_.Load<Texture2D>("controlTempBG"), new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
-			m_players[1].m_controlScheme.SetSteeringSprite(new Sprite(content_.Load<Texture2D>("controlTemp"), new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
-			m_players[1].m_controlScheme.SetInterfaceSprite(new Sprite(content_.Load<Texture2D>("controlTempBG"), new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
-          
+			//m_players[1].m_controlScheme.SetSteeringSprite(new Sprite(content_.Load<Texture2D>("controlTemp"), new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
+			//m_players[1].m_controlScheme.SetInterfaceSprite(new Sprite(content_.Load<Texture2D>("controlTempBG"), new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
+
+            #region Checkpoint Setup
             // Checkpoints...
             m_checkpoints.Add(new Checkpoint(0, content_, checkpointTexture, new Vector2(500f, 300f), 0.0f));
             m_checkpoints.Add(new Checkpoint(1, content_, checkpointTexture, new Vector2(600f, 300f), 0.0f));
@@ -90,6 +89,7 @@ namespace Project_Cows.Source.Application {
             m_checkpoints.Add(new Checkpoint(15, content_, checkpointTexture, new Vector2(600f, 700f), 0.0f));
             m_checkpoints.Add(new Checkpoint(16, content_, checkpointTexture, new Vector2(500f, 700f), 0.0f));
             m_checkpoints.Add(new Checkpoint(17, content_, checkpointTexture, new Vector2(400f, 500f), 0.0f));
+            #endregion
 
             // Initialise sprites
             m_animatedSprites.Add(new AnimatedSprite(content_.Load<Texture2D>("animation"), 
@@ -196,7 +196,7 @@ namespace Project_Cows.Source.Application {
             }
 
             Debug.AddText(new DebugText("1st - Player " + m_rankings[0].ToString(), new Vector2(1500f, 50f)));
-            Debug.AddText(new DebugText("2nd - Player " + m_rankings[1].ToString(), new Vector2(1500f, 70f)));
+            //Debug.AddText(new DebugText("2nd - Player " + m_rankings[1].ToString(), new Vector2(1500f, 70f)));
             //Debug.AddText(new DebugText("1st - " + m_rankings[2].ToString(), new Vector2(1500f, 90f)));
             //Debug.AddText(new DebugText("1st - " + m_rankings[3].ToString(), new Vector2(1500f, 110f)));
             
