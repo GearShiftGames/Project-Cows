@@ -76,6 +76,8 @@ namespace Project_Cows.Source.Application {
             
             #endregion
 
+            
+
             // Initialise sprites
             m_animatedSprites.Add(new AnimatedSprite(content_.Load<Texture2D>("animation"), 
                 new Vector2(0.0f, 0.0f), 10, 10, 250, true, 0, 50));
@@ -93,6 +95,10 @@ namespace Project_Cows.Source.Application {
 
 			// Update touch input handler
 			touchHandler_.Update();
+
+            Settings.SaveSettings();
+
+            Settings.LoadSettings();
 
 			// Create lists to contain touches for each player
 			List<List<TouchLocation>> playerTouches = new List<List<TouchLocation>>();

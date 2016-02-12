@@ -12,6 +12,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Input.Touch;
 
+using Project_Cows.Source.System;
 using Project_Cows.Source.System.Graphics;
 using Project_Cows.Source.System.Graphics.Particles;
 using Project_Cows.Source.System.Graphics.Sprites;
@@ -28,6 +29,8 @@ namespace Project_Cows.Source.Application {
         private List<AnimatedSprite> m_animatedSprites = new List<AnimatedSprite>();
         private List<Sprite> m_sprites = new List<Sprite>();
         private List<Particle> m_particles = new List<Particle>();
+
+        
 
 		// Methods
         public MenuState() : base() {

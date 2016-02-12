@@ -52,7 +52,7 @@ namespace Project_Cows.Source.System.StateMachine {
 
 	}
 
-	enum GameState {
+	public enum GameState {
 		// Enum for each type of game state
 		// ================
 		MAIN_MENU,
@@ -60,7 +60,7 @@ namespace Project_Cows.Source.System.StateMachine {
 		VICTORY_SCREEN
 	}
 
-	enum ExecutionState {
+	public enum ExecutionState {
 		// Enum for the current state of each game state (initialising, running, changing, etc.)
 		// ================
 		INITIALISING,
