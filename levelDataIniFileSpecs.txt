@@ -1,0 +1,10 @@
+Level Data INI file Specs
+
+Checkpoint
+----------
+int ID
+int nextID
+int pathID
+
+int positionX
+int positionY

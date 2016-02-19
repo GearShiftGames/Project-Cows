@@ -42,6 +42,7 @@ namespace Project_Cows.Source.System {
 
         private static void LoadCheckpoints(string levelFolder) {
             // Load checkpoint data into the application
+            // ================
             m_checkpointData = new IniFile("\\Data\\Level\\" + levelFolder + "\\checkpoints.ini");
 
             bool gotAllCheckpoints = false;
@@ -64,6 +65,30 @@ namespace Project_Cows.Source.System {
 
                     m_checkpoints.Add(new CheckpointContainer(new Checkpoint(ID, nextID, pathID, new Vector2(positionX, positionY))));
                     ++index;
+                }
+            }
+        }
+
+        private static void LoadVehicles(string levelFolder) {
+            // Load vehicles position and rotation into the application
+            // ================
+            m_vehicleData = new IniFile("\\Data\\Level\\" + levelFolder + "\\vehicles.ini");
+
+            bool gotAllVehicles = false;
+            int index = 0;
+            while (!gotAllVehicles) {
+                string s_positionX = m_vehicleData.ReadValue(index.ToString(), "positionX");
+                string s_positionY = m_vehicleData.ReadValue(index.ToString(), "positionY");
+                string s_rotation = m_vehicleData.ReadValue(index.ToString(), "rotation");
+
+                if (IsStringEmpty(s_positionX) || IsStringEmpty(s_positionY) || IsStringEmpty(s_rotation)) {
+                    gotAllVehicles = true;
+                } else {
+                    int positionX = Convert.ToInt32(s_positionX.Replace("\0", string.Empty));
+                    int positionY = Convert.ToInt32(s_positionY.Replace("\0", string.Empty));
+                    int rotation = Convert.ToInt32(s_rotation.Replace("\0", string.Empty));
+
+                    //m_vehicles.Add(new Vehicle)
                 }
             }
         }
