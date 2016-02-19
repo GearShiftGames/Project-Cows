@@ -9,7 +9,7 @@ using System.IO;
 using System.Runtime.InteropServices;
 
 namespace Project_Cows.Source.System {
-    class IniFile {
+    public class IniFile {
         /// <summary>
         /// Create a New INI file to store or load data
         /// </summary>

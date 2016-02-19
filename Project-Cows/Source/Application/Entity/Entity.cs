@@ -13,7 +13,7 @@ using Project_Cows.Source.System;
 using Project_Cows.Source.System.Graphics.Sprites;
 
 namespace Project_Cows.Source.Application.Entity {
-    class Entity {
+    public class Entity {
         // Class to base all game objects upon
         // ================
 
@@ -25,7 +25,7 @@ namespace Project_Cows.Source.Application.Entity {
         protected bool m_collidable;                // Whether the entity is collidable
 
         // Methods
-        public Entity(ContentManager content_, Texture2D texture_, Vector2 position_, float rotation_) {
+        public Entity(ContentManager content_, Texture2D texture_, Vector2 position_, float rotation_=0) {
             // Entity constructor
             // ================
 

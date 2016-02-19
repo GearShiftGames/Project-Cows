@@ -37,56 +37,46 @@ namespace Project_Cows.Source.Application.Track {
             m_checkpointTexture = content_.Load<Texture2D>("checkpoint");
 
             // Add checkpoints...
-            m_checkpoints.Add(new CheckpointContainer(new Checkpoint(0, 1, 0, CheckpointType.FIRST),
-                                                      new Entity.Entity(content_, m_checkpointTexture, new Vector2(500f, 300f), 0.0f)));
-            m_checkpoints.Add(new CheckpointContainer(new Checkpoint(1, 2, 0, CheckpointType.NORMAL),
-                                                      new Entity.Entity(content_, m_checkpointTexture, new Vector2(600f, 250f), 0.0f)));
-            m_checkpoints.Add(new CheckpointContainer(new Checkpoint(2, 3, 0, CheckpointType.NORMAL),
-                                                      new Entity.Entity(content_, m_checkpointTexture, new Vector2(700f, 250f), 0.0f)));
-            m_checkpoints.Add(new CheckpointContainer(new Checkpoint(3, 4, 0, CheckpointType.NORMAL),
-                                                      new Entity.Entity(content_, m_checkpointTexture, new Vector2(800f, 250f), 0.0f)));
-            m_checkpoints.Add(new CheckpointContainer(new Checkpoint(4, 5, 0, CheckpointType.NORMAL),
-                                                      new Entity.Entity(content_, m_checkpointTexture, new Vector2(900f, 250f), 0.0f)));
+            Level.LoadLevel("0");       // NOTE: This would be done in the in-game state in future -Dean
 
-            m_checkpoints.Add(new CheckpointContainer(new Checkpoint(1, 2, 1, CheckpointType.NORMAL),
-                                                      new Entity.Entity(content_, m_checkpointTexture, new Vector2(600f, 350f), 0.0f)));
-            m_checkpoints.Add(new CheckpointContainer(new Checkpoint(2, 3, 1, CheckpointType.NORMAL),
-                                                      new Entity.Entity(content_, m_checkpointTexture, new Vector2(700f, 350f), 0.0f)));
-            m_checkpoints.Add(new CheckpointContainer(new Checkpoint(3, 4, 1, CheckpointType.NORMAL),
-                                                      new Entity.Entity(content_, m_checkpointTexture, new Vector2(800f, 350f), 0.0f)));
-            m_checkpoints.Add(new CheckpointContainer(new Checkpoint(4, 5, 1, CheckpointType.NORMAL),
-                                                      new Entity.Entity(content_, m_checkpointTexture, new Vector2(900f, 350f), 0.0f)));
+            m_checkpoints = Level.GetCheckpoints();
+
+            // NOTE: Unneeded now, but kept for testing purposes -Dean
+            /*m_checkpoints.Add(new CheckpointContainer(new Checkpoint(0, 1, 0, new Vector2(500f, 300f))));
+            m_checkpoints.Add(new CheckpointContainer(new Checkpoint(1, 2, 0, new Vector2(600f, 250f))));
+            m_checkpoints.Add(new CheckpointContainer(new Checkpoint(2, 3, 0, new Vector2(700f, 250f))));
+            m_checkpoints.Add(new CheckpointContainer(new Checkpoint(3, 4, 0, new Vector2(800f, 250f))));
+            m_checkpoints.Add(new CheckpointContainer(new Checkpoint(4, 5, 0, new Vector2(900f, 250f))));
+
+            m_checkpoints.Add(new CheckpointContainer(new Checkpoint(1, 2, 1, new Vector2(600f, 350f))));
+            m_checkpoints.Add(new CheckpointContainer(new Checkpoint(2, 3, 1, new Vector2(700f, 350f))));
+            m_checkpoints.Add(new CheckpointContainer(new Checkpoint(3, 4, 1, new Vector2(800f, 350f))));
+            m_checkpoints.Add(new CheckpointContainer(new Checkpoint(4, 5, 1, new Vector2(900f, 350f))));
 
 
-            m_checkpoints.Add(new CheckpointContainer(new Checkpoint(5, 6, 0, CheckpointType.NORMAL),
-                                                      new Entity.Entity(content_, m_checkpointTexture, new Vector2(1000f, 300f), 0.0f)));
-            m_checkpoints.Add(new CheckpointContainer(new Checkpoint(6, 7, 0, CheckpointType.NORMAL),
-                                                      new Entity.Entity(content_, m_checkpointTexture, new Vector2(1100f, 300f), 0.0f)));
-            m_checkpoints.Add(new CheckpointContainer(new Checkpoint(7, 8, 0, CheckpointType.NORMAL),
-                                                      new Entity.Entity(content_, m_checkpointTexture, new Vector2(1200f, 300f), 0.0f)));
-            m_checkpoints.Add(new CheckpointContainer(new Checkpoint(8, 9, 0, CheckpointType.NORMAL),
-                                                      new Entity.Entity(content_, m_checkpointTexture, new Vector2(1300f, 500f), 0.0f)));
-            m_checkpoints.Add(new CheckpointContainer(new Checkpoint(9, 10, 0, CheckpointType.NORMAL),
-                                                      new Entity.Entity(content_, m_checkpointTexture, new Vector2(1200f, 700f), 0.0f)));
-            m_checkpoints.Add(new CheckpointContainer(new Checkpoint(10, 11, 0, CheckpointType.NORMAL),
-                                                      new Entity.Entity(content_, m_checkpointTexture, new Vector2(1100f, 700f), 0.0f)));
-            m_checkpoints.Add(new CheckpointContainer(new Checkpoint(11, 12, 0, CheckpointType.NORMAL),
-                                                      new Entity.Entity(content_, m_checkpointTexture, new Vector2(1000f, 700f), 0.0f)));
-            m_checkpoints.Add(new CheckpointContainer(new Checkpoint(12, 13, 0, CheckpointType.NORMAL),
-                                                      new Entity.Entity(content_, m_checkpointTexture, new Vector2(900f, 700f), 0.0f)));
-            m_checkpoints.Add(new CheckpointContainer(new Checkpoint(13, 14, 0, CheckpointType.NORMAL),
-                                                      new Entity.Entity(content_, m_checkpointTexture, new Vector2(800f, 700f), 0.0f)));
-            m_checkpoints.Add(new CheckpointContainer(new Checkpoint(14, 15, 0, CheckpointType.NORMAL),
-                                                      new Entity.Entity(content_, m_checkpointTexture, new Vector2(700f, 700f), 0.0f)));
-            m_checkpoints.Add(new CheckpointContainer(new Checkpoint(15, 16, 0, CheckpointType.NORMAL),
-                                                      new Entity.Entity(content_, m_checkpointTexture, new Vector2(600f, 700f), 0.0f)));
-            m_checkpoints.Add(new CheckpointContainer(new Checkpoint(16, 17, 0, CheckpointType.NORMAL),
-                                                      new Entity.Entity(content_, m_checkpointTexture, new Vector2(500f, 700f), 0.0f)));
-            m_checkpoints.Add(new CheckpointContainer(new Checkpoint(17, 0, 0, CheckpointType.LAST),
-                                                      new Entity.Entity(content_, m_checkpointTexture, new Vector2(400f, 500f), 0.0f)));
+            m_checkpoints.Add(new CheckpointContainer(new Checkpoint(5, 6, 0, new Vector2(1000f, 300f))));
+            m_checkpoints.Add(new CheckpointContainer(new Checkpoint(6, 7, 0, new Vector2(1100f, 300f))));
+            m_checkpoints.Add(new CheckpointContainer(new Checkpoint(7, 8, 0, new Vector2(1200f, 300f))));
+            m_checkpoints.Add(new CheckpointContainer(new Checkpoint(8, 9, 0, new Vector2(1300f, 500f))));
+            m_checkpoints.Add(new CheckpointContainer(new Checkpoint(9, 10, 0, new Vector2(1200f, 700f))));
+            m_checkpoints.Add(new CheckpointContainer(new Checkpoint(10, 11, 0, new Vector2(1100f, 700f))));
+            m_checkpoints.Add(new CheckpointContainer(new Checkpoint(11, 12, 0, new Vector2(1000f, 700f))));
+            m_checkpoints.Add(new CheckpointContainer(new Checkpoint(12, 13, 0, new Vector2(900f, 700f))));
+            m_checkpoints.Add(new CheckpointContainer(new Checkpoint(13, 14, 0, new Vector2(800f, 700f))));
+            m_checkpoints.Add(new CheckpointContainer(new Checkpoint(14, 15, 0, new Vector2(700f, 700f))));
+            m_checkpoints.Add(new CheckpointContainer(new Checkpoint(15, 16, 0, new Vector2(600f, 700f))));
+            m_checkpoints.Add(new CheckpointContainer(new Checkpoint(16, 17, 0, new Vector2(500f, 700f))));
+            m_checkpoints.Add(new CheckpointContainer(new Checkpoint(17, 0, 0, new Vector2(400f, 500f))));*/
+
+            // Add entities to the checkpoints
+            foreach (CheckpointContainer cc in m_checkpoints) {
+                cc.SetEntity(content_, m_checkpointTexture);
+            }
         }
 
         public void Update(List<Player> players_){
+            Debug.AddText(new DebugText("Checkpoints:" + m_checkpoints.Count(), new Vector2(20, 500)));        // TEMP
+            Debug.AddText(new DebugText("Players:" + players_.Count(), new Vector2(20, 520)));        // TEMP
 
             // Checkpoint collision
             foreach (Player p in players_) {

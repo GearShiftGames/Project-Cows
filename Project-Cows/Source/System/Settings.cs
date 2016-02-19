@@ -13,7 +13,7 @@ namespace Project_Cows.Source.System {
 		// ================
 
 		// Variables
-        private static IniFile m_fileSettings = new IniFile("\\settings.ini");
+        private static IniFile m_fileSettings = new IniFile("\\Data\\settings.ini");
 
 		public static bool m_fullscreen = false;			            // Fullscreen state of the application window
 		public static int m_screenWidth = 1920;				            // Resolution width of the window
@@ -23,23 +23,21 @@ namespace Project_Cows.Source.System {
 		public static bool m_debug = true;
 
 		// Methods
-		public static bool LoadSettings() {
+		public static void LoadSettings() {
 			// Loads game settings in from a text file
 			// ================
 
             // Game Settings
+            string nope = m_fileSettings.ReadValue("Game Settings", "wont work");
             m_fullscreen = Convert.ToBoolean(m_fileSettings.ReadValue("Game Settings", "fullscreen"));
             m_screenWidth = Convert.ToInt32(m_fileSettings.ReadValue("Game Settings", "screenWidth").Replace("\0", string.Empty));
             m_screenHeight = Convert.ToInt32(m_fileSettings.ReadValue("Game Settings", "screenHeight").Replace("\0", string.Empty));
-            string lol = m_fileSettings.ReadValue("Game Settings", "startState").Replace("\0", string.Empty);
-            m_startState = (GameState)Enum.Parse(typeof(GameState), lol);
+            m_startState = (GameState)Enum.Parse(typeof(GameState), m_fileSettings.ReadValue("Game Settings", "startState").Replace("\0", string.Empty));
             
 
-			// TODO: Write code to load game settings from a text file
-			return true;
 		}
 
-		public static bool SaveSettings() {
+		public static void SaveSettings() {
 			// Writes game settings to a text file
 			// ================
 
@@ -50,8 +48,6 @@ namespace Project_Cows.Source.System {
             m_fileSettings.WriteValue("Game Settings", "startState", m_startState.ToString());
 
 
-			// TODO: Write code to save game settings to a text file
-			return true;
 		}
 	}
 }

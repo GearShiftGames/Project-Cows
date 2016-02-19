@@ -45,7 +45,7 @@ namespace Project_Cows.Source.Application {
             m_controlScheme = new ControlScheme(quadrent_);
             m_playerID = id_;
 
-            m_currentCheckpoint = Checkpoint.First;
+            m_currentCheckpoint = Checkpoint.First(Vector2.Zero);
             m_currentLap = 1;
         }
 

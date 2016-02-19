@@ -12,7 +12,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Project_Cows.Source.Application.Entity;
 
 namespace Project_Cows.Source.Application.Track {
-    class Checkpoint {
+    public class Checkpoint {
         // Class for the invisible checkpoints along the track
         // ================
 
@@ -20,15 +20,25 @@ namespace Project_Cows.Source.Application.Track {
         private int m_ID;
         private int m_nextID;
         private int m_pathID;
+        private Vector2 m_position;
 
         private CheckpointType m_checkpointType;
 
         // Methods
-        public Checkpoint(int id_, int nextID_, int pathID_, CheckpointType checkpointType_) {
+        public Checkpoint(int id_, int nextID_, int pathID_, Vector2 position_) {
             m_ID = id_;
             m_nextID = nextID_;
             m_pathID = pathID_;
-            m_checkpointType = checkpointType_;
+            m_position = position_;
+
+            // Set checkpoint type
+            if (m_ID == 0) {
+                m_checkpointType = CheckpointType.FIRST;
+            } else if (m_nextID == 0) {
+                m_checkpointType = CheckpointType.LAST;
+            } else {
+                m_checkpointType = CheckpointType.NORMAL;
+            }
         }
 
         // Getters
@@ -44,14 +54,20 @@ namespace Project_Cows.Source.Application.Track {
             return m_pathID;
         }
 
+        public Vector2 GetPosition() {
+            return m_position;
+        }
+
         public CheckpointType GetType() {
             return m_checkpointType;
         }
 
-        public static Checkpoint First = new Checkpoint(0, 1, 0, CheckpointType.FIRST);
+        public static Checkpoint First(Vector2 position_) {
+            return new Checkpoint(0, 1, 0, position_);
+        }
 
-        public static Checkpoint Last(int numberOfCheckpoints_) {
-            return new Checkpoint(numberOfCheckpoints_ - 1, 0, 0, CheckpointType.LAST);
+        public static Checkpoint Last(int numberOfCheckpoints_, Vector2 position_) {
+            return new Checkpoint(numberOfCheckpoints_ - 1, 0, 0, position_);
         }
 
         // Setters

@@ -13,7 +13,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Project_Cows.Source.Application.Entity;
 
 namespace Project_Cows.Source.Application.Track {
-    class CheckpointContainer {
+    public class CheckpointContainer {
         // Class to hold the checkpoint 'struct' and the entity
         // ================
 
@@ -48,12 +48,12 @@ namespace Project_Cows.Source.Application.Track {
         }
 
         // Setters
-        public void SetCheckpoint(int id_, int nextID_, int pathID_, CheckpointType type_) {
-            m_checkpoint = new Checkpoint(id_, nextID_, pathID_, type_);
+        public void SetCheckpoint(int id_, int nextID_, int pathID_, Vector2 position_) {
+            m_checkpoint = new Checkpoint(id_, nextID_, pathID_, position_);
         }
 
-        public void SetEntity(ContentManager content_, Texture2D texture_, Vector2 position_, float rotation_) {
-            m_entity = new Entity.Entity(content_, texture_, position_, rotation_);
+        public void SetEntity(ContentManager content_, Texture2D texture_, float rotation_=0) {
+            m_entity = new Entity.Entity(content_, texture_, m_checkpoint.GetPosition(), rotation_);
         }
     }
 }
