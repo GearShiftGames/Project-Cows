@@ -31,6 +31,7 @@ namespace Project_Cows.Source.Application {
         private TrackHandler h_trackHandler = new TrackHandler();
         private List<AnimatedSprite> m_animatedSprites = new List<AnimatedSprite>();
         private List<Particle> m_particles = new List<Particle>();
+        private Timer startTimer = new Timer();
 
         //private List<Checkpoint> m_checkpoints = new List<Checkpoint>();
         private Texture2D carTexture, squareTexture, backgroundTexture;
@@ -72,15 +73,12 @@ namespace Project_Cows.Source.Application {
 			//m_players[1].m_controlScheme.SetSteeringSprite(new Sprite(content_.Load<Texture2D>("controlTemp"), new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
 			//m_players[1].m_controlScheme.SetInterfaceSprite(new Sprite(content_.Load<Texture2D>("controlTempBG"), new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
 
-            #region Checkpoint Setup
-            
-            #endregion
-
-            
-
             // Initialise sprites
             m_animatedSprites.Add(new AnimatedSprite(content_.Load<Texture2D>("animation"), 
                 new Vector2(0.0f, 0.0f), 10, 10, 250, true, 0, 50));
+
+            // Start timer
+            startTimer.StartTimer(1000.0f);
 
 			// Set initial next state
 			m_nextState = GameState.VICTORY_SCREEN;
@@ -120,24 +118,28 @@ namespace Project_Cows.Source.Application {
 				// NOTE: This should probably be done in the respective players' ControlScheme object -Dean
 			}
 
-			// Update each player
-			for(int index = 0; index < m_players.Count; ++index) {
-                bool left = false;
-                bool right = false;
-                bool brake = false;
-                if (Keyboard.GetState().IsKeyDown(Keys.Left)) {
-                    left = true;
-                }
-                if (Keyboard.GetState().IsKeyDown(Keys.Right)) {
-                    right = true;
-                }
-                if (Keyboard.GetState().IsKeyDown(Keys.Space) || Keyboard.GetState().IsKeyDown(Keys.Down)) {
-                    brake = true;
-                }
+            startTimer.Update(gameTime_.ElapsedGameTime.Milliseconds);
+            if (startTimer.timerFinished) {
 
-                m_players[index].KeyboardMove(left, right, brake); 
-				m_players[index].Update(playerTouches[index]);
-			}
+                // Update each player
+                for (int index = 0; index < m_players.Count; ++index) {
+                    bool left = false;
+                    bool right = false;
+                    bool brake = false;
+                    if (Keyboard.GetState().IsKeyDown(Keys.Left)) {
+                        left = true;
+                    }
+                    if (Keyboard.GetState().IsKeyDown(Keys.Right)) {
+                        right = true;
+                    }
+                    if (Keyboard.GetState().IsKeyDown(Keys.Space) || Keyboard.GetState().IsKeyDown(Keys.Down)) {
+                        brake = true;
+                    }
+
+                    m_players[index].KeyboardMove(left, right, brake);
+                    m_players[index].Update(playerTouches[index]);
+                }
+            }
 
 			// Update game objects
 			// TODO: perform collision checks, etc.
@@ -223,6 +225,10 @@ namespace Project_Cows.Source.Application {
 				graphicsHandler_.DrawSprite(p.m_controlScheme.m_controlInterfaceSprite);
 				graphicsHandler_.DrawSprite(p.m_controlScheme.m_steeringIndicatorSprite);
 			}
+
+            if (!startTimer.timerFinished) {
+                graphicsHandler_.DrawText(startTimer.timeRemaining.ToString() + "ms", new Vector2(500, 20), Color.Red);
+            }
 
             // Stop rendering graphics
             graphicsHandler_.StopDrawing();
