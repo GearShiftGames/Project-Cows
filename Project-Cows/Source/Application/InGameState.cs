@@ -134,14 +134,7 @@ namespace Project_Cows.Source.Application {
                 if (Keyboard.GetState().IsKeyDown(Keys.Space) || Keyboard.GetState().IsKeyDown(Keys.Down)) {
                     brake = true;
                 }
-                if (Keyboard.GetState().IsKeyDown(Keys.Q))
-                {
-                    m_players[1].GetVehicle().disable();
-                }
-                if (Keyboard.GetState().IsKeyDown(Keys.E))
-                {
-                    m_players[1].GetVehicle().enable();
-                }
+                
 
                 m_players[index].KeyboardMove(left, right, brake); 
 				m_players[index].Update(playerTouches[index]);

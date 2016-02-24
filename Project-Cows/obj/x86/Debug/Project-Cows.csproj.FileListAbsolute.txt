@@ -102,6 +102,7 @@ M:\Uni Stuff\Year 3\Prototype Game Development\Project Cows\Project-Cows\bin\Win
 M:\Uni Stuff\Year 3\Prototype Game Development\Project Cows\Project-Cows\bin\Windows\Debug\Content\V2_Background_Grass.xnb
 M:\Uni Stuff\Year 3\Prototype Game Development\Project Cows\Project-Cows\bin\Windows\Debug\Data\settings.ini
 M:\Uni Stuff\Year 3\Prototype Game Development\Project Cows\Project-Cows\bin\Windows\Debug\Data\Level\0\checkpoints.ini
+M:\Project Cows\Project-Cows\bin\Windows\Debug\Content\Tyre.xnb
 M:\Project Cows\Project-Cows\bin\Windows\Debug\Data\settings.ini
 M:\Project Cows\Project-Cows\bin\Windows\Debug\Data\Level\0\checkpoints.ini
 M:\Project Cows\Project-Cows\bin\Windows\Debug\Content\animation.xnb
