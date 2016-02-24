@@ -37,18 +37,6 @@ C:\Users\deano\OneDrive\University Files\Third Year\Prototype Game Development\P
 C:\Users\deano\OneDrive\University Files\Third Year\Prototype Game Development\Projects\Project-Cows\Project-Cows\bin\Windows\Debug\Content\entityUncollided.xnb
 M:\Project Cows\Project-Cows\obj\x86\Debug\Project-Cows.exe
 M:\Project Cows\Project-Cows\obj\x86\Debug\Project-Cows.pdb
-M:\Project Cows\Project-Cows\bin\Windows\Debug\Content\carCollider.xnb
-M:\Project Cows\Project-Cows\bin\Windows\Debug\Content\entityCollided.xnb
-M:\Project Cows\Project-Cows\bin\Windows\Debug\Content\entityUncollided.xnb
-M:\Project Cows\Project-Cows\bin\Windows\Debug\Content\animation.xnb
-M:\Project Cows\Project-Cows\bin\Windows\Debug\Content\animZombie.xnb
-M:\Project Cows\Project-Cows\bin\Windows\Debug\Content\basic_font.xnb
-M:\Project Cows\Project-Cows\bin\Windows\Debug\Content\car.xnb
-M:\Project Cows\Project-Cows\bin\Windows\Debug\Content\controlTemp.xnb
-M:\Project Cows\Project-Cows\bin\Windows\Debug\Content\controlTempBG.xnb
-M:\Project Cows\Project-Cows\bin\Windows\Debug\Content\pixel.xnb
-M:\Project Cows\Project-Cows\bin\Windows\Debug\Content\purpleCar.xnb
-M:\Project Cows\Project-Cows\bin\Windows\Debug\Content\Square.xnb
 M:\Project Cows\Project-Cows\bin\Windows\Debug\Project-Cows.exe
 M:\Project Cows\Project-Cows\bin\Windows\Debug\Project-Cows.pdb
 M:\Project Cows\Project-Cows\bin\Windows\Debug\MonoGame.Framework.dll
@@ -72,8 +60,6 @@ M:\Project Cows\Project-Cows\bin\Windows\Debug\SharpDX.XInput.xml
 M:\Project Cows\Project-Cows\bin\Windows\Debug\SharpDX.RawInput.xml
 M:\Project Cows\Project-Cows\bin\Windows\Debug\SharpDX.Direct3D9.xml
 M:\Project Cows\Project-Cows\obj\x86\Debug\Project-Cows.csprojResolveAssemblyReference.cache
-M:\Project Cows\Project-Cows\bin\Windows\Debug\Content\V2_Background_Grass.xnb
-M:\Project Cows\Project-Cows\bin\Windows\Debug\Content\corner.xnb
 M:\Uni Stuff\Year 3\Prototype Game Development\Project Cows\Project-Cows\bin\Windows\Debug\Project-Cows.exe
 M:\Uni Stuff\Year 3\Prototype Game Development\Project Cows\Project-Cows\bin\Windows\Debug\Project-Cows.pdb
 M:\Uni Stuff\Year 3\Prototype Game Development\Project Cows\Project-Cows\bin\Windows\Debug\MonoGame.Framework.dll
@@ -99,7 +85,6 @@ M:\Uni Stuff\Year 3\Prototype Game Development\Project Cows\Project-Cows\bin\Win
 M:\Uni Stuff\Year 3\Prototype Game Development\Project Cows\Project-Cows\obj\x86\Debug\Project-Cows.exe
 M:\Uni Stuff\Year 3\Prototype Game Development\Project Cows\Project-Cows\obj\x86\Debug\Project-Cows.pdb
 M:\Uni Stuff\Year 3\Prototype Game Development\Project Cows\Project-Cows\obj\x86\Debug\Project-Cows.csprojResolveAssemblyReference.cache
-M:\Project Cows\Project-Cows\bin\Windows\Debug\Content\checkpoint.xnb
 M:\Uni Stuff\Year 3\Prototype Game Development\Project Cows\Project-Cows\bin\Windows\Debug\Content\animation.xnb
 M:\Uni Stuff\Year 3\Prototype Game Development\Project Cows\Project-Cows\bin\Windows\Debug\Content\animZombie.xnb
 M:\Uni Stuff\Year 3\Prototype Game Development\Project Cows\Project-Cows\bin\Windows\Debug\Content\basic_font.xnb
@@ -117,3 +102,21 @@ M:\Uni Stuff\Year 3\Prototype Game Development\Project Cows\Project-Cows\bin\Win
 M:\Uni Stuff\Year 3\Prototype Game Development\Project Cows\Project-Cows\bin\Windows\Debug\Content\V2_Background_Grass.xnb
 M:\Uni Stuff\Year 3\Prototype Game Development\Project Cows\Project-Cows\bin\Windows\Debug\Data\settings.ini
 M:\Uni Stuff\Year 3\Prototype Game Development\Project Cows\Project-Cows\bin\Windows\Debug\Data\Level\0\checkpoints.ini
+M:\Project Cows\Project-Cows\bin\Windows\Debug\Content\Tyre.xnb
+M:\Project Cows\Project-Cows\bin\Windows\Debug\Data\settings.ini
+M:\Project Cows\Project-Cows\bin\Windows\Debug\Data\Level\0\checkpoints.ini
+M:\Project Cows\Project-Cows\bin\Windows\Debug\Content\animation.xnb
+M:\Project Cows\Project-Cows\bin\Windows\Debug\Content\animZombie.xnb
+M:\Project Cows\Project-Cows\bin\Windows\Debug\Content\basic_font.xnb
+M:\Project Cows\Project-Cows\bin\Windows\Debug\Content\car.xnb
+M:\Project Cows\Project-Cows\bin\Windows\Debug\Content\carCollider.xnb
+M:\Project Cows\Project-Cows\bin\Windows\Debug\Content\checkpoint.xnb
+M:\Project Cows\Project-Cows\bin\Windows\Debug\Content\controlTemp.xnb
+M:\Project Cows\Project-Cows\bin\Windows\Debug\Content\controlTempBG.xnb
+M:\Project Cows\Project-Cows\bin\Windows\Debug\Content\corner.xnb
+M:\Project Cows\Project-Cows\bin\Windows\Debug\Content\entityCollided.xnb
+M:\Project Cows\Project-Cows\bin\Windows\Debug\Content\entityUncollided.xnb
+M:\Project Cows\Project-Cows\bin\Windows\Debug\Content\pixel.xnb
+M:\Project Cows\Project-Cows\bin\Windows\Debug\Content\purpleCar.xnb
+M:\Project Cows\Project-Cows\bin\Windows\Debug\Content\Square.xnb
+M:\Project Cows\Project-Cows\bin\Windows\Debug\Content\V2_Background_Grass.xnb
