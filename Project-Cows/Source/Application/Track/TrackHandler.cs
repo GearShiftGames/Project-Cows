@@ -134,7 +134,7 @@ namespace Project_Cows.Source.Application.Track {
             // Render ranking text
             if (m_rankings.Count != 0) {
                 Debug.AddText(new DebugText("1st - Player " + m_rankings[0].ToString(), new Vector2(1500f, 50f)));
-                //Debug.AddText(new DebugText("2nd - Player " + m_rankings[1].ToString(), new Vector2(1500f, 70f)));
+                Debug.AddText(new DebugText("2nd - Player " + m_rankings[1].ToString(), new Vector2(1500f, 70f)));
                 //Debug.AddText(new DebugText("3rd - " + m_rankings[2].ToString(), new Vector2(1500f, 90f)));
                 //Debug.AddText(new DebugText("4th - " + m_rankings[3].ToString(), new Vector2(1500f, 110f)));
             }
