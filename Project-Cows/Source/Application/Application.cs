@@ -104,6 +104,11 @@ namespace Project_Cows.Source.Application {
 				Exit();
 			}
 
+            // Reset state - TEMP
+            if (Keyboard.GetState().IsKeyDown(Keys.F5)) {
+                m_currentState.SetExecutionState(ExecutionState.INITIALISING);
+            }
+
 			// Set fullscreen mode
 			if(Keyboard.GetState().IsKeyDown(Keys.F11) && !Settings.m_fullscreen) {
 				Settings.m_fullscreen = true;
