@@ -13,10 +13,8 @@ using Microsoft.Xna.Framework.Graphics;
 
 using Project_Cows.Source.System;
 
-namespace Project_Cows.Source.Application.Entity
-{
-    class Vehicle : Entity
-    {
+namespace Project_Cows.Source.Application.Entity{
+    class Vehicle : Entity{
         // Class for the player vehicles
         // ================
 
@@ -40,9 +38,7 @@ namespace Project_Cows.Source.Application.Entity
         public float lastMoveY = 0;
 
         // Methods
-        public Vehicle(ContentManager content_, Texture2D texture_, Vector2 position_, float m_rotation_)
-            : base(content_, texture_, position_, m_rotation_)
-        {
+        public Vehicle(ContentManager content_, Texture2D texture_, Vector2 position_, float m_rotation_) : base(content_, texture_, position_, m_rotation_){
             // Vehicle constructor
             // ================
             m_rotation = m_rotation_;
@@ -51,8 +47,7 @@ namespace Project_Cows.Source.Application.Entity
             m_braking = false;
         }
 
-        public Vehicle(ContentManager content_, Texture2D texture_, EntityStruct entityStruct_)
-            : base(content_, texture_, entityStruct_) {
+        public Vehicle(ContentManager content_, Texture2D texture_, EntityStruct entityStruct_) : base(content_, texture_, entityStruct_) {
             // Vehicle constructor
             // ================
             m_rotation = entityStruct_.GetRotation();
@@ -61,75 +56,73 @@ namespace Project_Cows.Source.Application.Entity
             m_braking = false;
         }
 
-        public void Update(float steeringValue_ = 0, bool braking_ = false)
-        {
+        public void Update(float steeringValue_ = 0, bool braking_ = false) {
             // Updates the vehicle
             // ================
             m_steeringValue = steeringValue_;
             m_braking = braking_;
 
-            if (!m_braking)
-            {
-                if (m_velocity > 0)
-                {
+            if (!m_braking) {
+                if (m_velocity > 0){
                     m_velocity *= 1.02f;
-                }
-                else
-                {
+                } else {
                     m_velocity /= 1.02f;
                 }
                 m_velocity += 0.05f;
-            }
-            else
-            {
+            } else {
                 sliding -= 0.02f;
                 sliding *= 1.02f;
             }
 
             //if turning right
-            if (steeringValue_ > 0.2)
-            {
-                if (m_braking)
-                {
+            if (steeringValue_ > 0.2) {
+                if (m_braking) {
                     slide += 0.1f * (m_velocity / 10);
-                    if (m_velocity > 2.0f)
+                    if (m_velocity > 2.0f) {
                         SetRotationRadians(GetRotationRadians() + (0.04f + (-sliding / 60)));
-                    if (m_velocity < 2.0f && m_velocity > 0.5f)
+                    }
+                    if (m_velocity < 2.0f && m_velocity > 0.5f) {
                         SetRotationRadians(GetRotationRadians() + 0.04f);
-                }
-                else
+                    }
+                } else {
                     SetRotationRadians(GetRotationRadians() + (0.02f + (-sliding / 60)) * (m_velocity / 5));
+                }
             }
             //if turning left
-            if (steeringValue_ < -0.2)
-            {
-                if (m_braking)
-                {
+            if (steeringValue_ < -0.2){
+                if (m_braking) {
                     slide -= 0.1f * (m_velocity / 10);
-                    if (m_velocity > 2.0f)
+                    if (m_velocity > 2.0f) {
                         SetRotationRadians(GetRotationRadians() - (0.04f + (-sliding / 60)));
-                    if (m_velocity < 2.0f && m_velocity > 0.5f)
+                    }
+                    if (m_velocity < 2.0f && m_velocity > 0.5f) {
                         SetRotationRadians(GetRotationRadians() - 0.04f);
-                }
-                else
+                    }
+                } else {
                     SetRotationRadians(GetRotationRadians() - (0.02f + (-sliding / 60)) * (m_velocity / 5));
+                }
             }
 
-            if (m_velocity > MAXSPEED)
+            if (m_velocity > MAXSPEED) {
                 m_velocity = MAXSPEED;
+            }
             m_velocity *= 0.99f;
             sliding *= 0.98f;
 
             //if (sliding > 0.01f || sliding < -0.01f)
             //   m_velocity *= 0.99f;
-            if (sliding > 0.4f)
+            if (sliding > 0.4f) {
                 sliding = 0.4f;
-            if (sliding < -0.4f)
+            }
+            if (sliding < -0.4f) {
                 sliding = -0.4f;
-            if (slide > 1)
+            }
+            if (slide > 1) {
                 slide = 1.0f;
-            if (slide < -1)
+            }
+            if (slide < -1) {
                 slide = -1.0f;
+            }
 
             lastMoveX = m_velocity * (float)Math.Cos(GetRotationRadians() + (slide * sliding));
             lastMoveY = m_velocity * (float)Math.Sin(GetRotationRadians() + (slide * sliding));
@@ -137,12 +130,11 @@ namespace Project_Cows.Source.Application.Entity
             m_position.X += lastMoveX;
             m_position.Y += lastMoveY;
 
-            //this.SetRotationDegrees(m_rotation);
             Debug.AddText(new DebugText(GetRotationRadians().ToString(), new Vector2(500, 90)));
             //reset values to false, to check the next update
 
             m_braking = false;
-            // Update position_ and m_rotation of the vehicle's sprite
+            // Update position and rotation of the vehicle's sprite
             UpdateCollider();
         }
     }

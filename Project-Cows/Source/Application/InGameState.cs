@@ -62,15 +62,16 @@ namespace Project_Cows.Source.Application {
             h_trackHandler.Initialise(content_);
 
 			// Initialise players
+            // NOTE: Should be rewritten to allow simple changing of player amounts
             m_players = new List<Player>();
             m_players.Clear();
 			m_players.Add(new Player(content_, carTexture, h_trackHandler.m_vehicles[0], 0, Quadrent.BOTTOM_RIGHT, 1));
-            m_players.Add(new Player(content_, carTexture, h_trackHandler.m_vehicles[1], 0, Quadrent.BOTTOM_LEFT, 2));
+            //m_players.Add(new Player(content_, carTexture, h_trackHandler.m_vehicles[1], 0, Quadrent.BOTTOM_LEFT, 2));
 
 			m_players[0].m_controlScheme.SetSteeringSprite(new Sprite(content_.Load<Texture2D>("controlTemp"), new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
 			m_players[0].m_controlScheme.SetInterfaceSprite(new Sprite(content_.Load<Texture2D>("controlTempBG"), new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
-			m_players[1].m_controlScheme.SetSteeringSprite(new Sprite(content_.Load<Texture2D>("controlTemp"), new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
-			m_players[1].m_controlScheme.SetInterfaceSprite(new Sprite(content_.Load<Texture2D>("controlTempBG"), new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
+			//m_players[1].m_controlScheme.SetSteeringSprite(new Sprite(content_.Load<Texture2D>("controlTemp"), new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
+			//m_players[1].m_controlScheme.SetInterfaceSprite(new Sprite(content_.Load<Texture2D>("controlTempBG"), new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
 
             // Initialise sprites
             m_animatedSprites.Add(new AnimatedSprite(content_.Load<Texture2D>("animation"), 
@@ -142,48 +143,40 @@ namespace Project_Cows.Source.Application {
                 
 
 			// Update game objects
-			// TODO: perform collision checks, etc.
-            foreach (Player p in m_players) {
+			
+            // Perform collision Checks
+            foreach (Player p1 in m_players) {
+                // Player vs Player
                 foreach (Player p2 in m_players) {
-                    if (CollisionHandler.CheckForCollision(p.GetVehicle().GetCollider(), p2.GetVehicle().GetCollider())) {
-                        if (p != p2) {
+                    if (p2.GetID() != p1.GetID()) {
+                        if (CollisionHandler.CheckForCollision(p1.GetVehicle().GetCollider(), p2.GetVehicle().GetCollider())) {
+                            p1.GetVehicle().m_velocity = -p1.GetVehicle().m_velocity * 1.5f;
 
-                            p.GetVehicle().m_velocity = -p.GetVehicle().m_velocity * 1.5f;
-                            p2.GetVehicle().m_velocity = -p2.GetVehicle().m_velocity * 1.5f;
-
-                            p.GetVehicle().Update();
-                            p2.GetVehicle().Update();
-
-                            p.GetVehicle().UpdateCollider();
-                            p2.GetVehicle().UpdateCollider();
+                            // NOTE: Change needs to be made here, as this means that the vehicle would Update() twice in the same frame -Dean
+                            p1.GetVehicle().Update();
+                            p1.GetVehicle().UpdateCollider();
 
                             Debug.AddText(new DebugText("Defo COllided ye ken?", new Vector2(10.0f, 150.0f)));
                         }
                     }
                 }
-            }
-            /*foreach(Player p in m_players){
-                foreach(Checkpoint cp in h_trackHandler.m_checkpoints){
-                    if (CollisionHandler.CheckForCollision(p.GetVehicle().GetCollider(), cp.GetCollider())) {
-                        if (cp.GetID() - p.m_currentCheckpoint == 1){
-                            p.m_currentCheckpoint = cp.GetID();
-                        } else if (cp.GetID() == 0 && p.m_currentCheckpoint == h_trackHandler.m_checkpoints.Count - 1) {
-                            p.m_currentCheckpoint = cp.GetID();
-                            ++p.m_currentLap;
-                        }
+
+                // Player vs Barrier
+                foreach (Barrier b in h_trackHandler.m_barriers) {
+                    if (CollisionHandler.CheckForCollision(p1.GetVehicle().GetCollider(), b.GetCollider())) {
+                        p1.GetVehicle().m_velocity = -p1.GetVehicle().m_velocity * 1.5f;
+
+                        // NOTE: Change needs to be made here, as this means that the vehicle would Update() twice in the same frame -Dean
+                        p1.GetVehicle().Update();
+                        p1.GetVehicle().UpdateCollider();
+
+                        Debug.AddText(new DebugText("Defo COllided ye ken?", new Vector2(10.0f, 150.0f)));
                     }
                 }
-
-                Debug.AddText(new DebugText("Player " + p.GetID(), new Vector2(20.0f + 150 * p.GetID(), 70.0f)));
-                Debug.AddText(new DebugText("Lap: " + p.m_currentLap.ToString(), new Vector2(20.0f + 150 * p.GetID(), 90.0f)));
-                Debug.AddText(new DebugText("Checkpoint: " + p.m_currentCheckpoint.ToString(), new Vector2(20.0f + 150 * p.GetID(), 110.0f)));
-            }*/
+            }
 
             h_trackHandler.Update(m_players);
 
-            
-            
-            
 
 			// Update sprites
             foreach(AnimatedSprite anim in m_animatedSprites) {
@@ -236,7 +229,7 @@ namespace Project_Cows.Source.Application {
                 }
             }
 
-            h_trackHandler.Draw();
+            h_trackHandler.Draw(ref graphicsHandler_);
 
             // Render player vehicles
 			foreach(Player p in m_players) {

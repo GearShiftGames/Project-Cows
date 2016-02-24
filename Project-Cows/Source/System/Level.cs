@@ -20,9 +20,11 @@ namespace Project_Cows.Source.System {
         // Variables
         private static IniFile m_checkpointData;                        // File for checkpoints
         private static IniFile m_vehicleData;                           // File for vehicles
+        private static IniFile m_barriersData;                           // File for vehicles
 
         private static List<CheckpointContainer> m_checkpoints = new List<CheckpointContainer>();   // Track checkpoints
         private static List<EntityStruct> m_vehicles = new List<EntityStruct>();                    // Player vehicles
+        private static List<EntityStruct> m_barriers = new List<EntityStruct>();                    // Track barriers
         // TODO: List any other object types here
 
         // Methods
@@ -31,14 +33,16 @@ namespace Project_Cows.Source.System {
             // ================
             m_checkpoints.Clear();
             m_vehicles.Clear();
+            m_barriers.Clear();
             // TODO: Clear any other lists
         }
 
         public static void LoadLevel(string levelFolder){
             // Loads a level into the application
             // ================
-            LoadCheckpoints(levelFolder);           // Loads in the track checkpoints
-            LoadVehicles(levelFolder);
+            LoadCheckpoints(levelFolder);           // Loads track checkpoints
+            LoadVehicles(levelFolder);              // Loads vehicles
+            LoadBarriers(levelFolder);              // Loads barriers
         }
 
         private static void LoadCheckpoints(string levelFolder) {
@@ -95,6 +99,30 @@ namespace Project_Cows.Source.System {
             }
         }
 
+        private static void LoadBarriers(string levelFolder) {
+            // Load barriers position and rotation into the application
+            // ================
+            m_barriersData = new IniFile("\\Data\\Level\\" + levelFolder + "\\barriers.ini");
+
+            bool gotAllBarriers = false;
+            int index = 0;
+            while (!gotAllBarriers) {
+                string s_positionX = m_barriersData.ReadValue(index.ToString(), "positionX");
+                string s_positionY = m_barriersData.ReadValue(index.ToString(), "positionY");
+                string s_rotation = m_barriersData.ReadValue(index.ToString(), "rotation");
+
+                if (IsStringEmpty(s_positionX) || IsStringEmpty(s_positionY) || IsStringEmpty(s_rotation)) {
+                    gotAllBarriers = true;
+                } else {
+                    int positionX = Convert.ToInt32(s_positionX.Replace("\0", string.Empty));
+                    int positionY = Convert.ToInt32(s_positionY.Replace("\0", string.Empty));
+                    int rotation = Convert.ToInt32(s_rotation.Replace("\0", string.Empty));
+
+                    m_barriers.Add(new EntityStruct(new Vector2(positionX, positionY), rotation));
+                    ++index;
+                }
+            }
+        }
 
 
         public static bool IsStringEmpty(string s){
@@ -110,8 +138,12 @@ namespace Project_Cows.Source.System {
             return m_checkpoints;
         }
 
-        public static List<EntityStruct> GetVehicles(){
+        public static List<EntityStruct> GetVehicles() {
             return m_vehicles;
+        }
+
+        public static List<EntityStruct> GetBarriers() {
+            return m_barriers;
         }
 
         // Setters

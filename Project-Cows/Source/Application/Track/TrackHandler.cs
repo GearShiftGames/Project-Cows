@@ -13,19 +13,20 @@ using Microsoft.Xna.Framework.Graphics;
 using Project_Cows.Source.Application.Entity;
 using Project_Cows.Source.Application.Physics;
 using Project_Cows.Source.System;
+using Project_Cows.Source.System.Graphics;
 
 namespace Project_Cows.Source.Application.Track {
     class TrackHandler {
-        // Class to handle ass aspects of the track
+        // Class to handle any aspects of the track
         // ================
 
         // Variables
         public List<CheckpointContainer> m_checkpoints = new List<CheckpointContainer>();
         public List<EntityStruct> m_vehicles = new List<EntityStruct>();
-        public List<EntityStruct> m_barriers = new List<EntityStruct>();
+        public List<Barrier> m_barriers = new List<Barrier>();
         private List<int> m_rankings = new List<int>();
 
-        private Texture2D m_checkpointTexture;
+        private Texture2D m_checkpointTexture, m_barriersTexture;
 
         // Methods
         public TrackHandler() {
@@ -34,7 +35,6 @@ namespace Project_Cows.Source.Application.Track {
         }
 
         public void Initialise(ContentManager content_) {
-
             m_checkpoints.Clear();
             m_vehicles.Clear();
             m_barriers.Clear();
@@ -42,13 +42,26 @@ namespace Project_Cows.Source.Application.Track {
 
             // Set checkpoint texture
             m_checkpointTexture = content_.Load<Texture2D>("checkpoint");
-            //m_barriersTexture = content_.Load<Texture2D>("barrier");
+            m_barriersTexture = content_.Load<Texture2D>("barrier");
 
-            // Add checkpoints...
+            // Add checkpoints
             Level.LoadLevel("0");       // NOTE: This would be done in the in-game state in future -Dean
-
             m_checkpoints = Level.GetCheckpoints();
+            // Add entities to the checkpoints
+            foreach (CheckpointContainer cc in m_checkpoints) {
+                cc.SetEntity(content_, m_checkpointTexture);
+            }
+
+            // Add vehicles
             m_vehicles = Level.GetVehicles();
+
+            // Add barriers
+            List<EntityStruct> m_barrierEntityStructs = new List<EntityStruct>();
+            m_barrierEntityStructs = Level.GetBarriers();
+            // Add entities to Barriers
+            foreach (EntityStruct es in m_barrierEntityStructs) {
+                m_barriers.Add(new Barrier(content_, m_barriersTexture, es));
+            }
 
             // NOTE: Unneeded now, but kept for testing purposes -Dean
             /*m_checkpoints.Add(new CheckpointContainer(new Checkpoint(0, 1, 0, new Vector2(500f, 300f))));
@@ -77,10 +90,6 @@ namespace Project_Cows.Source.Application.Track {
             m_checkpoints.Add(new CheckpointContainer(new Checkpoint(16, 17, 0, new Vector2(500f, 700f))));
             m_checkpoints.Add(new CheckpointContainer(new Checkpoint(17, 0, 0, new Vector2(400f, 500f))));*/
 
-            // Add entities to the checkpoints
-            foreach (CheckpointContainer cc in m_checkpoints) {
-                cc.SetEntity(content_, m_checkpointTexture);
-            }
         }
 
         public void Update(List<Player> players_){
@@ -132,9 +141,22 @@ namespace Project_Cows.Source.Application.Track {
                 // Add front-most player to rankings
                 m_rankings.Add(highestID);
             }
+
+            foreach (Barrier b in m_barriers) {
+                b.UpdateCollider();
+                b.UpdateSprites();
+            }
         }
 
-        public void Draw() {
+        public void Draw(ref GraphicsHandler graphicsHandler_) {
+            // Draw the objects to the screen
+            // ================
+
+            // Render barriers
+            foreach (Barrier b in m_barriers) {
+                graphicsHandler_.DrawSprite(b.GetSprite());
+            }
+
             // Add checkpoints to Debug screen
             foreach (CheckpointContainer cp in m_checkpoints) {
                 Debug.AddSprite(cp.GetEntity().GetSprite());
@@ -143,9 +165,15 @@ namespace Project_Cows.Source.Application.Track {
             // Render ranking text
             if (m_rankings.Count != 0) {
                 Debug.AddText(new DebugText("1st - Player " + m_rankings[0].ToString(), new Vector2(1500f, 50f)));
-                Debug.AddText(new DebugText("2nd - Player " + m_rankings[1].ToString(), new Vector2(1500f, 70f)));
-                //Debug.AddText(new DebugText("3rd - " + m_rankings[2].ToString(), new Vector2(1500f, 90f)));
-                //Debug.AddText(new DebugText("4th - " + m_rankings[3].ToString(), new Vector2(1500f, 110f)));
+                if (m_rankings.Count > 1) {
+                    Debug.AddText(new DebugText("2nd - Player " + m_rankings[1].ToString(), new Vector2(1500f, 70f)));
+                    if (m_rankings.Count > 2) {
+                        Debug.AddText(new DebugText("3rd - Player" + m_rankings[2].ToString(), new Vector2(1500f, 90f)));
+                        if (m_rankings.Count > 3) {
+                            Debug.AddText(new DebugText("4th - Player" + m_rankings[3].ToString(), new Vector2(1500f, 110f)));
+                        }
+                    }  
+                }
             }
         }
 
