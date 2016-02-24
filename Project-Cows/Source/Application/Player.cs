@@ -27,7 +27,8 @@ namespace Project_Cows.Source.Application {
 
         private int m_playerID;
 		private Vehicle m_vehicle;
-
+        private Sprite m_cow;
+      
         public Checkpoint m_currentCheckpoint;
         public int m_currentLap;
 
@@ -36,12 +37,13 @@ namespace Project_Cows.Source.Application {
         private bool m_keyBraking;
 
         // Methods
-        public Player(ContentManager content_, Texture2D texture_, Vector2 position_, float rotation_, float speed_, Quadrent quadrent_, int id_ = 999) {
+        public Player(ContentManager content_, Texture2D cowTexture_, Texture2D carTexture_, Vector2 position_, float rotation_, float speed_, Quadrent quadrent_, int id_ = 999) {
 			// Player constructor
 			// ================
 
-			m_vehicle = new Vehicle(content_, texture_, position_, rotation_);
-			
+            m_vehicle = new Vehicle(content_, carTexture_, position_, rotation_);
+            m_cow = new Sprite(cowTexture_, position_, rotation_,new Vector2(0.1f,0.1f));
+
             m_controlScheme = new ControlScheme(quadrent_);
             m_playerID = id_;
 
@@ -68,6 +70,9 @@ namespace Project_Cows.Source.Application {
                 }
                 m_vehicle.Update(turn, m_keyBraking);
             }
+
+            m_cow.SetPosition(m_vehicle.GetPosition());
+            m_cow.SetRotationRadians(m_vehicle.GetRotationRadians());
         }
 
 		public void UpdateSprites() {
@@ -89,6 +94,7 @@ namespace Project_Cows.Source.Application {
         }
 
 		public Vehicle GetVehicle() { return m_vehicle; }
+        public Sprite GetCow() { return m_cow; }
 
 		// Setters
     }

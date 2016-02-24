@@ -101,8 +101,8 @@ namespace Project_Cows.Source.Application.Entity {
                 sliding = 0.4f;
             if (sliding < -0.4f)
                 sliding = -0.4f;
-            if (slide > 2)
-                slide = 2.0f;
+            if (slide > 1)
+                slide = 1.0f;
             if (slide < -1)
                 slide = -1.0f;
 

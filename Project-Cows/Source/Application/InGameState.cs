@@ -34,7 +34,7 @@ namespace Project_Cows.Source.Application {
         private List<Barrier> m_barriers;
 
         //private List<Checkpoint> m_checkpoints = new List<Checkpoint>();
-        private Texture2D carTexture, squareTexture, barrierTexture, backgroundTexture;
+        private Texture2D carTexture, squareTexture, barrierTexture, backgroundTexture, cooTexture;
         private Sprite m_background;
 
         private List<int> m_rankings = new List<int>();
@@ -53,10 +53,11 @@ namespace Project_Cows.Source.Application {
 			// Initialise in-game state
 			// ================
 			
-			carTexture = content_.Load<Texture2D>("car");
+			carTexture = content_.Load<Texture2D>("Tractor_Blue");
             squareTexture = content_.Load<Texture2D>("square");
             barrierTexture = content_.Load<Texture2D>("Tyre");
             backgroundTexture = content_.Load<Texture2D>("V2_Background_Grass");
+            cooTexture = content_.Load<Texture2D>("ITSACOO");
 
             Vector2 BackgroundScale = new Vector2((float)backgroundTexture.Width / (float)Settings.m_screenWidth);
             m_background = new Sprite(backgroundTexture, new Vector2(Settings.m_screenWidth / 2, Settings.m_screenHeight / 2), 0.0f, BackgroundScale);
@@ -66,7 +67,7 @@ namespace Project_Cows.Source.Application {
 			// Initialise players
             m_players = new List<Player>();
             m_players.Clear();
-			m_players.Add(new Player(content_, carTexture, new Vector2(100, 300), 0, 0, Quadrent.BOTTOM_RIGHT, 1));
+            m_players.Add(new Player(content_, cooTexture, carTexture, new Vector2(100, 300), 0, 0, Quadrent.BOTTOM_RIGHT, 1));
 			//m_players.Add(new Player(content_, carTexture, new Vector2(100, 600), 270, 0, Quadrent.BOTTOM_LEFT, 2));
 
 			m_players[0].m_controlScheme.SetSteeringSprite(new Sprite(content_.Load<Texture2D>("controlTemp"), new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
@@ -74,6 +75,7 @@ namespace Project_Cows.Source.Application {
 			//m_players[1].m_controlScheme.SetSteeringSprite(new Sprite(content_.Load<Texture2D>("controlTemp"), new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
 			//m_players[1].m_controlScheme.SetInterfaceSprite(new Sprite(content_.Load<Texture2D>("controlTempBG"), new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
 
+            
             //Set up the Barriers
             m_barriers = new List<Barrier>();
             m_barriers.Clear();
@@ -190,7 +192,6 @@ namespace Project_Cows.Source.Application {
             
 			// Update particles
             m_particles = graphicsHandler_.UpdatePFX(gameTime_.ElapsedGameTime.TotalMilliseconds);
-
 		}
 
 		public override void Draw(GraphicsDevice graphicsDevice_, ref GraphicsHandler graphicsHandler_) {
@@ -225,6 +226,7 @@ namespace Project_Cows.Source.Application {
             // Render player vehicles
 			foreach(Player p in m_players) {
 				graphicsHandler_.DrawSprite(p.GetVehicle().GetSprite());
+                graphicsHandler_.DrawSprite(p.GetCow());
 				graphicsHandler_.DrawSprite(p.m_controlScheme.m_controlInterfaceSprite);
 				graphicsHandler_.DrawSprite(p.m_controlScheme.m_steeringIndicatorSprite);
 			}
