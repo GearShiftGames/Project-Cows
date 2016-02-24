@@ -101,6 +101,7 @@ namespace Project_Cows.Source.Application {
 
 			// Close window - TEMP
 			if(Keyboard.GetState().IsKeyDown(Keys.Escape)) {
+                Settings.SaveSettings();
 				Exit();
 			}
 

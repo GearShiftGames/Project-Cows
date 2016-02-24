@@ -49,6 +49,16 @@ namespace Project_Cows.Source.Application {
             m_currentLap = 1;
         }
 
+        public Player(ContentManager content_, Texture2D texture_, EntityStruct entityStruct_, float speed_, Quadrent quadrent_, int id_ = 999) {
+            m_vehicle = new Vehicle(content_, texture_, entityStruct_);
+
+            m_controlScheme = new ControlScheme(quadrent_);
+            m_playerID = id_;
+
+            m_currentCheckpoint = Checkpoint.First(Vector2.Zero);
+            m_currentLap = 1;
+        }
+
         public void Update(List<TouchLocation> touches_) {
             // Updates the player
             // ================

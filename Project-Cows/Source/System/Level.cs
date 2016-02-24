@@ -21,8 +21,8 @@ namespace Project_Cows.Source.System {
         private static IniFile m_checkpointData;                        // File for checkpoints
         private static IniFile m_vehicleData;                           // File for vehicles
 
-        private static List<CheckpointContainer> m_checkpoints = new List<CheckpointContainer>();    // Track checkpoints
-        private static List<Vehicle> m_vehicles = new List<Vehicle>();                               // Player vehicles
+        private static List<CheckpointContainer> m_checkpoints = new List<CheckpointContainer>();   // Track checkpoints
+        private static List<EntityStruct> m_vehicles = new List<EntityStruct>();                    // Player vehicles
         // TODO: List any other object types here
 
         // Methods
@@ -38,6 +38,7 @@ namespace Project_Cows.Source.System {
             // Loads a level into the application
             // ================
             LoadCheckpoints(levelFolder);           // Loads in the track checkpoints
+            LoadVehicles(levelFolder);
         }
 
         private static void LoadCheckpoints(string levelFolder) {
@@ -88,7 +89,8 @@ namespace Project_Cows.Source.System {
                     int positionY = Convert.ToInt32(s_positionY.Replace("\0", string.Empty));
                     int rotation = Convert.ToInt32(s_rotation.Replace("\0", string.Empty));
 
-                    //m_vehicles.Add(new Vehicle)
+                    m_vehicles.Add(new EntityStruct(new Vector2(positionX, positionY), rotation));
+                    ++index;
                 }
             }
         }
@@ -106,6 +108,10 @@ namespace Project_Cows.Source.System {
         // Getters
         public static List<CheckpointContainer> GetCheckpoints() {
             return m_checkpoints;
+        }
+
+        public static List<EntityStruct> GetVehicles(){
+            return m_vehicles;
         }
 
         // Setters

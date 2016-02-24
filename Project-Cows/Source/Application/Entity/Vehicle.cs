@@ -51,6 +51,16 @@ namespace Project_Cows.Source.Application.Entity
             m_braking = false;
         }
 
+        public Vehicle(ContentManager content_, Texture2D texture_, EntityStruct entityStruct_)
+            : base(content_, texture_, entityStruct_) {
+            // Vehicle constructor
+            // ================
+            m_rotation = entityStruct_.GetRotation();
+            m_velocity = 0.0f;
+            m_steeringValue = 0.0f;
+            m_braking = false;
+        }
+
         public void Update(float steeringValue_ = 0, bool braking_ = false)
         {
             // Updates the vehicle

@@ -21,6 +21,8 @@ namespace Project_Cows.Source.Application.Track {
 
         // Variables
         public List<CheckpointContainer> m_checkpoints = new List<CheckpointContainer>();
+        public List<EntityStruct> m_vehicles = new List<EntityStruct>();
+        public List<EntityStruct> m_barriers = new List<EntityStruct>();
         private List<int> m_rankings = new List<int>();
 
         private Texture2D m_checkpointTexture;
@@ -29,17 +31,24 @@ namespace Project_Cows.Source.Application.Track {
         public TrackHandler() {
             // TrackHandler constructor
             // ================
-
         }
 
         public void Initialise(ContentManager content_) {
+
+            m_checkpoints.Clear();
+            m_vehicles.Clear();
+            m_barriers.Clear();
+            m_rankings.Clear();
+
             // Set checkpoint texture
             m_checkpointTexture = content_.Load<Texture2D>("checkpoint");
+            //m_barriersTexture = content_.Load<Texture2D>("barrier");
 
             // Add checkpoints...
             Level.LoadLevel("0");       // NOTE: This would be done in the in-game state in future -Dean
 
             m_checkpoints = Level.GetCheckpoints();
+            m_vehicles = Level.GetVehicles();
 
             // NOTE: Unneeded now, but kept for testing purposes -Dean
             /*m_checkpoints.Add(new CheckpointContainer(new Checkpoint(0, 1, 0, new Vector2(500f, 300f))));

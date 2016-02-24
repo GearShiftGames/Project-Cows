@@ -1,4 +1,4 @@
-﻿// Project Cows
+﻿// Project Cows -- GearShift Games
 // Written by D. Sinclair, 2016
 // ================
 // Timer.cs

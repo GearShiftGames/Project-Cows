@@ -33,7 +33,6 @@ namespace Project_Cows.Source.Application {
         private List<Particle> m_particles = new List<Particle>();
         private Timer startTimer = new Timer();
 
-        //private List<Checkpoint> m_checkpoints = new List<Checkpoint>();
         private Texture2D carTexture, squareTexture, backgroundTexture;
         private Sprite m_background;
 
@@ -65,8 +64,8 @@ namespace Project_Cows.Source.Application {
 			// Initialise players
             m_players = new List<Player>();
             m_players.Clear();
-			m_players.Add(new Player(content_, carTexture, new Vector2(100, 300), 0, 0, Quadrent.BOTTOM_RIGHT, 1));
-			m_players.Add(new Player(content_, carTexture, new Vector2(100, 350), 0, 0, Quadrent.BOTTOM_LEFT, 2));
+			m_players.Add(new Player(content_, carTexture, h_trackHandler.m_vehicles[0], 0, Quadrent.BOTTOM_RIGHT, 1));
+            m_players.Add(new Player(content_, carTexture, h_trackHandler.m_vehicles[1], 0, Quadrent.BOTTOM_LEFT, 2));
 
 			m_players[0].m_controlScheme.SetSteeringSprite(new Sprite(content_.Load<Texture2D>("controlTemp"), new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
 			m_players[0].m_controlScheme.SetInterfaceSprite(new Sprite(content_.Load<Texture2D>("controlTempBG"), new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));

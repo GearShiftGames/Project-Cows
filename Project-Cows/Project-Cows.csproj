@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="Source\Application\Application.cs" />
     <Compile Include="Source\Application\Barrier.cs" />
+    <Compile Include="Source\Application\Entity\EntityStruct.cs" />
     <Compile Include="Source\Application\Track\Checkpoint.cs" />
     <Compile Include="Source\Application\Entity\Entity.cs" />
     <Compile Include="Source\Application\Entity\EntityCollider.cs" />
@@ -89,7 +90,11 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Data\Level\0\vehicles.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="Data\Level\0\checkpoints.ini">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

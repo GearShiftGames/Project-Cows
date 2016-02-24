@@ -25,13 +25,24 @@ namespace Project_Cows.Source.Application.Entity {
         protected bool m_collidable;                // Whether the entity is collidable
 
         // Methods
-        public Entity(ContentManager content_, Texture2D texture_, Vector2 position_, float rotation_=0) {
+        public Entity(ContentManager content_, Texture2D texture_, Vector2 position_, float rotation_ = 0) {
             // Entity constructor
             // ================
 
             m_position = position_;
             m_rotation = rotation_;
 			m_sprite = new Sprite(texture_, m_position, m_rotation, new Vector2(1.0f, 1.0f));
+			m_collidable = true;
+
+            Texture2D debugTexture = content_.Load<Texture2D>("entityUncollided");
+            Texture2D cornerTexture = content_.Load<Texture2D>("corner");
+            m_collider = new EntityCollider(cornerTexture, debugTexture, new Rectangle((int)(m_position.X - m_sprite.GetWidth() / 2), (int)(m_position.Y - m_sprite.GetHeight() / 2), (int)m_sprite.GetWidth(), (int)m_sprite.GetHeight()), m_rotation);
+        }
+
+        public Entity(ContentManager content_, Texture2D texture_, EntityStruct entityStruct_) {
+            m_position = entityStruct_.GetPosition();
+            m_rotation = entityStruct_.GetRotation();
+            m_sprite = new Sprite(texture_, m_position, m_rotation, new Vector2(1.0f, 1.0f));
 			m_collidable = true;
 
             Texture2D debugTexture = content_.Load<Texture2D>("entityUncollided");
