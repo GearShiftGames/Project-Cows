@@ -67,49 +67,48 @@ namespace Project_Cows.Source.Application.Entity {
             {
                 if (m_braking)
                 {
-                    slide += 0.1f * (m_velocity / 10);
+                    slide += 0.2f * (m_velocity / 10);
                     if (m_velocity > 2.0f)
-                        SetRotationRadians(GetRotationRadians() + (0.02f + (-sliding / 60)));
+                        SetRotationRadians(GetRotationRadians() + (0.04f + (-sliding / 60)));
                     if (m_velocity < 2.0f && m_velocity > 0.5f)
-                        SetRotationRadians(GetRotationRadians() + 0.03f);
+                        SetRotationRadians(GetRotationRadians() + 0.04f);
                 }
                 else
-                    SetRotationRadians(GetRotationRadians() + (0.01f + (-sliding / 60)) * (m_velocity / 5));
+                    SetRotationRadians(GetRotationRadians() + (0.02f + (-sliding / 60)) * (m_velocity / 5));
             }
             //if turning left
             if (steeringValue_ < -0.2)
             {
                 if (m_braking)
                 {
-                    slide -= 0.1f * (m_velocity / 10);
+                    slide -= 0.2f * (m_velocity / 10);
                     if (m_velocity > 2.0f)
-                        SetRotationRadians(GetRotationRadians() - (0.02f + (-sliding / 60)));
+                        SetRotationRadians(GetRotationRadians() - (0.04f + (-sliding / 60)));
                     if (m_velocity < 2.0f && m_velocity > 0.5f)
-                        SetRotationRadians(GetRotationRadians() - 0.03f);
+                        SetRotationRadians(GetRotationRadians() - 0.04f);
                 }
                 else
-                    SetRotationRadians(GetRotationRadians() - (0.01f + (-sliding / 60)) * (m_velocity / 5));
+                    SetRotationRadians(GetRotationRadians() - (0.02f + (-sliding / 60)) * (m_velocity / 5));
             }
 
             if (m_velocity > MAXSPEED)
                 m_velocity = MAXSPEED;
             m_velocity *= 0.99f;
-            sliding *= 0.99f;
+            sliding *= 0.98f;
 
-            //if (sliding > 0.01f || sliding < -0.01f)
-            //   m_velocity *= 0.99f;
-            if (sliding > 0.3f)
-                sliding = 0.3f;
-            if (sliding < -0.3f)
-                sliding = -0.3f;
-            if (slide > 1)
-                slide = 1.0f;
+            //limits the amount the car slides
+            if (sliding > 0.4f)
+                sliding = 0.4f;
+            if (sliding < -0.4f)
+                sliding = -0.4f;
+            if (slide > 2)
+                slide = 2.0f;
             if (slide < -1)
                 slide = -1.0f;
 
             m_position.X += m_velocity * (float)Math.Cos(GetRotationRadians() + (slide * sliding));
             m_position.Y += m_velocity * (float)Math.Sin(GetRotationRadians() + (slide * sliding));
-            //this.SetRotationDegrees(m_rotation);
+           
             Debug.AddText(new DebugText(GetRotationRadians().ToString(), new Vector2(500, 90)));
             //reset values to false, to check the next update
 

@@ -31,9 +31,10 @@ namespace Project_Cows.Source.Application {
         private TrackHandler h_trackHandler = new TrackHandler();
         private List<AnimatedSprite> m_animatedSprites = new List<AnimatedSprite>();
         private List<Particle> m_particles = new List<Particle>();
+        private List<Barrier> m_barriers;
 
         //private List<Checkpoint> m_checkpoints = new List<Checkpoint>();
-        private Texture2D carTexture, squareTexture, backgroundTexture;
+        private Texture2D carTexture, squareTexture, barrierTexture, backgroundTexture;
         private Sprite m_background;
 
         private List<int> m_rankings = new List<int>();
@@ -54,6 +55,7 @@ namespace Project_Cows.Source.Application {
 			
 			carTexture = content_.Load<Texture2D>("car");
             squareTexture = content_.Load<Texture2D>("square");
+            barrierTexture = content_.Load<Texture2D>("Tyre");
             backgroundTexture = content_.Load<Texture2D>("V2_Background_Grass");
 
             Vector2 BackgroundScale = new Vector2((float)backgroundTexture.Width / (float)Settings.m_screenWidth);
@@ -72,11 +74,14 @@ namespace Project_Cows.Source.Application {
 			//m_players[1].m_controlScheme.SetSteeringSprite(new Sprite(content_.Load<Texture2D>("controlTemp"), new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
 			//m_players[1].m_controlScheme.SetInterfaceSprite(new Sprite(content_.Load<Texture2D>("controlTempBG"), new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
 
+            //Set up the Barriers
+            m_barriers = new List<Barrier>();
+            m_barriers.Clear();
+            m_barriers.Add(new Barrier(content_, barrierTexture, new Vector2(400, 400), 0));
+
             #region Checkpoint Setup
             
             #endregion
-
-            
 
             // Initialise sprites
             m_animatedSprites.Add(new AnimatedSprite(content_.Load<Texture2D>("animation"), 
@@ -224,6 +229,12 @@ namespace Project_Cows.Source.Application {
 				graphicsHandler_.DrawSprite(p.m_controlScheme.m_steeringIndicatorSprite);
 			}
 
+
+            //Render Barriers
+            foreach (Barrier bar_ in m_barriers)
+            {
+                graphicsHandler_.DrawSprite(bar_.m_entity.GetSprite());
+            }
             // Stop rendering graphics
             graphicsHandler_.StopDrawing();
 		}
