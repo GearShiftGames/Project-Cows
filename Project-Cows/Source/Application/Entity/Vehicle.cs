@@ -23,8 +23,8 @@ namespace Project_Cows.Source.Application.Entity{
         private float m_steeringValue;
         private bool m_braking;
 
-        private const float MAXSPEED = 5.0f;
-        private const float ACCELERATION_RATE = 0.05f;
+        private const float MAXSPEED = 7.5f;
+        private const float ACCELERATION_RATE = 0.005f;
         private const float DECELERATION_RATE = -0.15f;
         private const float STEERING_SENSITIVITY = 10.0f;
 
@@ -36,6 +36,7 @@ namespace Project_Cows.Source.Application.Entity{
 
         public float lastMoveX = 0;
         public float lastMoveY = 0;
+        int counter = 0;
 
         // Methods
         public Vehicle(ContentManager content_, Texture2D texture_, Vector2 position_, float m_rotation_) : base(content_, texture_, position_, m_rotation_){
@@ -56,71 +57,103 @@ namespace Project_Cows.Source.Application.Entity{
             m_braking = false;
         }
 
-        public void Update(float steeringValue_ = 0, bool braking_ = false) {
+        public void Update(float steeringValue_ = 0, bool braking_ = false) 
+        {
             // Updates the vehicle
             // ================
             m_steeringValue = steeringValue_;
             m_braking = braking_;
 
-            if (!m_braking) {
-                if (m_velocity > 0){
+            if (!m_braking) 
+            {
+                if (m_velocity > 0)
+                {
                     m_velocity *= 1.02f;
-                } else {
+                } 
+                else 
+                {
                     m_velocity /= 1.02f;
                 }
                 m_velocity += 0.05f;
-            } else {
-                sliding -= 0.02f;
-                sliding *= 1.02f;
-            }
+                
+                counter++;
+                
+                if(counter >50)
+                slide = 0;
+            } 
+            else 
+            {
+               //if you have breaked, the start reset the counter again
+               counter = 0;
+               sliding -= 0.02f;
+               sliding *= 1.02f;
+           }
 
             //if turning right
-            if (steeringValue_ > 0.2) {
-                if (m_braking) {
+            if (steeringValue_ > 0.2) 
+            {
+                if (m_braking) 
+                {
                     slide += 0.1f * (m_velocity / 10);
-                    if (m_velocity > 2.0f) {
+                    if (m_velocity > 2.0f) 
+                    {
                         SetRotationRadians(GetRotationRadians() + (0.04f + (-sliding / 60)));
                     }
-                    if (m_velocity < 2.0f && m_velocity > 0.5f) {
+                    if (m_velocity < 2.0f && m_velocity > 0.5f) 
+                    {
                         SetRotationRadians(GetRotationRadians() + 0.04f);
                     }
-                } else {
+                } 
+                else 
+                {
                     SetRotationRadians(GetRotationRadians() + (0.02f + (-sliding / 60)) * (m_velocity / 5));
                 }
             }
+
             //if turning left
-            if (steeringValue_ < -0.2){
-                if (m_braking) {
+            if (steeringValue_ < -0.2)
+            {
+                if (m_braking) 
+                {
                     slide -= 0.1f * (m_velocity / 10);
-                    if (m_velocity > 2.0f) {
+                    if (m_velocity > 2.0f) 
+                    {
                         SetRotationRadians(GetRotationRadians() - (0.04f + (-sliding / 60)));
                     }
-                    if (m_velocity < 2.0f && m_velocity > 0.5f) {
+                    if (m_velocity < 2.0f && m_velocity > 0.5f) 
+                    {
                         SetRotationRadians(GetRotationRadians() - 0.04f);
                     }
-                } else {
+                } 
+                else 
+                {
                     SetRotationRadians(GetRotationRadians() - (0.02f + (-sliding / 60)) * (m_velocity / 5));
                 }
             }
 
-            if (m_velocity > MAXSPEED) {
+            //Cap the the speed to MAXSPEED
+            if (m_velocity > MAXSPEED) 
+            {
                 m_velocity = MAXSPEED;
             }
-            m_velocity *= 0.99f;
+           
             sliding *= 0.98f;
 
-            //if (sliding > 0.01f || sliding < -0.01f)
-            //   m_velocity *= 0.99f;
-            if (sliding > 0.4f) {
+            //Cap the sliding values, so it doesnt spin
+            if (sliding > 0.4f)
+            {
                 sliding = 0.4f;
             }
-            if (sliding < -0.4f) {
+            if (sliding < -0.4f) 
+            {
                 sliding = -0.4f;
             }
-            if (slide > 1) {
+            if (slide > 1) 
+            {
                 slide = 1.0f;
             }
-            if (slide < -1) {
+            if (slide < -1) 
+            {
                 slide = -1.0f;
             }
 
