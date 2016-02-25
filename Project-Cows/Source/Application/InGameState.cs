@@ -69,12 +69,12 @@ namespace Project_Cows.Source.Application {
             m_players = new List<Player>();
             m_players.Clear();
 			m_players.Add(new Player(content_, cooTexture, carTexture, h_trackHandler.m_vehicles[0], 0, Quadrent.BOTTOM_RIGHT, 1));
-            //m_players.Add(new Player(content_, carTexture, h_trackHandler.m_vehicles[1], 0, Quadrent.BOTTOM_LEFT, 2));
+            m_players.Add(new Player(content_, cooTexture, carTexture, h_trackHandler.m_vehicles[1], 0, Quadrent.BOTTOM_LEFT, 2));
 
 			m_players[0].m_controlScheme.SetSteeringSprite(new Sprite(content_.Load<Texture2D>("controlTemp"), new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
 			m_players[0].m_controlScheme.SetInterfaceSprite(new Sprite(content_.Load<Texture2D>("controlTempBG"), new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
-			//m_players[1].m_controlScheme.SetSteeringSprite(new Sprite(content_.Load<Texture2D>("controlTemp"), new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
-			//m_players[1].m_controlScheme.SetInterfaceSprite(new Sprite(content_.Load<Texture2D>("controlTempBG"), new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
+			m_players[1].m_controlScheme.SetSteeringSprite(new Sprite(content_.Load<Texture2D>("controlTemp"), new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
+			m_players[1].m_controlScheme.SetInterfaceSprite(new Sprite(content_.Load<Texture2D>("controlTempBG"), new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
 
             
             //Set up the Barriers
@@ -148,7 +148,10 @@ namespace Project_Cows.Source.Application {
                     if (Keyboard.GetState().IsKeyDown(Keys.Space) || Keyboard.GetState().IsKeyDown(Keys.Down)) {
                         brake = true;
                     }
-
+                    if (Keyboard.GetState().IsKeyDown(Keys.Q))
+                    {
+                        m_players[1].GetVehicle().disable();
+                    }
                     m_players[index].KeyboardMove(left, right, brake);
                     m_players[index].Update(playerTouches[index]);
                 }
@@ -161,15 +164,21 @@ namespace Project_Cows.Source.Application {
             foreach (Player p1 in m_players) {
                 // Player vs Player
                 foreach (Player p2 in m_players) {
-                    if (p2.GetID() != p1.GetID()) {
-                        if (CollisionHandler.CheckForCollision(p1.GetVehicle().GetCollider(), p2.GetVehicle().GetCollider())) {
-                            p1.GetVehicle().m_velocity = -p1.GetVehicle().m_velocity * 1.5f;
+                    if (p1.GetCollideID() == 0) {
+                        if (p2.GetID() != p1.GetID()) {
+                            if (CollisionHandler.CheckForCollision(p1.GetVehicle().GetCollider(), p2.GetVehicle().GetCollider())) {
+                                p1.GetVehicle().m_velocity = -p1.GetVehicle().m_velocity * 1.4f;
+                                p2.GetVehicle().m_velocity = -p2.GetVehicle().m_velocity * 1.4f;
 
-                            // NOTE: Change needs to be made here, as this means that the vehicle would Update() twice in the same frame -Dean
-                            p1.GetVehicle().Update();
-                            p1.GetVehicle().UpdateCollider();
+                                p1.SetCollideID(p2.GetID());
+                                p2.SetCollideID(p1.GetID());
 
-                            Debug.AddText(new DebugText("Defo COllided ye ken?", new Vector2(10.0f, 150.0f)));
+                                // NOTE: Change needs to be made here, as this means that the vehicle would Update() twice in the same frame -Dean
+                                p1.GetVehicle().Update();
+                                p2.GetVehicle().Update();
+
+                                Debug.AddText(new DebugText("Defo COllided ye ken?", new Vector2(10.0f, 150.0f)));
+                            }
                         }
                     }
                 }
@@ -177,15 +186,18 @@ namespace Project_Cows.Source.Application {
                 // Player vs Barrier
                 foreach (Barrier b in h_trackHandler.m_barriers) {
                     if (CollisionHandler.CheckForCollision(p1.GetVehicle().GetCollider(), b.GetCollider())) {
-                        p1.GetVehicle().m_velocity = -p1.GetVehicle().m_velocity * 1.5f;
+                        p1.GetVehicle().m_velocity = -p1.GetVehicle().m_velocity * 1.4f;
 
                         // NOTE: Change needs to be made here, as this means that the vehicle would Update() twice in the same frame -Dean
                         p1.GetVehicle().Update();
-                        p1.GetVehicle().UpdateCollider();
 
                         Debug.AddText(new DebugText("Defo COllided ye ken?", new Vector2(10.0f, 150.0f)));
                     }
                 }
+            }
+
+            foreach (Player p in m_players) {
+                p.SetCollideID(0);
             }
 
             h_trackHandler.Update(m_players);

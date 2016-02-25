@@ -23,7 +23,7 @@ namespace Project_Cows.Source.Application.Entity{
         private float m_steeringValue;
         private bool m_braking;
 
-        private const float MAXSPEED = 5.0f;
+        private const float MAXSPEED = 7.5f;
         private const float ACCELERATION_RATE = 0.05f;
         private const float DECELERATION_RATE = -0.15f;
         private const float STEERING_SENSITIVITY = 10.0f;
@@ -56,86 +56,119 @@ namespace Project_Cows.Source.Application.Entity{
             m_braking = false;
         }
 
-        public void Update(float steeringValue_ = 0, bool braking_ = false) {
+        public bool enabled = true;
+        public void disable()
+        {
+            enabled = false;
+        }
+
+        public void Update(float steeringValue_ = 0, bool braking_ = false)
+        {
             // Updates the vehicle
             // ================
-            m_steeringValue = steeringValue_;
-            m_braking = braking_;
+            if (enabled)
+            {
+                m_steeringValue = steeringValue_;
+                m_braking = braking_;
 
-            if (!m_braking) {
-                if (m_velocity > 0){
-                    m_velocity *= 1.02f;
-                } else {
-                    m_velocity /= 1.02f;
+                if (!m_braking)
+                {
+                    if (m_velocity > 0)
+                    {
+                        m_velocity *= 1.02f;
+                    }
+                    else
+                    {
+                        m_velocity /= 1.02f;
+                    }
+                    m_velocity += 0.05f;
                 }
-                m_velocity += 0.05f;
-            } else {
-                sliding -= 0.02f;
-                sliding *= 1.02f;
-            }
-
-            //if turning right
-            if (steeringValue_ > 0.2) {
-                if (m_braking) {
-                    slide += 0.1f * (m_velocity / 10);
-                    if (m_velocity > 2.0f) {
-                        SetRotationRadians(GetRotationRadians() + (0.04f + (-sliding / 60)));
-                    }
-                    if (m_velocity < 2.0f && m_velocity > 0.5f) {
-                        SetRotationRadians(GetRotationRadians() + 0.04f);
-                    }
-                } else {
-                    SetRotationRadians(GetRotationRadians() + (0.02f + (-sliding / 60)) * (m_velocity / 5));
+                else
+                {
+                    sliding -= 0.02f;
+                    sliding *= 1.02f;
                 }
-            }
-            //if turning left
-            if (steeringValue_ < -0.2){
-                if (m_braking) {
-                    slide -= 0.1f * (m_velocity / 10);
-                    if (m_velocity > 2.0f) {
-                        SetRotationRadians(GetRotationRadians() - (0.04f + (-sliding / 60)));
+
+                //if turning right
+                if (steeringValue_ > 0.2)
+                {
+                    if (m_braking)
+                    {
+                        slide += 0.1f * (m_velocity / 10);
+                        if (m_velocity > 2.0f)
+                        {
+                            SetRotationRadians(GetRotationRadians() + (0.04f + (-sliding / 60)));
+                        }
+                        if (m_velocity < 2.0f && m_velocity > 0.5f)
+                        {
+                            SetRotationRadians(GetRotationRadians() + 0.04f);
+                        }
                     }
-                    if (m_velocity < 2.0f && m_velocity > 0.5f) {
-                        SetRotationRadians(GetRotationRadians() - 0.04f);
+                    else
+                    {
+                        SetRotationRadians(GetRotationRadians() + (0.02f + (-sliding / 60)) * (m_velocity / 5));
                     }
-                } else {
-                    SetRotationRadians(GetRotationRadians() - (0.02f + (-sliding / 60)) * (m_velocity / 5));
                 }
-            }
+                //if turning left
+                if (steeringValue_ < -0.2)
+                {
+                    if (m_braking)
+                    {
+                        slide -= 0.1f * (m_velocity / 10);
+                        if (m_velocity > 2.0f)
+                        {
+                            SetRotationRadians(GetRotationRadians() - (0.04f + (-sliding / 60)));
+                        }
+                        if (m_velocity < 2.0f && m_velocity > 0.5f)
+                        {
+                            SetRotationRadians(GetRotationRadians() - 0.04f);
+                        }
+                    }
+                    else
+                    {
+                        SetRotationRadians(GetRotationRadians() - (0.02f + (-sliding / 60)) * (m_velocity / 5));
+                    }
+                }
 
-            if (m_velocity > MAXSPEED) {
-                m_velocity = MAXSPEED;
-            }
-            m_velocity *= 0.99f;
-            sliding *= 0.98f;
+                if (m_velocity > MAXSPEED)
+                {
+                    m_velocity = MAXSPEED;
+                }
+                m_velocity *= 0.99f;
+                sliding *= 0.98f;
 
-            //if (sliding > 0.01f || sliding < -0.01f)
-            //   m_velocity *= 0.99f;
-            if (sliding > 0.4f) {
-                sliding = 0.4f;
-            }
-            if (sliding < -0.4f) {
-                sliding = -0.4f;
-            }
-            if (slide > 1) {
-                slide = 1.0f;
-            }
-            if (slide < -1) {
-                slide = -1.0f;
-            }
+                //if (sliding > 0.01f || sliding < -0.01f)
+                //   m_velocity *= 0.99f;
+                if (sliding > 0.4f)
+                {
+                    sliding = 0.4f;
+                }
+                if (sliding < -0.4f)
+                {
+                    sliding = -0.4f;
+                }
+                if (slide > 1)
+                {
+                    slide = 1.0f;
+                }
+                if (slide < -1)
+                {
+                    slide = -1.0f;
+                }
 
-            lastMoveX = m_velocity * (float)Math.Cos(GetRotationRadians() + (slide * sliding));
-            lastMoveY = m_velocity * (float)Math.Sin(GetRotationRadians() + (slide * sliding));
+                lastMoveX = m_velocity * (float)Math.Cos(GetRotationRadians() + (slide * sliding));
+                lastMoveY = m_velocity * (float)Math.Sin(GetRotationRadians() + (slide * sliding));
 
-            m_position.X += lastMoveX;
-            m_position.Y += lastMoveY;
+                m_position.X += lastMoveX;
+                m_position.Y += lastMoveY;
 
-            Debug.AddText(new DebugText(GetRotationRadians().ToString(), new Vector2(500, 90)));
-            //reset values to false, to check the next update
+                Debug.AddText(new DebugText(GetRotationRadians().ToString(), new Vector2(500, 90)));
+                //reset values to false, to check the next update
 
-            m_braking = false;
-            // Update position and rotation of the vehicle's sprite
-            UpdateCollider();
+                m_braking = false;
+                // Update position and rotation of the vehicle's sprite
+                UpdateCollider();
+            }
         }
     }
 }

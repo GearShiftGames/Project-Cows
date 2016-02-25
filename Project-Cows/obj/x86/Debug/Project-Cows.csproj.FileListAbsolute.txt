@@ -126,3 +126,7 @@ M:\Project Cows\Project-Cows\obj\x86\Debug\Project-Cows.pdb
 M:\Uni Stuff\Year 3\Prototype Game Development\Project Cows\Project-Cows\bin\Windows\Debug\Content\ITSACOO.xnb
 M:\Uni Stuff\Year 3\Prototype Game Development\Project Cows\Project-Cows\bin\Windows\Debug\Content\Tractor_Blue.xnb
 M:\Uni Stuff\Year 3\Prototype Game Development\Project Cows\Project-Cows\bin\Windows\Debug\Content\Tyre.xnb
+M:\Project Cows\Project-Cows\bin\Windows\Debug\Data\Level\0\vehicles.ini
+M:\Project Cows\Project-Cows\bin\Windows\Debug\Data\Level\0\barriers.ini
+M:\Project Cows\Project-Cows\bin\Windows\Debug\Content\barrier.xnb
+M:\Project Cows\Project-Cows\obj\x86\Debug\Project-Cows.csprojResolveAssemblyReference.cache
