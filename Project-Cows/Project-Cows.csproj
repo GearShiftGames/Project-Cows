@@ -42,6 +42,7 @@
     <Compile Include="Source\Application\Application.cs" />
     <Compile Include="Source\Application\Barrier.cs" />
     <Compile Include="Source\Application\Entity\EntityStruct.cs" />
+    <Compile Include="Source\Application\Entity\VehicleBackup.cs" />
     <Compile Include="Source\Application\Track\Checkpoint.cs" />
     <Compile Include="Source\Application\Entity\Entity.cs" />
     <Compile Include="Source\Application\Entity\EntityCollider.cs" />
