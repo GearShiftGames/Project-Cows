@@ -35,60 +35,6 @@ C:\Users\deano\OneDrive\University Files\Third Year\Prototype Game Development\P
 C:\Users\deano\OneDrive\University Files\Third Year\Prototype Game Development\Projects\Project-Cows\Project-Cows\bin\Windows\Debug\Content\carCollider.xnb
 C:\Users\deano\OneDrive\University Files\Third Year\Prototype Game Development\Projects\Project-Cows\Project-Cows\bin\Windows\Debug\Content\entityCollided.xnb
 C:\Users\deano\OneDrive\University Files\Third Year\Prototype Game Development\Projects\Project-Cows\Project-Cows\bin\Windows\Debug\Content\entityUncollided.xnb
-M:\Project Cows\Project-Cows\obj\x86\Debug\Project-Cows.exe
-M:\Project Cows\Project-Cows\obj\x86\Debug\Project-Cows.pdb
-M:\Project Cows\Project-Cows\bin\Windows\Debug\Content\carCollider.xnb
-M:\Project Cows\Project-Cows\bin\Windows\Debug\Content\entityCollided.xnb
-M:\Project Cows\Project-Cows\bin\Windows\Debug\Content\entityUncollided.xnb
-M:\Project Cows\Project-Cows\bin\Windows\Debug\Content\animation.xnb
-M:\Project Cows\Project-Cows\bin\Windows\Debug\Content\animZombie.xnb
-M:\Project Cows\Project-Cows\bin\Windows\Debug\Content\basic_font.xnb
-M:\Project Cows\Project-Cows\bin\Windows\Debug\Content\car.xnb
-M:\Project Cows\Project-Cows\bin\Windows\Debug\Content\controlTemp.xnb
-M:\Project Cows\Project-Cows\bin\Windows\Debug\Content\controlTempBG.xnb
-M:\Project Cows\Project-Cows\bin\Windows\Debug\Content\pixel.xnb
-M:\Project Cows\Project-Cows\bin\Windows\Debug\Content\purpleCar.xnb
-M:\Project Cows\Project-Cows\bin\Windows\Debug\Content\Square.xnb
-M:\Project Cows\Project-Cows\bin\Windows\Debug\Project-Cows.exe
-M:\Project Cows\Project-Cows\bin\Windows\Debug\Project-Cows.pdb
-M:\Project Cows\Project-Cows\bin\Windows\Debug\MonoGame.Framework.dll
-M:\Project Cows\Project-Cows\bin\Windows\Debug\SharpDX.MediaFoundation.dll
-M:\Project Cows\Project-Cows\bin\Windows\Debug\SharpDX.dll
-M:\Project Cows\Project-Cows\bin\Windows\Debug\SharpDX.XAudio2.dll
-M:\Project Cows\Project-Cows\bin\Windows\Debug\SharpDX.Direct3D11.dll
-M:\Project Cows\Project-Cows\bin\Windows\Debug\SharpDX.DXGI.dll
-M:\Project Cows\Project-Cows\bin\Windows\Debug\SharpDX.Direct2D1.dll
-M:\Project Cows\Project-Cows\bin\Windows\Debug\SharpDX.XInput.dll
-M:\Project Cows\Project-Cows\bin\Windows\Debug\SharpDX.RawInput.dll
-M:\Project Cows\Project-Cows\bin\Windows\Debug\SharpDX.Direct3D9.dll
-M:\Project Cows\Project-Cows\bin\Windows\Debug\MonoGame.Framework.xml
-M:\Project Cows\Project-Cows\bin\Windows\Debug\SharpDX.MediaFoundation.xml
-M:\Project Cows\Project-Cows\bin\Windows\Debug\SharpDX.xml
-M:\Project Cows\Project-Cows\bin\Windows\Debug\SharpDX.XAudio2.xml
-M:\Project Cows\Project-Cows\bin\Windows\Debug\SharpDX.Direct3D11.xml
-M:\Project Cows\Project-Cows\bin\Windows\Debug\SharpDX.DXGI.xml
-M:\Project Cows\Project-Cows\bin\Windows\Debug\SharpDX.Direct2D1.xml
-M:\Project Cows\Project-Cows\bin\Windows\Debug\SharpDX.XInput.xml
-M:\Project Cows\Project-Cows\bin\Windows\Debug\SharpDX.RawInput.xml
-M:\Project Cows\Project-Cows\bin\Windows\Debug\SharpDX.Direct3D9.xml
-M:\Project Cows\Project-Cows\obj\x86\Debug\Project-Cows.csprojResolveAssemblyReference.cache
-M:\Project Cows\Project-Cows\bin\Windows\Debug\Content\V2_Background_Grass.xnb
-M:\Project Cows\Project-Cows\bin\Windows\Debug\Content\corner.xnb
-M:\Uni Stuff\Year 3\Prototype Game Development\Project Cows\Project-Cows\bin\Windows\Debug\Content\animation.xnb
-M:\Uni Stuff\Year 3\Prototype Game Development\Project Cows\Project-Cows\bin\Windows\Debug\Content\animZombie.xnb
-M:\Uni Stuff\Year 3\Prototype Game Development\Project Cows\Project-Cows\bin\Windows\Debug\Content\basic_font.xnb
-M:\Uni Stuff\Year 3\Prototype Game Development\Project Cows\Project-Cows\bin\Windows\Debug\Content\car.xnb
-M:\Uni Stuff\Year 3\Prototype Game Development\Project Cows\Project-Cows\bin\Windows\Debug\Content\carCollider.xnb
-M:\Uni Stuff\Year 3\Prototype Game Development\Project Cows\Project-Cows\bin\Windows\Debug\Content\checkpoint.xnb
-M:\Uni Stuff\Year 3\Prototype Game Development\Project Cows\Project-Cows\bin\Windows\Debug\Content\controlTemp.xnb
-M:\Uni Stuff\Year 3\Prototype Game Development\Project Cows\Project-Cows\bin\Windows\Debug\Content\controlTempBG.xnb
-M:\Uni Stuff\Year 3\Prototype Game Development\Project Cows\Project-Cows\bin\Windows\Debug\Content\corner.xnb
-M:\Uni Stuff\Year 3\Prototype Game Development\Project Cows\Project-Cows\bin\Windows\Debug\Content\entityCollided.xnb
-M:\Uni Stuff\Year 3\Prototype Game Development\Project Cows\Project-Cows\bin\Windows\Debug\Content\entityUncollided.xnb
-M:\Uni Stuff\Year 3\Prototype Game Development\Project Cows\Project-Cows\bin\Windows\Debug\Content\pixel.xnb
-M:\Uni Stuff\Year 3\Prototype Game Development\Project Cows\Project-Cows\bin\Windows\Debug\Content\purpleCar.xnb
-M:\Uni Stuff\Year 3\Prototype Game Development\Project Cows\Project-Cows\bin\Windows\Debug\Content\Square.xnb
-M:\Uni Stuff\Year 3\Prototype Game Development\Project Cows\Project-Cows\bin\Windows\Debug\Content\V2_Background_Grass.xnb
 M:\Uni Stuff\Year 3\Prototype Game Development\Project Cows\Project-Cows\bin\Windows\Debug\Project-Cows.exe
 M:\Uni Stuff\Year 3\Prototype Game Development\Project Cows\Project-Cows\bin\Windows\Debug\Project-Cows.pdb
 M:\Uni Stuff\Year 3\Prototype Game Development\Project Cows\Project-Cows\bin\Windows\Debug\MonoGame.Framework.dll
@@ -113,4 +59,105 @@ M:\Uni Stuff\Year 3\Prototype Game Development\Project Cows\Project-Cows\bin\Win
 M:\Uni Stuff\Year 3\Prototype Game Development\Project Cows\Project-Cows\bin\Windows\Debug\SharpDX.Direct3D9.xml
 M:\Uni Stuff\Year 3\Prototype Game Development\Project Cows\Project-Cows\obj\x86\Debug\Project-Cows.exe
 M:\Uni Stuff\Year 3\Prototype Game Development\Project Cows\Project-Cows\obj\x86\Debug\Project-Cows.pdb
-M:\Uni Stuff\Year 3\Prototype Game Development\Project Cows\Project-Cows\obj\x86\Debug\Project-Cows.csprojResolveAssemblyReference.cache
+M:\Uni Stuff\Year 3\Prototype Game Development\Project Cows\Project-Cows\bin\Windows\Debug\Content\animation.xnb
+M:\Uni Stuff\Year 3\Prototype Game Development\Project Cows\Project-Cows\bin\Windows\Debug\Content\animZombie.xnb
+M:\Uni Stuff\Year 3\Prototype Game Development\Project Cows\Project-Cows\bin\Windows\Debug\Content\basic_font.xnb
+M:\Uni Stuff\Year 3\Prototype Game Development\Project Cows\Project-Cows\bin\Windows\Debug\Content\car.xnb
+M:\Uni Stuff\Year 3\Prototype Game Development\Project Cows\Project-Cows\bin\Windows\Debug\Content\carCollider.xnb
+M:\Uni Stuff\Year 3\Prototype Game Development\Project Cows\Project-Cows\bin\Windows\Debug\Content\checkpoint.xnb
+M:\Uni Stuff\Year 3\Prototype Game Development\Project Cows\Project-Cows\bin\Windows\Debug\Content\controlTemp.xnb
+M:\Uni Stuff\Year 3\Prototype Game Development\Project Cows\Project-Cows\bin\Windows\Debug\Content\controlTempBG.xnb
+M:\Uni Stuff\Year 3\Prototype Game Development\Project Cows\Project-Cows\bin\Windows\Debug\Content\corner.xnb
+M:\Uni Stuff\Year 3\Prototype Game Development\Project Cows\Project-Cows\bin\Windows\Debug\Content\entityCollided.xnb
+M:\Uni Stuff\Year 3\Prototype Game Development\Project Cows\Project-Cows\bin\Windows\Debug\Content\entityUncollided.xnb
+M:\Uni Stuff\Year 3\Prototype Game Development\Project Cows\Project-Cows\bin\Windows\Debug\Content\pixel.xnb
+M:\Uni Stuff\Year 3\Prototype Game Development\Project Cows\Project-Cows\bin\Windows\Debug\Content\purpleCar.xnb
+M:\Uni Stuff\Year 3\Prototype Game Development\Project Cows\Project-Cows\bin\Windows\Debug\Content\Square.xnb
+M:\Uni Stuff\Year 3\Prototype Game Development\Project Cows\Project-Cows\bin\Windows\Debug\Content\V2_Background_Grass.xnb
+M:\Uni Stuff\Year 3\Prototype Game Development\Project Cows\Project-Cows\bin\Windows\Debug\Data\settings.ini
+M:\Uni Stuff\Year 3\Prototype Game Development\Project Cows\Project-Cows\bin\Windows\Debug\Data\Level\0\checkpoints.ini
+M:\Project Cows\Project-Cows\bin\Windows\Debug\Data\settings.ini
+M:\Project Cows\Project-Cows\bin\Windows\Debug\Data\Level\0\checkpoints.ini
+M:\Uni Stuff\Year 3\Prototype Game Development\Project Cows\Project-Cows\bin\Windows\Debug\Data\Level\0\vehicles.ini
+M:\Uni Stuff\Year 3\Prototype Game Development\Project Cows\Project-Cows\bin\Windows\Debug\Content\barrier.xnb
+M:\Uni Stuff\Year 3\Prototype Game Development\Project Cows\Project-Cows\bin\Windows\Debug\Data\Level\0\barriers.ini
+M:\Project Cows\Project-Cows\bin\Windows\Debug\Project-Cows.exe
+M:\Project Cows\Project-Cows\bin\Windows\Debug\Project-Cows.pdb
+M:\Project Cows\Project-Cows\bin\Windows\Debug\MonoGame.Framework.dll
+M:\Project Cows\Project-Cows\bin\Windows\Debug\SharpDX.MediaFoundation.dll
+M:\Project Cows\Project-Cows\bin\Windows\Debug\SharpDX.dll
+M:\Project Cows\Project-Cows\bin\Windows\Debug\SharpDX.XAudio2.dll
+M:\Project Cows\Project-Cows\bin\Windows\Debug\SharpDX.Direct3D11.dll
+M:\Project Cows\Project-Cows\bin\Windows\Debug\SharpDX.DXGI.dll
+M:\Project Cows\Project-Cows\bin\Windows\Debug\SharpDX.Direct2D1.dll
+M:\Project Cows\Project-Cows\bin\Windows\Debug\SharpDX.XInput.dll
+M:\Project Cows\Project-Cows\bin\Windows\Debug\SharpDX.RawInput.dll
+M:\Project Cows\Project-Cows\bin\Windows\Debug\SharpDX.Direct3D9.dll
+M:\Project Cows\Project-Cows\bin\Windows\Debug\MonoGame.Framework.xml
+M:\Project Cows\Project-Cows\bin\Windows\Debug\SharpDX.MediaFoundation.xml
+M:\Project Cows\Project-Cows\bin\Windows\Debug\SharpDX.xml
+M:\Project Cows\Project-Cows\bin\Windows\Debug\SharpDX.XAudio2.xml
+M:\Project Cows\Project-Cows\bin\Windows\Debug\SharpDX.Direct3D11.xml
+M:\Project Cows\Project-Cows\bin\Windows\Debug\SharpDX.DXGI.xml
+M:\Project Cows\Project-Cows\bin\Windows\Debug\SharpDX.Direct2D1.xml
+M:\Project Cows\Project-Cows\bin\Windows\Debug\SharpDX.XInput.xml
+M:\Project Cows\Project-Cows\bin\Windows\Debug\SharpDX.RawInput.xml
+M:\Project Cows\Project-Cows\bin\Windows\Debug\SharpDX.Direct3D9.xml
+M:\Project Cows\Project-Cows\obj\x86\Debug\Project-Cows.exe
+M:\Project Cows\Project-Cows\obj\x86\Debug\Project-Cows.pdb
+M:\Uni Stuff\Year 3\Prototype Game Development\Project Cows\Project-Cows\bin\Windows\Debug\Content\ITSACOO.xnb
+M:\Uni Stuff\Year 3\Prototype Game Development\Project Cows\Project-Cows\bin\Windows\Debug\Content\Tractor_Blue.xnb
+M:\Uni Stuff\Year 3\Prototype Game Development\Project Cows\Project-Cows\bin\Windows\Debug\Content\Tyre.xnb
+M:\Project Cows\Project-Cows\bin\Windows\Debug\Data\Level\0\vehicles.ini
+M:\Project Cows\Project-Cows\bin\Windows\Debug\Data\Level\0\barriers.ini
+M:\Project Cows\Project-Cows\bin\Windows\Debug\Content\animation.xnb
+M:\Project Cows\Project-Cows\bin\Windows\Debug\Content\animZombie.xnb
+M:\Project Cows\Project-Cows\bin\Windows\Debug\Content\barrier.xnb
+M:\Project Cows\Project-Cows\bin\Windows\Debug\Content\basic_font.xnb
+M:\Project Cows\Project-Cows\bin\Windows\Debug\Content\car.xnb
+M:\Project Cows\Project-Cows\bin\Windows\Debug\Content\carCollider.xnb
+M:\Project Cows\Project-Cows\bin\Windows\Debug\Content\checkpoint.xnb
+M:\Project Cows\Project-Cows\bin\Windows\Debug\Content\controlTemp.xnb
+M:\Project Cows\Project-Cows\bin\Windows\Debug\Content\controlTempBG.xnb
+M:\Project Cows\Project-Cows\bin\Windows\Debug\Content\corner.xnb
+M:\Project Cows\Project-Cows\bin\Windows\Debug\Content\entityCollided.xnb
+M:\Project Cows\Project-Cows\bin\Windows\Debug\Content\entityUncollided.xnb
+M:\Project Cows\Project-Cows\bin\Windows\Debug\Content\ITSACOO.xnb
+M:\Project Cows\Project-Cows\bin\Windows\Debug\Content\pixel.xnb
+M:\Project Cows\Project-Cows\bin\Windows\Debug\Content\purpleCar.xnb
+M:\Project Cows\Project-Cows\bin\Windows\Debug\Content\Square.xnb
+M:\Project Cows\Project-Cows\bin\Windows\Debug\Content\Tractor_Blue.xnb
+M:\Project Cows\Project-Cows\bin\Windows\Debug\Content\Tyre.xnb
+M:\Project Cows\Project-Cows\bin\Windows\Debug\Content\V2_Background_Grass.xnb
+\\vmwfil04\Students$\1301504\Project Cows\Project-Cows\obj\x86\Debug\Project-Cows.exe
+\\vmwfil04\Students$\1301504\Project Cows\Project-Cows\obj\x86\Debug\Project-Cows.pdb
+M:\Project Cows\Project-Cows\obj\x86\Debug\Project-Cows.csprojResolveAssemblyReference.cache
+\\vmwfil04\students$\1301755\Desktop\Project Cow Racing\Project-Cows\bin\Windows\Debug\Data\settings.ini
+\\vmwfil04\students$\1301755\Desktop\Project Cow Racing\Project-Cows\bin\Windows\Debug\Data\Level\0\vehicles.ini
+\\vmwfil04\students$\1301755\Desktop\Project Cow Racing\Project-Cows\bin\Windows\Debug\Data\Level\0\checkpoints.ini
+\\vmwfil04\students$\1301755\Desktop\Project Cow Racing\Project-Cows\bin\Windows\Debug\Data\Level\0\barriers.ini
+\\vmwfil04\students$\1301755\Desktop\Project Cow Racing\Project-Cows\bin\Windows\Debug\Project-Cows.exe
+\\vmwfil04\students$\1301755\Desktop\Project Cow Racing\Project-Cows\bin\Windows\Debug\Project-Cows.pdb
+\\vmwfil04\students$\1301755\Desktop\Project Cow Racing\Project-Cows\bin\Windows\Debug\MonoGame.Framework.dll
+\\vmwfil04\students$\1301755\Desktop\Project Cow Racing\Project-Cows\bin\Windows\Debug\SharpDX.MediaFoundation.dll
+\\vmwfil04\students$\1301755\Desktop\Project Cow Racing\Project-Cows\bin\Windows\Debug\SharpDX.dll
+\\vmwfil04\students$\1301755\Desktop\Project Cow Racing\Project-Cows\bin\Windows\Debug\SharpDX.XAudio2.dll
+\\vmwfil04\students$\1301755\Desktop\Project Cow Racing\Project-Cows\bin\Windows\Debug\SharpDX.Direct3D11.dll
+\\vmwfil04\students$\1301755\Desktop\Project Cow Racing\Project-Cows\bin\Windows\Debug\SharpDX.DXGI.dll
+\\vmwfil04\students$\1301755\Desktop\Project Cow Racing\Project-Cows\bin\Windows\Debug\SharpDX.Direct2D1.dll
+\\vmwfil04\students$\1301755\Desktop\Project Cow Racing\Project-Cows\bin\Windows\Debug\SharpDX.XInput.dll
+\\vmwfil04\students$\1301755\Desktop\Project Cow Racing\Project-Cows\bin\Windows\Debug\SharpDX.RawInput.dll
+\\vmwfil04\students$\1301755\Desktop\Project Cow Racing\Project-Cows\bin\Windows\Debug\SharpDX.Direct3D9.dll
+\\vmwfil04\students$\1301755\Desktop\Project Cow Racing\Project-Cows\bin\Windows\Debug\MonoGame.Framework.xml
+\\vmwfil04\students$\1301755\Desktop\Project Cow Racing\Project-Cows\bin\Windows\Debug\SharpDX.MediaFoundation.xml
+\\vmwfil04\students$\1301755\Desktop\Project Cow Racing\Project-Cows\bin\Windows\Debug\SharpDX.xml
+\\vmwfil04\students$\1301755\Desktop\Project Cow Racing\Project-Cows\bin\Windows\Debug\SharpDX.XAudio2.xml
+\\vmwfil04\students$\1301755\Desktop\Project Cow Racing\Project-Cows\bin\Windows\Debug\SharpDX.Direct3D11.xml
+\\vmwfil04\students$\1301755\Desktop\Project Cow Racing\Project-Cows\bin\Windows\Debug\SharpDX.DXGI.xml
+\\vmwfil04\students$\1301755\Desktop\Project Cow Racing\Project-Cows\bin\Windows\Debug\SharpDX.Direct2D1.xml
+\\vmwfil04\students$\1301755\Desktop\Project Cow Racing\Project-Cows\bin\Windows\Debug\SharpDX.XInput.xml
+\\vmwfil04\students$\1301755\Desktop\Project Cow Racing\Project-Cows\bin\Windows\Debug\SharpDX.RawInput.xml
+\\vmwfil04\students$\1301755\Desktop\Project Cow Racing\Project-Cows\bin\Windows\Debug\SharpDX.Direct3D9.xml
+\\vmwfil04\students$\1301755\Desktop\Project Cow Racing\Project-Cows\obj\x86\Debug\Project-Cows.csprojResolveAssemblyReference.cache
+\\vmwfil04\students$\1301755\Desktop\Project Cow Racing\Project-Cows\obj\x86\Debug\Project-Cows.exe
+\\vmwfil04\students$\1301755\Desktop\Project Cow Racing\Project-Cows\obj\x86\Debug\Project-Cows.pdb

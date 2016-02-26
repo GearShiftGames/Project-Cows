@@ -4,20 +4,39 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>M:/Uni Stuff/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/animZombie.bmp</File>
-    <File>M:/Uni Stuff/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/basic_font.spritefont</File>
-    <File>M:/Uni Stuff/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/pixel.png</File>
-    <File>M:/Uni Stuff/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/animation.png</File>
-    <File>M:/Uni Stuff/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/controlTemp.png</File>
-    <File>M:/Uni Stuff/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/controlTempBG.png</File>
-    <File>M:/Uni Stuff/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/car.png</File>
-    <File>M:/Uni Stuff/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Square.png</File>
-    <File>M:/Uni Stuff/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/purpleCar.png</File>
-    <File>M:/Uni Stuff/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/carCollider.png</File>
-    <File>M:/Uni Stuff/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/entityCollided.png</File>
-    <File>M:/Uni Stuff/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/entityUncollided.png</File>
-    <File>M:/Uni Stuff/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/V2_Background_Grass.png</File>
-    <File>M:/Uni Stuff/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/corner.png</File>
-    <File>M:/Uni Stuff/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/checkpoint.png</File>
+    <File>M:/desktop/Project Cow Racing/Project-Cows/Content/animZombie.bmp</File>
+    <File>M:/desktop/Project Cow Racing/Project-Cows/Content/basic_font.spritefont</File>
+    <File>M:/desktop/Project Cow Racing/Project-Cows/Content/pixel.png</File>
+    <File>M:/desktop/Project Cow Racing/Project-Cows/Content/animation.png</File>
+    <File>M:/desktop/Project Cow Racing/Project-Cows/Content/controlTemp.png</File>
+    <File>M:/desktop/Project Cow Racing/Project-Cows/Content/controlTempBG.png</File>
+    <File>M:/desktop/Project Cow Racing/Project-Cows/Content/car.png</File>
+    <File>M:/desktop/Project Cow Racing/Project-Cows/Content/Square.png</File>
+    <File>M:/desktop/Project Cow Racing/Project-Cows/Content/purpleCar.png</File>
+    <File>M:/desktop/Project Cow Racing/Project-Cows/Content/carCollider.png</File>
+    <File>M:/desktop/Project Cow Racing/Project-Cows/Content/entityCollided.png</File>
+    <File>M:/desktop/Project Cow Racing/Project-Cows/Content/entityUncollided.png</File>
+    <File>M:/desktop/Project Cow Racing/Project-Cows/Content/V2_Background_Grass.png</File>
+    <File>M:/desktop/Project Cow Racing/Project-Cows/Content/corner.png</File>
+    <File>M:/desktop/Project Cow Racing/Project-Cows/Content/checkpoint.png</File>
+    <File>M:/desktop/Project Cow Racing/Project-Cows/Content/barrier.png</File>
+    <File>M:/desktop/Project Cow Racing/Project-Cows/Content/ITSACOO.png</File>
+    <File>M:/desktop/Project Cow Racing/Project-Cows/Content/Tractor_Blue.png</File>
+    <File>M:/desktop/Project Cow Racing/Project-Cows/Content/Tyre.png</File>
+    <File>M:/desktop/Project Cow Racing/Project-Cows/Content/1.png</File>
+    <File>M:/desktop/Project Cow Racing/Project-Cows/Content/2.png</File>
+    <File>M:/desktop/Project Cow Racing/Project-Cows/Content/3.png</File>
+    <File>M:/desktop/Project Cow Racing/Project-Cows/Content/4.png</File>
+    <File>M:/desktop/Project Cow Racing/Project-Cows/Content/Back.png</File>
+    <File>M:/desktop/Project Cow Racing/Project-Cows/Content/Credits.png</File>
+    <File>M:/desktop/Project Cow Racing/Project-Cows/Content/Exit.png</File>
+    <File>M:/desktop/Project Cow Racing/Project-Cows/Content/Logo.png</File>
+    <File>M:/desktop/Project Cow Racing/Project-Cows/Content/Menu.jpg</File>
+    <File>M:/desktop/Project Cow Racing/Project-Cows/Content/Options.png</File>
+    <File>M:/desktop/Project Cow Racing/Project-Cows/Content/Play.png</File>
+    <File>M:/desktop/Project Cow Racing/Project-Cows/Content/Title.png</File>
+    <File>M:/desktop/Project Cow Racing/Project-Cows/Content/V2_Cow_Army.png</File>
+    <File>M:/desktop/Project Cow Racing/Project-Cows/Content/V2_Cow_Highland_Brown.png</File>
+    <File>M:/desktop/Project Cow Racing/Project-Cows/Content/V2_Cow_Plain.png</File>
   </SourceFiles>
 </SourceFileCollection>

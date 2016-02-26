@@ -42,16 +42,13 @@ namespace Project_Cows.Source.Application {
 			// Initialise the application
 			// ================
 
+            // Load settings
+            Settings.LoadSettings();
+
 			// Set up window
 			h_graphicsDeviceHandler.IsFullScreen = Settings.m_fullscreen;
-			if(Settings.m_fullscreen) {
-				h_graphicsDeviceHandler.PreferredBackBufferWidth = GraphicsDevice.DisplayMode.Width;
-				h_graphicsDeviceHandler.PreferredBackBufferHeight = GraphicsDevice.DisplayMode.Height;
-			} else {
-				h_graphicsDeviceHandler.PreferredBackBufferWidth = Settings.m_screenWidth;
-				h_graphicsDeviceHandler.PreferredBackBufferHeight = Settings.m_screenHeight;
-                
-			}
+			h_graphicsDeviceHandler.PreferredBackBufferWidth = Settings.m_screenWidth;
+			h_graphicsDeviceHandler.PreferredBackBufferHeight = Settings.m_screenHeight;
 			
 			h_graphicsDeviceHandler.ApplyChanges();
 
@@ -63,7 +60,17 @@ namespace Project_Cows.Source.Application {
             m_victoryState = new VictoryState();
 
 			// Set initial state
-			m_currentState = m_inGameState;											// NOTE: Change for testing -Dean
+            switch (Settings.m_startState) {
+                case GameState.MAIN_MENU:
+                    m_currentState = m_menuState;
+                    break;
+                case GameState.IN_GAME:
+                    m_currentState = m_inGameState;
+                    break;
+                case GameState.VICTORY_SCREEN:
+                    m_currentState = m_victoryState;
+                    break;
+            }
 			
 			base.Initialize();
 		}
@@ -94,8 +101,14 @@ namespace Project_Cows.Source.Application {
 
 			// Close window - TEMP
 			if(Keyboard.GetState().IsKeyDown(Keys.Escape)) {
+                Settings.SaveSettings();
 				Exit();
 			}
+
+            // Reset state - TEMP
+            if (Keyboard.GetState().IsKeyDown(Keys.F5)) {
+                m_currentState.SetExecutionState(ExecutionState.INITIALISING);
+            }
 
 			// Set fullscreen mode
 			if(Keyboard.GetState().IsKeyDown(Keys.F11) && !Settings.m_fullscreen) {
