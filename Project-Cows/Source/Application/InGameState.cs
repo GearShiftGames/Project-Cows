@@ -39,6 +39,8 @@ namespace Project_Cows.Source.Application {
 
         private List<int> m_rankings = new List<int>();
 
+        bool finished;
+
 		// Methods
 		public InGameState() : base() {
 			// InGameState constructor
@@ -93,6 +95,8 @@ namespace Project_Cows.Source.Application {
             // Start timer
             startTimer.StartTimer(1000.0f);
 
+            finished = false;
+
 			// Set initial next state
 			m_nextState = GameState.VICTORY_SCREEN;
 
@@ -133,27 +137,37 @@ namespace Project_Cows.Source.Application {
 
             startTimer.Update(gameTime_.ElapsedGameTime.Milliseconds);
             if (startTimer.timerFinished) {
-
-                // Update each player
-                for (int index = 0; index < m_players.Count; ++index) {
-                    bool left = false;
-                    bool right = false;
-                    bool brake = false;
-                    if (Keyboard.GetState().IsKeyDown(Keys.Left)) {
-                        left = true;
-                    }
-                    if (Keyboard.GetState().IsKeyDown(Keys.Right)) {
-                        right = true;
-                    }
-                    if (Keyboard.GetState().IsKeyDown(Keys.Space) || Keyboard.GetState().IsKeyDown(Keys.Down)) {
-                        brake = true;
-                    }
-                    if (Keyboard.GetState().IsKeyDown(Keys.Q))
+                foreach (Player p in m_players)
+                {
+                    if (p.m_currentLap == 4)
                     {
-                        m_players[1].GetVehicle().disable();
+                        finished = true;
                     }
-                    m_players[index].KeyboardMove(left, right, brake);
-                    m_players[index].Update(playerTouches[index]);
+                }
+                if (!finished)
+                {
+                    // Update each player
+                    for (int index = 0; index < m_players.Count; ++index)
+                    {
+                        bool left = false;
+                        bool right = false;
+                        bool brake = false;
+                        if (Keyboard.GetState().IsKeyDown(Keys.Left))
+                        {
+                            left = true;
+                        }
+                        if (Keyboard.GetState().IsKeyDown(Keys.Right))
+                        {
+                            right = true;
+                        }
+                        if (Keyboard.GetState().IsKeyDown(Keys.Space) || Keyboard.GetState().IsKeyDown(Keys.Down))
+                        {
+                            brake = true;
+                        }
+
+                        m_players[index].KeyboardMove(left, right, brake);
+                        m_players[index].Update(playerTouches[index]);
+                    }
                 }
             }
                 
@@ -266,6 +280,10 @@ namespace Project_Cows.Source.Application {
             if (!startTimer.timerFinished) {
                 graphicsHandler_.DrawText(startTimer.timeRemaining.ToString() + "ms", new Vector2(500, 20), Color.Red);
             }
+            if(finished){
+                graphicsHandler_.DrawText("SOMEONE WON", new Vector2(500, 500), Color.Red);
+            }
+            
 
             // Stop rendering graphics
             graphicsHandler_.StopDrawing();
