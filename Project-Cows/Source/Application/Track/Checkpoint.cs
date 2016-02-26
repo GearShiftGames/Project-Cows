@@ -21,15 +21,17 @@ namespace Project_Cows.Source.Application.Track {
         private int m_nextID;
         private int m_pathID;
         private Vector2 m_position;
+        private float m_rotation;
 
         private CheckpointType m_checkpointType;
 
         // Methods
-        public Checkpoint(int id_, int nextID_, int pathID_, Vector2 position_) {
+        public Checkpoint(int id_, int nextID_, int pathID_, Vector2 position_, float rotation_) {
             m_ID = id_;
             m_nextID = nextID_;
             m_pathID = pathID_;
             m_position = position_;
+            m_rotation = rotation_;
 
             // Set checkpoint type
             if (m_ID == 0) {
@@ -58,16 +60,20 @@ namespace Project_Cows.Source.Application.Track {
             return m_position;
         }
 
+        public float GetRotation() {
+            return m_rotation;
+        }
+
         public CheckpointType GetType() {
             return m_checkpointType;
         }
 
         public static Checkpoint First(Vector2 position_) {
-            return new Checkpoint(0, 1, 0, position_);
+            return new Checkpoint(0, 1, 0, position_, 0);
         }
 
         public static Checkpoint Last(int numberOfCheckpoints_, Vector2 position_) {
-            return new Checkpoint(numberOfCheckpoints_ - 1, 0, 0, position_);
+            return new Checkpoint(numberOfCheckpoints_ - 1, 0, 0, position_, 0);
         }
 
         // Setters

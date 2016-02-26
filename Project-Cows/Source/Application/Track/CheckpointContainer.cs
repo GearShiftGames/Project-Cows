@@ -48,8 +48,8 @@ namespace Project_Cows.Source.Application.Track {
         }
 
         // Setters
-        public void SetCheckpoint(int id_, int nextID_, int pathID_, Vector2 position_) {
-            m_checkpoint = new Checkpoint(id_, nextID_, pathID_, position_);
+        public void SetCheckpoint(int id_, int nextID_, int pathID_, Vector2 position_, float rotation_) {
+            m_checkpoint = new Checkpoint(id_, nextID_, pathID_, position_, rotation_);
         }
 
         public void SetEntity(ContentManager content_, Texture2D texture_, float rotation_=0) {

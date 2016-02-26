@@ -82,7 +82,7 @@ namespace Project_Cows.Source.Application.Entity
                 } 
                 else 
                 {
-                    m_speed /= 1.04f;
+                    m_speed /= 1.10f;
                 }
 				m_speed += ACCELERATION_RATE;
 

@@ -58,6 +58,8 @@ namespace Project_Cows.Source.System {
                 string s_pathID = m_checkpointData.ReadValue(index.ToString(), "pathID");
                 string s_positionX = m_checkpointData.ReadValue(index.ToString(), "positionX");
                 string s_positionY = m_checkpointData.ReadValue(index.ToString(), "positionY");
+                string s_rotation = m_checkpointData.ReadValue(index.ToString(), "rotation");
+
 
                 if (IsStringEmpty(s_ID) || IsStringEmpty(s_nextID) || IsStringEmpty(s_pathID) || IsStringEmpty(s_positionX) || IsStringEmpty(s_positionY)) {
                     gotAllCheckpoints = true;
@@ -67,8 +69,9 @@ namespace Project_Cows.Source.System {
                     int pathID = Convert.ToInt32(s_pathID.Replace("\0", string.Empty));
                     int positionX = Convert.ToInt32(s_positionX.Replace("\0", string.Empty));
                     int positionY = Convert.ToInt32(s_positionY.Replace("\0", string.Empty));
+                    int rotation = Convert.ToInt32(s_rotation.Replace("\0", string.Empty));
 
-                    m_checkpoints.Add(new CheckpointContainer(new Checkpoint(ID, nextID, pathID, new Vector2(positionX, positionY))));
+                    m_checkpoints.Add(new CheckpointContainer(new Checkpoint(ID, nextID, pathID, new Vector2(positionX, positionY), rotation)));
                     ++index;
                 }
             }

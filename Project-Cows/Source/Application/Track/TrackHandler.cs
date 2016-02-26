@@ -49,7 +49,7 @@ namespace Project_Cows.Source.Application.Track {
             m_checkpoints = Level.GetCheckpoints();
             // Add entities to the checkpoints
             foreach (CheckpointContainer cc in m_checkpoints) {
-                cc.SetEntity(content_, m_checkpointTexture);
+                cc.SetEntity(content_, m_checkpointTexture, cc.GetCheckpoint().GetRotation());
             }
 
             // Add vehicles
