@@ -39,6 +39,8 @@ namespace Project_Cows.Source.Application {
 
         private List<int> m_rankings = new List<int>();
 
+        bool finished;
+
 		// Methods
 		public InGameState() : base() {
 			// InGameState constructor
@@ -69,12 +71,12 @@ namespace Project_Cows.Source.Application {
             m_players = new List<Player>();
             m_players.Clear();
 			m_players.Add(new Player(content_, cooTexture, carTexture, h_trackHandler.m_vehicles[0], 0, Quadrent.BOTTOM_RIGHT, 1));
-            //m_players.Add(new Player(content_, carTexture, h_trackHandler.m_vehicles[1], 0, Quadrent.BOTTOM_LEFT, 2));
+            m_players.Add(new Player(content_, cooTexture, carTexture, h_trackHandler.m_vehicles[1], 0, Quadrent.BOTTOM_LEFT, 2));
 
 			m_players[0].m_controlScheme.SetSteeringSprite(new Sprite(content_.Load<Texture2D>("controlTemp"), new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
 			m_players[0].m_controlScheme.SetInterfaceSprite(new Sprite(content_.Load<Texture2D>("controlTempBG"), new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
-			//m_players[1].m_controlScheme.SetSteeringSprite(new Sprite(content_.Load<Texture2D>("controlTemp"), new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
-			//m_players[1].m_controlScheme.SetInterfaceSprite(new Sprite(content_.Load<Texture2D>("controlTempBG"), new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
+			m_players[1].m_controlScheme.SetSteeringSprite(new Sprite(content_.Load<Texture2D>("controlTemp"), new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
+			m_players[1].m_controlScheme.SetInterfaceSprite(new Sprite(content_.Load<Texture2D>("controlTempBG"), new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
 
             
             //Set up the Barriers
@@ -92,6 +94,8 @@ namespace Project_Cows.Source.Application {
 
             // Start timer
             startTimer.StartTimer(1000.0f);
+
+            finished = false;
 
 			// Set initial next state
 			m_nextState = GameState.VICTORY_SCREEN;
@@ -133,24 +137,37 @@ namespace Project_Cows.Source.Application {
 
             startTimer.Update(gameTime_.ElapsedGameTime.Milliseconds);
             if (startTimer.timerFinished) {
+                foreach (Player p in m_players)
+                {
+                    if (p.m_currentLap == 4)
+                    {
+                        finished = true;
+                    }
+                }
+                if (!finished)
+                {
+                    // Update each player
+                    for (int index = 0; index < m_players.Count; ++index)
+                    {
+                        bool left = false;
+                        bool right = false;
+                        bool brake = false;
+                        if (Keyboard.GetState().IsKeyDown(Keys.Left))
+                        {
+                            left = true;
+                        }
+                        if (Keyboard.GetState().IsKeyDown(Keys.Right))
+                        {
+                            right = true;
+                        }
+                        if (Keyboard.GetState().IsKeyDown(Keys.Space) || Keyboard.GetState().IsKeyDown(Keys.Down))
+                        {
+                            brake = true;
+                        }
 
-                // Update each player
-                for (int index = 0; index < m_players.Count; ++index) {
-                    bool left = false;
-                    bool right = false;
-                    bool brake = false;
-                    if (Keyboard.GetState().IsKeyDown(Keys.Left)) {
-                        left = true;
+                        m_players[index].KeyboardMove(left, right, brake);
+                        m_players[index].Update(playerTouches[index]);
                     }
-                    if (Keyboard.GetState().IsKeyDown(Keys.Right)) {
-                        right = true;
-                    }
-                    if (Keyboard.GetState().IsKeyDown(Keys.Space) || Keyboard.GetState().IsKeyDown(Keys.Down)) {
-                        brake = true;
-                    }
-
-                    m_players[index].KeyboardMove(left, right, brake);
-                    m_players[index].Update(playerTouches[index]);
                 }
             }
                 
@@ -161,15 +178,21 @@ namespace Project_Cows.Source.Application {
             foreach (Player p1 in m_players) {
                 // Player vs Player
                 foreach (Player p2 in m_players) {
-                    if (p2.GetID() != p1.GetID()) {
-                        if (CollisionHandler.CheckForCollision(p1.GetVehicle().GetCollider(), p2.GetVehicle().GetCollider())) {
-                            p1.GetVehicle().m_speed = -p1.GetVehicle().m_speed * 1.5f;
+                    if (p1.GetCollideID() == 0) {
+                        if (p2.GetID() != p1.GetID()) {
+                            if (CollisionHandler.CheckForCollision(p1.GetVehicle().GetCollider(), p2.GetVehicle().GetCollider())) {
+                                p1.GetVehicle().m_velocity = -p1.GetVehicle().m_velocity * 1.4f;
+                                p2.GetVehicle().m_velocity = -p2.GetVehicle().m_velocity * 1.4f;
 
-                            // NOTE: Change needs to be made here, as this means that the vehicle would Update() twice in the same frame -Dean
-                            p1.GetVehicle().Update();
-                            p1.GetVehicle().UpdateCollider();
+                                p1.SetCollideID(p2.GetID());
+                                p2.SetCollideID(p1.GetID());
 
-                            Debug.AddText(new DebugText("Defo COllided ye ken?", new Vector2(10.0f, 150.0f)));
+                                // NOTE: Change needs to be made here, as this means that the vehicle would Update() twice in the same frame -Dean
+                                p1.GetVehicle().Update();
+                                p2.GetVehicle().Update();
+
+                                Debug.AddText(new DebugText("Defo COllided ye ken?", new Vector2(10.0f, 150.0f)));
+                            }
                         }
                     }
                 }
@@ -181,11 +204,14 @@ namespace Project_Cows.Source.Application {
 
                         // NOTE: Change needs to be made here, as this means that the vehicle would Update() twice in the same frame -Dean
                         p1.GetVehicle().Update();
-                        p1.GetVehicle().UpdateCollider();
 
                         Debug.AddText(new DebugText("Defo COllided ye ken?", new Vector2(10.0f, 150.0f)));
                     }
                 }
+            }
+
+            foreach (Player p in m_players) {
+                p.SetCollideID(0);
             }
 
             h_trackHandler.Update(m_players);
@@ -254,6 +280,10 @@ namespace Project_Cows.Source.Application {
             if (!startTimer.timerFinished) {
                 graphicsHandler_.DrawText(startTimer.timeRemaining.ToString() + "ms", new Vector2(500, 20), Color.Red);
             }
+            if(finished){
+                graphicsHandler_.DrawText("SOMEONE WON", new Vector2(500, 500), Color.Red);
+            }
+            
 
             // Stop rendering graphics
             graphicsHandler_.StopDrawing();

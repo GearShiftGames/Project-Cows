@@ -26,6 +26,7 @@ namespace Project_Cows.Source.Application {
         public ControlScheme m_controlScheme;
 
         private int m_playerID;
+        private int m_collideID;
 		private Vehicle m_vehicle;
         private Sprite m_cow;
       
@@ -104,9 +105,16 @@ namespace Project_Cows.Source.Application {
             return m_playerID;
         }
 
+        public int GetCollideID() {
+            return m_collideID;
+        }
+
 		public Vehicle GetVehicle() { return m_vehicle; }
         public Sprite GetCow() { return m_cow; }
 
 		// Setters
+        public void SetCollideID(int ID_) {
+            m_collideID = ID_;
+        }
     }
 }

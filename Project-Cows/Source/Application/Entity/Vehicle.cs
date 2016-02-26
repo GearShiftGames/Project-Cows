@@ -13,8 +13,10 @@ using Microsoft.Xna.Framework.Graphics;
 
 using Project_Cows.Source.System;
 
-namespace Project_Cows.Source.Application.Entity{
-    class Vehicle : Entity{
+namespace Project_Cows.Source.Application.Entity
+{
+    class Vehicle : Entity
+    {
         // Class for the player vehicles
         // ================
 
@@ -24,7 +26,7 @@ namespace Project_Cows.Source.Application.Entity{
         private bool m_braking;
 
         private const float MAXSPEED = 5.0f;
-        private const float ACCELERATION_RATE = 0.05f;
+        private const float ACCELERATION_RATE = 0.1f;
         private const float DECELERATION_RATE = -0.15f;
         private const float STEERING_SENSITIVITY = 10.0f;
 
@@ -39,7 +41,9 @@ namespace Project_Cows.Source.Application.Entity{
         int counter = 0;
 
         // Methods
-        public Vehicle(ContentManager content_, Texture2D texture_, Vector2 position_, float m_rotation_) : base(content_, texture_, position_, m_rotation_){
+        public Vehicle(ContentManager content_, Texture2D texture_, Vector2 position_, float m_rotation_)
+            : base(content_, texture_, position_, m_rotation_)
+        {
             // Vehicle constructor
             // ================
             m_rotation = m_rotation_;
@@ -52,7 +56,9 @@ namespace Project_Cows.Source.Application.Entity{
             m_braking = false;
         }
 
-        public Vehicle(ContentManager content_, Texture2D texture_, EntityStruct entityStruct_) : base(content_, texture_, entityStruct_) {
+        public Vehicle(ContentManager content_, Texture2D texture_, EntityStruct entityStruct_)
+            : base(content_, texture_, entityStruct_)
+        {
             // Vehicle constructor
             // ================
             m_rotation = entityStruct_.GetRotation();
@@ -61,7 +67,7 @@ namespace Project_Cows.Source.Application.Entity{
             m_braking = false;
         }
 
-        public void Update(float steeringValue_ = 0, bool braking_ = false) 
+        public void Update(float steeringValue_ = 0, bool braking_ = false)
         {
             // Updates the vehicle
             // ================
@@ -120,29 +126,37 @@ namespace Project_Cows.Source.Application.Entity{
 				{
 					SetRotationRadians(GetRotationRadians() + (0.02f + (-sliding / 60)) * (m_speed / 5));
 				}	
-            }
+			}
 
             //if turning left
-            if (steeringValue_ < -0.2)
-            {
+			if (steeringValue_ < -0.2)
+			{
 				if (steeringValue_ < -0.6)
 				{
-                    slide -= 0.1f * (m_speed / 10);
-                    if (m_speed > 2.0f) 
-                    {
-                        SetRotationRadians(GetRotationRadians() - (0.04f + (-sliding / 60)));
-                    }
-                    if (m_speed < 2.0f && m_speed > 0.5f) 
-                    {
-                        SetRotationRadians(GetRotationRadians() - 0.04f);
-                    }
+					slide -= 0.1f * (m_speed / 10);
+					if (m_speed > 2.0f)
+					{
+						slide -= 0.1f * (m_speed / 10);
+						if (m_speed > 2.0f)
+						{
+							SetRotationRadians(GetRotationRadians() - (0.04f + (-sliding / 60)));
+						}
+						if (m_speed < 2.0f && m_speed > 0.5f)
+						{
+							SetRotationRadians(GetRotationRadians() - 0.04f);
+						}
+					}
+					if (m_speed < 2.0f && m_speed > 0.5f)
+					{
+						SetRotationRadians(GetRotationRadians() - (0.02f + (-sliding / 60)) * (m_speed / 5));
+					}
 					m_speed *= 0.99f;
-                } 
-                else 
-                {
-                    SetRotationRadians(GetRotationRadians() - (0.02f + (-sliding / 60)) * (m_speed / 5));
-                }	
-            }
+				}
+				else
+				{
+					SetRotationRadians(GetRotationRadians() - (0.02f + (-sliding / 60)) * (m_speed / 5));
+				}
+			}
 
             //Cap the the speed to MAXSPEED
             if (m_speed > MAXSPEED) 
@@ -173,18 +187,19 @@ namespace Project_Cows.Source.Application.Entity{
             lastMoveX = m_speed * (float)Math.Cos(GetRotationRadians() + (slide * sliding));
             lastMoveY = m_speed * (float)Math.Sin(GetRotationRadians() + (slide * sliding));
 
-            m_position.X += lastMoveX;
-            m_position.Y += lastMoveY;
-
-			m_position.X += m_velocity.X;
-			m_position.Y += m_velocity.Y;
+			m_position.X += lastMoveX;
+			m_position.Y += lastMoveY;
 
             Debug.AddText(new DebugText(GetRotationRadians().ToString(), new Vector2(500, 90)));
             //reset values to false, to check the next update
 
-            m_braking = false;
-            // Update position and rotation of the vehicle's sprite
-            UpdateCollider();
+                    Debug.AddText(new DebugText(GetRotationRadians().ToString(), new Vector2(500, 90)));
+                    //reset values to false, to check the next update
+
+                    m_braking = false;
+                    // Update position and rotation of the vehicle's sprite
+                    UpdateCollider();
+                }
+            }
         }
-    }
-}
+
