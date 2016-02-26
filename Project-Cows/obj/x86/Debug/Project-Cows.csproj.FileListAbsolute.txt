@@ -130,3 +130,5 @@ M:\Project Cows\Project-Cows\bin\Windows\Debug\Data\Level\0\vehicles.ini
 M:\Project Cows\Project-Cows\bin\Windows\Debug\Data\Level\0\barriers.ini
 M:\Project Cows\Project-Cows\bin\Windows\Debug\Content\barrier.xnb
 M:\Project Cows\Project-Cows\obj\x86\Debug\Project-Cows.csprojResolveAssemblyReference.cache
+\\vmwfil04\Students$\1301504\Project Cows\Project-Cows\obj\x86\Debug\Project-Cows.exe
+\\vmwfil04\Students$\1301504\Project Cows\Project-Cows\obj\x86\Debug\Project-Cows.pdb

@@ -23,8 +23,8 @@ namespace Project_Cows.Source.Application.Entity{
         private float m_steeringValue;
         private bool m_braking;
 
-        private const float MAXSPEED = 7.5f;
-        private const float ACCELERATION_RATE = 0.005f;
+        private const float MAXSPEED = 5.0f;
+        private const float ACCELERATION_RATE = 0.002f;
         private const float DECELERATION_RATE = -0.15f;
         private const float STEERING_SENSITIVITY = 10.0f;
 
@@ -44,6 +44,7 @@ namespace Project_Cows.Source.Application.Entity{
             // ================
             m_rotation = m_rotation_;
             m_velocity = 0.0f;
+
             m_steeringValue = 0.0f;
             m_braking = false;
         }
@@ -83,38 +84,44 @@ namespace Project_Cows.Source.Application.Entity{
             } 
             else 
             {
-               //if you have breaked, the start reset the counter again
-               counter = 0;
-               sliding -= 0.02f;
-               sliding *= 1.02f;
+                //if you have breaked, the start reset the counter again
+                counter = 0;
+                sliding -= 0.02f;
+                sliding *= 1.02f;
+
+                //only do this break function if the car is not turning   
+                m_velocity *= 0.98f;
+
            }
 
             //if turning right
             if (steeringValue_ > 0.2) 
             {
-                if (m_braking) 
-                {
-                    slide += 0.1f * (m_velocity / 10);
-                    if (m_velocity > 2.0f) 
-                    {
-                        SetRotationRadians(GetRotationRadians() + (0.04f + (-sliding / 60)));
-                    }
-                    if (m_velocity < 2.0f && m_velocity > 0.5f) 
-                    {
-                        SetRotationRadians(GetRotationRadians() + 0.04f);
-                    }
-                } 
-                else 
-                {
-                    SetRotationRadians(GetRotationRadians() + (0.02f + (-sliding / 60)) * (m_velocity / 5));
-                }
+				if (steeringValue_ > 0.6)
+				{
+					slide += 0.1f * (m_velocity / 10);
+
+					if (m_velocity > 2.0f)
+					{
+						SetRotationRadians(GetRotationRadians() + (0.04f + (-sliding / 60)));
+					}
+					if (m_velocity < 2.0f && m_velocity > 0.5f)
+					{
+						SetRotationRadians(GetRotationRadians() + 0.04f);
+					}
+					m_velocity *= 0.99f;
+				}
+				else
+				{
+					SetRotationRadians(GetRotationRadians() + (0.02f + (-sliding / 60)) * (m_velocity / 5));
+				}	
             }
 
             //if turning left
             if (steeringValue_ < -0.2)
             {
-                if (m_braking) 
-                {
+				if (steeringValue_ < -0.6)
+				{
                     slide -= 0.1f * (m_velocity / 10);
                     if (m_velocity > 2.0f) 
                     {
@@ -124,11 +131,12 @@ namespace Project_Cows.Source.Application.Entity{
                     {
                         SetRotationRadians(GetRotationRadians() - 0.04f);
                     }
+					m_velocity *= 0.99f;
                 } 
                 else 
                 {
                     SetRotationRadians(GetRotationRadians() - (0.02f + (-sliding / 60)) * (m_velocity / 5));
-                }
+                }	
             }
 
             //Cap the the speed to MAXSPEED
