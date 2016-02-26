@@ -216,7 +216,7 @@ namespace Project_Cows.Source.Application.Entity
             m_braking = false;
    * */
 
-            // ACCELERATION
+            // ==ACCELERATION==
 
             // Get forward vector
             m_forward.X = (float)Math.Cos(2 * Math.PI * (GetRotationDegrees()) / 360);
@@ -233,34 +233,40 @@ namespace Project_Cows.Source.Application.Entity
                 acceleration_input = 1.0f;
             }
 
-            Vector2 acceleration_vector = m_forward * acceleration_input * 0.1f;
+            Vector2 acceleration_vector = m_forward * acceleration_input * 0.15f;
 
-            // STEERING
-            float steer_angle = m_steeringValue * 1.5f;
+            // ==STEERING==
+            float steer_angle;
+            if (m_braking)
+            {
+                steer_angle = m_steeringValue * 2.25f;
+            }
+            else
+            {
+                steer_angle = m_steeringValue * 1.5f;
+            }
 
             m_forward = RotateAroundAxis(m_forward, steer_angle);
             m_forward.Normalize();
 
-            // MOVING
+            // ==MOVING==
+            // Handle friction
             m_right = new Vector2(-m_forward.Y, m_forward.X);
             Vector2 lateral_velocity = m_right * Vector2.Dot(m_velocity, m_right);
-            Vector2 lateral_friction = -lateral_velocity * 0.05f;
+            Vector2 lateral_friction = -lateral_velocity * 0.04f;
             m_velocity += lateral_friction;
 
-            
+            // Set the speed
             if (m_velocity.Length() < MAXSPEED)
             {
                 m_velocity += acceleration_vector;
             }
 
             // Set position
-            if (float.IsNaN(m_position.X))
-            {
-                Debug.AddText(new DebugText("NaN", new Vector2(0, 0)));
-            }
             SetPosition(m_position + m_velocity);
             SetRotationDegrees(m_rotation + steer_angle);
 
+            // TEMP
             Debug.AddText(new DebugText("Position: (" + m_position.X + ", " + m_position.Y + ")", new Vector2(100, 1000)));
             Debug.AddText(new DebugText("Rotation: " + m_rotation, new Vector2(100, 1020)));
             Debug.AddText(new DebugText("Velocity: (" + m_velocity.X + ", " + m_velocity.Y + ")", new Vector2(100, 1040)));

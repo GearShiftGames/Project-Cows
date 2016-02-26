@@ -132,3 +132,32 @@ M:\Project Cows\Project-Cows\bin\Windows\Debug\Content\V2_Background_Grass.xnb
 \\vmwfil04\Students$\1301504\Project Cows\Project-Cows\obj\x86\Debug\Project-Cows.exe
 \\vmwfil04\Students$\1301504\Project Cows\Project-Cows\obj\x86\Debug\Project-Cows.pdb
 M:\Project Cows\Project-Cows\obj\x86\Debug\Project-Cows.csprojResolveAssemblyReference.cache
+\\vmwfil04\students$\1301755\Desktop\Project Cow Racing\Project-Cows\bin\Windows\Debug\Data\settings.ini
+\\vmwfil04\students$\1301755\Desktop\Project Cow Racing\Project-Cows\bin\Windows\Debug\Data\Level\0\vehicles.ini
+\\vmwfil04\students$\1301755\Desktop\Project Cow Racing\Project-Cows\bin\Windows\Debug\Data\Level\0\checkpoints.ini
+\\vmwfil04\students$\1301755\Desktop\Project Cow Racing\Project-Cows\bin\Windows\Debug\Data\Level\0\barriers.ini
+\\vmwfil04\students$\1301755\Desktop\Project Cow Racing\Project-Cows\bin\Windows\Debug\Project-Cows.exe
+\\vmwfil04\students$\1301755\Desktop\Project Cow Racing\Project-Cows\bin\Windows\Debug\Project-Cows.pdb
+\\vmwfil04\students$\1301755\Desktop\Project Cow Racing\Project-Cows\bin\Windows\Debug\MonoGame.Framework.dll
+\\vmwfil04\students$\1301755\Desktop\Project Cow Racing\Project-Cows\bin\Windows\Debug\SharpDX.MediaFoundation.dll
+\\vmwfil04\students$\1301755\Desktop\Project Cow Racing\Project-Cows\bin\Windows\Debug\SharpDX.dll
+\\vmwfil04\students$\1301755\Desktop\Project Cow Racing\Project-Cows\bin\Windows\Debug\SharpDX.XAudio2.dll
+\\vmwfil04\students$\1301755\Desktop\Project Cow Racing\Project-Cows\bin\Windows\Debug\SharpDX.Direct3D11.dll
+\\vmwfil04\students$\1301755\Desktop\Project Cow Racing\Project-Cows\bin\Windows\Debug\SharpDX.DXGI.dll
+\\vmwfil04\students$\1301755\Desktop\Project Cow Racing\Project-Cows\bin\Windows\Debug\SharpDX.Direct2D1.dll
+\\vmwfil04\students$\1301755\Desktop\Project Cow Racing\Project-Cows\bin\Windows\Debug\SharpDX.XInput.dll
+\\vmwfil04\students$\1301755\Desktop\Project Cow Racing\Project-Cows\bin\Windows\Debug\SharpDX.RawInput.dll
+\\vmwfil04\students$\1301755\Desktop\Project Cow Racing\Project-Cows\bin\Windows\Debug\SharpDX.Direct3D9.dll
+\\vmwfil04\students$\1301755\Desktop\Project Cow Racing\Project-Cows\bin\Windows\Debug\MonoGame.Framework.xml
+\\vmwfil04\students$\1301755\Desktop\Project Cow Racing\Project-Cows\bin\Windows\Debug\SharpDX.MediaFoundation.xml
+\\vmwfil04\students$\1301755\Desktop\Project Cow Racing\Project-Cows\bin\Windows\Debug\SharpDX.xml
+\\vmwfil04\students$\1301755\Desktop\Project Cow Racing\Project-Cows\bin\Windows\Debug\SharpDX.XAudio2.xml
+\\vmwfil04\students$\1301755\Desktop\Project Cow Racing\Project-Cows\bin\Windows\Debug\SharpDX.Direct3D11.xml
+\\vmwfil04\students$\1301755\Desktop\Project Cow Racing\Project-Cows\bin\Windows\Debug\SharpDX.DXGI.xml
+\\vmwfil04\students$\1301755\Desktop\Project Cow Racing\Project-Cows\bin\Windows\Debug\SharpDX.Direct2D1.xml
+\\vmwfil04\students$\1301755\Desktop\Project Cow Racing\Project-Cows\bin\Windows\Debug\SharpDX.XInput.xml
+\\vmwfil04\students$\1301755\Desktop\Project Cow Racing\Project-Cows\bin\Windows\Debug\SharpDX.RawInput.xml
+\\vmwfil04\students$\1301755\Desktop\Project Cow Racing\Project-Cows\bin\Windows\Debug\SharpDX.Direct3D9.xml
+\\vmwfil04\students$\1301755\Desktop\Project Cow Racing\Project-Cows\obj\x86\Debug\Project-Cows.csprojResolveAssemblyReference.cache
+\\vmwfil04\students$\1301755\Desktop\Project Cow Racing\Project-Cows\obj\x86\Debug\Project-Cows.exe
+\\vmwfil04\students$\1301755\Desktop\Project Cow Racing\Project-Cows\obj\x86\Debug\Project-Cows.pdb
