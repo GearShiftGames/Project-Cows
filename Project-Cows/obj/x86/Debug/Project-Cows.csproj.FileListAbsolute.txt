@@ -131,3 +131,4 @@ M:\Project Cows\Project-Cows\bin\Windows\Debug\Content\Tyre.xnb
 M:\Project Cows\Project-Cows\bin\Windows\Debug\Content\V2_Background_Grass.xnb
 \\vmwfil04\Students$\1301504\Project Cows\Project-Cows\obj\x86\Debug\Project-Cows.exe
 \\vmwfil04\Students$\1301504\Project Cows\Project-Cows\obj\x86\Debug\Project-Cows.pdb
+M:\Project Cows\Project-Cows\obj\x86\Debug\Project-Cows.csprojResolveAssemblyReference.cache

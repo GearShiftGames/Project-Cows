@@ -200,7 +200,7 @@ namespace Project_Cows.Source.Application {
                 // Player vs Barrier
                 foreach (Barrier b in h_trackHandler.m_barriers) {
                     if (CollisionHandler.CheckForCollision(p1.GetVehicle().GetCollider(), b.GetCollider())) {
-                        p1.GetVehicle().m_speed = -p1.GetVehicle().m_speed * 0.8f;
+                        p1.GetVehicle().m_speed = -p1.GetVehicle().m_speed * 1.2f;
 
                         // NOTE: Change needs to be made here, as this means that the vehicle would Update() twice in the same frame -Dean
                         p1.GetVehicle().Update();

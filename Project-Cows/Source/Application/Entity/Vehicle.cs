@@ -25,7 +25,7 @@ namespace Project_Cows.Source.Application.Entity
         private float m_steeringValue;
         private bool m_braking;
 
-        private const float MAXSPEED = 5.0f;
+        private const float MAXSPEED = 7.5f;
         private const float ACCELERATION_RATE = 0.1f;
         private const float DECELERATION_RATE = -0.15f;
         private const float STEERING_SENSITIVITY = 10.0f;
@@ -82,7 +82,7 @@ namespace Project_Cows.Source.Application.Entity
                 } 
                 else 
                 {
-                    m_speed /= 1.02f;
+                    m_speed /= 1.04f;
                 }
 				m_speed += ACCELERATION_RATE;
 
