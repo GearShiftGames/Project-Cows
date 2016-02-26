@@ -19,16 +19,16 @@ namespace Project_Cows.Source.Application.Entity{
         // ================
 
         // Variables
-        public float m_velocity;
+        public float m_speed;
         private float m_steeringValue;
         private bool m_braking;
 
         private const float MAXSPEED = 5.0f;
-        private const float ACCELERATION_RATE = 0.002f;
+        private const float ACCELERATION_RATE = 0.05f;
         private const float DECELERATION_RATE = -0.15f;
         private const float STEERING_SENSITIVITY = 10.0f;
 
-        public Vector2 Forward, Right, Velocity;
+		public Vector2 m_forward, m_right, m_velocity;
 
         public float sliding;
         public int turn;
@@ -43,7 +43,10 @@ namespace Project_Cows.Source.Application.Entity{
             // Vehicle constructor
             // ================
             m_rotation = m_rotation_;
-            m_velocity = 0.0f;
+            m_speed = 0.0f;
+
+			m_velocity.X = 0.0f;
+			m_velocity.Y = 0.0f;
 
             m_steeringValue = 0.0f;
             m_braking = false;
@@ -53,7 +56,7 @@ namespace Project_Cows.Source.Application.Entity{
             // Vehicle constructor
             // ================
             m_rotation = entityStruct_.GetRotation();
-            m_velocity = 0.0f;
+            m_speed = 0.0f;
             m_steeringValue = 0.0f;
             m_braking = false;
         }
@@ -67,16 +70,18 @@ namespace Project_Cows.Source.Application.Entity{
 
             if (!m_braking) 
             {
-                if (m_velocity > 0)
+                if (m_speed > 0)
                 {
-                    m_velocity *= 1.02f;
+                    m_speed *= 1.02f;
                 } 
                 else 
                 {
-                    m_velocity /= 1.02f;
+                    m_speed /= 1.02f;
                 }
-                m_velocity += 0.05f;
-                
+				m_speed += ACCELERATION_RATE;
+
+				//m_velocity.X += ACCELERATION_RATE;
+
                 counter++;
                 
                 if(counter >50)
@@ -90,7 +95,7 @@ namespace Project_Cows.Source.Application.Entity{
                 sliding *= 1.02f;
 
                 //only do this break function if the car is not turning   
-                m_velocity *= 0.98f;
+                m_speed *= 0.99f;
 
            }
 
@@ -99,21 +104,21 @@ namespace Project_Cows.Source.Application.Entity{
             {
 				if (steeringValue_ > 0.6)
 				{
-					slide += 0.1f * (m_velocity / 10);
+					slide += 0.1f * (m_speed / 10);
 
-					if (m_velocity > 2.0f)
+					if (m_speed > 2.0f)
 					{
 						SetRotationRadians(GetRotationRadians() + (0.04f + (-sliding / 60)));
 					}
-					if (m_velocity < 2.0f && m_velocity > 0.5f)
+					if (m_speed < 2.0f && m_speed > 0.5f)
 					{
 						SetRotationRadians(GetRotationRadians() + 0.04f);
 					}
-					m_velocity *= 0.99f;
+					m_speed *= 0.99f;
 				}
 				else
 				{
-					SetRotationRadians(GetRotationRadians() + (0.02f + (-sliding / 60)) * (m_velocity / 5));
+					SetRotationRadians(GetRotationRadians() + (0.02f + (-sliding / 60)) * (m_speed / 5));
 				}	
             }
 
@@ -122,27 +127,27 @@ namespace Project_Cows.Source.Application.Entity{
             {
 				if (steeringValue_ < -0.6)
 				{
-                    slide -= 0.1f * (m_velocity / 10);
-                    if (m_velocity > 2.0f) 
+                    slide -= 0.1f * (m_speed / 10);
+                    if (m_speed > 2.0f) 
                     {
                         SetRotationRadians(GetRotationRadians() - (0.04f + (-sliding / 60)));
                     }
-                    if (m_velocity < 2.0f && m_velocity > 0.5f) 
+                    if (m_speed < 2.0f && m_speed > 0.5f) 
                     {
                         SetRotationRadians(GetRotationRadians() - 0.04f);
                     }
-					m_velocity *= 0.99f;
+					m_speed *= 0.99f;
                 } 
                 else 
                 {
-                    SetRotationRadians(GetRotationRadians() - (0.02f + (-sliding / 60)) * (m_velocity / 5));
+                    SetRotationRadians(GetRotationRadians() - (0.02f + (-sliding / 60)) * (m_speed / 5));
                 }	
             }
 
             //Cap the the speed to MAXSPEED
-            if (m_velocity > MAXSPEED) 
+            if (m_speed > MAXSPEED) 
             {
-                m_velocity = MAXSPEED;
+                m_speed = MAXSPEED;
             }
            
             sliding *= 0.98f;
@@ -156,20 +161,23 @@ namespace Project_Cows.Source.Application.Entity{
             {
                 sliding = -0.4f;
             }
-            if (slide > 1) 
+            if (slide > 2) 
             {
-                slide = 1.0f;
+                slide = 2.0f;
             }
-            if (slide < -1) 
+            if (slide < -2) 
             {
-                slide = -1.0f;
+                slide = -2.0f;
             }
 
-            lastMoveX = m_velocity * (float)Math.Cos(GetRotationRadians() + (slide * sliding));
-            lastMoveY = m_velocity * (float)Math.Sin(GetRotationRadians() + (slide * sliding));
+            lastMoveX = m_speed * (float)Math.Cos(GetRotationRadians() + (slide * sliding));
+            lastMoveY = m_speed * (float)Math.Sin(GetRotationRadians() + (slide * sliding));
 
             m_position.X += lastMoveX;
             m_position.Y += lastMoveY;
+
+			m_position.X += m_velocity.X;
+			m_position.Y += m_velocity.Y;
 
             Debug.AddText(new DebugText(GetRotationRadians().ToString(), new Vector2(500, 90)));
             //reset values to false, to check the next update
