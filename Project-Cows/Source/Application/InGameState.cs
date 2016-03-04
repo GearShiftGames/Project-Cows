@@ -170,7 +170,7 @@ namespace Project_Cows.Source.Application {
                 /*foreach (Player p2 in m_players) {
                     if (p2.GetID() != p1.GetID()) {
                         if (CollisionHandler.CheckForCollision(p1.GetVehicle().GetCollider(), p2.GetVehicle().GetCollider())) {
-                            p1.GetVehicle().m_speed = -p1.GetVehicle().m_speed * 1.5f;
+							p1.GetVehicle().m_velocity = -p1.GetVehicle().m_velocity * 0.6f;
 
                             // NOTE: Change needs to be made here, as this means that the vehicle would Update() twice in the same frame -Dean
                             p1.GetVehicle().Update();
@@ -181,16 +181,26 @@ namespace Project_Cows.Source.Application {
                 }*/
 
                 // Player vs Barrier
-                /*foreach (Barrier b in h_trackHandler.m_barriers) {
-                    if (CollisionHandler.CheckForCollision(p1.GetVehicle().GetCollider(), b.GetCollider())) {
-                        p1.GetVehicle().m_speed = -p1.GetVehicle().m_speed * 1.5f;
+                foreach (Barrier b in h_trackHandler.m_barriers) 
+				{
+                    if (CollisionHandler.CheckForCollision(p1.GetVehicle().GetCollider(), b.GetCollider())) 
+					{
 
+						if(p1.GetVehicle().m_velocity.Length() < 2.0f)
+						{
+							p1.GetVehicle().m_velocity = new Vector2(0.0f, 0.0f);
+						}
+						else 
+						{ 
+							p1.GetVehicle().m_velocity = -p1.GetVehicle().m_velocity * 0.6f;
+							p1.GetVehicle().Update();
+						}
                         // NOTE: Change needs to be made here, as this means that the vehicle would Update() twice in the same frame -Dean
-                        p1.GetVehicle().Update();
+                        
 
                         Debug.AddText(new DebugText("Defo COllided ye ken?", new Vector2(10.0f, 150.0f)));
                     }
-                }*/
+                }
             }
 
             h_trackHandler.Update(m_players);
@@ -260,7 +270,7 @@ namespace Project_Cows.Source.Application {
                 graphicsHandler_.DrawText(((int)(startTimer.timeRemaining / 1000)+1).ToString(), new Vector2(1000, 50), Color.Red);
             }
             if(finished){
-                graphicsHandler_.DrawText("SOMEONE WON", new Vector2(500, 500), Color.Red);
+                graphicsHandler_.DrawText("SOMEWON WON, HAWHAWHAW", new Vector2(500, 500), Color.Red);
             }
             
 
