@@ -1,4 +1,4 @@
-﻿// Project Cows -- GearShift Games
+﻿// Project: Cow Racing -- GearShift Games
 // Written by D. Sinclair, 2016
 // ================
 // TrackHandler.cs
@@ -34,22 +34,22 @@ namespace Project_Cows.Source.Application.Track {
             // ================
         }
 
-        public void Initialise(ContentManager content_) {
+        public void Initialise() {
             m_checkpoints.Clear();
             m_vehicles.Clear();
             m_barriers.Clear();
             m_rankings.Clear();
 
             // Set checkpoint texture
-            m_checkpointTexture = content_.Load<Texture2D>("checkpoint");
-            m_barriersTexture = content_.Load<Texture2D>("barrier");
+            m_checkpointTexture = GraphicsHandler.m_content.Load<Texture2D>("Sprites\\Utility\\checkpoint");
+            m_barriersTexture = GraphicsHandler.m_content.Load<Texture2D>("Sprites\\Track\\Barriers\\barrier");
 
             // Add checkpoints
             Level.LoadLevel("0");       // NOTE: This would be done in the in-game state in future -Dean
             m_checkpoints = Level.GetCheckpoints();
             // Add entities to the checkpoints
             foreach (CheckpointContainer cc in m_checkpoints) {
-                cc.SetEntity(content_, m_checkpointTexture, cc.GetCheckpoint().GetRotation());
+                cc.SetEntity(m_checkpointTexture, cc.GetCheckpoint().GetRotation());
             }
 
             // Add vehicles
@@ -60,7 +60,7 @@ namespace Project_Cows.Source.Application.Track {
             m_barrierEntityStructs = Level.GetBarriers();
             // Add entities to Barriers
             foreach (EntityStruct es in m_barrierEntityStructs) {
-                m_barriers.Add(new Barrier(content_, m_barriersTexture, es));
+                m_barriers.Add(new Barrier(m_barriersTexture, es));
             }
 
             // NOTE: Unneeded now, but kept for testing purposes -Dean
@@ -148,13 +148,13 @@ namespace Project_Cows.Source.Application.Track {
             }
         }
 
-        public void Draw(ref GraphicsHandler graphicsHandler_) {
+        public void Draw() {
             // Draw the objects to the screen
             // ================
 
             // Render barriers
             foreach (Barrier b in m_barriers) {
-                graphicsHandler_.DrawSprite(b.GetSprite());
+                GraphicsHandler.DrawSprite(b.GetSprite());
             }
 
             // Add checkpoints to Debug screen

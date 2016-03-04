@@ -1,4 +1,4 @@
-﻿// Project Cows -- GearShift Games
+﻿// Project: Cow Racing -- GearShift Games
 // Based on code written by D. Wilson, 2013 (http://www.stackoverflow.com/questions/20676185/xna-monogame-getting-the-frames-per-second)
 // ================
 // FrameCounter.cs

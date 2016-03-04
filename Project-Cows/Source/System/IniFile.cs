@@ -1,4 +1,4 @@
-﻿// Project Cows -- GearShift Games
+﻿// Project: Cow Racing -- GearShift Games
 // Taken from https://gist.github.com/anonymous/7a2efb7291eb6d68c6c8, 2016
 // ================
 // IniFile.cs

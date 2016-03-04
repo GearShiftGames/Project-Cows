@@ -1,4 +1,4 @@
-﻿// Project Cows -- GearShift Games
+﻿// Project: Cow Racing -- GearShift Games
 // Written by D. Sinclair, 2016
 // ================
 // State.cs
@@ -28,11 +28,11 @@ namespace Project_Cows.Source.System.StateMachine {
 		// Methods
 		public State() { }
 
-		public abstract void Initialise(ContentManager content_);
+		public abstract void Initialise();
 
-		public abstract void Update(ref TouchHandler touchHandler_, GameTime gameTime_, ref GraphicsHandler graphicsHandler_);
+		public abstract void Update(ref TouchHandler touchHandler_, GameTime gameTime_);
 
-		public abstract void Draw(GraphicsDevice graphicsDevice_, ref GraphicsHandler graphicsHandler_);
+		public abstract void Draw(GraphicsDevice graphicsDevice_);
 
 		// NOTE: Possibly should be public, for access within Application class
 		//       If public, should possibly return variables for use in other states -Dean

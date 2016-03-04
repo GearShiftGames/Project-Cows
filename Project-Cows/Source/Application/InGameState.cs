@@ -1,4 +1,4 @@
-﻿// Project Cows -- GearShift Games
+﻿// Project: Cow Racing -- GearShift Games
 // Written by D. Sinclair, 2016
 //            N. Headley, 2016
 // ================
@@ -34,7 +34,7 @@ namespace Project_Cows.Source.Application {
         //private List<Barrier> m_barriers = new List<Barrier>();
         private Timer startTimer = new Timer();
 
-        private Texture2D carTexture, squareTexture, backgroundTexture, cooTexture;
+        private Texture2D carTexture, squareTexture, backgroundTexture, cowTexture;
         private Sprite m_background;
 
         private List<int> m_rankings = new List<int>();
@@ -51,35 +51,45 @@ namespace Project_Cows.Source.Application {
 			m_currentExecutionState = ExecutionState.INITIALISING;
 		}
 
-		public override void Initialise(ContentManager content_) {
+		public override void Initialise() {
 			// Initialise in-game state
 			// ================
-			
-			carTexture = content_.Load<Texture2D>("Tractor_Blue");
-            squareTexture = content_.Load<Texture2D>("square");
-            backgroundTexture = content_.Load<Texture2D>("V2_Background_Grass");
-            cooTexture = content_.Load<Texture2D>("ITSACOO");
-            //barrierTexture = content_.Load<Texture2D>("Tyre");
+
+            carTexture = GraphicsHandler.m_content.Load<Texture2D>("Sprites\\Temp\\Tractor_Blue");
+            squareTexture = GraphicsHandler.m_content.Load<Texture2D>("Sprites\\Temp\\square");
+            backgroundTexture = GraphicsHandler.m_content.Load<Texture2D>("Sprites\\Backgrounds\\V2_Background_Grass");
+            cowTexture = GraphicsHandler.m_content.Load<Texture2D>("Sprites\\Temp\\cow");
+            //barrierTexture = GraphicsHandler.m_content.Load<Texture2D>("Tyre");
 
             Vector2 BackgroundScale = new Vector2((float)backgroundTexture.Width / (float)Settings.m_screenWidth);
             m_background = new Sprite(backgroundTexture, new Vector2(Settings.m_screenWidth / 2, Settings.m_screenHeight / 2), 0.0f, BackgroundScale);
 
-            h_trackHandler.Initialise(content_);
+            h_trackHandler.Initialise();
 
 			// Initialise players
-            // NOTE: Should be rewritten to allow simple changing of player amounts
             m_players = new List<Player>();
             m_players.Clear();
-			m_players.Add(new Player(content_, cooTexture, carTexture, h_trackHandler.m_vehicles[0], 0, Quadrent.BOTTOM_RIGHT, 1));
-            //m_players.Add(new Player(content_, cooTexture, carTexture, h_trackHandler.m_vehicles[1], 0, Quadrent.BOTTOM_LEFT, 2));
 
-			m_players[0].m_controlScheme.SetSteeringSprite(new Sprite(content_.Load<Texture2D>("controlTemp"), new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
-			m_players[0].m_controlScheme.SetInterfaceSprite(new Sprite(content_.Load<Texture2D>("controlTempBG"), new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
-			//m_players[1].m_controlScheme.SetSteeringSprite(new Sprite(content_.Load<Texture2D>("controlTemp"), new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
-			//m_players[1].m_controlScheme.SetInterfaceSprite(new Sprite(content_.Load<Texture2D>("controlTempBG"), new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
+            for (int i = 0; i < Settings.m_numberOfPlayers; ++i) {
+                Quadrent quad = Quadrent.BOTTOM_LEFT;
+                if(i == 0){
+                    quad = Quadrent.BOTTOM_LEFT;
+                }else if(i == 1){
+                    quad = Quadrent.BOTTOM_RIGHT;
+                }else if(i == 2){
+                    quad = Quadrent.TOP_LEFT;
+                }else if(i == 3){
+                    quad = Quadrent.TOP_RIGHT;
+                }
+
+                m_players.Add(new Player(cowTexture, carTexture, h_trackHandler.m_vehicles[i], 0, quad, i+1));
+
+                m_players[i].m_controlScheme.SetSteeringSprite(new Sprite(GraphicsHandler.m_content.Load<Texture2D>("Sprites\\Temp\\controlTemp"), new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
+                m_players[i].m_controlScheme.SetInterfaceSprite(new Sprite(GraphicsHandler.m_content.Load<Texture2D>("Sprites\\Temp\\controlTempBG"), new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
+            }
 
             // Initialise sprites
-            m_animatedSprites.Add(new AnimatedSprite(content_.Load<Texture2D>("animation"), 
+            m_animatedSprites.Add(new AnimatedSprite(GraphicsHandler.m_content.Load<Texture2D>("Sprites\\Temp\\animation"), 
                 new Vector2(0.0f, 0.0f), 10, 10, 250, true, 0, 50));
 
             // Start timer
@@ -94,7 +104,7 @@ namespace Project_Cows.Source.Application {
 			m_currentExecutionState = ExecutionState.RUNNING;
 		}
 
-        public override void Update(ref TouchHandler touchHandler_, GameTime gameTime_, ref GraphicsHandler graphicsHandler_) {
+        public override void Update(ref TouchHandler touchHandler_, GameTime gameTime_) {
 			// Update in game state
 			// ================
 
@@ -226,10 +236,10 @@ namespace Project_Cows.Source.Application {
             }
             
 			// Update particles
-            m_particles = graphicsHandler_.UpdatePFX(gameTime_.ElapsedGameTime.TotalMilliseconds);
+            m_particles = GraphicsHandler.UpdatePFX(gameTime_.ElapsedGameTime.TotalMilliseconds);
 		}
 
-		public override void Draw(GraphicsDevice graphicsDevice_, ref GraphicsHandler graphicsHandler_) {
+		public override void Draw(GraphicsDevice graphicsDevice_) {
 			// Render objects to the screen
 			// ================
           
@@ -237,10 +247,10 @@ namespace Project_Cows.Source.Application {
 			graphicsDevice_.Clear(Color.Beige);
 
             // Start rendering graphics
-            graphicsHandler_.StartDrawing();
+            GraphicsHandler.StartDrawing();
 
             // Render background
-            graphicsHandler_.DrawSprite(m_background);
+            GraphicsHandler.DrawSprite(m_background);
 
             // Render animated sprites      TEMP
             foreach (AnimatedSprite anim_ in m_animatedSprites) {
@@ -256,26 +266,26 @@ namespace Project_Cows.Source.Application {
                 }
             }
 
-            h_trackHandler.Draw(ref graphicsHandler_);
+            h_trackHandler.Draw();
 
             // Render player vehicles
 			foreach(Player p in m_players) {
-				graphicsHandler_.DrawSprite(p.GetVehicle().GetSprite());
-                graphicsHandler_.DrawSprite(p.GetCow());
-				graphicsHandler_.DrawSprite(p.m_controlScheme.m_controlInterfaceSprite);
-				graphicsHandler_.DrawSprite(p.m_controlScheme.m_steeringIndicatorSprite);
+                GraphicsHandler.DrawSprite(p.GetVehicle().GetSprite());
+                GraphicsHandler.DrawSprite(p.GetCow());
+                GraphicsHandler.DrawSprite(p.m_controlScheme.m_controlInterfaceSprite);
+                GraphicsHandler.DrawSprite(p.m_controlScheme.m_steeringIndicatorSprite);
 			}
 
             if (!startTimer.timerFinished) {
-                graphicsHandler_.DrawText(((int)(startTimer.timeRemaining / 1000)+1).ToString(), new Vector2(1000, 50), Color.Red);
+                GraphicsHandler.DrawText(((int)(startTimer.timeRemaining / 1000) + 1).ToString(), new Vector2(1000, 50), Color.Red);
             }
             if(finished){
-                graphicsHandler_.DrawText("SOMEWON WON, HAWHAWHAW", new Vector2(500, 500), Color.Red);
+                GraphicsHandler.DrawText("SOMEONE WON", new Vector2(500, 500), Color.Red);
             }
             
 
             // Stop rendering graphics
-            graphicsHandler_.StopDrawing();
+            GraphicsHandler.StopDrawing();
 		}
 
 		protected override void CleanUp() {

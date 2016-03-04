@@ -1,4 +1,4 @@
-﻿// Project Cows -- GearShift Games
+﻿// Project: Cow Racing -- GearShift Games
 // Written by D. Sinclair, 2016
 //            N. Headley, 2016
 // ================
@@ -21,7 +21,7 @@ namespace Project_Cows.Source.Application {
 		// Variables
 		private GraphicsDeviceManager h_graphicsDeviceHandler;		// Graphics device handler
 		private TouchHandler h_touchHandler;						// Touch input handler
-        private GraphicsHandler h_graphicsHandler;                  // Deals with rendering of graphics
+        //private GraphicsHandler h_graphicsHandler;                  // Deals with rendering of graphics
 
 		private State m_currentState;								// Current state being executed
 		private MenuState m_menuState;								// Game state: Menu screen
@@ -52,7 +52,7 @@ namespace Project_Cows.Source.Application {
 			
 			h_graphicsDeviceHandler.ApplyChanges();
 
-            h_graphicsHandler = new GraphicsHandler(GraphicsDevice, Content);
+            GraphicsHandler.Initialise(GraphicsDevice, Content);
 
 			// Initialise states
             m_menuState = new MenuState();
@@ -130,11 +130,11 @@ namespace Project_Cows.Source.Application {
 					// State is initialising
 					
 					// TODO: Pass along variables necessary for use
-					m_currentState.Initialise(Content);
+					m_currentState.Initialise();
 					break;
 				case ExecutionState.RUNNING:
 					// State is currently running
-					m_currentState.Update(ref h_touchHandler, gameTime, ref h_graphicsHandler);
+					m_currentState.Update(ref h_touchHandler, gameTime);
 
 					
 					Debug.AddText(new DebugText("State: " + m_currentState.ToString().Substring(32), new Vector2(10.0f, 30.0f)));
@@ -193,7 +193,7 @@ namespace Project_Cows.Source.Application {
 					break;
 				case ExecutionState.RUNNING:
 					// State is currently running
-					m_currentState.Draw(GraphicsDevice, ref h_graphicsHandler);
+					m_currentState.Draw(GraphicsDevice);
 
 					// Calculate the FPS
 					FrameCounter.Update((float)gameTime.ElapsedGameTime.TotalSeconds);
@@ -201,7 +201,7 @@ namespace Project_Cows.Source.Application {
 					// Display the FPS and current state on the debug screen
 					Debug.AddText(new DebugText(FrameCounter.AverageFramesPerSecond.ToString(), new Vector2(Settings.m_screenWidth - 75, 10), Color.Red));
 
-					Debug.Render(ref h_graphicsHandler);
+					Debug.Render();
 					break;
 				case ExecutionState.CHANGING:
 					// State has finished and needs to be changed
