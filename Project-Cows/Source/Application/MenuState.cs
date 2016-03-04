@@ -47,8 +47,7 @@ namespace Project_Cows.Source.Application {
 			m_currentExecutionState = ExecutionState.INITIALISING;
 		}
 
-        public override void Initialise(ContentManager content_)
-        {
+        public override void Initialise() {
 			// Initialise menu state
 			// ================
 
@@ -58,25 +57,25 @@ namespace Project_Cows.Source.Application {
            // m_players.Clear();
 
 
-            playerSelectIcon = content_.Load<Texture2D>("Sprites\\Temp\\controlTemp");
+            playerSelectIcon = GraphicsHandler.m_content.Load<Texture2D>("Sprites\\Temp\\controlTemp");
             //Initialise sprites
-            m_sprites.Add(new Sprite(content_.Load<Texture2D>("Sprites\\Backgrounds\\Menu"), new Vector2(Settings.m_screenWidth / 2, Settings.m_screenHeight / 2), 0, new Vector2(0.5f, 0.5f)));
-           // m_sprites.Add(new Sprite(content_.Load<Texture2D>("Title"), new Vector2(Settings.m_screenWidth / 2, 200.0f), 0, new Vector2(1.0f, 1.0f)));
-            m_sprites.Add(new Sprite(content_.Load<Texture2D>("Sprites\\Menu\\Play"), new Vector2(Settings.m_screenWidth / 2, Settings.m_screenHeight / 2), 0, new Vector2(1.5f, 1.5f)));
-            m_sprites.Add(new Sprite(content_.Load<Texture2D>("Sprites\\Menu\\Options"), new Vector2(Settings.m_screenWidth / 2, Settings.m_screenHeight / 2 + 110), 0, new Vector2(1.5f, 1.5f)));
-            m_sprites.Add(new Sprite(content_.Load<Texture2D>("Sprites\\Menu\\Exit"), new Vector2(Settings.m_screenWidth / 2, Settings.m_screenHeight / 2 + 330), 0, new Vector2(1.5f, 1.5f)));
-            m_sprites.Add(new Sprite(content_.Load<Texture2D>("Sprites\\Promo\\Logo"), new Vector2(Settings.m_screenWidth - 150.0f, 75.0f), 0, new Vector2(0.5f, 0.5f)));
-            m_sprites.Add(new Sprite(content_.Load<Texture2D>("Sprites\\Menu\\Back"), new Vector2(Settings.m_screenWidth / 2, Settings.m_screenHeight / 2 + 330), 0, new Vector2(1.5f, 1.5f)));
-            m_sprites.Add(new Sprite(content_.Load<Texture2D>("Sprites\\Menu\\Credits"), new Vector2(Settings.m_screenWidth / 2, Settings.m_screenHeight / 2 + 220), 0, new Vector2(1.5f, 1.5f)));
+            m_sprites.Add(new Sprite(GraphicsHandler.m_content.Load<Texture2D>("Sprites\\Backgrounds\\Menu"), new Vector2(Settings.m_screenWidth / 2, Settings.m_screenHeight / 2), 0, new Vector2(0.5f, 0.5f)));
+            // m_sprites.Add(new Sprite(GraphicsHandler.m_content.Load<Texture2D>("Title"), new Vector2(Settings.m_screenWidth / 2, 200.0f), 0, new Vector2(1.0f, 1.0f)));
+            m_sprites.Add(new Sprite(GraphicsHandler.m_content.Load<Texture2D>("Sprites\\Menu\\Play"), new Vector2(Settings.m_screenWidth / 2, Settings.m_screenHeight / 2), 0, new Vector2(1.5f, 1.5f)));
+            m_sprites.Add(new Sprite(GraphicsHandler.m_content.Load<Texture2D>("Sprites\\Menu\\Options"), new Vector2(Settings.m_screenWidth / 2, Settings.m_screenHeight / 2 + 110), 0, new Vector2(1.5f, 1.5f)));
+            m_sprites.Add(new Sprite(GraphicsHandler.m_content.Load<Texture2D>("Sprites\\Menu\\Exit"), new Vector2(Settings.m_screenWidth / 2, Settings.m_screenHeight / 2 + 330), 0, new Vector2(1.5f, 1.5f)));
+            m_sprites.Add(new Sprite(GraphicsHandler.m_content.Load<Texture2D>("Sprites\\Promo\\Logo"), new Vector2(Settings.m_screenWidth - 150.0f, 75.0f), 0, new Vector2(0.5f, 0.5f)));
+            m_sprites.Add(new Sprite(GraphicsHandler.m_content.Load<Texture2D>("Sprites\\Menu\\Back"), new Vector2(Settings.m_screenWidth / 2, Settings.m_screenHeight / 2 + 330), 0, new Vector2(1.5f, 1.5f)));
+            m_sprites.Add(new Sprite(GraphicsHandler.m_content.Load<Texture2D>("Sprites\\Menu\\Credits"), new Vector2(Settings.m_screenWidth / 2, Settings.m_screenHeight / 2 + 220), 0, new Vector2(1.5f, 1.5f)));
 
             //Initialise Player selection sprites
-            m_sprites.Add(new Sprite(content_.Load<Texture2D>("Sprites\\Vehicles\\V2_Cow_Highland_Brown"), new Vector2(800.0f, 500.0f), 0, new Vector2(0.25f, 0.25f)));
-            m_sprites.Add(new Sprite(content_.Load<Texture2D>("Sprites\\Vehicles\\V2_Cow_Plain"), new Vector2(1200.0f, 500.0f), 0, new Vector2(0.5f, 0.5f)));
+            m_sprites.Add(new Sprite(GraphicsHandler.m_content.Load<Texture2D>("Sprites\\Vehicles\\V2_Cow_Highland_Brown"), new Vector2(800.0f, 500.0f), 0, new Vector2(0.25f, 0.25f)));
+            m_sprites.Add(new Sprite(GraphicsHandler.m_content.Load<Texture2D>("Sprites\\Vehicles\\V2_Cow_Plain"), new Vector2(1200.0f, 500.0f), 0, new Vector2(0.5f, 0.5f)));
 
-            m_sprites.Add(new Sprite(content_.Load<Texture2D>("Sprites\\Menu\\1"), new Vector2(Settings.m_screenWidth / 2 - 50, Settings.m_screenHeight / 2 + 115), 0, new Vector2(1.0f, 1.0f)));
-            m_sprites.Add(new Sprite(content_.Load<Texture2D>("Sprites\\Menu\\2"), new Vector2(Settings.m_screenWidth / 2 + 50, Settings.m_screenHeight / 2 + 115), 0, new Vector2(1.0f, 1.0f)));
-            m_sprites.Add(new Sprite(content_.Load<Texture2D>("Sprites\\Menu\\3"), new Vector2(Settings.m_screenWidth / 2 - 50, Settings.m_screenHeight / 2 + 215), 0, new Vector2(1.0f, 1.0f)));
-            m_sprites.Add(new Sprite(content_.Load<Texture2D>("Sprites\\Menu\\4"), new Vector2(Settings.m_screenWidth / 2 + 50, Settings.m_screenHeight / 2 + 215), 0, new Vector2(1.0f, 1.0f)));
+            m_sprites.Add(new Sprite(GraphicsHandler.m_content.Load<Texture2D>("Sprites\\Menu\\1"), new Vector2(Settings.m_screenWidth / 2 - 50, Settings.m_screenHeight / 2 + 115), 0, new Vector2(1.0f, 1.0f)));
+            m_sprites.Add(new Sprite(GraphicsHandler.m_content.Load<Texture2D>("Sprites\\Menu\\2"), new Vector2(Settings.m_screenWidth / 2 + 50, Settings.m_screenHeight / 2 + 115), 0, new Vector2(1.0f, 1.0f)));
+            m_sprites.Add(new Sprite(GraphicsHandler.m_content.Load<Texture2D>("Sprites\\Menu\\3"), new Vector2(Settings.m_screenWidth / 2 - 50, Settings.m_screenHeight / 2 + 215), 0, new Vector2(1.0f, 1.0f)));
+            m_sprites.Add(new Sprite(GraphicsHandler.m_content.Load<Texture2D>("Sprites\\Menu\\4"), new Vector2(Settings.m_screenWidth / 2 + 50, Settings.m_screenHeight / 2 + 215), 0, new Vector2(1.0f, 1.0f)));
 
            // m_sprites.Add(new Sprite(playerSelectIcon, new Vector2(m_players[0].m_controlScheme.GetTouchZone().GetMax().X / 2, m_players[0].m_controlScheme.GetTouchZone().GetMax().Y / 2), 0, new Vector2(1.0f, 1.0f)));
             
@@ -110,7 +109,7 @@ namespace Project_Cows.Source.Application {
 			m_currentExecutionState = ExecutionState.RUNNING;
 		}
 
-		public override void Update(ref TouchHandler touchHandler_, GameTime gameTime_, ref GraphicsHandler graphicsHandler_) {
+		public override void Update(ref TouchHandler touchHandler_, GameTime gameTime_) {
 			// Update menu state
 			// ================
 
@@ -353,12 +352,12 @@ namespace Project_Cows.Source.Application {
             }
 
             // Update particles
-            m_particles = graphicsHandler_.UpdatePFX(gameTime_.ElapsedGameTime.TotalMilliseconds);
+            m_particles = GraphicsHandler.UpdatePFX(gameTime_.ElapsedGameTime.TotalMilliseconds);
 
 
 		}
 
-		public override void Draw(GraphicsDevice graphicsDevice_, ref GraphicsHandler graphicsHandler_) {
+		public override void Draw(GraphicsDevice graphicsDevice_) {
 			// Render objects to the screen
 			// ================
 			
@@ -449,25 +448,25 @@ namespace Project_Cows.Source.Application {
 			}
 
             // Render graphics
-            graphicsHandler_.StartDrawing();
+            GraphicsHandler.StartDrawing();
 
             foreach (AnimatedSprite anim_ in m_animatedSprites) {
                 if (anim_.IsVisible()) {
-                    graphicsHandler_.DrawAnimatedSprite(anim_);
+                    GraphicsHandler.DrawAnimatedSprite(anim_);
                 }
             }
             foreach (Sprite sprite_ in m_sprites) {
                 if (sprite_.IsVisible()) {
-                    graphicsHandler_.DrawSprite(sprite_);
+                    GraphicsHandler.DrawSprite(sprite_);
                 }
             }
             foreach (Particle part_ in m_particles) {
                 if (part_.GetLife() > 0) {
-                    //graphicsHandler_.DrawParticle(/*texture,*/ part_.GetPosition(), Color.White);
+                    //GraphicsHandler.DrawParticle(/*texture,*/ part_.GetPosition(), Color.White);
                 }
             }
-            
-            graphicsHandler_.StopDrawing();
+
+            GraphicsHandler.StopDrawing();
 		}
 
 		protected override void CleanUp() {

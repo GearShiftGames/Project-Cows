@@ -22,26 +22,26 @@ namespace Project_Cows.Source.System {
 		private static List<DebugText> m_text = new List<DebugText>();
 
 		// Methods
-		public static void Render(ref GraphicsHandler graphicsHandler_) {
+		public static void Render() {
 			// Render the debug screen
 			// ================
 			if(Settings.m_debug) {
-				graphicsHandler_.StartDrawing();
+                GraphicsHandler.StartDrawing();
 
 				// Render debug sprites (collision boxes, etc.)
 				foreach(Sprite s in m_sprites) {
-					graphicsHandler_.DrawSprite(s);
+                    GraphicsHandler.DrawSprite(s);
 				}
 
 				// Render debug text
 				foreach(DebugText dt in m_text) {
-					graphicsHandler_.DrawText(dt);
+                    GraphicsHandler.DrawText(dt);
 				}
 
-				graphicsHandler_.DrawText("Debug Screen", new Vector2(10.0f, 10.0f), Color.Red);
-				graphicsHandler_.DrawText("Debug Screen", new Vector2(11.0f, 10.0f), Color.Red);
+                GraphicsHandler.DrawText("Debug Screen", new Vector2(10.0f, 10.0f), Color.Red);
+                GraphicsHandler.DrawText("Debug Screen", new Vector2(11.0f, 10.0f), Color.Red);
 
-				graphicsHandler_.StopDrawing();
+                GraphicsHandler.StopDrawing();
 			}
 
 			m_sprites.Clear();

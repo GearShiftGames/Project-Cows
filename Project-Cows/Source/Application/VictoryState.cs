@@ -37,7 +37,7 @@ namespace Project_Cows.Source.Application {
 			m_currentExecutionState = ExecutionState.INITIALISING;
 		}
 
-		public override void Initialise(ContentManager content_) {
+		public override void Initialise() {
 			// Initialise victory state
 			// ================
 
@@ -48,7 +48,7 @@ namespace Project_Cows.Source.Application {
 			m_currentExecutionState = ExecutionState.RUNNING;
 		}
 
-        public override void Update(ref TouchHandler touchHandler_, GameTime gameTime_, ref GraphicsHandler graphicsHandler_) {
+        public override void Update(ref TouchHandler touchHandler_, GameTime gameTime_) {
 			// Update victory state
 			// ================
 
@@ -77,28 +77,28 @@ namespace Project_Cows.Source.Application {
             }
 
             // Update particles
-            m_particles = graphicsHandler_.UpdatePFX(gameTime_.ElapsedGameTime.TotalMilliseconds);
+            m_particles = GraphicsHandler.UpdatePFX(gameTime_.ElapsedGameTime.TotalMilliseconds);
 
 		}
 
-		public override void Draw(GraphicsDevice graphicsDevice_, ref GraphicsHandler graphicsHandler_) {
+		public override void Draw(GraphicsDevice graphicsDevice_) {
 			// Render objects to the screen
 			// ================
 
 			// Clear the screen
-			graphicsDevice_.Clear(Color.LawnGreen);
+            graphicsDevice_.Clear(Color.LawnGreen);
 
             // Render graphics
-            graphicsHandler_.StartDrawing();
+            GraphicsHandler.StartDrawing();
 
             foreach (AnimatedSprite anim_ in m_animatedSprites) {
                 if (anim_.IsVisible()) {
-                    graphicsHandler_.DrawAnimatedSprite(anim_);
+                    GraphicsHandler.DrawAnimatedSprite(anim_);
                 }
             }
             foreach (Sprite sprite_ in m_sprites) {
                 if (sprite_.IsVisible()) {
-                    graphicsHandler_.DrawSprite(sprite_);
+                    GraphicsHandler.DrawSprite(sprite_);
                 }
             }
             foreach (Particle part_ in m_particles) {
@@ -106,9 +106,9 @@ namespace Project_Cows.Source.Application {
                     //graphicsHandler_.DrawParticle(/*texture,*/ part_.GetPosition(), Color.White);
                 }
             }
-            graphicsHandler_.DrawText("VICTORY STATE", new Vector2(100.0f, 100.0f), Color.Red);
+            GraphicsHandler.DrawText("VICTORY STATE", new Vector2(100.0f, 100.0f), Color.Red);
 
-            graphicsHandler_.StopDrawing();
+            GraphicsHandler.StopDrawing();
 		}
 
 		protected override void CleanUp() {

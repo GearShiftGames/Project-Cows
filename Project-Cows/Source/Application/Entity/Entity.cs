@@ -10,6 +10,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
 using Project_Cows.Source.System;
+using Project_Cows.Source.System.Graphics;
 using Project_Cows.Source.System.Graphics.Sprites;
 
 namespace Project_Cows.Source.Application.Entity {
@@ -25,7 +26,7 @@ namespace Project_Cows.Source.Application.Entity {
         protected bool m_collidable;                // Whether the entity is collidable
 
         // Methods
-        public Entity(ContentManager content_, Texture2D texture_, Vector2 position_, float rotation_ = 0) {
+        public Entity(Texture2D texture_, Vector2 position_, float rotation_ = 0) {
             // Entity constructor
             // ================
 
@@ -34,19 +35,19 @@ namespace Project_Cows.Source.Application.Entity {
 			m_sprite = new Sprite(texture_, m_position, m_rotation, new Vector2(1.0f, 1.0f));
 			m_collidable = true;
 
-            Texture2D debugTexture = content_.Load<Texture2D>("Sprites\\Utility\\entityUncollided");
-            Texture2D cornerTexture = content_.Load<Texture2D>("Sprites\\Utility\\corner");
+            Texture2D debugTexture = GraphicsHandler.m_content.Load<Texture2D>("Sprites\\Utility\\entityUncollided");
+            Texture2D cornerTexture = GraphicsHandler.m_content.Load<Texture2D>("Sprites\\Utility\\corner");
             m_collider = new EntityCollider(cornerTexture, debugTexture, new Rectangle((int)(m_position.X - m_sprite.GetWidth() / 2), (int)(m_position.Y - m_sprite.GetHeight() / 2), (int)m_sprite.GetWidth(), (int)m_sprite.GetHeight()), m_rotation);
         }
 
-        public Entity(ContentManager content_, Texture2D texture_, EntityStruct entityStruct_) {
+        public Entity(Texture2D texture_, EntityStruct entityStruct_) {
             m_position = entityStruct_.GetPosition();
             m_rotation = entityStruct_.GetRotation();
             m_sprite = new Sprite(texture_, m_position, m_rotation, new Vector2(1.0f, 1.0f));
 			m_collidable = true;
 
-            Texture2D debugTexture = content_.Load<Texture2D>("Sprites\\Utility\\entityUncollided");
-            Texture2D cornerTexture = content_.Load<Texture2D>("Sprites\\Utility\\corner");
+            Texture2D debugTexture = GraphicsHandler.m_content.Load<Texture2D>("Sprites\\Utility\\entityUncollided");
+            Texture2D cornerTexture = GraphicsHandler.m_content.Load<Texture2D>("Sprites\\Utility\\corner");
             m_collider = new EntityCollider(cornerTexture, debugTexture, new Rectangle((int)(m_position.X - m_sprite.GetWidth() / 2), (int)(m_position.Y - m_sprite.GetHeight() / 2), (int)m_sprite.GetWidth(), (int)m_sprite.GetHeight()), m_rotation);
         }
 

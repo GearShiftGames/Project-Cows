@@ -13,10 +13,8 @@ using Microsoft.Xna.Framework.Graphics;
 
 using Project_Cows.Source.System;
 
-namespace Project_Cows.Source.Application.Entity
-{
-    class Vehicle : Entity
-    {
+namespace Project_Cows.Source.Application.Entity {
+    class Vehicle : Entity {
         // Class for the player vehicles
         // ================
 
@@ -41,9 +39,7 @@ namespace Project_Cows.Source.Application.Entity
         int counter = 0;
 
         // Methods
-        public Vehicle(ContentManager content_, Texture2D texture_, Vector2 position_, float m_rotation_)
-            : base(content_, texture_, position_, m_rotation_)
-        {
+        public Vehicle(Texture2D texture_, Vector2 position_, float m_rotation_) : base(texture_, position_, m_rotation_) {
             // Vehicle constructor
             // ================
             m_rotation = m_rotation_;
@@ -57,9 +53,7 @@ namespace Project_Cows.Source.Application.Entity
             m_forward = new Vector2(0, -1);
         }
 
-        public Vehicle(ContentManager content_, Texture2D texture_, EntityStruct entityStruct_)
-            : base(content_, texture_, entityStruct_)
-        {
+        public Vehicle(Texture2D texture_, EntityStruct entityStruct_) : base(texture_, entityStruct_) {
             // Vehicle constructor
             // ================
             m_rotation = entityStruct_.GetRotation();
@@ -73,8 +67,7 @@ namespace Project_Cows.Source.Application.Entity
             m_forward = new Vector2(0, -1);
         }
 
-        public void Update(float steeringValue_ = 0, bool braking_ = false)
-        {
+        public void Update(float steeringValue_ = 0, bool braking_ = false) {
             // Updates the vehicle
             // ================
             m_steeringValue = steeringValue_;
