@@ -1,4 +1,4 @@
-﻿// Project Cows -- GearShift Games
+﻿// Project: Cow Racing -- GearShift Games
 // Based on code written by N. Headley, 2015
 // Adapted by D. Sinclair, 2016
 // ================

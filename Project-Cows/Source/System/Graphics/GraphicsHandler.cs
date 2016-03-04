@@ -1,4 +1,4 @@
-﻿// Project Cows -- GearShift Games
+﻿// Project: Cow Racing -- GearShift Games
 // Written by N. Headley, 2016
 // ================
 // GraphicsHandler.cs
