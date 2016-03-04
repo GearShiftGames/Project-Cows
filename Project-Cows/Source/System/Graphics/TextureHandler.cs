@@ -46,6 +46,7 @@ namespace Project_Cows.Source.System.Graphics {
         // In Game
         public static Texture2D m_gameBackground;
         public static Texture2D m_gameBarrier;
+        public static Texture2D m_gameFinishLine;
         // Debug
         public static Texture2D m_debugCorner;
         public static Texture2D m_debugCheckpoint;
@@ -92,6 +93,7 @@ namespace Project_Cows.Source.System.Graphics {
             // In Game
             LoadTexture(ref m_gameBackground, "Sprites\\Track\\background");
             LoadTexture(ref m_gameBarrier, "Sprites\\Track\\Barriers\\barrier");
+            LoadTexture(ref m_gameFinishLine, "Sprites\\Track\\finishLine");
             
             // Debug
             LoadTexture(ref m_debugCorner, "Sprites\\Debug\\corner");
