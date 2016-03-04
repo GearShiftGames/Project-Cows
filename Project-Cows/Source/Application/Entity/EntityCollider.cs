@@ -1,4 +1,4 @@
-﻿// Project Cows -- GearShift Games
+﻿// Project: Cow Racing -- GearShift Games
 // Written by D. Divers, 2016
 //            D. Sinclair, 2016
 // ================
@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+
 using Project_Cows.Source.System.Graphics.Sprites;
 using Project_Cows.Source.System;
 

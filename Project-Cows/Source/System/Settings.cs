@@ -1,4 +1,4 @@
-﻿// Project Cows -- GearShift Games
+﻿// Project: Cow Racing -- GearShift Games
 // Written by D. Sinclair, 2016
 // ================
 // Settings.cs
@@ -15,25 +15,30 @@ namespace Project_Cows.Source.System {
 		// Variables
         private static IniFile m_fileSettings = new IniFile("\\Data\\settings.ini");
 
+        // App Settings
 		public static bool m_fullscreen = false;			            // Fullscreen state of the application window
 		public static int m_screenWidth = 1920;				            // Resolution width of the window
 		public static int m_screenHeight = 1080;			            // Resolution height of the window
         public static GameState m_startState = GameState.MAIN_MENU;     // Starting game state
+		public static bool m_debug = true;                              // Debug screen state
 
-		public static bool m_debug = true;
+        // Game Settings
+        public static int m_numberOfPlayers = 1;                        // Number of players
+        //public static int m_track
 
 		// Methods
 		public static void LoadSettings() {
 			// Loads game settings in from a text file
 			// ================
 
-            // Game Settings
-            string nope = m_fileSettings.ReadValue("Game Settings", "wont work");
-            m_fullscreen = Convert.ToBoolean(m_fileSettings.ReadValue("Game Settings", "fullscreen"));
-            m_screenWidth = Convert.ToInt32(m_fileSettings.ReadValue("Game Settings", "screenWidth").Replace("\0", string.Empty));
-            m_screenHeight = Convert.ToInt32(m_fileSettings.ReadValue("Game Settings", "screenHeight").Replace("\0", string.Empty));
-            m_startState = (GameState)Enum.Parse(typeof(GameState), m_fileSettings.ReadValue("Game Settings", "startState").Replace("\0", string.Empty));
+            // App Settings
+            m_fullscreen = Convert.ToBoolean(m_fileSettings.ReadValue("App Settings", "fullscreen"));
+            m_screenWidth = Convert.ToInt32(m_fileSettings.ReadValue("App Settings", "screenWidth").Replace("\0", string.Empty));
+            m_screenHeight = Convert.ToInt32(m_fileSettings.ReadValue("App Settings", "screenHeight").Replace("\0", string.Empty));
+            m_startState = (GameState)Enum.Parse(typeof(GameState), m_fileSettings.ReadValue("App Settings", "startState").Replace("\0", string.Empty));
             
+            // Game Settings
+            m_numberOfPlayers = Convert.ToInt32(m_fileSettings.ReadValue("Game Settings", "numberOfPlayers").Replace("\0", string.Empty));
 
 		}
 
@@ -41,13 +46,14 @@ namespace Project_Cows.Source.System {
 			// Writes game settings to a text file
 			// ================
 
+            // App Settings
+            m_fileSettings.WriteValue("App Settings", "fullscreen", m_fullscreen.ToString());
+            m_fileSettings.WriteValue("App Settings", "screenWidth", m_screenWidth.ToString());
+            m_fileSettings.WriteValue("App Settings", "screenHeight", m_screenHeight.ToString());
+            m_fileSettings.WriteValue("App Settings", "startState", m_startState.ToString());
+
             // Game Settings
-            m_fileSettings.WriteValue("Game Settings", "fullscreen", m_fullscreen.ToString());
-            m_fileSettings.WriteValue("Game Settings", "screenWidth", m_screenWidth.ToString());
-            m_fileSettings.WriteValue("Game Settings", "screenHeight", m_screenHeight.ToString());
-            m_fileSettings.WriteValue("Game Settings", "startState", m_startState.ToString());
-
-
+            m_fileSettings.WriteValue("Game Settings", "numberOfPlayers", m_numberOfPlayers.ToString());
 		}
 	}
 }

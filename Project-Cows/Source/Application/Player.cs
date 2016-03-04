@@ -1,4 +1,4 @@
-﻿// Project Cows -- GearShift Games
+﻿// Project: Cow Racing -- GearShift Games
 // Written by D. Sinclair, 2016
 //			  D. Divers, 2016
 // ================
@@ -38,12 +38,12 @@ namespace Project_Cows.Source.Application {
         private bool m_keyBraking;
 
         // Methods
-        public Player(ContentManager content_, Texture2D cowTexture_, Texture2D carTexture_, Vector2 position_, float rotation_, float speed_, Quadrent quadrent_, int id_ = 999) {
+        public Player(Texture2D cowTexture_, Texture2D carTexture_, Vector2 position_, float rotation_, float speed_, Quadrent quadrent_, int id_ = 999) {
 			// Player constructor
 			// ================
 
-            m_vehicle = new Vehicle(content_, carTexture_, position_, rotation_);
-            m_cow = new Sprite(cowTexture_, position_, rotation_,new Vector2(0.1f,0.1f));
+            m_vehicle = new Vehicle(carTexture_, position_, rotation_);
+            m_cow = new Sprite(cowTexture_, position_, rotation_, new Vector2(0.1f,0.1f));
 
             m_controlScheme = new ControlScheme(quadrent_);
             m_playerID = id_;
@@ -52,8 +52,8 @@ namespace Project_Cows.Source.Application {
             m_currentLap = 1;
         }
 
-        public Player(ContentManager content_, Texture2D cowTexture_, Texture2D texture_, EntityStruct entityStruct_, float speed_, Quadrent quadrent_, int id_ = 999) {
-            m_vehicle = new Vehicle(content_, texture_, entityStruct_);
+        public Player(Texture2D cowTexture_, Texture2D texture_, EntityStruct entityStruct_, float speed_, Quadrent quadrent_, int id_ = 999) {
+            m_vehicle = new Vehicle(texture_, entityStruct_);
             m_cow = new Sprite(cowTexture_, entityStruct_.GetPosition(), entityStruct_.GetRotation(), new Vector2(0.1f, 0.1f));
 
             m_controlScheme = new ControlScheme(quadrent_);

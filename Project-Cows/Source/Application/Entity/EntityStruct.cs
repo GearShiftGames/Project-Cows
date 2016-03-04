@@ -1,4 +1,4 @@
-﻿// Project Cows -- GearShiftGames
+﻿// Project: Cow Racing -- GearShiftGames
 // Written by D.Sinclair, 2016
 // ================
 

@@ -1,4 +1,4 @@
-﻿// Project Cows -- GearShift Games
+﻿// Project: Cow Racing -- GearShift Games
 // Written by D. Sinclair
 // ================
 // CheckpointContainer.cs
@@ -52,8 +52,8 @@ namespace Project_Cows.Source.Application.Track {
             m_checkpoint = new Checkpoint(id_, nextID_, pathID_, position_, rotation_);
         }
 
-        public void SetEntity(ContentManager content_, Texture2D texture_, float rotation_=0) {
-            m_entity = new Entity.Entity(content_, texture_, m_checkpoint.GetPosition(), rotation_);
+        public void SetEntity(Texture2D texture_, float rotation_=0) {
+            m_entity = new Entity.Entity(texture_, m_checkpoint.GetPosition(), rotation_);
         }
     }
 }

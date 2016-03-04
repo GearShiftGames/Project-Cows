@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="Source\Application\Application.cs" />
     <Compile Include="Source\Application\Barrier.cs" />
+    <Compile Include="Source\Application\Button.cs" />
     <Compile Include="Source\Application\Entity\EntityStruct.cs" />
     <Compile Include="Source\Application\Track\Checkpoint.cs" />
     <Compile Include="Source\Application\Entity\Entity.cs" />
@@ -58,9 +59,9 @@
     <Compile Include="Source\System\Graphics\GraphicsHandler.cs" />
     <Compile Include="Source\System\Graphics\Particles\Particle.cs" />
     <Compile Include="Source\System\Graphics\Particles\ParticleHandler.cs" />
-    <Compile Include="Source\System\Graphics\RotatedRectangle.cs" />
     <Compile Include="Source\System\Graphics\Sprites\AnimatedSprite.cs" />
     <Compile Include="Source\System\Graphics\Sprites\Sprite.cs" />
+    <Compile Include="Source\System\Graphics\TextureHandler.cs" />
     <Compile Include="Source\System\IniFile.cs" />
     <Compile Include="Source\System\Input\ControlScheme.cs" />
     <Compile Include="Source\System\Input\TouchHandler.cs" />
