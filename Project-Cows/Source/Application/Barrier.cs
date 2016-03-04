@@ -28,8 +28,7 @@ namespace Project_Cows.Source.Application.Entity{
             //GetSprite().SetScale(new Vector2(0.4f, 0.4f));      // TEMP: Will be replaced in future by correctly sized assets -Dean
         }
 
-        public Barrier(Texture2D texture_, EntityStruct entityStruct_)
-            : base(texture_, entityStruct_) {
+        public Barrier(Texture2D texture_, EntityStruct entityStruct_) : base(texture_, entityStruct_) {
             // Barrier constructor
             // ================
             //GetSprite().SetScale(new Vector2(0.4f, 0.4f));      // TEMP: Will be replaced in future by correctly sized assets -Dean

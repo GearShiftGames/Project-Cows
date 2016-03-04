@@ -26,8 +26,6 @@ namespace Project_Cows.Source.Application.Track {
         public List<Barrier> m_barriers = new List<Barrier>();
         private List<int> m_rankings = new List<int>();
 
-        private Texture2D m_checkpointTexture, m_barriersTexture;
-
         // Methods
         public TrackHandler() {
             // TrackHandler constructor
@@ -40,16 +38,12 @@ namespace Project_Cows.Source.Application.Track {
             m_barriers.Clear();
             m_rankings.Clear();
 
-            // Set checkpoint texture
-            m_checkpointTexture = GraphicsHandler.m_content.Load<Texture2D>("Sprites\\Utility\\checkpoint");
-            m_barriersTexture = GraphicsHandler.m_content.Load<Texture2D>("Sprites\\Track\\Barriers\\barrier");
-
             // Add checkpoints
             Level.LoadLevel("0");       // NOTE: This would be done in the in-game state in future -Dean
             m_checkpoints = Level.GetCheckpoints();
             // Add entities to the checkpoints
             foreach (CheckpointContainer cc in m_checkpoints) {
-                cc.SetEntity(m_checkpointTexture, cc.GetCheckpoint().GetRotation());
+                cc.SetEntity(TextureHandler.m_debugCheckpoint, cc.GetCheckpoint().GetRotation());
             }
 
             // Add vehicles
@@ -60,7 +54,7 @@ namespace Project_Cows.Source.Application.Track {
             m_barrierEntityStructs = Level.GetBarriers();
             // Add entities to Barriers
             foreach (EntityStruct es in m_barrierEntityStructs) {
-                m_barriers.Add(new Barrier(m_barriersTexture, es));
+                m_barriers.Add(new Barrier(TextureHandler.m_gameBarrier, es));
             }
 
             // NOTE: Unneeded now, but kept for testing purposes -Dean

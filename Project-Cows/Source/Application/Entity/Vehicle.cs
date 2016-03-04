@@ -250,8 +250,7 @@ namespace Project_Cows.Source.Application.Entity {
             m_velocity += lateral_friction;
 
             // Set the speed
-            if (m_velocity.Length() < MAXSPEED)
-            {
+            if (m_velocity.Length() < MAXSPEED) {
                 m_velocity += acceleration_vector;
             }
 
