@@ -30,7 +30,7 @@ namespace Project_Cows.Source.System.Graphics {
             // ================
             m_particleHandler = new ParticleHandler();
             m_spriteBatch = new SpriteBatch(graphicsDevice_);
-            m_font = content_.Load<SpriteFont>("basic_font");
+            m_font = content_.Load<SpriteFont>("Fonts\\basic_font");
         }
 
         public void StartDrawing() {

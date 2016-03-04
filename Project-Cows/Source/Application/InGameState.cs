@@ -34,7 +34,7 @@ namespace Project_Cows.Source.Application {
         //private List<Barrier> m_barriers = new List<Barrier>();
         private Timer startTimer = new Timer();
 
-        private Texture2D carTexture, squareTexture, backgroundTexture, cooTexture;
+        private Texture2D carTexture, squareTexture, backgroundTexture, cowTexture;
         private Sprite m_background;
 
         private List<int> m_rankings = new List<int>();
@@ -54,11 +54,11 @@ namespace Project_Cows.Source.Application {
 		public override void Initialise(ContentManager content_) {
 			// Initialise in-game state
 			// ================
-			
-			carTexture = content_.Load<Texture2D>("Tractor_Blue");
-            squareTexture = content_.Load<Texture2D>("square");
-            backgroundTexture = content_.Load<Texture2D>("V2_Background_Grass");
-            cooTexture = content_.Load<Texture2D>("ITSACOO");
+
+            carTexture = content_.Load<Texture2D>("Sprites\\Temp\\Tractor_Blue");
+            squareTexture = content_.Load<Texture2D>("Sprites\\Temp\\square");
+            backgroundTexture = content_.Load<Texture2D>("Sprites\\Backgrounds\\V2_Background_Grass");
+            cowTexture = content_.Load<Texture2D>("Sprites\\Temp\\cow");
             //barrierTexture = content_.Load<Texture2D>("Tyre");
 
             Vector2 BackgroundScale = new Vector2((float)backgroundTexture.Width / (float)Settings.m_screenWidth);
@@ -67,19 +67,39 @@ namespace Project_Cows.Source.Application {
             h_trackHandler.Initialise(content_);
 
 			// Initialise players
-            // NOTE: Should be rewritten to allow simple changing of player amounts
             m_players = new List<Player>();
             m_players.Clear();
-			m_players.Add(new Player(content_, cooTexture, carTexture, h_trackHandler.m_vehicles[0], 0, Quadrent.BOTTOM_RIGHT, 1));
+
+            for (int i = 0; i < Settings.m_numberOfPlayers; ++i) {
+                Quadrent quad = Quadrent.BOTTOM_LEFT;
+                if(i == 0){
+                    quad = Quadrent.BOTTOM_LEFT;
+                }else if(i == 1){
+                    quad = Quadrent.BOTTOM_RIGHT;
+                }else if(i == 2){
+                    quad = Quadrent.TOP_LEFT;
+                }else if(i == 3){
+                    quad = Quadrent.TOP_RIGHT;
+                }
+
+                m_players.Add(new Player(content_, cowTexture, carTexture, h_trackHandler.m_vehicles[i], 0, quad, i+1));
+
+                m_players[i].m_controlScheme.SetSteeringSprite(new Sprite(content_.Load<Texture2D>("Sprites\\Temp\\controlTemp"), new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
+                m_players[i].m_controlScheme.SetInterfaceSprite(new Sprite(content_.Load<Texture2D>("Sprites\\Temp\\controlTempBG"), new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
+            }
+
+            // NOTE: Should be rewritten to allow simple changing of player amounts
+                
+			//m_players.Add(new Player(content_, cowTexture, carTexture, h_trackHandler.m_vehicles[0], 0, Quadrent.BOTTOM_RIGHT, 1));
             //m_players.Add(new Player(content_, cooTexture, carTexture, h_trackHandler.m_vehicles[1], 0, Quadrent.BOTTOM_LEFT, 2));
 
-			m_players[0].m_controlScheme.SetSteeringSprite(new Sprite(content_.Load<Texture2D>("controlTemp"), new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
-			m_players[0].m_controlScheme.SetInterfaceSprite(new Sprite(content_.Load<Texture2D>("controlTempBG"), new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
+			//m_players[0].m_controlScheme.SetSteeringSprite(new Sprite(content_.Load<Texture2D>("controlTemp"), new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
+			//m_players[0].m_controlScheme.SetInterfaceSprite(new Sprite(content_.Load<Texture2D>("controlTempBG"), new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
 			//m_players[1].m_controlScheme.SetSteeringSprite(new Sprite(content_.Load<Texture2D>("controlTemp"), new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
 			//m_players[1].m_controlScheme.SetInterfaceSprite(new Sprite(content_.Load<Texture2D>("controlTempBG"), new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
 
             // Initialise sprites
-            m_animatedSprites.Add(new AnimatedSprite(content_.Load<Texture2D>("animation"), 
+            m_animatedSprites.Add(new AnimatedSprite(content_.Load<Texture2D>("Sprites\\Temp\\animation"), 
                 new Vector2(0.0f, 0.0f), 10, 10, 250, true, 0, 50));
 
             // Start timer

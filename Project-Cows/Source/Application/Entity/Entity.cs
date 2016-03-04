@@ -34,8 +34,8 @@ namespace Project_Cows.Source.Application.Entity {
 			m_sprite = new Sprite(texture_, m_position, m_rotation, new Vector2(1.0f, 1.0f));
 			m_collidable = true;
 
-            Texture2D debugTexture = content_.Load<Texture2D>("entityUncollided");
-            Texture2D cornerTexture = content_.Load<Texture2D>("corner");
+            Texture2D debugTexture = content_.Load<Texture2D>("Sprites\\Utility\\entityUncollided");
+            Texture2D cornerTexture = content_.Load<Texture2D>("Sprites\\Utility\\corner");
             m_collider = new EntityCollider(cornerTexture, debugTexture, new Rectangle((int)(m_position.X - m_sprite.GetWidth() / 2), (int)(m_position.Y - m_sprite.GetHeight() / 2), (int)m_sprite.GetWidth(), (int)m_sprite.GetHeight()), m_rotation);
         }
 
@@ -45,8 +45,8 @@ namespace Project_Cows.Source.Application.Entity {
             m_sprite = new Sprite(texture_, m_position, m_rotation, new Vector2(1.0f, 1.0f));
 			m_collidable = true;
 
-            Texture2D debugTexture = content_.Load<Texture2D>("entityUncollided");
-            Texture2D cornerTexture = content_.Load<Texture2D>("corner");
+            Texture2D debugTexture = content_.Load<Texture2D>("Sprites\\Utility\\entityUncollided");
+            Texture2D cornerTexture = content_.Load<Texture2D>("Sprites\\Utility\\corner");
             m_collider = new EntityCollider(cornerTexture, debugTexture, new Rectangle((int)(m_position.X - m_sprite.GetWidth() / 2), (int)(m_position.Y - m_sprite.GetHeight() / 2), (int)m_sprite.GetWidth(), (int)m_sprite.GetHeight()), m_rotation);
         }
 

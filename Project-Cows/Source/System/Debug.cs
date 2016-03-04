@@ -61,6 +61,14 @@ namespace Project_Cows.Source.System {
 
 			m_text.Add(text_);
 		}
+
+        public static void AddText(string text_, Vector2 position_) {
+            // Add a sprite to the debug screen
+            // ================
+            DebugText t = new DebugText(text_, position_);
+
+            m_text.Add(t);
+        }
 	}
 
 	public class DebugText {

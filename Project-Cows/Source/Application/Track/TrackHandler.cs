@@ -41,8 +41,8 @@ namespace Project_Cows.Source.Application.Track {
             m_rankings.Clear();
 
             // Set checkpoint texture
-            m_checkpointTexture = content_.Load<Texture2D>("checkpoint");
-            m_barriersTexture = content_.Load<Texture2D>("barrier");
+            m_checkpointTexture = content_.Load<Texture2D>("Sprites\\Utility\\checkpoint");
+            m_barriersTexture = content_.Load<Texture2D>("Sprites\\Track\\Barriers\\barrier");
 
             // Add checkpoints
             Level.LoadLevel("0");       // NOTE: This would be done in the in-game state in future -Dean
