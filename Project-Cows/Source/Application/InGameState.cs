@@ -74,10 +74,24 @@ namespace Project_Cows.Source.Application {
                     quad = Quadrent.TOP_RIGHT;
                 }
 
-                m_players.Add(new Player(TextureHandler.m_vehicleBlue, TextureHandler.m_vehicleBlue, h_trackHandler.m_vehicles[i], 0, quad, i + 1));
-
-                m_players[i].m_controlScheme.SetSteeringSprite(new Sprite(TextureHandler.m_userInterfaceWheelBlue, new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
-                m_players[i].m_controlScheme.SetInterfaceSprite(new Sprite(TextureHandler.m_userInterfaceSlider, new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
+                if (i == 0) {
+                    m_players.Add(new Player(TextureHandler.m_vehicleBlue, TextureHandler.m_vehicleBlue, h_trackHandler.m_vehicles[i], 0, quad, i + 1));
+                    m_players[i].m_controlScheme.SetSteeringSprite(new Sprite(TextureHandler.m_userInterfaceWheelBlue, new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
+                    m_players[i].m_controlScheme.SetInterfaceSprite(new Sprite(TextureHandler.m_userInterfaceSlider, new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
+                } else if (i == 1) {
+                    m_players.Add(new Player(TextureHandler.m_vehicleOrange, TextureHandler.m_vehicleOrange, h_trackHandler.m_vehicles[i], 0, quad, i + 1));
+                    m_players[i].m_controlScheme.SetSteeringSprite(new Sprite(TextureHandler.m_userInterfaceWheelOrange, new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
+                    m_players[i].m_controlScheme.SetInterfaceSprite(new Sprite(TextureHandler.m_userInterfaceSlider, new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
+                } else if (i == 2) {
+                    m_players.Add(new Player(TextureHandler.m_vehiclePurple, TextureHandler.m_vehiclePurple, h_trackHandler.m_vehicles[i], 0, quad, i + 1));
+                    m_players[i].m_controlScheme.SetSteeringSprite(new Sprite(TextureHandler.m_userInterfaceWheelPurple, new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
+                    m_players[i].m_controlScheme.SetInterfaceSprite(new Sprite(TextureHandler.m_userInterfaceSlider, new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
+                } else if (i == 3) {
+                    m_players.Add(new Player(TextureHandler.m_vehicleYellow, TextureHandler.m_vehicleYellow, h_trackHandler.m_vehicles[i], 0, quad, i + 1));
+                    m_players[i].m_controlScheme.SetSteeringSprite(new Sprite(TextureHandler.m_userInterfaceWheelYellow, new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
+                    m_players[i].m_controlScheme.SetInterfaceSprite(new Sprite(TextureHandler.m_userInterfaceSlider, new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
+                }
+                
             }
 
             // Initialise sprites
