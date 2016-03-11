@@ -12,6 +12,9 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
 using Project_Cows.Source.System;
+using Project_Cows.Source.System.Graphics;
+using Project_Cows.Source.System.Graphics.Sprites;
+using Project_Cows.Source.Application.Physics;
 
 namespace Project_Cows.Source.Application.Entity {
     class Vehicle : Entity {
@@ -37,6 +40,10 @@ namespace Project_Cows.Source.Application.Entity {
         public float lastMoveX = 0;
         public float lastMoveY = 0;
         int counter = 0;
+
+        private bool barrierHit = false;
+
+        public Sprite debugSprite = new Sprite(TextureHandler.m_tempRed, new Vector2(0.0f, 0.0f), 0.0f, new Vector2(1.0f, 1.0f));
 
         // Methods
         public Vehicle(Texture2D texture_, Vector2 position_, float m_rotation_) : base(texture_, position_, m_rotation_) {
@@ -72,142 +79,6 @@ namespace Project_Cows.Source.Application.Entity {
             // ================
             m_steeringValue = steeringValue_;
             m_braking = braking_;
-
-            /*if (!m_braking)
-            {
-                if (m_speed > 0)
-                {
-                    m_speed *= 1.02f;
-                }
-                else
-                {
-                    m_speed /= 1.10f;
-                }
-                m_speed += ACCELERATION_RATE;
-
-                //m_velocity.X += ACCELERATION_RATE;
-
-                counter++;
-
-                if (counter > 50)
-                    slide = 0;
-            }
-            else
-            {
-                //if you have breaked, the start reset the counter again
-                counter = 0;
-                sliding -= 0.02f;
-                sliding *= 1.02f;
-
-                //only do this break function if the car is not turning   
-                m_speed *= 0.99f;
-
-            }*/
-
-            //if turning right
-            /* if (steeringValue_ > 0.2) 
-             {
-                 if (steeringValue_ > 0.6)
-                 {
-                     slide += 0.1f * (m_speed / 10);
-
-                     if (m_speed > 2.0f)
-                     {
-                         SetRotationRadians(GetRotationRadians() + (0.04f + (-sliding / 60)));
-                     }
-                     if (m_speed < 2.0f && m_speed > 0.5f)
-                     {
-                         SetRotationRadians(GetRotationRadians() + 0.04f);
-                     }
-                     m_speed *= 0.99f;
-                 }
-                 else
-                 {
-                     SetRotationRadians(GetRotationRadians() + (0.02f + (-sliding / 60)) * (m_speed / 5));
-                 }	
-             }
-
-             //if turning left
-             if (steeringValue_ < -0.2)
-             {
-                 if (steeringValue_ < -0.6)
-                 {
-                     slide -= 0.1f * (m_speed / 10);
-                     if (m_speed > 2.0f)
-                     {
-                         slide -= 0.1f * (m_speed / 10);
-                         if (m_speed > 2.0f)
-                         {
-                             SetRotationRadians(GetRotationRadians() - (0.04f + (-sliding / 60)));
-                         }
-                         if (m_speed < 2.0f && m_speed > 0.5f)
-                         {
-                             SetRotationRadians(GetRotationRadians() - 0.04f);
-                         }
-                     }
-                     if (m_speed < 2.0f && m_speed > 0.5f)
-                     {
-                         SetRotationRadians(GetRotationRadians() - (0.02f + (-sliding / 60)) * (m_speed / 5));
-                     }
-                     m_speed *= 0.99f;
-                 }
-                 else
-                 {
-                     SetRotationRadians(GetRotationRadians() - (0.02f + (-sliding / 60)) * (m_speed / 5));
-                 }
-             }*/
-/*
-            //Cap the the speed to MAXSPEED
-            if (m_speed > MAXSPEED)
-            {
-                m_speed = MAXSPEED;
-            }
-
-            sliding *= 0.98f;
-
-            //Cap the sliding values, so it doesnt spin
-            if (sliding > 0.4f)
-            {
-                sliding = 0.4f;
-            }
-            if (sliding < -0.4f)
-            {
-                sliding = -0.4f;
-            }
-            if (slide > 2)
-            {
-                slide = 2.0f;
-            }
-            if (slide < -2)
-            {
-                slide = -2.0f;
-            }
-*//*
-            // Get steer angle
-            float steer_angle = steeringValue_ * STEERING_SENSITIVITY;
-            // Get forward vector
-            m_forward = RotateAroundAxis(m_forward, steer_angle);
-
-            m_speed += ACCELERATION_RATE;
-
-            //last
-
-            lastMoveX = m_speed * m_forward.X;
-            lastMoveY = m_speed * m_forward.Y;
-
-            m_position.X += lastMoveX;
-            m_position.Y += lastMoveY;
-
-            //m_position += m_for
-
-            Debug.AddText(new DebugText(GetRotationRadians().ToString(), new Vector2(500, 90)));
-            //reset values to false, to check the next update
-
-            Debug.AddText(new DebugText(GetRotationRadians().ToString(), new Vector2(500, 90)));
-            //reset values to false, to check the next update
-
-            m_braking = false;
-   * */
 
             // ==ACCELERATION==
 
@@ -255,7 +126,8 @@ namespace Project_Cows.Source.Application.Entity {
             }
 
             // Set position
-            SetPosition(m_position + m_velocity);
+            //SetPosition(m_position + m_velocity);
+            debugSprite.SetPosition(m_position + m_velocity*10);
             SetRotationDegrees(m_rotation + steer_angle);
 
             // TEMP
@@ -282,6 +154,31 @@ namespace Project_Cows.Source.Application.Entity {
             return temp;
 
         }
+
+        public bool HasHitBarrier(List<Barrier> barriers_) {
+            foreach (Barrier b in barriers_) {
+                EntityCollider fuckDean = new EntityCollider(m_collider);
+                Vector2 m_newPosition = fuckDean.GetPosition() + m_velocity;
+                Vector2 m_barrierPosition = b.GetPosition();
+
+                fuckDean.SetPosition(m_collider.GetPosition() + m_velocity);
+
+                if (CollisionHandler.CheckForCollision(fuckDean, b.GetCollider())) {
+                    Debug.AddText(new DebugText("New Position = " + m_newPosition, new Vector2(10.0f, 180.0f)));
+                    
+                    return true;
+                }
+
+            }
+            return false;
+        }
+
+        // Getters
+        public Vector2 GetVelocity()
+        {
+            return m_velocity;
+        }
+
     }
 }
 

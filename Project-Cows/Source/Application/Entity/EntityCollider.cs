@@ -44,6 +44,22 @@ namespace Project_Cows.Source.Application.Entity {
 			
 		}
 
+        public EntityCollider(EntityCollider collider_) {
+            // EntityCollider constructor
+            // ================
+
+            m_boundingBox = collider_.m_boundingBox;
+            m_rotation = collider_.m_rotation;
+
+            m_origin = collider_.m_origin;
+
+            m_debugSprite = collider_.m_debugSprite;
+            m_corner1 = collider_.m_corner1;
+            m_corner2 = collider_.m_corner2;
+            m_corner3 = collider_.m_corner3;
+            m_corner4 = collider_.m_corner4;
+        }
+
 		public void UpdateSprite() {
 			m_debugSprite.SetPosition(GetPosition());
 			m_debugSprite.SetRotationDegrees(m_rotation);

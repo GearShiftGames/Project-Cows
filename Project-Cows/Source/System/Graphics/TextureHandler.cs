@@ -51,6 +51,8 @@ namespace Project_Cows.Source.System.Graphics {
         public static Texture2D m_debugCorner;
         public static Texture2D m_debugCheckpoint;
         public static Texture2D m_debugCollider;
+        // Temp
+        public static Texture2D m_tempRed;
 
         // Methods
         public static void LoadContent() {
@@ -96,9 +98,12 @@ namespace Project_Cows.Source.System.Graphics {
             LoadTexture(ref m_gameFinishLine, "Sprites\\Track\\finishLine");
             
             // Debug
-            LoadTexture(ref m_debugCorner, "Sprites\\Debug\\corner");
-            LoadTexture(ref m_debugCheckpoint, "Sprites\\Debug\\checkpoint");
-            LoadTexture(ref m_debugCollider, "Sprites\\Debug\\collider");
+            LoadTexture(ref m_debugCorner, "Sprites\\Utility\\corner");
+            LoadTexture(ref m_debugCheckpoint, "Sprites\\Utility\\checkpoint");
+            LoadTexture(ref m_debugCollider, "Sprites\\Utility\\carCollider");
+
+            // Temp
+            LoadTexture(ref m_tempRed, "Sprites\\Temp\\Red");
         }
 
         private static void LoadTexture(ref Texture2D texture_, string file_) {
