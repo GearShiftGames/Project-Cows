@@ -11,10 +11,6 @@
 /// ================
 /// Timer.cs
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-
 namespace Project_Cows.Source.System {
     class Timer {
         // Class for used timed operations

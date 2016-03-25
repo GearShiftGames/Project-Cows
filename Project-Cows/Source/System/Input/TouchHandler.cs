@@ -11,9 +11,7 @@
 /// ================
 /// TouchHandler.cs
 
-using System;
 using System.Collections.Generic;
-using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input.Touch;
 
 namespace Project_Cows.Source.System.Input {

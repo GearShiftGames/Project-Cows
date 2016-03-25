@@ -11,7 +11,6 @@
 /// ================
 /// ControlScheme.cs
 
-using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Input.Touch;
 using Microsoft.Xna.Framework;

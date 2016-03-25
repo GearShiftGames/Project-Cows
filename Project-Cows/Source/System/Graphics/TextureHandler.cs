@@ -11,9 +11,6 @@
 /// ================
 /// TextureHandler.cs
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace Project_Cows.Source.System.Graphics {

@@ -11,8 +11,6 @@
 /// ================
 /// TouchZone.cs
 
-using System;
-using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 
 namespace Project_Cows.Source.System.Input {

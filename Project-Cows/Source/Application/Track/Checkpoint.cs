@@ -11,13 +11,7 @@
 /// ================
 /// Checkpoint.cs
 
-using System;
-using System.Collections.Generic;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.Graphics;
-
-using Project_Cows.Source.Application.Entity;
 
 namespace Project_Cows.Source.Application.Track {
     public class Checkpoint {

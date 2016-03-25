@@ -11,15 +11,12 @@
 /// ================
 /// State.cs
 
-using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
 using Project_Cows.Source.System.Input;
 using Project_Cows.Source.Application;
-using Project_Cows.Source.System.Graphics;
 
 namespace Project_Cows.Source.System.StateMachine {
 	abstract class State {
