@@ -1,8 +1,15 @@
-﻿// Project: Cow Racing -- GearShift Games
-// Writen by D. Sinclair, 2016
-//			 D. Divers, 2016
-// ================
-// CollisionHandler.cs
+﻿/// Project: Cow Racing
+/// Developed by GearShift Games, 2015-2016
+///     D. Sinclair
+///     N. Headley
+///     D. Divers
+///     C. Fleming
+///     C. Tekpinar
+///     D. McNally
+///     G. Annandale
+///     R. Ferguson
+/// ================
+/// CollisionHandler.cs
 
 using System;
 using System.Collections.Generic;

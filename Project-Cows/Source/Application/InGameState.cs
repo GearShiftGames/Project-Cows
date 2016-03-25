@@ -1,8 +1,15 @@
-﻿// Project: Cow Racing -- GearShift Games
-// Written by D. Sinclair, 2016
-//            N. Headley, 2016
-// ================
-// InGameState.cs
+﻿/// Project: Cow Racing
+/// Developed by GearShift Games, 2015-2016
+///     D. Sinclair
+///     N. Headley
+///     D. Divers
+///     C. Fleming
+///     C. Tekpinar
+///     D. McNally
+///     G. Annandale
+///     R. Ferguson
+/// ================
+/// InGameState.cs
 
 using System;
 using System.Collections.Generic;
@@ -176,10 +183,11 @@ namespace Project_Cows.Source.Application {
 
 			
             // Update game objects
-            bool move = true;
+            
 
             // Perform collision Checks
             foreach (Player p1 in m_players) {
+                bool move = true;
 
                 EntityCollider newColl = new EntityCollider(p1.GetVehicle().GetCollider());
 

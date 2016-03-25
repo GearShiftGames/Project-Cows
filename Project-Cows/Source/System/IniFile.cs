@@ -1,7 +1,17 @@
-﻿// Project: Cow Racing -- GearShift Games
-// Taken from https://gist.github.com/anonymous/7a2efb7291eb6d68c6c8, 2016
-// ================
-// IniFile.cs
+﻿/// Project: Cow Racing
+/// Developed by GearShift Games, 2015-2016
+///     D. Sinclair
+///     N. Headley
+///     D. Divers
+///     C. Fleming
+///     C. Tekpinar
+///     D. McNally
+///     G. Annandale
+///     R. Ferguson
+/// ================
+/// Taken from https://gist.github.com/anonymous/7a2efb7291eb6d68c6c8, 2016
+/// ================
+/// IniFile.cs
 
 using System.Collections.Generic;
 using System.Linq;

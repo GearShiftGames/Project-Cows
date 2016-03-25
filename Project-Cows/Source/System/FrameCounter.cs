@@ -1,7 +1,17 @@
-﻿// Project: Cow Racing -- GearShift Games
-// Based on code written by D. Wilson, 2013 (http://www.stackoverflow.com/questions/20676185/xna-monogame-getting-the-frames-per-second)
-// ================
-// FrameCounter.cs
+﻿/// Project: Cow Racing
+/// Developed by GearShift Games, 2015-2016
+///     D. Sinclair
+///     N. Headley
+///     D. Divers
+///     C. Fleming
+///     C. Tekpinar
+///     D. McNally
+///     G. Annandale
+///     R. Ferguson
+/// ================
+/// Based on code written by D. Wilson, 2013 (http://www.stackoverflow.com/questions/20676185/xna-monogame-getting-the-frames-per-second)
+/// ================
+/// FrameCounter.cs
 
 using System;
 using System.Collections.Generic;
