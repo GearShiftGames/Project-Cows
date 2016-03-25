@@ -34,6 +34,11 @@ namespace Project_Cows.Source.Application {
 		// ================
 
 		// Variables
+
+        // <Farseer>
+        FarseerPhysics.Dynamics.World fs_world;
+        // </Farseer>
+
         private TrackHandler h_trackHandler = new TrackHandler();
         private List<AnimatedSprite> m_animatedSprites = new List<AnimatedSprite>();
         private List<Particle> m_particles = new List<Particle>();

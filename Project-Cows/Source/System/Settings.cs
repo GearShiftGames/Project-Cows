@@ -27,7 +27,7 @@ namespace Project_Cows.Source.System {
 		public static int m_screenWidth = 1920;				            // Resolution width of the window
 		public static int m_screenHeight = 1080;			            // Resolution height of the window
         public static GameState m_startState = GameState.MAIN_MENU;     // Starting game state
-		public static bool m_debug = true;                              // Debug screen state
+		public static bool m_debug = false;                             // Debug screen state
 
         // Game Settings
         public static int m_numberOfPlayers = 1;                        // Number of players

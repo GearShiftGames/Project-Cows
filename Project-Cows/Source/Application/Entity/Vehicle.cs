@@ -31,9 +31,9 @@ namespace Project_Cows.Source.Application.Entity {
         private float m_steeringValue;
         private bool m_braking;
 
-        private const float MAXSPEED = 7.5f;
-        private const float ACCELERATION_RATE = 0.1f;
-        private const float DECELERATION_RATE = -0.15f;
+        private const float MAXSPEED = 4.0f;
+        private const float ACCELERATION_RATE = 0.05f;
+        private const float DECELERATION_RATE = -0.1f;
         private const float STEERING_SENSITIVITY = 10.0f;
 
         public Vector2 m_forward, m_right, m_velocity;
@@ -129,11 +129,16 @@ namespace Project_Cows.Source.Application.Entity {
             if (m_velocity.Length() < MAXSPEED) {
                 m_velocity += acceleration_vector;
             }
+            
 
             // Set position
             //SetPosition(m_position + m_velocity);
             debugSprite.SetPosition(m_position + m_velocity*10);
             SetRotationDegrees(m_rotation + steer_angle);
+
+            
+
+
 
             // TEMP
             Debug.AddText(new DebugText("Position: (" + m_position.X + ", " + m_position.Y + ")", new Vector2(100, 1000)));
