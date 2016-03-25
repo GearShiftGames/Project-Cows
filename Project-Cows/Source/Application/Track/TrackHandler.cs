@@ -15,6 +15,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Xna.Framework;
 
+using FarseerPhysics.Dynamics;
+
 using Project_Cows.Source.Application.Entity;
 using Project_Cows.Source.Application.Physics;
 using Project_Cows.Source.System;
@@ -31,13 +33,17 @@ namespace Project_Cows.Source.Application.Track {
         public List<Barrier> m_barriers = new List<Barrier>();
         private List<int> m_rankings = new List<int>();
 
+        private World fs_world;
+
         // Methods
         public TrackHandler() {
             // TrackHandler constructor
             // ================
         }
 
-        public void Initialise() {
+        public void Initialise(World world_) {
+            fs_world = world_;
+
             m_checkpoints.Clear();
             m_vehicles.Clear();
             m_barriers.Clear();
@@ -49,9 +55,9 @@ namespace Project_Cows.Source.Application.Track {
             // Add entities to the checkpoints
             foreach (CheckpointContainer cc in m_checkpoints) {
                 if (cc.GetCheckpoint().GetType() == CheckpointType.FIRST) {
-                    cc.SetEntity(TextureHandler.m_gameFinishLine, cc.GetCheckpoint().GetRotation());
+                    cc.SetEntity(fs_world, TextureHandler.m_gameFinishLine, cc.GetCheckpoint().GetRotation());
                 } else {
-                    cc.SetEntity(TextureHandler.m_debugCheckpoint, cc.GetCheckpoint().GetRotation());
+                    cc.SetEntity(fs_world, TextureHandler.m_debugCheckpoint, cc.GetCheckpoint().GetRotation());
                 }
             }
 
@@ -63,7 +69,7 @@ namespace Project_Cows.Source.Application.Track {
             m_barrierEntityStructs = Level.GetBarriers();
             // Add entities to Barriers
             foreach (EntityStruct es in m_barrierEntityStructs) {
-                m_barriers.Add(new Barrier(TextureHandler.m_gameBarrier, es));
+                m_barriers.Add(new Barrier(fs_world, TextureHandler.m_gameBarrier, es));
             }
         }
 
@@ -72,7 +78,7 @@ namespace Project_Cows.Source.Application.Track {
             Debug.AddText(new DebugText("Players:" + players_.Count(), new Vector2(20, 520)));        // TEMP
 
             // Checkpoint collision
-            foreach (Player p in players_) {
+            /*foreach (Player p in players_) {
                 foreach (CheckpointContainer cc in m_checkpoints) {
                     if (CollisionHandler.CheckForCollision(p.GetVehicle().GetCollider(), cc.GetEntity().GetCollider())) {
                         if (cc.GetCheckpoint().GetID() == p.m_currentCheckpoint.GetNextID()) {
@@ -87,7 +93,7 @@ namespace Project_Cows.Source.Application.Track {
                 Debug.AddText(new DebugText("Lap: " + p.m_currentLap.ToString(), new Vector2(20.0f + 150 * p.GetID(), 90.0f)));
                 Debug.AddText(new DebugText("Checkpoint: " + p.m_currentCheckpoint.GetID().ToString(), new Vector2(20.0f + 150 * p.GetID(), 110.0f)));
                 Debug.AddText(new DebugText("Path: " + p.m_currentCheckpoint.GetPath().ToString(), new Vector2(20.0f + 150 * p.GetID(), 130.0f)));
-            }
+            }*/
 
 
             // Get rankings
@@ -118,7 +124,6 @@ namespace Project_Cows.Source.Application.Track {
             }
 
             foreach (Barrier b in m_barriers) {
-                b.UpdateCollider();
                 b.UpdateSprites();
             }
         }

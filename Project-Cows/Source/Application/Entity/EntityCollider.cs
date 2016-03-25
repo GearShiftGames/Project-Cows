@@ -10,6 +10,9 @@
 ///     R. Ferguson
 /// ================
 /// EntityCollider.cs
+/// 
+
+/// NOTE: OBSOLETE
 
 using System;
 using Microsoft.Xna.Framework;

@@ -30,7 +30,7 @@ namespace Project_Cows.Source.System {
 		public static bool m_debug = false;                             // Debug screen state
 
         // Game Settings
-        public static int m_numberOfPlayers = 1;                        // Number of players
+        public static int m_numberOfPlayers = 2;                        // Number of players
         //public static int m_track
 
 		// Methods

@@ -14,6 +14,8 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
+using FarseerPhysics.Dynamics;
+
 namespace Project_Cows.Source.Application.Track {
     public class CheckpointContainer {
         // Class to hold the checkpoint 'struct' and the entity
@@ -37,6 +39,7 @@ namespace Project_Cows.Source.Application.Track {
 
             m_checkpoint = checkpoint_;
             m_entity = entity_;
+            m_entity.GetBody().IsSensor = true;
         }
 
 
@@ -54,8 +57,9 @@ namespace Project_Cows.Source.Application.Track {
             m_checkpoint = new Checkpoint(id_, nextID_, pathID_, position_, rotation_);
         }
 
-        public void SetEntity(Texture2D texture_, float rotation_=0) {
-            m_entity = new Entity.Entity(texture_, m_checkpoint.GetPosition(), rotation_);
+        public void SetEntity(World world_, Texture2D texture_, float rotation_=0) {
+            m_entity = new Entity.Entity(world_, texture_, m_checkpoint.GetPosition(), rotation_, BodyType.Static);
+            m_entity.GetBody().IsSensor = true;
         }
     }
 }

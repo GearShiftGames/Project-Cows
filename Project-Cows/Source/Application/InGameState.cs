@@ -18,6 +18,8 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Input.Touch;
 
+using FarseerPhysics.Dynamics;
+
 using Project_Cows.Source.Application.Entity;
 using Project_Cows.Source.Application.Track;
 using Project_Cows.Source.Application.Physics;
@@ -36,13 +38,12 @@ namespace Project_Cows.Source.Application {
 		// Variables
 
         // <Farseer>
-        FarseerPhysics.Dynamics.World fs_world;
+        World fs_world;
         // </Farseer>
 
         private TrackHandler h_trackHandler = new TrackHandler();
         private List<AnimatedSprite> m_animatedSprites = new List<AnimatedSprite>();
         private List<Particle> m_particles = new List<Particle>();
-        //private List<Barrier> m_barriers = new List<Barrier>();
         private Timer startTimer = new Timer();
 
         private Sprite m_background;
@@ -65,9 +66,11 @@ namespace Project_Cows.Source.Application {
 			// Initialise in-game state
 			// ================
 
+            fs_world = new FarseerPhysics.Dynamics.World(Vector2.Zero);
+
             m_background = new Sprite(TextureHandler.m_gameBackground, new Vector2(Settings.m_screenWidth / 2, Settings.m_screenHeight / 2), 0.0f, Vector2.One);
 
-            h_trackHandler.Initialise();
+            h_trackHandler.Initialise(fs_world);
 
 			// Initialise players
             m_players = new List<Player>();
@@ -86,19 +89,19 @@ namespace Project_Cows.Source.Application {
                 }
 
                 if (i == 0) {
-                    m_players.Add(new Player(TextureHandler.m_vehicleBlue, TextureHandler.m_vehicleBlue, h_trackHandler.m_vehicles[i], 0, quad, i + 1));
+                    m_players.Add(new Player(fs_world, TextureHandler.m_vehicleBlue, TextureHandler.m_vehicleBlue, h_trackHandler.m_vehicles[i], 0, quad, i + 1));
                     m_players[i].m_controlScheme.SetSteeringSprite(new Sprite(TextureHandler.m_userInterfaceWheelBlue, new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
                     m_players[i].m_controlScheme.SetInterfaceSprite(new Sprite(TextureHandler.m_userInterfaceSlider, new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
                 } else if (i == 1) {
-                    m_players.Add(new Player(TextureHandler.m_vehicleOrange, TextureHandler.m_vehicleOrange, h_trackHandler.m_vehicles[i], 0, quad, i + 1));
+                    m_players.Add(new Player(fs_world, TextureHandler.m_vehicleOrange, TextureHandler.m_vehicleOrange, h_trackHandler.m_vehicles[i], 0, quad, i + 1));
                     m_players[i].m_controlScheme.SetSteeringSprite(new Sprite(TextureHandler.m_userInterfaceWheelOrange, new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
                     m_players[i].m_controlScheme.SetInterfaceSprite(new Sprite(TextureHandler.m_userInterfaceSlider, new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
                 } else if (i == 2) {
-                    m_players.Add(new Player(TextureHandler.m_vehiclePurple, TextureHandler.m_vehiclePurple, h_trackHandler.m_vehicles[i], 0, quad, i + 1));
+                    m_players.Add(new Player(fs_world, TextureHandler.m_vehiclePurple, TextureHandler.m_vehiclePurple, h_trackHandler.m_vehicles[i], 0, quad, i + 1));
                     m_players[i].m_controlScheme.SetSteeringSprite(new Sprite(TextureHandler.m_userInterfaceWheelPurple, new Vector2(100.0f, 100.0f), 180, new Vector2(1.0f, 1.0f), true));
                     m_players[i].m_controlScheme.SetInterfaceSprite(new Sprite(TextureHandler.m_userInterfaceSlider, new Vector2(100.0f, 100.0f), 180, new Vector2(1.0f, 1.0f), true));
                 } else if (i == 3) {
-                    m_players.Add(new Player(TextureHandler.m_vehicleYellow, TextureHandler.m_vehicleYellow, h_trackHandler.m_vehicles[i], 0, quad, i + 1));
+                    m_players.Add(new Player(fs_world, TextureHandler.m_vehicleYellow, TextureHandler.m_vehicleYellow, h_trackHandler.m_vehicles[i], 0, quad, i + 1));
                     m_players[i].m_controlScheme.SetSteeringSprite(new Sprite(TextureHandler.m_userInterfaceWheelYellow, new Vector2(100.0f, 100.0f), 180, new Vector2(1.0f, 1.0f), true));
                     m_players[i].m_controlScheme.SetInterfaceSprite(new Sprite(TextureHandler.m_userInterfaceSlider, new Vector2(100.0f, 100.0f), 180, new Vector2(1.0f, 1.0f), true));
                 }
@@ -188,7 +191,7 @@ namespace Project_Cows.Source.Application {
 			
             // Update game objects
             
-
+            /*
             // Perform collision Checks
             foreach (Player p1 in m_players) {
                 bool move = true;
@@ -224,11 +227,6 @@ namespace Project_Cows.Source.Application {
                 if(move)
                     p1.GetVehicle().SetPosition(p1.GetVehicle().GetPosition() + p1.GetVehicle().GetVelocity());
 
-                /*if (p1.GetVehicle().HasHitBarrier(h_trackHandler.m_barriers))
-                {
-                    p1.GetVehicle().m_velocity = -p1.GetVehicle().m_velocity * 0.6f;
-                }*/
-
                 // Player vs Player
                 foreach (Player p2 in m_players) {
                     if (p2.GetID() != p1.GetID()) {
@@ -243,7 +241,7 @@ namespace Project_Cows.Source.Application {
                     }
                 }
             }
-
+            */
             h_trackHandler.Update(m_players);
 
 
@@ -268,6 +266,8 @@ namespace Project_Cows.Source.Application {
             
 			// Update particles
             m_particles = GraphicsHandler.UpdatePFX(gameTime_.ElapsedGameTime.TotalMilliseconds);
+
+            fs_world.Step((float)gameTime_.ElapsedGameTime.TotalMilliseconds * .001f);
 		}
 
 		public override void Draw(GraphicsDevice graphicsDevice_) {
