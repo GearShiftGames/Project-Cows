@@ -254,7 +254,6 @@ namespace Project_Cows.Source.Application {
             */
             h_trackHandler.Update(m_players);
 
-
 			// Update sprites
             foreach(AnimatedSprite anim in m_animatedSprites) {
                 // If currently animating

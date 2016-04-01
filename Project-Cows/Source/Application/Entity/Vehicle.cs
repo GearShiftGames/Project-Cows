@@ -95,13 +95,13 @@ namespace Project_Cows.Source.Application.Entity {
                 m_forward.Normalize();
             }
 
-            fs_body.ApplyAngularImpulse(steeringValue_/1000);
+            fs_body.ApplyAngularImpulse(steeringValue_/5000);
 
             if (!m_braking) {
                 fs_body.ApplyForce(m_forward * ACCELERATION_RATE * 1.5f);
             }
 
-            fs_body.Friction = 1000f;
+            fs_body.Friction = 10000f;
 
             // TEMP
             Debug.AddText(new DebugText("Position: " + fs_body.Position.ToString(), new Vector2(100, 1000)));
