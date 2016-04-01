@@ -156,7 +156,7 @@ namespace Project_Cows.Source.System.Input {
 		}
     }
 
-    enum Quadrent {
+    public enum Quadrent {
         // Enum for stating a quadrent of the screen
         // ================
         TOP_LEFT,

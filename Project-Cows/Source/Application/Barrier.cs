@@ -27,15 +27,8 @@ namespace Project_Cows.Source.Application.Entity{
 
 
         // Methods
-        public Barrier(World world_, Texture2D texture_, Vector2 position_, float rotation_)
-            : base(world_, texture_, position_, rotation_, BodyType.Static) {
-            // Barrier constructor
-            // ================
-            //GetSprite().SetScale(new Vector2(0.4f, 0.4f));      // TEMP: Will be replaced in future by correctly sized assets -Dean
-        }
-
         public Barrier(World world_, Texture2D texture_, EntityStruct entityStruct_)
-            : base(world_, texture_, entityStruct_, BodyType.Static) {
+            : base(world_, texture_, entityStruct_.GetPosition(), entityStruct_.GetRotationDegrees(), BodyType.Static) {
             // Barrier constructor
             // ================
             //GetSprite().SetScale(new Vector2(0.4f, 0.4f));      // TEMP: Will be replaced in future by correctly sized assets -Dean

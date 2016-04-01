@@ -13,10 +13,8 @@ using Project_Cows.Source.System.Graphics.Sprites;
 
 using System;
 
-namespace Project_Cows.Source.Application.Entity
-{
-	class Tire
-	{
+namespace Project_Cows.Source.Application.Entity {
+	class Tire {
 		private const float ACCELERATION_RATE = 10f;
 
 		protected Body fs_body;
@@ -99,11 +97,14 @@ namespace Project_Cows.Source.Application.Entity
 			else
 				return;
 
-			fs_body.ApplyForce(force * currentForwardNormal);	
+			fs_body.ApplyForce(force * currentForwardNormal);
+
+            debugSprite.SetPosition(FarseerPhysics.ConvertUnits.ToDisplayUnits(fs_body.Position));
+
 		}
 
 		//Applies torque based upon the direction of steering
-		void updateTurn(int steeringValue)
+		public void updateTurn(int steeringValue)
 		{
 			float desiredTorque = 0;
 

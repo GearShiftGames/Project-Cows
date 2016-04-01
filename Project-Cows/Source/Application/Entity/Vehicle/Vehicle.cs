@@ -23,7 +23,7 @@ using Project_Cows.Source.System.Graphics;
 using Project_Cows.Source.System.Graphics.Sprites;
 using Project_Cows.Source.Application.Physics;
 
-namespace Project_Cows.Source.Application.Entity {
+namespace Project_Cows.Source.Application.Entity.Vehicle {
     class Vehicle : Entity {
         // Class for the player vehicles
         // ================
@@ -53,23 +53,8 @@ namespace Project_Cows.Source.Application.Entity {
         public Sprite debugSprite = new Sprite(TextureHandler.m_tempRed, new Vector2(0.0f, 0.0f), 0.0f, new Vector2(1.0f, 1.0f));
 
         // Methods
-        public Vehicle(World world_, Texture2D texture_, Vector2 position_, float rotation_, float mass_ = 10f, float restitution_ = 0.1f)
-            : base(world_, texture_, position_, rotation_, BodyType.Dynamic, mass_, restitution_) {
-            // Vehicle constructor
-            // ================
-
-            m_speed = 0.0f;
-
-            m_velocity.X = 0.0f;
-            m_velocity.Y = 0.0f;
-
-            m_steeringValue = 0.0f;
-            m_braking = false;
-            m_forward = new Vector2(0, -1);
-        }
-
         public Vehicle(World world_, Texture2D texture_, EntityStruct entityStruct_, float mass_ = 10f, float restitution_ = 0.3f)
-            : base(world_, texture_, entityStruct_, BodyType.Dynamic, mass_, restitution_) {
+            : base(world_, texture_, entityStruct_.GetPosition(), entityStruct_.GetRotationDegrees(), BodyType.Dynamic, mass_, restitution_) {
             // Vehicle constructor
             // ================
             m_speed = 0.0f;

@@ -107,8 +107,6 @@ namespace Project_Cows.Source.Application.Track {
                 Debug.AddText(new DebugText("Path: " + p.m_currentCheckpoint.GetPath().ToString(), new Vector2(20.0f + 150 * p.GetID(), 130.0f)));
             }
 
-
-
             // Get rankings
             m_rankings.Clear();
             while (m_rankings.Count != players_.Count) {

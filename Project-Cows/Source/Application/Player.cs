@@ -22,6 +22,7 @@ using Project_Cows.Source.System.Graphics.Sprites;
 using Project_Cows.Source.System.Input;
 using Project_Cows.Source.Application.Entity;
 using Project_Cows.Source.Application.Track;
+using Project_Cows.Source.Application.Entity.Vehicle;
 
 namespace Project_Cows.Source.Application {
     class Player {
@@ -46,21 +47,9 @@ namespace Project_Cows.Source.Application {
         private bool m_keyBraking;
 
         // Methods
-        public Player(World world_, Texture2D cowTexture_, Texture2D carTexture_, Vector2 position_, float rotation_, float speed_, Quadrent quadrent_, int id_ = 999) {
-			// Player constructor
-			// ================
-
-            m_vehicle = new Vehicle(world_, carTexture_, position_, rotation_);
-            m_cow = new Sprite(cowTexture_, position_, rotation_, new Vector2(0.1f,0.1f));
-
-            m_controlScheme = new ControlScheme(quadrent_);
-            m_playerID = id_;
-
-            m_currentCheckpoint = Checkpoint.First(Vector2.Zero);
-            m_currentLap = 1;
-        }
-
         public Player(World world_, Texture2D cowTexture_, Texture2D texture_, EntityStruct entityStruct_, float speed_, Quadrent quadrent_, int id_ = 999) {
+            // Player constructor
+            // ================
             m_vehicle = new Vehicle(world_, texture_, entityStruct_);
             m_cow = new Sprite(cowTexture_, entityStruct_.GetPosition(), entityStruct_.GetRotationDegrees(), new Vector2(0.1f, 0.1f));
 

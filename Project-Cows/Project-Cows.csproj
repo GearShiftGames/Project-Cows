@@ -45,10 +45,11 @@
     <Compile Include="Source\Application\Entity\BestSuperVehicle.cs" />
     <Compile Include="Source\Application\Entity\EntityStruct.cs" />
     <Compile Include="Source\Application\Entity\Tire.cs" />
+    <Compile Include="Source\Application\Entity\Vehicle\Tyre.cs" />
     <Compile Include="Source\Application\Track\Checkpoint.cs" />
     <Compile Include="Source\Application\Entity\Entity.cs" />
     <Compile Include="Source\Application\Entity\EntityCollider.cs" />
-    <Compile Include="Source\Application\Entity\Vehicle.cs" />
+    <Compile Include="Source\Application\Entity\Vehicle\Vehicle.cs" />
     <Compile Include="Source\Application\InGameState.cs" />
     <Compile Include="Source\Application\MenuState.cs" />
     <Compile Include="Source\Application\Physics\CollisionHandler.cs" />

@@ -20,6 +20,7 @@ using Microsoft.Xna.Framework.Input.Touch;
 
 using FarseerPhysics.Dynamics;
 
+using Project_Cows.Source.Application.Entity.Vehicle;
 using Project_Cows.Source.Application.Entity;
 using Project_Cows.Source.Application.Track;
 using Project_Cows.Source.Application.Physics;
@@ -40,7 +41,8 @@ namespace Project_Cows.Source.Application {
         // <Farseer>
         World fs_world;
         // </Farseer>
-        private Tire le_tire;
+        //private Tire le_tire;
+        private Tyre TYRE;
 
         private TrackHandler h_trackHandler = new TrackHandler();
         private List<AnimatedSprite> m_animatedSprites = new List<AnimatedSprite>();
@@ -66,11 +68,12 @@ namespace Project_Cows.Source.Application {
 		public override void Initialise() {
 			// Initialise in-game state
 			// ================
-            
 
             fs_world = new FarseerPhysics.Dynamics.World(Vector2.Zero);
 
-			le_tire = new Tire(fs_world, TextureHandler.m_vehicleBlue, new Vector2(100.0f, 100.0f), 0f, 0.1f);
+			//le_tire = new Tire(fs_world, TextureHandler.m_vehicleBlue, new Vector2(100.0f, 100.0f), 0f, 0.1f);
+
+            TYRE = new Tyre(Quadrent.BOTTOM_RIGHT, fs_world, new Vector2(50, 30), 0f);
 
             m_background = new Sprite(TextureHandler.m_gameBackground, new Vector2(Settings.m_screenWidth / 2, Settings.m_screenHeight / 2), 0.0f, Vector2.One);
 
@@ -133,7 +136,7 @@ namespace Project_Cows.Source.Application {
 			// ================
 			
 			//TESTING IT YA BAM
-			Debug.AddSprite(le_tire.debugSprite);
+			
 
 			//le_tire.updateFriction();
 			//le_tire.updateDrive(2);
@@ -252,6 +255,9 @@ namespace Project_Cows.Source.Application {
                 }
             }
             */
+            //le_tire.updateDrive(0);
+            TYRE.UpdateTyre(0, false);
+
             h_trackHandler.Update(m_players);
 
 			// Update sprites
@@ -317,6 +323,8 @@ namespace Project_Cows.Source.Application {
                 // DELEEEETE ME
                 GraphicsHandler.DrawSprite(p.GetVehicle().debugSprite);
 			}
+
+            GraphicsHandler.DrawSprite(TYRE.GetSprite());
 
             if (!startTimer.timerFinished) {
                 GraphicsHandler.DrawText(((int)(startTimer.timeRemaining / 1000) + 1).ToString(), new Vector2(1000, 50), Color.Red);
