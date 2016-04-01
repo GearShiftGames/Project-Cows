@@ -36,7 +36,7 @@ namespace Project_Cows.Source.Application.Track {
         public CheckpointContainer(Checkpoint checkpoint_, Entity.Entity entity_) {
             // CheckpointContainer constructor
             // ================
-
+            
             m_checkpoint = checkpoint_;
             m_entity = entity_;
             m_entity.GetBody().IsSensor = true;
@@ -60,6 +60,7 @@ namespace Project_Cows.Source.Application.Track {
         public void SetEntity(World world_, Texture2D texture_, float rotation_=0) {
             m_entity = new Entity.Entity(world_, texture_, m_checkpoint.GetPosition(), rotation_, BodyType.Static);
             m_entity.GetBody().IsSensor = true;
+            m_entity.SetRotationDegrees(rotation_);
         }
     }
 }
