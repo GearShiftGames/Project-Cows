@@ -30,7 +30,7 @@ namespace Project_Cows.Source.Application.Track {
         // Variables
         public List<CheckpointContainer> m_checkpoints = new List<CheckpointContainer>();
         public List<EntityStruct> m_vehicles = new List<EntityStruct>();
-        public List<Barrier> m_barriers = new List<Barrier>();
+        public List<Barrier> m_barriers = new List<Barrier>();      // TEMP
         private List<int> m_rankings = new List<int>();
 
         private World fs_world;
@@ -74,26 +74,39 @@ namespace Project_Cows.Source.Application.Track {
         }
 
         public void Update(List<Player> players_){
-            Debug.AddText(new DebugText("Checkpoints:" + m_checkpoints.Count(), new Vector2(20, 500)));        // TEMP
-            Debug.AddText(new DebugText("Players:" + players_.Count(), new Vector2(20, 520)));        // TEMP
+            Debug.AddText(new DebugText("Checkpoints:" + m_checkpoints.Count(), new Vector2(20, 500)));      // TEMP
+            Debug.AddText(new DebugText("Players:" + players_.Count(), new Vector2(20, 520)));               // TEMP
 
-            // Checkpoint collision
-            /*foreach (Player p in players_) {
-                foreach (CheckpointContainer cc in m_checkpoints) {
-                    if (CollisionHandler.CheckForCollision(p.GetVehicle().GetCollider(), cc.GetEntity().GetCollider())) {
+            // Loop for each checkpoint
+            foreach (CheckpointContainer cc in m_checkpoints) {
+                // Loop for each player
+                foreach (Player p in players_) {
+                    // Check if player and checkpoint are colliding
+                    if (AreBodiesColliding(cc.GetEntity().GetBody(), p.GetVehicle().GetBody())) {
+                        // If colliding checkpoint is the next checkpoint, change checkpoint
                         if (cc.GetCheckpoint().GetID() == p.m_currentCheckpoint.GetNextID()) {
                             p.m_currentCheckpoint = cc.GetCheckpoint();
+                            
+                            // If checkpoint is the first checkpoint, increment lap
                             if (p.m_currentCheckpoint.GetType() == CheckpointType.FIRST) {
-                                ++p.m_currentLap;
+                                p.m_currentLap++;
                             }
                         }
                     }
                 }
+            }
+
+            // NOTE: This *may* run into problems with multiple collisions with different players,
+            //       will need to do some testing to see how it works -Dean
+
+            // Draw debug info
+            foreach (Player p in players_) {
                 Debug.AddText(new DebugText("Player " + p.GetID(), new Vector2(20.0f + 150 * p.GetID(), 70.0f)));
                 Debug.AddText(new DebugText("Lap: " + p.m_currentLap.ToString(), new Vector2(20.0f + 150 * p.GetID(), 90.0f)));
                 Debug.AddText(new DebugText("Checkpoint: " + p.m_currentCheckpoint.GetID().ToString(), new Vector2(20.0f + 150 * p.GetID(), 110.0f)));
                 Debug.AddText(new DebugText("Path: " + p.m_currentCheckpoint.GetPath().ToString(), new Vector2(20.0f + 150 * p.GetID(), 130.0f)));
-            }*/
+            }
+
 
 
             // Get rankings
@@ -161,6 +174,30 @@ namespace Project_Cows.Source.Application.Track {
             }
         }
 
+        private bool AreBodiesColliding(Body bodyA_, Body bodyB_){
+            // If either of the bodies are null
+            if (bodyA_ == null || bodyB_ == null) {
+                return false;
+            }
+
+            // If either of the bodies have no contact list
+            if (bodyA_.ContactList == null || bodyB_.ContactList == null) {
+                return false;
+            }
+
+            // If the two bodies are colliding (AABB)
+            if (bodyA_.ContactList.Other == bodyB_) {
+                // If the two bodies are physically touching
+                if (bodyA_.ContactList.Contact.IsTouching) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } else {
+                // If the two bodies are not colliding
+                return false;
+            }
+        }
         // Getters
 
 

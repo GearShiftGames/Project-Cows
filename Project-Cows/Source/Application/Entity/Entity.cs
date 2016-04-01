@@ -29,12 +29,13 @@ namespace Project_Cows.Source.Application.Entity {
         // Variables
         protected Sprite m_sprite;                  // Sprite for the entity
         protected Body fs_body;                     // Physics body for the entity
+        protected Fixture fs_fix;
 
         // Methods
         public Entity(World world_, Texture2D texture_, Vector2 position_, float rotation_, BodyType bodyType_, float mass_ = 10f, float restitution_ = 0.1f) {
             // Entity constructor
             // ================
-
+            
             fs_body = BodyFactory.CreateRectangle(world_, FarseerPhysics.ConvertUnits.ToSimUnits(texture_.Width), FarseerPhysics.ConvertUnits.ToSimUnits(texture_.Height), 1f, FarseerPhysics.ConvertUnits.ToSimUnits(position_));
             fs_body.BodyType = bodyType_;
             fs_body.Mass = mass_;
