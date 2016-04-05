@@ -42,7 +42,19 @@ namespace Project_Cows.Source.Application {
         World fs_world;
         // </Farseer>
         //private Tire le_tire;
-        private Tyre TYRE;
+
+
+
+
+
+
+        //private Tyre TYRE;
+        private BestSuperVehicle bsv;
+
+
+
+
+
 
         private TrackHandler h_trackHandler = new TrackHandler();
         private List<AnimatedSprite> m_animatedSprites = new List<AnimatedSprite>();
@@ -73,7 +85,20 @@ namespace Project_Cows.Source.Application {
 
 			//le_tire = new Tire(fs_world, TextureHandler.m_vehicleBlue, new Vector2(100.0f, 100.0f), 0f, 0.1f);
 
-            TYRE = new Tyre(Quadrent.BOTTOM_RIGHT, fs_world, new Vector2(50, 30), 0f);
+
+
+
+
+
+
+            //TYRE = new Tyre(Quadrent.BOTTOM_RIGHT, fs_world, new Vector2(50, 30), 0f);
+
+            bsv = new BestSuperVehicle(fs_world, TextureHandler.m_vehicleOrange, new EntityStruct(new Vector2(1000, 500), 0f));
+
+
+
+
+
 
             m_background = new Sprite(TextureHandler.m_gameBackground, new Vector2(Settings.m_screenWidth / 2, Settings.m_screenHeight / 2), 0.0f, Vector2.One);
 
@@ -256,7 +281,28 @@ namespace Project_Cows.Source.Application {
             }
             */
             //le_tire.updateDrive(0);
-            TYRE.UpdateTyre(0, false);
+
+
+
+
+
+
+            float turn = 0;
+            if (Keyboard.GetState().IsKeyDown(Keys.Left)) {
+                turn--;
+            }
+            if (Keyboard.GetState().IsKeyDown(Keys.Right)) {
+                turn++;
+            }
+            bool braked = Keyboard.GetState().IsKeyDown(Keys.Down);
+            //TYRE.UpdateTyre(turn, braked);
+            bsv.Update(turn, braked);
+
+
+
+
+
+
 
             h_trackHandler.Update(m_players);
 
@@ -320,11 +366,27 @@ namespace Project_Cows.Source.Application {
                 //GraphicsHandler.DrawSprite(p.GetCow());
                 GraphicsHandler.DrawSprite(p.m_controlScheme.m_controlInterfaceSprite);
                 GraphicsHandler.DrawSprite(p.m_controlScheme.m_steeringIndicatorSprite);
-                // DELEEEETE ME
-                GraphicsHandler.DrawSprite(p.GetVehicle().debugSprite);
 			}
 
-            GraphicsHandler.DrawSprite(TYRE.GetSprite());
+
+
+
+
+
+
+            Debug.AddSprite(bsv.m_vehicleTyres[0].GetSprite());
+            Debug.AddSprite(bsv.m_vehicleTyres[1].GetSprite());
+            Debug.AddSprite(bsv.m_vehicleTyres[2].GetSprite());
+            Debug.AddSprite(bsv.m_vehicleTyres[3].GetSprite());
+
+
+            GraphicsHandler.DrawSprite(bsv.m_vehicleBody.GetSprite());
+
+
+
+
+
+
 
             if (!startTimer.timerFinished) {
                 GraphicsHandler.DrawText(((int)(startTimer.timeRemaining / 1000) + 1).ToString(), new Vector2(1000, 50), Color.Red);

@@ -42,7 +42,7 @@
     <Compile Include="Source\Application\Application.cs" />
     <Compile Include="Source\Application\Barrier.cs" />
     <Compile Include="Source\Application\Button.cs" />
-    <Compile Include="Source\Application\Entity\BestSuperVehicle.cs" />
+    <Compile Include="Source\Application\Entity\Vehicle\BestSuperVehicle.cs" />
     <Compile Include="Source\Application\Entity\EntityStruct.cs" />
     <Compile Include="Source\Application\Entity\Tire.cs" />
     <Compile Include="Source\Application\Entity\Vehicle\Tyre.cs" />

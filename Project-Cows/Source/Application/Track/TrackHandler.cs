@@ -68,9 +68,9 @@ namespace Project_Cows.Source.Application.Track {
             List<EntityStruct> m_barrierEntityStructs = new List<EntityStruct>();
             m_barrierEntityStructs = Level.GetBarriers();
             // Add entities to Barriers
-            foreach (EntityStruct es in m_barrierEntityStructs) {
+            /*foreach (EntityStruct es in m_barrierEntityStructs) {
                 m_barriers.Add(new Barrier(fs_world, TextureHandler.m_gameBarrier, es));
-            }
+            }*/
         }
 
         public void Update(List<Player> players_){

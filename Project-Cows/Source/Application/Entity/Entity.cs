@@ -72,6 +72,16 @@ namespace Project_Cows.Source.Application.Entity {
 			return Util.RadiansToDegrees(fs_body.Rotation);
 		}
 
+        /*public Vector2 GetCornerPosition(System.Input.Quadrent quadrent_) {
+            Vector2 position = Vector2.Zero;
+            switch (quadrent_) {
+                case System.Input.Quadrent.TOP_LEFT:
+                    position = 
+                    break;
+            }
+            return position;
+        }*/
+
         // Setters
         public void SetSprite(Sprite sprite_) {
             m_sprite = sprite_;

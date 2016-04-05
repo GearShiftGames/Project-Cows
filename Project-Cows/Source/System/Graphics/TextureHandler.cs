@@ -58,6 +58,7 @@ namespace Project_Cows.Source.System.Graphics {
         public static Texture2D m_debugCollider;
         // Temp
         public static Texture2D m_tempRed;
+        public static Texture2D m_vehicleTyre;
 
         // Methods
         public static void LoadContent() {
@@ -109,6 +110,7 @@ namespace Project_Cows.Source.System.Graphics {
 
             // Temp
             LoadTexture(ref m_tempRed, "Sprites\\Temp\\Red");
+            LoadTexture(ref m_vehicleTyre, "Sprites\\Temp\\vehicleTyre");
         }
 
         private static void LoadTexture(ref Texture2D texture_, string file_) {
