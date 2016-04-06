@@ -74,7 +74,7 @@ namespace Project_Cows.Source.Application.Track {
             }
         }
 
-        public void Update(List<Player> players_){
+        public void Update(List<Player> players_, ref List<int> rankings_){
             Debug.AddText(new DebugText("Checkpoints:" + m_checkpoints.Count(), new Vector2(20, 500)));      // TEMP
             Debug.AddText(new DebugText("Players:" + players_.Count(), new Vector2(20, 520)));               // TEMP
 
@@ -101,11 +101,6 @@ namespace Project_Cows.Source.Application.Track {
                     }
                 }
             }
-
-            // NOTE: This *may* run into problems with multiple collisions with different players,
-            //       will need to do some testing to see how it works -Dean
-
-            // AYE, IT DID
 
             // Draw debug info
             foreach (Player p in players_) {
@@ -142,6 +137,8 @@ namespace Project_Cows.Source.Application.Track {
                 m_rankings.Add(highestID);
             }
 
+            rankings_ = m_rankings;
+
             foreach (Barrier b in m_barriers) {
                 b.UpdateSprites();
             }
@@ -165,19 +162,7 @@ namespace Project_Cows.Source.Application.Track {
                 }
             }
 
-            // Render ranking text
-            if (m_rankings.Count != 0) {
-                Debug.AddText(new DebugText("1st - Player " + m_rankings[0].ToString(), new Vector2(1500f, 50f)));
-                if (m_rankings.Count > 1) {
-                    Debug.AddText(new DebugText("2nd - Player " + m_rankings[1].ToString(), new Vector2(1500f, 70f)));
-                    if (m_rankings.Count > 2) {
-                        Debug.AddText(new DebugText("3rd - Player" + m_rankings[2].ToString(), new Vector2(1500f, 90f)));
-                        if (m_rankings.Count > 3) {
-                            Debug.AddText(new DebugText("4th - Player" + m_rankings[3].ToString(), new Vector2(1500f, 110f)));
-                        }
-                    }  
-                }
-            }
+            
         }
 
         private bool AreBodiesColliding(Body bodyA_, Body bodyB_){
@@ -190,26 +175,27 @@ namespace Project_Cows.Source.Application.Track {
             if (bodyA_.ContactList == null || bodyB_.ContactList == null) {
                 return false;
             }
+
+            // Contact point for the body
             ContactEdge ce = bodyA_.ContactList;
 
-            
-                // For each contact
+                // While there is a valid contact point
                 while (ce != null) {
                     // If the two bodies are colliding (AABB)
                     if (ce.Other == bodyB_) {
                         Contact c = ce.Contact;
+                        // If the two bodies are physically touching
                         if (c.IsTouching && c.Enabled) {
-                            // If the two bodies are physically touching
                             return true;
                         }
                     }
+                    
+                    // Get next contact point
                     ce = ce.Next;
                 }
-                
-            
-             
-                    // If the two bodies are not colliding
-                    return false;
+
+            // If the two bodies are not colliding
+            return false;
                 
         }
         // Getters

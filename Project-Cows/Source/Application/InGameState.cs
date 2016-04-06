@@ -65,6 +65,8 @@ namespace Project_Cows.Source.Application {
 
         private List<int> m_rankings = new List<int>();
 
+        int winner = 0;
+
         bool finished;
 
 		// Methods
@@ -196,6 +198,7 @@ namespace Project_Cows.Source.Application {
                     if (p.m_currentLap == 4)
                     {
                         finished = true;
+                        winner = p.GetID();
                     }
                 }
                 if (!finished)
@@ -248,7 +251,7 @@ namespace Project_Cows.Source.Application {
 
 
 
-            h_trackHandler.Update(m_players);
+            h_trackHandler.Update(m_players, ref m_rankings);
 
 			// Update sprites
             foreach(AnimatedSprite anim in m_animatedSprites) {
@@ -312,6 +315,21 @@ namespace Project_Cows.Source.Application {
                 GraphicsHandler.DrawSprite(p.m_controlScheme.m_steeringIndicatorSprite);
 			}
 
+            // RENDER UI
+
+            // Render ranking text
+            if (m_rankings.Count != 0) {
+                GraphicsHandler.DrawText(new DebugText("1st - Player " + m_rankings[0].ToString(), new Vector2(1000f, 440f)));
+                if (m_rankings.Count > 1) {
+                    GraphicsHandler.DrawText(new DebugText("2nd - Player " + m_rankings[1].ToString(), new Vector2(1000f, 460f)));
+                    if (m_rankings.Count > 2) {
+                        GraphicsHandler.DrawText(new DebugText("3rd - Player " + m_rankings[2].ToString(), new Vector2(1000f, 480f)));
+                        if (m_rankings.Count > 3) {
+                            GraphicsHandler.DrawText(new DebugText("4th - Player " + m_rankings[3].ToString(), new Vector2(1000f, 500f)));
+                        }
+                    }
+                }
+            }
 
 
 
@@ -336,7 +354,7 @@ namespace Project_Cows.Source.Application {
                 GraphicsHandler.DrawText(((int)(startTimer.timeRemaining / 1000) + 1).ToString(), new Vector2(1000, 50), Color.Red);
             }
             if(finished){
-                GraphicsHandler.DrawText("SOMEONE WON", new Vector2(500, 500), Color.Red);
+                GraphicsHandler.DrawText("Player " + winner.ToString() + " is the winner", new Vector2(500, 500), Color.Red);
             }
             
 
