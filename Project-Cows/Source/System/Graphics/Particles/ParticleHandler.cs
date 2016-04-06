@@ -1,13 +1,19 @@
-﻿// Project: Cow Racing -- GearShift Games
-// Written by N. Headley 2015
-// ================
-// ParticleFX.cs
+﻿/// Project: Cow Racing
+/// Developed by GearShift Games, 2015-2016
+///     D. Sinclair
+///     N. Headley
+///     D. Divers
+///     C. Fleming
+///     C. Tekpinar
+///     D. McNally
+///     G. Annandale
+///     R. Ferguson
+/// ================
+/// ParticleHandler.cs
 
 using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Content;
 
 namespace Project_Cows.Source.System.Graphics.Particles {
     public class ParticleHandler {

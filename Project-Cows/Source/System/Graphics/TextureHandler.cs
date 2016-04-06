@@ -1,11 +1,16 @@
-﻿// Project: Cow Racing -- GearShift Games
-// Written by D. Sinclair, 2016
-// ================
-// TextureHandler.cs
+﻿/// Project: Cow Racing
+/// Developed by GearShift Games, 2015-2016
+///     D. Sinclair
+///     N. Headley
+///     D. Divers
+///     C. Fleming
+///     C. Tekpinar
+///     D. McNally
+///     G. Annandale
+///     R. Ferguson
+/// ================
+/// TextureHandler.cs
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace Project_Cows.Source.System.Graphics {
@@ -51,6 +56,9 @@ namespace Project_Cows.Source.System.Graphics {
         public static Texture2D m_debugCorner;
         public static Texture2D m_debugCheckpoint;
         public static Texture2D m_debugCollider;
+        // Temp
+        public static Texture2D m_tempRed;
+        public static Texture2D m_vehicleTyre;
 
         // Methods
         public static void LoadContent() {
@@ -96,9 +104,13 @@ namespace Project_Cows.Source.System.Graphics {
             LoadTexture(ref m_gameFinishLine, "Sprites\\Track\\finishLine");
             
             // Debug
-            LoadTexture(ref m_debugCorner, "Sprites\\Debug\\corner");
-            LoadTexture(ref m_debugCheckpoint, "Sprites\\Debug\\checkpoint");
-            LoadTexture(ref m_debugCollider, "Sprites\\Debug\\collider");
+            LoadTexture(ref m_debugCorner, "Sprites\\Utility\\corner");
+            LoadTexture(ref m_debugCheckpoint, "Sprites\\Utility\\checkpoint");
+            LoadTexture(ref m_debugCollider, "Sprites\\Utility\\carCollider");
+
+            // Temp
+            LoadTexture(ref m_tempRed, "Sprites\\Temp\\Red");
+            LoadTexture(ref m_vehicleTyre, "Sprites\\Temp\\vehicleTyre");
         }
 
         private static void LoadTexture(ref Texture2D texture_, string file_) {

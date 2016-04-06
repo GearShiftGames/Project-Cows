@@ -1,17 +1,22 @@
-﻿// Project: Cow Racing -- GearShift Games
-// Written by D. Sinclair, 2016
-// ================
-// State.cs
+﻿/// Project: Cow Racing
+/// Developed by GearShift Games, 2015-2016
+///     D. Sinclair
+///     N. Headley
+///     D. Divers
+///     C. Fleming
+///     C. Tekpinar
+///     D. McNally
+///     G. Annandale
+///     R. Ferguson
+/// ================
+/// State.cs
 
-using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
 using Project_Cows.Source.System.Input;
 using Project_Cows.Source.Application;
-using Project_Cows.Source.System.Graphics;
 
 namespace Project_Cows.Source.System.StateMachine {
 	abstract class State {

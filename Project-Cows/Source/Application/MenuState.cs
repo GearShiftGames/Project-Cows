@@ -1,14 +1,19 @@
-﻿// Project: Cow Racing -- GearShift Games
-// Written by D. Sinclair, 2016
-//            N. Headley, 2016
-//            C. Fleming, 2016
-// ================
-// MenuState.cs
+﻿/// Project: Cow Racing
+/// Developed by GearShift Games, 2015-2016
+///     D. Sinclair
+///     N. Headley
+///     D. Divers
+///     C. Fleming
+///     C. Tekpinar
+///     D. McNally
+///     G. Annandale
+///     R. Ferguson
+/// ================
+/// MenuState.cs
 
 using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Input.Touch;
@@ -27,6 +32,8 @@ namespace Project_Cows.Source.Application {
 
 		// Variables
 		private MenuScreenState m_currentScreen;
+        private TouchState m_touchState;
+        private Vector2 m_lastPosition;
 
         // Sprites
         private Sprite m_background;
@@ -61,8 +68,8 @@ namespace Project_Cows.Source.Application {
 			// ================
 
             // Initialise sprites
-            m_background = new Sprite(TextureHandler.m_menuBackground, new Vector2(Settings.m_screenWidth / 2, Settings.m_screenHeight / 2), 0, Vector2.One);
-            m_teamLogo = new Sprite(TextureHandler.m_teamLogo, new Vector2(Settings.m_screenWidth / 1.2f, Settings.m_screenHeight / 6), 0, Vector2.One);
+            m_background =      new Sprite(TextureHandler.m_menuBackground, new Vector2(Settings.m_screenWidth / 2, Settings.m_screenHeight / 2), 0, Vector2.One);
+            m_teamLogo =        new Sprite(TextureHandler.m_teamLogo,       new Vector2(Settings.m_screenWidth / 1.2f, Settings.m_screenHeight / 6), 0, Vector2.One);
             //m_gameLogo = new Sprite(TextureHandler.m_gameLogo, new Vector2(Settings.m_screenWidth / 2, Settings.m_screenHeight / 2), 0, Vector2.One);
 
             // Initialise buttons
@@ -78,6 +85,8 @@ namespace Project_Cows.Source.Application {
 
 			// Set menu screen
 			m_currentScreen = MenuScreenState.MAIN_MENU;
+
+            m_touchState = TouchState.IDLE;
 
 			// Set initial next state
 			m_nextState = GameState.IN_GAME;
@@ -127,75 +136,84 @@ namespace Project_Cows.Source.Application {
 			// Update touch input handler
 			touchHandler_.Update();
 
-			foreach(TouchLocation tl in touchHandler_.GetTouches()) {
+            foreach (TouchLocation tl in touchHandler_.GetTouches()) {
 
                 // TODO: Implement a check to see if the player has released their finger from the screen
                 //       perform action when player releases their finger -Dean
-				
 
-				switch(m_currentScreen) {
-					case MenuScreenState.MAIN_MENU:
+                
+                
+            }
+            if (touchHandler_.GetTouches().Count > 0) {
+                m_touchState = TouchState.TOUCHING;
+                m_lastPosition = touchHandler_.GetTouches()[touchHandler_.GetTouches().Count - 1].Position;
+            }
+
+            if (touchHandler_.GetTouches().Count == 0 && m_touchState == TouchState.TOUCHING) {
+                switch (m_currentScreen) {
+                    case MenuScreenState.MAIN_MENU:
                         // Main Menu screen
 
-                        if (m_playButton.m_touchZone.IsInsideZone(tl.Position) && m_playButton.m_active) {
+                        if (m_playButton.m_touchZone.IsInsideZone(m_lastPosition) && m_playButton.m_active) {
                             // Go to Player Select
                             m_currentScreen = MenuScreenState.PLAYER_SELECT;
                         }
-                        if (m_exitButton.m_touchZone.IsInsideZone(tl.Position) && m_exitButton.m_active) {
+                        if (m_exitButton.m_touchZone.IsInsideZone(m_lastPosition) && m_exitButton.m_active) {
                             // Close app
                         }
-                        if (m_creditsButton.m_touchZone.IsInsideZone(tl.Position) && m_creditsButton.m_active) {
+                        if (m_creditsButton.m_touchZone.IsInsideZone(m_lastPosition) && m_creditsButton.m_active) {
                             // Go to Credits
                             m_currentScreen = MenuScreenState.CREDITS;
                         }
-                        if (m_optionsButton.m_touchZone.IsInsideZone(tl.Position) && m_optionsButton.m_active) {
+                        if (m_optionsButton.m_touchZone.IsInsideZone(m_lastPosition) && m_optionsButton.m_active) {
                             // Go to Options
                             m_currentScreen = MenuScreenState.OPTIONS;
                         }
-						break;
-					case MenuScreenState.PLAYER_SELECT:
+                        break;
+                    case MenuScreenState.PLAYER_SELECT:
                         // Player Select screen
 
-                        if (m_playButton.m_touchZone.IsInsideZone(tl.Position) && m_playButton.m_active) {
+                        if (m_playButton.m_touchZone.IsInsideZone(m_lastPosition) && m_playButton.m_active) {
                             // Go to Track Select
                             m_currentScreen = MenuScreenState.TRACK_SELECT;
                         }
-                        if (m_backButton.m_touchZone.IsInsideZone(tl.Position) && m_backButton.m_active) {
-                            // Go back to Main Menu
-                            m_currentScreen = MenuScreenState.MAIN_MENU;
-                        }
-						break;
-					case MenuScreenState.TRACK_SELECT:
-                        // Track Select screen
-
-                        if (m_playButton.m_touchZone.IsInsideZone(tl.Position) && m_playButton.m_active) {
-                            // Start the game
-                            m_currentExecutionState = ExecutionState.CHANGING;
-                        }
-                        if (m_backButton.m_touchZone.IsInsideZone(tl.Position) && m_backButton.m_active) {
-                            // Go back to Player Select
-                            m_currentScreen = MenuScreenState.PLAYER_SELECT;
-                        }
-						break;
-					case MenuScreenState.OPTIONS:
-                        // Options screen
-
-                        if (m_backButton.m_touchZone.IsInsideZone(tl.Position) && m_backButton.m_active) {
-                            // Go back to Main Menu
-                            m_currentScreen = MenuScreenState.MAIN_MENU;
-                        }
-						break;
-					case MenuScreenState.CREDITS:
-                        // Credits screen
-
-                        if (m_backButton.m_touchZone.IsInsideZone(tl.Position) && m_backButton.m_active) {
+                        if (m_backButton.m_touchZone.IsInsideZone(m_lastPosition) && m_backButton.m_active) {
                             // Go back to Main Menu
                             m_currentScreen = MenuScreenState.MAIN_MENU;
                         }
                         break;
-				}
-			}
+                    case MenuScreenState.TRACK_SELECT:
+                        // Track Select screen
 
+                        if (m_playButton.m_touchZone.IsInsideZone(m_lastPosition) && m_playButton.m_active) {
+                            // Start the game
+                            m_currentExecutionState = ExecutionState.CHANGING;
+                        }
+                        if (m_backButton.m_touchZone.IsInsideZone(m_lastPosition) && m_backButton.m_active) {
+                            // Go back to Player Select
+                            m_currentScreen = MenuScreenState.PLAYER_SELECT;
+                        }
+                        break;
+                    case MenuScreenState.OPTIONS:
+                        // Options screen
+
+                        if (m_backButton.m_touchZone.IsInsideZone(m_lastPosition) && m_backButton.m_active) {
+                            // Go back to Main Menu
+                            m_currentScreen = MenuScreenState.MAIN_MENU;
+                        }
+                        break;
+                    case MenuScreenState.CREDITS:
+                        // Credits screen
+
+                        if (m_backButton.m_touchZone.IsInsideZone(m_lastPosition) && m_backButton.m_active) {
+                            // Go back to Main Menu
+                            m_currentScreen = MenuScreenState.MAIN_MENU;
+                        }
+                        break;
+                }
+
+                m_touchState = TouchState.IDLE;
+            }
             // Update sprites
             /*foreach (AnimatedSprite anim in m_animatedSprites) {
                 // If currently animating
@@ -314,4 +332,12 @@ namespace Project_Cows.Source.Application {
 		OPTIONS,
 		CREDITS
 	}
+
+    enum TouchState {
+        // Enum for each touch state
+        // ================
+        IDLE,
+        TOUCHING,
+        RELEASED
+    }
 }

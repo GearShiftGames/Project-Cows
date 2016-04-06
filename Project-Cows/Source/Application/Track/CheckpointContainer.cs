@@ -1,16 +1,20 @@
-﻿// Project: Cow Racing -- GearShift Games
-// Written by D. Sinclair
-// ================
-// CheckpointContainer.cs
+﻿/// Project: Cow Racing
+/// Developed by GearShift Games, 2015-2016
+///     D. Sinclair
+///     N. Headley
+///     D. Divers
+///     C. Fleming
+///     C. Tekpinar
+///     D. McNally
+///     G. Annandale
+///     R. Ferguson
+/// ================
+/// CheckpointContainer.cs
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
-using Project_Cows.Source.Application.Entity;
+using FarseerPhysics.Dynamics;
 
 namespace Project_Cows.Source.Application.Track {
     public class CheckpointContainer {
@@ -32,9 +36,10 @@ namespace Project_Cows.Source.Application.Track {
         public CheckpointContainer(Checkpoint checkpoint_, Entity.Entity entity_) {
             // CheckpointContainer constructor
             // ================
-
+            
             m_checkpoint = checkpoint_;
             m_entity = entity_;
+            m_entity.GetBody().IsSensor = true;
         }
 
 
@@ -52,8 +57,10 @@ namespace Project_Cows.Source.Application.Track {
             m_checkpoint = new Checkpoint(id_, nextID_, pathID_, position_, rotation_);
         }
 
-        public void SetEntity(Texture2D texture_, float rotation_=0) {
-            m_entity = new Entity.Entity(texture_, m_checkpoint.GetPosition(), rotation_);
+        public void SetEntity(World world_, Texture2D texture_, float rotation_=0) {
+            m_entity = new Entity.Entity(world_, texture_, m_checkpoint.GetPosition(), rotation_, BodyType.Static);
+            m_entity.GetBody().IsSensor = true;
+            m_entity.SetRotationDegrees(rotation_);
         }
     }
 }
