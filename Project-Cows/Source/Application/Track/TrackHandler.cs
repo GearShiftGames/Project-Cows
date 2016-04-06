@@ -16,6 +16,7 @@ using System.Linq;
 using Microsoft.Xna.Framework;
 
 using FarseerPhysics.Dynamics;
+using FarseerPhysics.Dynamics.Contacts;
 
 using Project_Cows.Source.Application.Entity;
 using Project_Cows.Source.Application.Physics;
@@ -68,21 +69,26 @@ namespace Project_Cows.Source.Application.Track {
             List<EntityStruct> m_barrierEntityStructs = new List<EntityStruct>();
             m_barrierEntityStructs = Level.GetBarriers();
             // Add entities to Barriers
-            /*foreach (EntityStruct es in m_barrierEntityStructs) {
+            foreach (EntityStruct es in m_barrierEntityStructs) {
                 m_barriers.Add(new Barrier(fs_world, TextureHandler.m_gameBarrier, es));
-            }*/
+            }
         }
 
         public void Update(List<Player> players_){
             Debug.AddText(new DebugText("Checkpoints:" + m_checkpoints.Count(), new Vector2(20, 500)));      // TEMP
             Debug.AddText(new DebugText("Players:" + players_.Count(), new Vector2(20, 520)));               // TEMP
 
+            if (players_[0].GetVehicle().m_vehicleBody.GetBody().ContactList != null) {
+                if (players_[0].GetVehicle().m_vehicleBody.GetBody().ContactList.Next != null) {
+                    Debug.AddText(players_[0].GetVehicle().m_vehicleBody.GetBody().ContactList.Next.ToString(), new Vector2(500, 600));
+                }
+            }
             // Loop for each checkpoint
             foreach (CheckpointContainer cc in m_checkpoints) {
                 // Loop for each player
                 foreach (Player p in players_) {
                     // Check if player and checkpoint are colliding
-                    if (AreBodiesColliding(cc.GetEntity().GetBody(), p.GetVehicle().GetBody())) {
+                    if (AreBodiesColliding(cc.GetEntity().GetBody(), p.GetVehicle().m_vehicleBody.GetBody())) {
                         // If colliding checkpoint is the next checkpoint, change checkpoint
                         if (cc.GetCheckpoint().GetID() == p.m_currentCheckpoint.GetNextID()) {
                             p.m_currentCheckpoint = cc.GetCheckpoint();
@@ -98,6 +104,8 @@ namespace Project_Cows.Source.Application.Track {
 
             // NOTE: This *may* run into problems with multiple collisions with different players,
             //       will need to do some testing to see how it works -Dean
+
+            // AYE, IT DID
 
             // Draw debug info
             foreach (Player p in players_) {
@@ -182,19 +190,27 @@ namespace Project_Cows.Source.Application.Track {
             if (bodyA_.ContactList == null || bodyB_.ContactList == null) {
                 return false;
             }
+            ContactEdge ce = bodyA_.ContactList;
 
-            // If the two bodies are colliding (AABB)
-            if (bodyA_.ContactList.Other == bodyB_) {
-                // If the two bodies are physically touching
-                if (bodyA_.ContactList.Contact.IsTouching) {
-                    return true;
-                } else {
-                    return false;
+            
+                // For each contact
+                while (ce != null) {
+                    // If the two bodies are colliding (AABB)
+                    if (ce.Other == bodyB_) {
+                        Contact c = ce.Contact;
+                        if (c.IsTouching && c.Enabled) {
+                            // If the two bodies are physically touching
+                            return true;
+                        }
+                    }
+                    ce = ce.Next;
                 }
-            } else {
-                // If the two bodies are not colliding
-                return false;
-            }
+                
+            
+             
+                    // If the two bodies are not colliding
+                    return false;
+                
         }
         // Getters
 

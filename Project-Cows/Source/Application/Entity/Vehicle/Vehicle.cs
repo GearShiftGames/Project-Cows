@@ -13,10 +13,14 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
+
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 using FarseerPhysics.Dynamics;
+using FarseerPhysics.Dynamics.Joints;
+using FarseerPhysics.Factories;
 
 using Project_Cows.Source.System;
 using Project_Cows.Source.System.Graphics;
@@ -24,115 +28,128 @@ using Project_Cows.Source.System.Graphics.Sprites;
 using Project_Cows.Source.Application.Physics;
 
 namespace Project_Cows.Source.Application.Entity.Vehicle {
-    class Vehicle : Entity {
+    class Vehicle {
         // Class for the player vehicles
         // ================
 
         // Variables
-        public float m_speed;
-        private float m_steeringValue;
-        private bool m_braking;
+        public Entity m_vehicleBody;
+        public List<Tyre> m_vehicleTyres = new List<Tyre>();
+        private RevoluteJoint m_frontLeftJoint;
+        private RevoluteJoint m_frontRightJoint;
+        private RevoluteJoint m_backLeftJoint;
+        private RevoluteJoint m_backRightJoint;
 
-        private const float MAXSPEED = 4.0f;
-        private const float ACCELERATION_RATE = 10f;
-        private const float DECELERATION_RATE = -0.1f;
-        private const float STEERING_SENSITIVITY = 10.0f;
-
-        public Vector2 m_forward, m_right, m_velocity;
-
-        public float sliding;
-        public int turn;
-        public float slide;
-
-        public float lastMoveX = 0;
-        public float lastMoveY = 0;
-        int counter = 0;
-
-        private bool barrierHit = false;
-
-        public Sprite debugSprite = new Sprite(TextureHandler.m_tempRed, new Vector2(0.0f, 0.0f), 0.0f, new Vector2(1.0f, 1.0f));
 
         // Methods
-        public Vehicle(World world_, Texture2D texture_, EntityStruct entityStruct_, float mass_ = 10f, float restitution_ = 0.3f)
-            : base(world_, texture_, entityStruct_.GetPosition(), entityStruct_.GetRotationDegrees(), BodyType.Dynamic, mass_, restitution_) {
+        public Vehicle(World world_, Texture2D texture_, EntityStruct entityStruct_) {
             // Vehicle constructor
             // ================
-            m_speed = 0.0f;
 
-            m_velocity.X = 0.0f;
-            m_velocity.Y = 0.0f;
+            // Initialise the vehicle's main body
+            m_vehicleBody = new Entity(world_, texture_, entityStruct_.GetPosition(), 0, BodyType.Dynamic, 10);
 
-            m_steeringValue = 0.0f;
-            m_braking = false;
-            m_forward = new Vector2(0, -1);
+            m_vehicleBody.GetBody().AngularDamping = 1;
+            m_vehicleBody.GetBody().LinearDamping = 1;
 
-            fs_body.AngularDamping = 10f;
+            // Initialise the vehicle's wheels
+            Vector2 frontLeftPosition = FarseerPhysics.ConvertUnits.ToDisplayUnits(m_vehicleBody.GetPosition()) + new Vector2(-m_vehicleBody.GetSprite().GetWidth() / 2, -m_vehicleBody.GetSprite().GetHeight() / 2);
+            m_vehicleTyres.Add(new Tyre(System.Input.Quadrent.TOP_LEFT, world_, frontLeftPosition, m_vehicleBody.GetRotationDegrees()));
+
+            Vector2 frontRightPosition = FarseerPhysics.ConvertUnits.ToDisplayUnits(m_vehicleBody.GetPosition()) + new Vector2(m_vehicleBody.GetSprite().GetWidth() / 2, -m_vehicleBody.GetSprite().GetHeight() / 2);
+            m_vehicleTyres.Add(new Tyre(System.Input.Quadrent.TOP_RIGHT, world_, frontRightPosition, m_vehicleBody.GetRotationDegrees()));
+
+            Vector2 backLeftPosition = FarseerPhysics.ConvertUnits.ToDisplayUnits(m_vehicleBody.GetPosition()) + new Vector2(-m_vehicleBody.GetSprite().GetWidth() / 2, m_vehicleBody.GetSprite().GetHeight() / 2);
+            m_vehicleTyres.Add(new Tyre(System.Input.Quadrent.BOTTOM_LEFT, world_, backLeftPosition, m_vehicleBody.GetRotationDegrees()));
+
+            Vector2 backRightPosition = FarseerPhysics.ConvertUnits.ToDisplayUnits(m_vehicleBody.GetPosition()) - new Vector2(m_vehicleBody.GetSprite().GetWidth() / 2, m_vehicleBody.GetSprite().GetHeight() / 2);
+            m_vehicleTyres.Add(new Tyre(System.Input.Quadrent.BOTTOM_RIGHT, world_, backRightPosition, m_vehicleBody.GetRotationDegrees()));
+
+            // Create joints for each of the wheels to the body
+            // Front Left
+            m_frontLeftJoint = JointFactory.CreateRevoluteJoint(world_,
+                m_vehicleBody.GetBody(),
+                m_vehicleTyres[0].GetBody(),
+                FarseerPhysics.ConvertUnits.ToSimUnits(new Vector2(-m_vehicleBody.GetSprite().GetWidth() / 2 * 0.8f, -m_vehicleBody.GetSprite().GetHeight() / 2 * 0.7f)),
+                Vector2.Zero, false);
+            m_frontLeftJoint.LowerLimit = Util.DegreesToRadians(-10);
+            m_frontLeftJoint.UpperLimit = Util.DegreesToRadians(10);
+            m_frontLeftJoint.LimitEnabled = true;
+            m_frontLeftJoint.MotorEnabled = true;
+            m_frontLeftJoint.MaxMotorTorque = 100;
+
+            // Front right
+            m_frontRightJoint = JointFactory.CreateRevoluteJoint(world_,
+                m_vehicleBody.GetBody(),
+                m_vehicleTyres[1].GetBody(),
+                FarseerPhysics.ConvertUnits.ToSimUnits(new Vector2(m_vehicleBody.GetSprite().GetWidth() / 2 * 0.8f, -m_vehicleBody.GetSprite().GetHeight() / 2 * 0.7f)),
+                Vector2.Zero, false);
+            m_frontRightJoint.LowerLimit = Util.DegreesToRadians(-10);
+            m_frontRightJoint.UpperLimit = Util.DegreesToRadians(10);
+            m_frontRightJoint.LimitEnabled = true;
+            m_frontRightJoint.MotorEnabled = true;
+            m_frontRightJoint.MaxMotorTorque = 100;
+
+            // Back left
+            m_backLeftJoint = JointFactory.CreateRevoluteJoint(world_,
+                m_vehicleBody.GetBody(),
+                m_vehicleTyres[2].GetBody(),
+                FarseerPhysics.ConvertUnits.ToSimUnits(new Vector2(-m_vehicleBody.GetSprite().GetWidth() / 2 * 0.8f, m_vehicleBody.GetSprite().GetHeight() / 2 * 0.7f)),
+                Vector2.Zero, false);
+            m_backLeftJoint.LowerLimit = 0;
+            m_backLeftJoint.UpperLimit = 0;
+            m_backLeftJoint.LimitEnabled = true;
+
+            // Back right
+            m_backRightJoint = JointFactory.CreateRevoluteJoint(world_,
+                m_vehicleBody.GetBody(),
+                m_vehicleTyres[3].GetBody(),
+                FarseerPhysics.ConvertUnits.ToSimUnits(new Vector2(m_vehicleBody.GetSprite().GetWidth() / 2 * 0.8f, m_vehicleBody.GetSprite().GetHeight() / 2 * 0.7f)),
+                Vector2.Zero, false);
+            m_backLeftJoint.LowerLimit = 0;
+            m_backLeftJoint.UpperLimit = 0;
+            m_backRightJoint.LimitEnabled = true;
+
+            m_vehicleBody.SetRotationDegrees(entityStruct_.GetRotationDegrees());
+            m_vehicleBody.UpdateSprites();
         }
 
         public void Update(float steeringValue_ = 0, bool braking_ = false) {
             // Updates the vehicle
             // ================
-            m_steeringValue = steeringValue_;
-            m_braking = braking_;
 
-            m_forward = new Vector2((float)Math.Cos(fs_body.Rotation), (float)Math.Sin(fs_body.Rotation));
-            if (m_forward.Length() > 0) {
-                m_forward.Normalize();
+            foreach (Tyre t in m_vehicleTyres) {
+                t.UpdateTyre(steeringValue_, braking_);
+                t.UpdateFriction();
             }
 
-            fs_body.ApplyAngularImpulse(steeringValue_/5000);
+            foreach (Tyre t in m_vehicleTyres) {
+                t.UpdateDrive();
 
-            if (!m_braking) {
-                fs_body.ApplyForce(m_forward * ACCELERATION_RATE * 1.5f);
+                float lockAngle = Util.DegreesToRadians(20);
+                float turnSpeedPerSec = Util.DegreesToRadians(320);
+                float turnPerTimeStep = turnSpeedPerSec / 60;
+                float desiredAngle = steeringValue_ * lockAngle;
+                float angleNow = m_frontLeftJoint.JointAngle;
+                float angleToTurn = desiredAngle - angleNow;
+                angleToTurn = FarseerPhysics.Common.MathUtils.Clamp(angleToTurn, -turnPerTimeStep, turnPerTimeStep);
+                float newAngle = angleNow + angleToTurn;
+                m_frontLeftJoint.SetLimits(newAngle, newAngle);
+                m_frontRightJoint.SetLimits(newAngle, newAngle);
+
+                t.UpdateSprites();
             }
 
-            fs_body.Friction = 10000f;
-
-            // TEMP
-            Debug.AddText(new DebugText("Position: " + fs_body.Position.ToString(), new Vector2(100, 1000)));
-            Debug.AddText(new DebugText("Rotation: " + Util.RadiansToDegrees(fs_body.Rotation), new Vector2(100, 1020)));
-            Debug.AddText(new DebugText("Velocity: " + fs_body.LinearVelocity.ToString(), new Vector2(100, 1040)));
-            Debug.AddText(new DebugText("Forward: " + m_forward.ToString(), new Vector2(100, 1060)));
+            Debug.AddText("Body position D: " + FarseerPhysics.ConvertUnits.ToDisplayUnits(m_vehicleBody.GetPosition()).ToString(), new Vector2(10, 300));
+            Debug.AddText("Body position S: " + m_vehicleBody.GetPosition().ToString(), new Vector2(10, 320));
+            Debug.AddText("FL position D: " + FarseerPhysics.ConvertUnits.ToDisplayUnits(m_vehicleTyres[0].GetPosition()).ToString(), new Vector2(10, 360));
+            Debug.AddText("FL position S: " + m_vehicleTyres[0].GetPosition().ToString(), new Vector2(10, 380));
+            Debug.AddText("FL rotation: " + Util.RadiansToDegrees(m_frontLeftJoint.JointAngle).ToString(), new Vector2(10, 400));
+            Debug.AddText("FR position D: " + FarseerPhysics.ConvertUnits.ToDisplayUnits(m_vehicleTyres[1].GetPosition()).ToString(), new Vector2(10, 420));
+            Debug.AddText("FR position S: " + m_vehicleTyres[1].GetPosition().ToString(), new Vector2(10, 440));
+            Debug.AddText("FR rotation: " + Util.RadiansToDegrees(m_frontRightJoint.JointAngle).ToString(), new Vector2(10, 460));
+            m_vehicleBody.UpdateSprites();
         }
-
-        private Vector2 RotateAroundAxis(Vector2 forward_, float degrees_) {
-            // Rotate a vector around an axis
-            // ================
-            Vector2 temp = Vector2.Zero;
-
-            float radians = degrees_ * (float)Math.PI / 180;
-
-            temp.X = (float)(forward_.X * Math.Cos(radians) - forward_.Y * Math.Sin(radians));
-            temp.Y = (float)(forward_.X * Math.Sin(radians) + forward_.Y * Math.Cos(radians));
-
-            return temp;
-
-        }
-
-        public bool HasHitBarrier(List<Barrier> barriers_) {
-            /*foreach (Barrier b in barriers_) {
-                EntityCollider fuckDean = new EntityCollider(m_collider);
-                Vector2 m_newPosition = fuckDean.GetPosition() + m_velocity;
-                Vector2 m_barrierPosition = b.GetPosition();
-
-                fuckDean.SetPosition(m_collider.GetPosition() + m_velocity);
-
-                if (CollisionHandler.CheckForCollision(fuckDean, b.GetCollider())) {
-                    Debug.AddText(new DebugText("New Position = " + m_newPosition, new Vector2(10.0f, 180.0f)));
-                    
-                    return true;
-                }
-
-            }*/
-            return false;
-        }
-
-        // Getters
-        public Vector2 GetVelocity()
-        {
-            return m_velocity;
-        }
-
     }
 }
 

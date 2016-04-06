@@ -49,7 +49,7 @@ namespace Project_Cows.Source.Application {
 
 
         //private Tyre TYRE;
-        private BestSuperVehicle bsv;
+        //private BestSuperVehicle bsv;
 
 
 
@@ -93,7 +93,7 @@ namespace Project_Cows.Source.Application {
 
             //TYRE = new Tyre(Quadrent.BOTTOM_RIGHT, fs_world, new Vector2(50, 30), 0f);
 
-            bsv = new BestSuperVehicle(fs_world, TextureHandler.m_vehicleOrange, new EntityStruct(new Vector2(1000, 500), 0f));
+            //bsv = new BestSuperVehicle(fs_world, TextureHandler.m_vehicleOrange, new EntityStruct(new Vector2(1000, 500), 0f));
 
 
 
@@ -228,62 +228,6 @@ namespace Project_Cows.Source.Application {
 
 			
             // Update game objects
-            
-            /*
-            // Perform collision Checks
-            foreach (Player p1 in m_players) {
-                bool move = true;
-
-                EntityCollider newColl = new EntityCollider(p1.GetVehicle().GetCollider());
-
-                // Player vs Barrier
-                foreach (Barrier b in h_trackHandler.m_barriers)
-                {
-
-                    if (CollisionHandler.CheckForCollision(p1.GetVehicle().GetCollider(), b.GetCollider()))
-                    {
-
-                        if (p1.GetVehicle().m_velocity.Length() < 2.0f && p1.GetVehicle().m_velocity.Length() > 0)
-                        {
-                            p1.GetVehicle().m_velocity = new Vector2(-2.5f, -2.5f);
-                            Debug.AddText(new DebugText("MY VELOCITY IS LESS THAN 2.0F", new Vector2(10.0f, 150.0f)));
-                        }
-                        else
-                        {
-                            p1.GetVehicle().m_velocity = -p1.GetVehicle().m_velocity * 0.9f;
-                            Debug.AddText(new DebugText("COLLIDDED WITH BARRRIERRRRRR", new Vector2(10.0f, 150.0f)));
-                        }
-                        // NOTE: Change needs to be made here, as this means that the vehicle would Update() twice in the same frame -Dean
-                        newColl.SetPosition(p1.GetVehicle().GetCollider().GetPosition() + p1.GetVehicle().GetVelocity());
-                    }
-
-                    if (CollisionHandler.CheckForCollision(newColl, b.GetCollider())) {
-                        move = false;
-                    }
-                }
-
-                if(move)
-                    p1.GetVehicle().SetPosition(p1.GetVehicle().GetPosition() + p1.GetVehicle().GetVelocity());
-
-                // Player vs Player
-                foreach (Player p2 in m_players) {
-                    if (p2.GetID() != p1.GetID()) {
-                        if (CollisionHandler.CheckForCollision(p1.GetVehicle().GetCollider(), p2.GetVehicle().GetCollider())) {
-							p1.GetVehicle().m_velocity = -p1.GetVehicle().m_velocity * 0.6f;
-
-                            // NOTE: Change needs to be made here, as this means that the vehicle would Update() twice in the same frame -Dean
-                            p1.GetVehicle().Update();
-
-                            Debug.AddText(new DebugText("Defo COllided ye ken?", new Vector2(10.0f, 150.0f)));
-                        }
-                    }
-                }
-            }
-            */
-            //le_tire.updateDrive(0);
-
-
-
 
 
 
@@ -296,7 +240,7 @@ namespace Project_Cows.Source.Application {
             }
             bool braked = Keyboard.GetState().IsKeyDown(Keys.Down);
             //TYRE.UpdateTyre(turn, braked);
-            bsv.Update(turn, braked);
+            //bsv.Update(turn, braked);
 
 
 
@@ -318,7 +262,7 @@ namespace Project_Cows.Source.Application {
             }
 			
 			foreach(Player p in m_players) {
-				p.UpdateSprites();
+				//p.UpdateSprites();
 			}
 
             foreach (CheckpointContainer cp in h_trackHandler.m_checkpoints) {
@@ -362,7 +306,7 @@ namespace Project_Cows.Source.Application {
 
             // Render player vehicles
 			foreach(Player p in m_players) {
-                GraphicsHandler.DrawSprite(p.GetVehicle().GetSprite());
+                GraphicsHandler.DrawSprite(p.GetVehicle().m_vehicleBody.GetSprite());
                 //GraphicsHandler.DrawSprite(p.GetCow());
                 GraphicsHandler.DrawSprite(p.m_controlScheme.m_controlInterfaceSprite);
                 GraphicsHandler.DrawSprite(p.m_controlScheme.m_steeringIndicatorSprite);
@@ -374,13 +318,13 @@ namespace Project_Cows.Source.Application {
 
 
 
-            Debug.AddSprite(bsv.m_vehicleTyres[0].GetSprite());
-            Debug.AddSprite(bsv.m_vehicleTyres[1].GetSprite());
-            Debug.AddSprite(bsv.m_vehicleTyres[2].GetSprite());
-            Debug.AddSprite(bsv.m_vehicleTyres[3].GetSprite());
+            Debug.AddSprite(m_players[0].GetVehicle().m_vehicleTyres[0].GetSprite());
+            Debug.AddSprite(m_players[0].GetVehicle().m_vehicleTyres[1].GetSprite());
+            Debug.AddSprite(m_players[0].GetVehicle().m_vehicleTyres[2].GetSprite());
+            Debug.AddSprite(m_players[0].GetVehicle().m_vehicleTyres[3].GetSprite());
 
 
-            GraphicsHandler.DrawSprite(bsv.m_vehicleBody.GetSprite());
+            //GraphicsHandler.DrawSprite(bsv.m_vehicleBody.GetSprite());*/
 
 
 

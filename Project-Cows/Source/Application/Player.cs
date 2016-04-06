@@ -80,15 +80,15 @@ namespace Project_Cows.Source.Application {
                 m_vehicle.Update(turn, m_keyBraking);
             }
 
-            m_cow.SetPosition(m_vehicle.GetPosition());
-            m_cow.SetRotationDegrees(m_vehicle.GetRotationDegrees());
+            m_cow.SetPosition(m_vehicle.m_vehicleBody.GetPosition());
+            m_cow.SetRotationDegrees(m_vehicle.m_vehicleBody.GetRotationDegrees());
         }
 
 		public void UpdateSprites() {
 			// Updates the player sprites
 			// ================
 
-			m_vehicle.UpdateSprites();
+			//m_vehicle.UpdateSprites();
 		}
 
         public void KeyboardMove(bool left_, bool right_, bool braking_) {
