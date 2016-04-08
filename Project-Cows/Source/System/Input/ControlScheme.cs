@@ -46,7 +46,7 @@ namespace Project_Cows.Source.System.Input {
             m_steeringValue = 0;
             m_braking = false;
 
-            m_steeringMaxDistance = 200;
+            m_steeringMaxDistance = 150;
 
 			// Set touch zone
 			switch(m_quadrent){
@@ -107,6 +107,24 @@ namespace Project_Cows.Source.System.Input {
 				
             }
 
+            if (touches_.Count == 0) {
+                float steerDistance = 0;
+                if (Microsoft.Xna.Framework.Input.Keyboard.GetState().IsKeyDown(Microsoft.Xna.Framework.Input.Keys.Left)) {
+                    steerDistance = -m_steeringMaxDistance;
+                } else if (Microsoft.Xna.Framework.Input.Keyboard.GetState().IsKeyDown(Microsoft.Xna.Framework.Input.Keys.Right)) {
+                    steerDistance = m_steeringMaxDistance;
+                }
+                CalculateSteeringValue(steerDistance);
+
+                if (m_quadrent == Quadrent.BOTTOM_LEFT || m_quadrent == Quadrent.BOTTOM_RIGHT) {
+                    steerDistance = -steerDistance;
+                }
+
+                m_steeringIndicatorSprite.SetPosition(new Vector2(m_homeSteeringPosition.X - steerDistance, m_homeSteeringPosition.Y));
+                performedSteering = true;
+
+            }
+
 
         }
 
@@ -114,6 +132,11 @@ namespace Project_Cows.Source.System.Input {
             // Processes inputs to get the steering value
             // ================
             m_steeringValue = steeringDistance_ / m_steeringMaxDistance;
+
+            // Slider dead-zone
+            if (m_steeringValue >= 0.2f && m_steeringValue <= 0.2f) {
+                m_steeringValue = 0;
+            }
 
 			if(m_quadrent == Quadrent.BOTTOM_LEFT || m_quadrent == Quadrent.BOTTOM_RIGHT) {
 				m_steeringValue = -m_steeringValue;
