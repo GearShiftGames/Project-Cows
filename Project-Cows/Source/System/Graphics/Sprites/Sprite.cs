@@ -63,7 +63,6 @@ namespace Project_Cows.Source.System.Graphics.Sprites {
             return m_rotation; 
         }
 
-		// TODO: Create universal function to convert deg -> rad, and vice versa -Dean
 		public float GetRotationRadians() { 
             return (m_rotation * (3.1415f / 180)); 
         }

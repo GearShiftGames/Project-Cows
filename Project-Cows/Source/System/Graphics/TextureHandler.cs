@@ -34,6 +34,7 @@ namespace Project_Cows.Source.System.Graphics {
         public static Texture2D m_menu2;
         public static Texture2D m_menu3;
         public static Texture2D m_menu4;
+
         // Victory Screen
         public static Texture2D m_victoryBackground;
         // Used for character selection & vehicle selection
@@ -83,6 +84,7 @@ namespace Project_Cows.Source.System.Graphics {
         public static Texture2D m_debugCollider;
         // Temp
         public static Texture2D m_tempRed;
+        public static Texture2D m_vehicleTyre;
 
         // Methods
         public static void LoadContent() {
@@ -100,6 +102,8 @@ namespace Project_Cows.Source.System.Graphics {
             LoadTexture(ref m_menuExit, "Sprites\\Menu\\exitButton");
             LoadTexture(ref m_menuControls, "Sprites\\Menu\\Button_Controls_Normal");
             LoadTexture(ref m_menuOptions, "Sprites\\Menu\\Button_Options_Normal");
+            LoadTexture(ref m_menuPlay, "Sprites\\Menu\\Button_Play_Normal");
+            LoadTexture(ref m_menuExit, "Sprites\\Menu\\exitButton");
             LoadTexture(ref m_menuCredits, "Sprites\\Menu\\creditsButton");
             LoadTexture(ref m_menu1, "Sprites\\Menu\\1Button");
             LoadTexture(ref m_menu2, "Sprites\\Menu\\2Button");
@@ -126,6 +130,11 @@ namespace Project_Cows.Source.System.Graphics {
              *LoadTexture(ref m_tractorYellow, "Sprites\\Vehicles\\Cow_Tractor_Yellow");
              */
             LoadTexture(ref m_cow21, "Sprites\\Vehicles\\cow2.1");
+            // Vehicles
+            LoadTexture(ref m_vehicleBlue, "Sprites\\Vehicles\\vehicleBlue");
+            LoadTexture(ref m_vehicleOrange, "Sprites\\Vehicles\\vehicleOrange");
+            LoadTexture(ref m_vehiclePurple, "Sprites\\Vehicles\\vehiclePurple");
+            LoadTexture(ref m_vehicleYellow, "Sprites\\Vehicles\\vehicleYellow");
             LoadTexture(ref m_cow1, "Sprites\\Vehicles\\cow1");
             LoadTexture(ref m_cow2, "Sprites\\Vehicles\\cow2");
             LoadTexture(ref m_cow3, "Sprites\\Vehicles\\cow3");
@@ -150,6 +159,7 @@ namespace Project_Cows.Source.System.Graphics {
 
             // Temp
             LoadTexture(ref m_tempRed, "Sprites\\Temp\\Red");
+            LoadTexture(ref m_vehicleTyre, "Sprites\\Temp\\vehicleTyre");
         }
 
         private static void LoadTexture(ref Texture2D texture_, string file_) {

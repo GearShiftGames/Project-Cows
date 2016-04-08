@@ -14,6 +14,9 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
+using FarseerPhysics.Dynamics;
+using FarseerPhysics.Factories;
+
 using Project_Cows.Source.System;
 using Project_Cows.Source.System.Graphics;
 using Project_Cows.Source.System.Graphics.Sprites;
@@ -25,89 +28,71 @@ namespace Project_Cows.Source.Application.Entity {
 
         // Variables
         protected Sprite m_sprite;                  // Sprite for the entity
-        protected EntityCollider m_collider;        // Physics collider for the entity
-        protected Vector2 m_position;               // Position of the entity
-        protected float m_rotation;                 // Rotation of the entity, in degrees
-        protected bool m_collidable;                // Whether the entity is collidable
+        protected Body fs_body;                     // Physics body for the entity
 
         // Methods
-        public Entity(Texture2D texture_, Vector2 position_, float rotation_ = 0) {
+        public Entity(World world_, Texture2D texture_, Vector2 position_, float rotation_, BodyType bodyType_, float mass_ = 10f, float restitution_ = 0.1f) {
             // Entity constructor
             // ================
+            
+            fs_body = BodyFactory.CreateRectangle(world_, FarseerPhysics.ConvertUnits.ToSimUnits(texture_.Width), FarseerPhysics.ConvertUnits.ToSimUnits(texture_.Height), 1f, FarseerPhysics.ConvertUnits.ToSimUnits(position_));
+            fs_body.BodyType = bodyType_;
+            fs_body.Mass = mass_;
+            fs_body.Restitution = restitution_;
+            fs_body.Rotation = Util.DegreesToRadians(rotation_);
 
-            m_position = position_;
-            m_rotation = rotation_;
-			m_sprite = new Sprite(texture_, m_position, m_rotation, new Vector2(1.0f, 1.0f));
-			m_collidable = true;
-
-            m_collider = new EntityCollider(TextureHandler.m_debugCorner, TextureHandler.m_debugCollider, new Rectangle((int)(m_position.X - m_sprite.GetWidth() / 2), (int)(m_position.Y - m_sprite.GetHeight() / 2), (int)m_sprite.GetWidth(), (int)m_sprite.GetHeight()), m_rotation);
+            m_sprite = new Sprite(texture_, FarseerPhysics.ConvertUnits.ToDisplayUnits(fs_body.Position), fs_body.Rotation, new Vector2(1.0f, 1.0f));
         }
-
-        public Entity(Texture2D texture_, EntityStruct entityStruct_) {
-            m_position = entityStruct_.GetPosition();
-            m_rotation = entityStruct_.GetRotation();
-            m_sprite = new Sprite(texture_, m_position, m_rotation, new Vector2(1.0f, 1.0f));
-			m_collidable = true;
-
-            m_collider = new EntityCollider(TextureHandler.m_debugCorner, TextureHandler.m_debugCollider, new Rectangle((int)(m_position.X - m_sprite.GetWidth() / 2), (int)(m_position.Y - m_sprite.GetHeight() / 2), (int)m_sprite.GetWidth(), (int)m_sprite.GetHeight()), m_rotation);
-        }
-
-		public void UpdateCollider() {
-			// Updates the position and rotation of the entity's collider
-			// ================
-
-			m_collider.SetPosition(m_position);
-			m_collider.SetRotationDegrees(m_rotation);
-
-			Debug.AddSprite(m_collider.GetDebugSprite());
-		}
 
 		public void UpdateSprites() {
 			// Updates the position and rotation of the entity's sprite
 			// ================
 
-			m_sprite.SetPosition(m_position);
-			m_sprite.SetRotationDegrees(m_rotation);
-
-			// Update collider sprite
-			m_collider.UpdateSprite();
+			m_sprite.SetPosition(FarseerPhysics.ConvertUnits.ToDisplayUnits(fs_body.Position));
+			m_sprite.SetRotationDegrees(Util.RadiansToDegrees(fs_body.Rotation));
 		}
 
         // Getters
-        public Sprite GetSprite() { return m_sprite; }
+        public Body GetBody() {
+            return fs_body;
+        }
 
-		public EntityCollider GetCollider() { return m_collider; }
+        public Sprite GetSprite() {
+            return m_sprite;
+        }
 
-		public Vector2 GetPosition() { return m_position; }
+		public Vector2 GetPosition() {
+            return fs_body.Position;
+        }
 
-		public float GetRotationDegrees() {
+        public float GetRotationDegrees() {
 			// Returns the entity's rotation, in degrees
 			// ================
 
-			return m_rotation;
+			return Util.RadiansToDegrees(fs_body.Rotation);
 		}
 
-		public float GetRotationRadians() {
-			// Returns the entity's rotation, in radians
-			// ================
-			
-			float rad = m_rotation * (3.1415f / 180);
-			return rad;
-		}
-
-		public bool GetCollidable() { return m_collidable; }
+        /*public Vector2 GetCornerPosition(System.Input.Quadrent quadrent_) {
+            Vector2 position = Vector2.Zero;
+            switch (quadrent_) {
+                case System.Input.Quadrent.TOP_LEFT:
+                    position = 
+                    break;
+            }
+            return position;
+        }*/
 
         // Setters
-        public void SetSprite(Sprite sprite_) { m_sprite = sprite_; }
+        public void SetSprite(Sprite sprite_) {
+            m_sprite = sprite_;
+        }
 
-		public void SetPosition(Vector2 position_) { m_position = position_; }
+		public void SetPosition(Vector2 position_) {
+            fs_body.Position = FarseerPhysics.ConvertUnits.ToSimUnits(position_);
+        }
 
 		public void SetRotationDegrees(float degrees_) {
-			m_rotation = degrees_;
-		}
-
-		public void SetRotationRadians(float radians_) {
-			m_rotation = radians_ * (180 / 3.1415f);
+			fs_body.Rotation = Util.DegreesToRadians(degrees_);
 		}
 
     }

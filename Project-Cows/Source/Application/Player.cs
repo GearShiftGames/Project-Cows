@@ -16,10 +16,13 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input.Touch;
 
+using FarseerPhysics.Dynamics;
+
 using Project_Cows.Source.System.Graphics.Sprites;
 using Project_Cows.Source.System.Input;
 using Project_Cows.Source.Application.Entity;
 using Project_Cows.Source.Application.Track;
+using Project_Cows.Source.Application.Entity.Vehicle;
 
 namespace Project_Cows.Source.Application {
     class Player {
@@ -28,6 +31,8 @@ namespace Project_Cows.Source.Application {
 
 		// Variables
         public ControlScheme m_controlScheme;
+
+        private World fs_world;
 
         private int m_playerID;
         private int m_collideID;
@@ -42,23 +47,12 @@ namespace Project_Cows.Source.Application {
         private bool m_keyBraking;
 
         // Methods
-        public Player(Texture2D cowTexture_, Texture2D carTexture_, Vector2 position_, float rotation_, float speed_, Quadrent quadrent_, int id_ = 999) {
-			// Player constructor
-			// ================
+        public Player(World world_, Texture2D cowTexture_, Texture2D texture_, EntityStruct entityStruct_, float speed_, Quadrent quadrent_, int id_ = 999) {
+            // Player constructor
+            // ================
+            m_vehicle = new Vehicle(world_, texture_, entityStruct_);
+            m_cow = new Sprite(cowTexture_, entityStruct_.GetPosition(), entityStruct_.GetRotationDegrees(), new Vector2(0.1f, 0.1f));
 
-            m_vehicle = new Vehicle(carTexture_, position_, rotation_);
-            m_cow = new Sprite(cowTexture_, position_, rotation_, new Vector2(0.1f,0.1f));
-
-            m_controlScheme = new ControlScheme(quadrent_);
-            m_playerID = id_;
-
-            m_currentCheckpoint = Checkpoint.First(Vector2.Zero);
-            m_currentLap = 1;
-        }
-
-        public Player(Texture2D cowTexture_, Texture2D texture_, EntityStruct entityStruct_, float speed_, Quadrent quadrent_, int id_ = 999) {
-            m_vehicle = new Vehicle(texture_, entityStruct_);
-            m_cow = new Sprite(cowTexture_, entityStruct_.GetPosition(), entityStruct_.GetRotation(), new Vector2(0.1f, 0.1f));
             m_controlScheme = new ControlScheme(quadrent_);
             m_playerID = id_;
 
@@ -86,15 +80,15 @@ namespace Project_Cows.Source.Application {
                 m_vehicle.Update(turn, m_keyBraking);
             }
 
-            m_cow.SetPosition(m_vehicle.GetPosition());
-            m_cow.SetRotationRadians(m_vehicle.GetRotationRadians());
+            m_cow.SetPosition(m_vehicle.m_vehicleBody.GetPosition());
+            m_cow.SetRotationDegrees(m_vehicle.m_vehicleBody.GetRotationDegrees());
         }
 
 		public void UpdateSprites() {
 			// Updates the player sprites
 			// ================
 
-			m_vehicle.UpdateSprites();
+			//m_vehicle.UpdateSprites();
 		}
 
         public void KeyboardMove(bool left_, bool right_, bool braking_) {

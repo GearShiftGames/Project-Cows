@@ -34,10 +34,10 @@ namespace Project_Cows.Source.Application.Entity {
 
         // Getters
         public Vector2 GetPosition() { return m_position; }
-        public float GetRotation() { return m_rotation; }
+        public float GetRotationDegrees() { return m_rotation; }
 
         // Setters
         public void SetPosition(Vector2 position_) { m_position = position_; }
-        public void SetRotation(float rotation_) { m_rotation = rotation_; }
+        public void SetRotationDegrees(float rotation_) { m_rotation = rotation_; }
     }
 }
