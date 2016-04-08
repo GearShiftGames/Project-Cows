@@ -34,9 +34,9 @@ namespace Project_Cows.Source.Application.Entity.Vehicle {
         bool m_braking;
 
         const float MAX_SPEED = 200f;
-        const float MAX_REVERSE_SPEED = -1f;
+        const float MAX_REVERSE_SPEED = -50f;
         const float MAX_DRIVE_FORCE = 50f;
-        const float MAX_REVERSE_DRIVE_FORCE = 0.1f;
+        const float MAX_REVERSE_DRIVE_FORCE = 12.5f;
         const float MAX_LATERAL_IMPULSE = 3f;
 
         // NOTE: Make the variable scopes explicit -Dean
@@ -125,7 +125,7 @@ namespace Project_Cows.Source.Application.Entity.Vehicle {
             // Forward linear velocity
             Vector2 currentForwardNormal = GetForwardVelocity();
             float currentForwardSpeed = currentForwardNormal.Length();      // NOTE: Possibly not right, but it should be -Dean
-            float dragForceMagnitude = -1 * currentForwardSpeed;
+            float dragForceMagnitude = -2 * currentForwardSpeed;
             fs_body.ApplyForce(dragForceMagnitude * currentForwardNormal);
         }
 
