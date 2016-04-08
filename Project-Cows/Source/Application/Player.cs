@@ -46,18 +46,24 @@ namespace Project_Cows.Source.Application {
         private bool m_keyRight;
         private bool m_keyBraking;
 
+        public bool m_ReadyUp; //for checking whether this player is ready to start
+        public Button m_ReadyButton;
+
         // Methods
-        public Player(World world_, Texture2D cowTexture_, Texture2D texture_, EntityStruct entityStruct_, float speed_, Quadrent quadrent_, int id_ = 999) {
+        public Player(World world_, Texture2D cowTexture_, Texture2D texture_,Texture2D ButtonTexture, Vector2 ButtonPosition, EntityStruct entityStruct_, float speed_, Quadrent quadrent_, int id_ = 999) {
             // Player constructor
             // ================
             m_vehicle = new Vehicle(world_, texture_, entityStruct_);
             m_cow = new Sprite(cowTexture_, entityStruct_.GetPosition(), entityStruct_.GetRotationDegrees(), new Vector2(0.1f, 0.1f));
+            m_ReadyButton = new Button(ButtonTexture, ButtonPosition);
 
             m_controlScheme = new ControlScheme(quadrent_);
             m_playerID = id_;
 
             m_currentCheckpoint = Checkpoint.First(Vector2.Zero);
             m_currentLap = 1;
+
+            m_ReadyUp = false;
         }
 
         public void Update(List<TouchLocation> touches_) {

@@ -43,18 +43,8 @@ namespace Project_Cows.Source.Application {
         // </Farseer>
         //private Tire le_tire;
 
-
-
-
-
-
         //private Tyre TYRE;
         //private BestSuperVehicle bsv;
-
-
-
-
-
 
         private TrackHandler h_trackHandler = new TrackHandler();
         private List<AnimatedSprite> m_animatedSprites = new List<AnimatedSprite>();
@@ -68,6 +58,10 @@ namespace Project_Cows.Source.Application {
         int winner = 0;
 
         bool finished;
+
+        //will be used to determine if all players have readied up
+        bool PlayersReady;
+        int NoPlayersReady;
 
 		// Methods
 		public InGameState() : base() {
@@ -86,29 +80,23 @@ namespace Project_Cows.Source.Application {
             fs_world = new FarseerPhysics.Dynamics.World(Vector2.Zero);
 
 			//le_tire = new Tire(fs_world, TextureHandler.m_vehicleBlue, new Vector2(100.0f, 100.0f), 0f, 0.1f);
-
-
-
-
-
-
-
             //TYRE = new Tyre(Quadrent.BOTTOM_RIGHT, fs_world, new Vector2(50, 30), 0f);
-
             //bsv = new BestSuperVehicle(fs_world, TextureHandler.m_vehicleOrange, new EntityStruct(new Vector2(1000, 500), 0f));
-
-
-
-
 
 
             m_background = new Sprite(TextureHandler.m_gameBackground, new Vector2(Settings.m_screenWidth / 2, Settings.m_screenHeight / 2), 0.0f, Vector2.One);
 
             h_trackHandler.Initialise(fs_world);
 
+            //Ready Up Stuff
+            PlayersReady = true;// false;
+            NoPlayersReady = 0;
+
 			// Initialise players
             m_players = new List<Player>();
             m_players.Clear();
+
+            Settings.m_numberOfPlayers = 1;
 
             for (int i = 0; i < Settings.m_numberOfPlayers; ++i) {
                 Quadrent quad = Quadrent.BOTTOM_LEFT;
@@ -123,19 +111,19 @@ namespace Project_Cows.Source.Application {
                 }
 
                 if (i == 0) {
-                    m_players.Add(new Player(fs_world, TextureHandler.m_vehicleBlue, TextureHandler.m_vehicleBlue, h_trackHandler.m_vehicles[i], 0, quad, i + 1));
+                    m_players.Add(new Player(fs_world, TextureHandler.m_vehicleBlue, TextureHandler.m_vehicleBlue, TextureHandler.m_THELORDANDSAVIOUR, new Vector2(480.0f, 880.0f), h_trackHandler.m_vehicles[i], 0, quad, i + 1));
                     m_players[i].m_controlScheme.SetSteeringSprite(new Sprite(TextureHandler.m_userInterfaceWheelBlue, new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
                     m_players[i].m_controlScheme.SetInterfaceSprite(new Sprite(TextureHandler.m_userInterfaceSlider, new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
                 } else if (i == 1) {
-                    m_players.Add(new Player(fs_world, TextureHandler.m_vehicleOrange, TextureHandler.m_vehicleOrange, h_trackHandler.m_vehicles[i], 0, quad, i + 1));
+                    m_players.Add(new Player(fs_world, TextureHandler.m_vehicleOrange, TextureHandler.m_vehicleOrange, TextureHandler.m_THELORDANDSAVIOUR, new Vector2(1440.0f, 880.0f), h_trackHandler.m_vehicles[i], 0, quad, i + 1));
                     m_players[i].m_controlScheme.SetSteeringSprite(new Sprite(TextureHandler.m_userInterfaceWheelOrange, new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
                     m_players[i].m_controlScheme.SetInterfaceSprite(new Sprite(TextureHandler.m_userInterfaceSlider, new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
                 } else if (i == 2) {
-                    m_players.Add(new Player(fs_world, TextureHandler.m_vehiclePurple, TextureHandler.m_vehiclePurple, h_trackHandler.m_vehicles[i], 0, quad, i + 1));
+                    m_players.Add(new Player(fs_world, TextureHandler.m_vehiclePurple, TextureHandler.m_vehiclePurple, TextureHandler.m_THELORDANDSAVIOUR, new Vector2(480.0f, 200.0f), h_trackHandler.m_vehicles[i], 0, quad, i + 1));
                     m_players[i].m_controlScheme.SetSteeringSprite(new Sprite(TextureHandler.m_userInterfaceWheelPurple, new Vector2(100.0f, 100.0f), 180, new Vector2(1.0f, 1.0f), true));
                     m_players[i].m_controlScheme.SetInterfaceSprite(new Sprite(TextureHandler.m_userInterfaceSlider, new Vector2(100.0f, 100.0f), 180, new Vector2(1.0f, 1.0f), true));
                 } else if (i == 3) {
-                    m_players.Add(new Player(fs_world, TextureHandler.m_vehicleYellow, TextureHandler.m_vehicleYellow, h_trackHandler.m_vehicles[i], 0, quad, i + 1));
+                    m_players.Add(new Player(fs_world, TextureHandler.m_vehicleYellow, TextureHandler.m_vehicleYellow, TextureHandler.m_THELORDANDSAVIOUR, new Vector2(1440.0f, 200.0f), h_trackHandler.m_vehicles[i], 0, quad, i + 1));
                     m_players[i].m_controlScheme.SetSteeringSprite(new Sprite(TextureHandler.m_userInterfaceWheelYellow, new Vector2(100.0f, 100.0f), 180, new Vector2(1.0f, 1.0f), true));
                     m_players[i].m_controlScheme.SetInterfaceSprite(new Sprite(TextureHandler.m_userInterfaceSlider, new Vector2(100.0f, 100.0f), 180, new Vector2(1.0f, 1.0f), true));
                 }
@@ -191,91 +179,132 @@ namespace Project_Cows.Source.Application {
 				// NOTE: This should probably be done in the respective players' ControlScheme object -Dean
 			}
 
-            startTimer.Update(gameTime_.ElapsedGameTime.Milliseconds);
-            if (startTimer.timerFinished) {
-                foreach (Player p in m_players)
+            //only want to do this when the main game isnt running
+            if(!PlayersReady)
+            {
+                //check if a players ready up button has been pressed
+                foreach (TouchLocation tl in touchHandler_.GetTouches())
                 {
-                    if (p.m_currentLap == 4)
-                    {
-                        finished = true;
-                        winner = p.GetID();
-                    }
-                }
-                if (!finished)
-                {
-                    // Update each player
                     for (int index = 0; index < m_players.Count; ++index)
                     {
-                        bool left = false;
-                        bool right = false;
-                        bool brake = false;
-                        if (Keyboard.GetState().IsKeyDown(Keys.Left))
+                        if (m_players[index].m_ReadyButton.m_touchZone.IsInsideZone(tl.Position))
                         {
-                            left = true;
+                            m_players[index].m_ReadyUp = true;
+                            m_players[index].m_ReadyButton.m_sprite.SetTexture(TextureHandler.m_gameLogo);//changes texture so we know who has readied up
                         }
-                        if (Keyboard.GetState().IsKeyDown(Keys.Right))
-                        {
-                            right = true;
-                        }
-                        if (Keyboard.GetState().IsKeyDown(Keys.Space) || Keyboard.GetState().IsKeyDown(Keys.Down))
-                        {
-                            brake = true;
-                        }
-
-                        m_players[index].KeyboardMove(left, right, brake);
-                        m_players[index].Update(playerTouches[index]);
                     }
                 }
-            }
+
+                //Set to 0 every run, so that it doesnt count multiple touches from same person
+                NoPlayersReady = 0;
                 
-
-			
-            // Update game objects
-
-
-
-            float turn = 0;
-            if (Keyboard.GetState().IsKeyDown(Keys.Left)) {
-                turn--;
-            }
-            if (Keyboard.GetState().IsKeyDown(Keys.Right)) {
-                turn++;
-            }
-            bool braked = Keyboard.GetState().IsKeyDown(Keys.Down);
-            //TYRE.UpdateTyre(turn, braked);
-            //bsv.Update(turn, braked);
-
-
-
-
-
-
-
-            h_trackHandler.Update(m_players, ref m_rankings);
-
-			// Update sprites
-            foreach(AnimatedSprite anim in m_animatedSprites) {
-                // If currently animating
-                if (anim.GetCurrentState() == 1) {
-                    // Change the frame
-                    if (gameTime_.TotalGameTime.TotalMilliseconds - anim.GetLastTime() > anim.GetFrameTime()) {
-                        anim.ChangeFrame(gameTime_.TotalGameTime.TotalMilliseconds);
+                foreach (Player p in m_players)
+                {
+                    if (p.m_ReadyUp == true)
+                    {
+                        NoPlayersReady += 1;
                     }
                 }
+                
+                //When all players have readied up, start main game
+                if (NoPlayersReady == m_players.Count)
+                {
+                    PlayersReady = true;
+                }
+                h_trackHandler.Update(m_players, ref m_rankings);
             }
-			
-			foreach(Player p in m_players) {
-				//p.UpdateSprites();
-			}
 
-            foreach (CheckpointContainer cp in h_trackHandler.m_checkpoints) {
-                cp.GetEntity().UpdateSprites();
+            if(PlayersReady)
+            {
+                startTimer.Update(gameTime_.ElapsedGameTime.Milliseconds);
+                if (startTimer.timerFinished)
+                {
+                    foreach (Player p in m_players)
+                    {
+                        if (p.m_currentLap == 4)
+                        {
+                            finished = true;
+                            winner = p.GetID();
+                        }
+                    }
+                    if (!finished)
+                    {
+                        // Update each player
+                        for (int index = 0; index < m_players.Count; ++index)
+                        {
+                            bool left = false;
+                            bool right = false;
+                            bool brake = false;
+                            if (Keyboard.GetState().IsKeyDown(Keys.Left))
+                            {
+                                left = true;
+                            }
+                            if (Keyboard.GetState().IsKeyDown(Keys.Right))
+                            {
+                                right = true;
+                            }
+                            if (Keyboard.GetState().IsKeyDown(Keys.Space) || Keyboard.GetState().IsKeyDown(Keys.Down))
+                            {
+                                brake = true;
+                            }
+
+                            m_players[index].KeyboardMove(left, right, brake);
+                            m_players[index].Update(playerTouches[index]);
+                        }
+                    }
+                }
+
+
+
+                // Update game objects
+
+
+
+                float turn = 0;
+                if (Keyboard.GetState().IsKeyDown(Keys.Left))
+                {
+                    turn--;
+                }
+                if (Keyboard.GetState().IsKeyDown(Keys.Right))
+                {
+                    turn++;
+                }
+                bool braked = Keyboard.GetState().IsKeyDown(Keys.Down);
+                //TYRE.UpdateTyre(turn, braked);
+                //bsv.Update(turn, braked);
+
+
+                h_trackHandler.Update(m_players, ref m_rankings);
+
+                // Update sprites
+                foreach (AnimatedSprite anim in m_animatedSprites)
+                {
+                    // If currently animating
+                    if (anim.GetCurrentState() == 1)
+                    {
+                        // Change the frame
+                        if (gameTime_.TotalGameTime.TotalMilliseconds - anim.GetLastTime() > anim.GetFrameTime())
+                        {
+                            anim.ChangeFrame(gameTime_.TotalGameTime.TotalMilliseconds);
+                        }
+                    }
+                }
+
+                foreach (Player p in m_players)
+                {
+                    //p.UpdateSprites();
+                }
+
+                foreach (CheckpointContainer cp in h_trackHandler.m_checkpoints)
+                {
+                    cp.GetEntity().UpdateSprites();
+                }
+
+                // Update particles
+                m_particles = GraphicsHandler.UpdatePFX(gameTime_.ElapsedGameTime.TotalMilliseconds);
+
+                fs_world.Step((float)gameTime_.ElapsedGameTime.TotalMilliseconds * .001f);
             }
-            
-			// Update particles
-            m_particles = GraphicsHandler.UpdatePFX(gameTime_.ElapsedGameTime.TotalMilliseconds);
-
-            fs_world.Step((float)gameTime_.ElapsedGameTime.TotalMilliseconds * .001f);
 		}
 
 		public override void Draw(GraphicsDevice graphicsDevice_) {
@@ -313,6 +342,11 @@ namespace Project_Cows.Source.Application {
                 //GraphicsHandler.DrawSprite(p.GetCow());
                 GraphicsHandler.DrawSprite(p.m_controlScheme.m_controlInterfaceSprite);
                 GraphicsHandler.DrawSprite(p.m_controlScheme.m_steeringIndicatorSprite);
+
+                if(!PlayersReady)
+                {
+                    GraphicsHandler.DrawSprite(p.m_ReadyButton.m_sprite);
+                }
 			}
 
             // RENDER UI
@@ -331,11 +365,6 @@ namespace Project_Cows.Source.Application {
                 }
             }
 
-
-
-
-
-
             Debug.AddSprite(m_players[0].GetVehicle().m_vehicleTyres[0].GetSprite());
             Debug.AddSprite(m_players[0].GetVehicle().m_vehicleTyres[1].GetSprite());
             Debug.AddSprite(m_players[0].GetVehicle().m_vehicleTyres[2].GetSprite());
@@ -343,10 +372,6 @@ namespace Project_Cows.Source.Application {
 
 
             //GraphicsHandler.DrawSprite(bsv.m_vehicleBody.GetSprite());*/
-
-
-
-
 
 
 
