@@ -1,19 +1,23 @@
-﻿// Project: Cow Racing -- GearShift Games
-// Written by N. Headley, 2016
-//            D. Sinclair
-// ================
-// GraphicsHandler.cs
+﻿/// Project: Cow Racing
+/// Developed by GearShift Games, 2015-2016
+///     D. Sinclair
+///     N. Headley
+///     D. Divers
+///     C. Fleming
+///     C. Tekpinar
+///     D. McNally
+///     G. Annandale
+///     R. Ferguson
+/// ================
+/// GraphicsHandler.cs
 
-using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Content;
 
 using Project_Cows.Source.System.Graphics.Particles;
 using Project_Cows.Source.System.Graphics.Sprites;
-using Project_Cows.Source.System.StateMachine;
 
 namespace Project_Cows.Source.System.Graphics {
     public static class GraphicsHandler {
@@ -98,7 +102,7 @@ namespace Project_Cows.Source.System.Graphics {
         public static void DrawText(string text_, Vector2 position_, Color colour_, SpriteFont font_) {
             // Draw text with custom font
             // ================
-            m_spriteBatch.DrawString(m_font, text_, position_, colour_);
+            m_spriteBatch.DrawString(font_, text_, position_, colour_);
         }
 
         public static List<Particle> UpdatePFX(double time_) {

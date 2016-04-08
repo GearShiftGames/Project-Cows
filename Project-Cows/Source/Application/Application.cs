@@ -1,11 +1,17 @@
-﻿// Project: Cow Racing -- GearShift Games
-// Written by D. Sinclair, 2016
-//            N. Headley, 2016
-// ================
-// Application.cs
+﻿/// Project: Cow Racing
+/// Developed by GearShift Games, 2015-2016
+///     D. Sinclair
+///     N. Headley
+///     D. Divers
+///     C. Fleming
+///     C. Tekpinar
+///     D. McNally
+///     G. Annandale
+///     R. Ferguson
+/// ================
+/// Application.cs
 
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
 using Project_Cows.Source.System;
@@ -53,6 +59,8 @@ namespace Project_Cows.Source.Application {
 			h_graphicsDeviceHandler.ApplyChanges();
 
             GraphicsHandler.Initialise(GraphicsDevice, Content);
+
+            TextureHandler.LoadContent();
 
 			// Initialise states
             m_menuState = new MenuState();

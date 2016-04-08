@@ -1,19 +1,23 @@
-﻿// Project: Cow Racing -- GearShift Games
-// Written by D. Sinclair, 2016
-//			  D. Divers, 2016
-// ================
-// Player.cs
+﻿/// Project: Cow Racing
+/// Developed by GearShift Games, 2015-2016
+///     D. Sinclair
+///     N. Headley
+///     D. Divers
+///     C. Fleming
+///     C. Tekpinar
+///     D. McNally
+///     G. Annandale
+///     R. Ferguson
+/// ================
+/// Player.cs
 
-using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input.Touch;
 
 using Project_Cows.Source.System.Graphics.Sprites;
 using Project_Cows.Source.System.Input;
-
 using Project_Cows.Source.Application.Entity;
 using Project_Cows.Source.Application.Track;
 
@@ -29,7 +33,7 @@ namespace Project_Cows.Source.Application {
         private int m_collideID;
 		private Vehicle m_vehicle;
         private Sprite m_cow;
-      
+        
         public Checkpoint m_currentCheckpoint;
         public int m_currentLap;
 
@@ -55,7 +59,6 @@ namespace Project_Cows.Source.Application {
         public Player(Texture2D cowTexture_, Texture2D texture_, EntityStruct entityStruct_, float speed_, Quadrent quadrent_, int id_ = 999) {
             m_vehicle = new Vehicle(texture_, entityStruct_);
             m_cow = new Sprite(cowTexture_, entityStruct_.GetPosition(), entityStruct_.GetRotation(), new Vector2(0.1f, 0.1f));
-
             m_controlScheme = new ControlScheme(quadrent_);
             m_playerID = id_;
 

@@ -1,14 +1,19 @@
-﻿// Project: Cow Racing -- GearShift Games
-// Written by D. Sinclair, 2016
-//            N. Headley, 2016
-//            C. Fleming, 2016
-// ================
-// MenuState.cs
+﻿/// Project: Cow Racing
+/// Developed by GearShift Games, 2015-2016
+///     D. Sinclair
+///     N. Headley
+///     D. Divers
+///     C. Fleming
+///     C. Tekpinar
+///     D. McNally
+///     G. Annandale
+///     R. Ferguson
+/// ================
+/// MenuState.cs
 
 using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Input.Touch;
@@ -27,15 +32,42 @@ namespace Project_Cows.Source.Application {
 
 		// Variables
 		private MenuScreenState m_currentScreen;
+        private TouchState m_touchState;
+        private Vector2 m_lastPosition;
+
+        // Sprites
+        private Sprite m_background;
+        private Sprite m_teamLogo;
+        private Sprite m_gameLogo;
+        private Sprite m_player_1_cow;
+        private Sprite m_player_1_vehicle;
+        private Sprite m_player_2_cow;
+        private Sprite m_player_2_vehicle;
+        private Sprite m_player_3_cow;
+        private Sprite m_player_3_vehicle;
+        private Sprite m_player_4_cow;
+        private Sprite m_player_4_vehicle;
+        // Buttons
+        private Button m_playButton;
+        private Button m_optionsButton;
+        private Button m_exitButton;
+        private Button m_backButton;
+        private Button m_creditsButton;
+        private Button m_controlsButton;
+        private Button m_1Button;
+        private Button m_2Button;
+        private Button m_3Button;
+        private Button m_4Button;
+        private Button m_Cow1Button;
+        private Button m_Cow2Button;
+        private Button m_Cow3Button;
+        private Button m_Cow4Button;
+        private Button m_TankButton;
+        private Button m_CarButton;
+        private Button m_TractorButton;
+
         private List<AnimatedSprite> m_animatedSprites = new List<AnimatedSprite>();
-        private List<Sprite> m_sprites = new List<Sprite>();
         private List<Particle> m_particles = new List<Particle>();
-
-        // Touch zones for button locations
-        private TouchZone Play, Option, Exit, Back, Credit;
-        private TouchZone one, two, three, four;
-
-        private Texture2D playerSelectIcon;
 
 		// Methods
         public MenuState() : base() {
@@ -45,62 +77,51 @@ namespace Project_Cows.Source.Application {
 			m_currentState = GameState.MAIN_MENU;
 
 			m_currentExecutionState = ExecutionState.INITIALISING;
+
+            // Initialise number of players to 0
+            // So number must be chosen before continuing
+            Settings.m_numberOfPlayers = 0;
 		}
 
         public override void Initialise() {
 			// Initialise menu state
 			// ================
 
-            // Initialise Player List
-            // Initialise players
-           // m_players = new List<Player>();
-           // m_players.Clear();
-
-
-            playerSelectIcon = GraphicsHandler.m_content.Load<Texture2D>("Sprites\\Temp\\controlTemp");
-            //Initialise sprites
-            m_sprites.Add(new Sprite(GraphicsHandler.m_content.Load<Texture2D>("Sprites\\Backgrounds\\Menu"), new Vector2(Settings.m_screenWidth / 2, Settings.m_screenHeight / 2), 0, new Vector2(0.5f, 0.5f)));
-            // m_sprites.Add(new Sprite(GraphicsHandler.m_content.Load<Texture2D>("Title"), new Vector2(Settings.m_screenWidth / 2, 200.0f), 0, new Vector2(1.0f, 1.0f)));
-            m_sprites.Add(new Sprite(GraphicsHandler.m_content.Load<Texture2D>("Sprites\\Menu\\Play"), new Vector2(Settings.m_screenWidth / 2, Settings.m_screenHeight / 2), 0, new Vector2(1.5f, 1.5f)));
-            m_sprites.Add(new Sprite(GraphicsHandler.m_content.Load<Texture2D>("Sprites\\Menu\\Options"), new Vector2(Settings.m_screenWidth / 2, Settings.m_screenHeight / 2 + 110), 0, new Vector2(1.5f, 1.5f)));
-            m_sprites.Add(new Sprite(GraphicsHandler.m_content.Load<Texture2D>("Sprites\\Menu\\Exit"), new Vector2(Settings.m_screenWidth / 2, Settings.m_screenHeight / 2 + 330), 0, new Vector2(1.5f, 1.5f)));
-            m_sprites.Add(new Sprite(GraphicsHandler.m_content.Load<Texture2D>("Sprites\\Promo\\Logo"), new Vector2(Settings.m_screenWidth - 150.0f, 75.0f), 0, new Vector2(0.5f, 0.5f)));
-            m_sprites.Add(new Sprite(GraphicsHandler.m_content.Load<Texture2D>("Sprites\\Menu\\Back"), new Vector2(Settings.m_screenWidth / 2, Settings.m_screenHeight / 2 + 330), 0, new Vector2(1.5f, 1.5f)));
-            m_sprites.Add(new Sprite(GraphicsHandler.m_content.Load<Texture2D>("Sprites\\Menu\\Credits"), new Vector2(Settings.m_screenWidth / 2, Settings.m_screenHeight / 2 + 220), 0, new Vector2(1.5f, 1.5f)));
-
-            //Initialise Player selection sprites
-            m_sprites.Add(new Sprite(GraphicsHandler.m_content.Load<Texture2D>("Sprites\\Vehicles\\V2_Cow_Highland_Brown"), new Vector2(800.0f, 500.0f), 0, new Vector2(0.25f, 0.25f)));
-            m_sprites.Add(new Sprite(GraphicsHandler.m_content.Load<Texture2D>("Sprites\\Vehicles\\V2_Cow_Plain"), new Vector2(1200.0f, 500.0f), 0, new Vector2(0.5f, 0.5f)));
-
-            m_sprites.Add(new Sprite(GraphicsHandler.m_content.Load<Texture2D>("Sprites\\Menu\\1"), new Vector2(Settings.m_screenWidth / 2 - 50, Settings.m_screenHeight / 2 + 115), 0, new Vector2(1.0f, 1.0f)));
-            m_sprites.Add(new Sprite(GraphicsHandler.m_content.Load<Texture2D>("Sprites\\Menu\\2"), new Vector2(Settings.m_screenWidth / 2 + 50, Settings.m_screenHeight / 2 + 115), 0, new Vector2(1.0f, 1.0f)));
-            m_sprites.Add(new Sprite(GraphicsHandler.m_content.Load<Texture2D>("Sprites\\Menu\\3"), new Vector2(Settings.m_screenWidth / 2 - 50, Settings.m_screenHeight / 2 + 215), 0, new Vector2(1.0f, 1.0f)));
-            m_sprites.Add(new Sprite(GraphicsHandler.m_content.Load<Texture2D>("Sprites\\Menu\\4"), new Vector2(Settings.m_screenWidth / 2 + 50, Settings.m_screenHeight / 2 + 215), 0, new Vector2(1.0f, 1.0f)));
-
-           // m_sprites.Add(new Sprite(playerSelectIcon, new Vector2(m_players[0].m_controlScheme.GetTouchZone().GetMax().X / 2, m_players[0].m_controlScheme.GetTouchZone().GetMax().Y / 2), 0, new Vector2(1.0f, 1.0f)));
-            
-            // Initialise button touch zones
-            
-            
-            
-            
-            
-            // Initialise player touch zones
-            one = new TouchZone(m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\1").GetPosition(),
-                new Vector2(m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\1").GetPosition().X + m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\1").GetWidth(),
-                           m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\1").GetPosition().Y + m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\1").GetHeight()));
-            two = new TouchZone(m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\2").GetPosition(),
-                new Vector2(m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\2").GetPosition().X + m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\2").GetWidth(),
-                           m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\2").GetPosition().Y + m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\2").GetHeight()));
-            three = new TouchZone(m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\3").GetPosition(),
-                new Vector2(m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\3").GetPosition().X + m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\3").GetWidth(),
-                           m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\3").GetPosition().Y + m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\3").GetHeight()));
-            four = new TouchZone(m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\4").GetPosition(),
-                new Vector2(m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\4").GetPosition().X + m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\4").GetWidth(),
-                           m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\4").GetPosition().Y + m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\4").GetHeight()));
-
+            // Initialise sprites
+            m_background =      new Sprite(TextureHandler.m_menuBackground, new Vector2(Settings.m_screenWidth / 2, Settings.m_screenHeight / 2), 0, Vector2.One);
+            m_teamLogo =        new Sprite(TextureHandler.m_teamLogo,       new Vector2(Settings.m_screenWidth / 1.2f, Settings.m_screenHeight / 6), 0, Vector2.One);
+            //m_gameLogo = new Sprite(TextureHandler.m_gameLogo, new Vector2(Settings.m_screenWidth / 2, Settings.m_screenHeight / 2), 0, Vector2.One);
+            // Not sure about this part. Maybe Move to update function
+            m_player_1_cow =    new Sprite(TextureHandler.m_cow1,           new Vector2(Settings.m_screenWidth * 0.50f - 10.0f, Settings.m_screenHeight * 0.75f ), 0, new Vector2(0.1f, 0.1f));
+            m_player_1_vehicle =new Sprite(TextureHandler.m_vehicleBlue,    new Vector2(Settings.m_screenWidth * 0.50f, Settings.m_screenHeight * 0.75f), 0, Vector2.One);
+            m_player_2_cow =    new Sprite(TextureHandler.m_cow1,           new Vector2(Settings.m_screenWidth * 0.50f - 10.0f, Settings.m_screenHeight * 0.75f), 0, new Vector2(0.1f, 0.1f));
+            m_player_2_vehicle =new Sprite(TextureHandler.m_vehicleOrange,  new Vector2(Settings.m_screenWidth * 0.50f, Settings.m_screenHeight * 0.75f), 0, Vector2.One);
+            m_player_3_cow =    new Sprite(TextureHandler.m_cow1,           new Vector2(Settings.m_screenWidth * 0.50f - 10.0f, Settings.m_screenHeight * 0.75f), 0, new Vector2(0.1f, 0.1f));
+            m_player_3_vehicle =new Sprite(TextureHandler.m_vehiclePurple,  new Vector2(Settings.m_screenWidth * 0.50f, Settings.m_screenHeight * 0.75f), 0, Vector2.One);
+            m_player_4_cow =    new Sprite(TextureHandler.m_cow1,           new Vector2(Settings.m_screenWidth * 0.50f - 10.0f, Settings.m_screenHeight * 0.75f), 0, new Vector2(0.1f, 0.1f));
+            m_player_4_vehicle =new Sprite(TextureHandler.m_vehicleYellow,  new Vector2(Settings.m_screenWidth * 0.50f, Settings.m_screenHeight * 0.75f), 0, Vector2.One);
+            // Initialise buttons
+            m_playButton =      new Button(TextureHandler.m_menuPlay,       new Vector2(Settings.m_screenWidth * 0.25f, Settings.m_screenHeight * 0.75f));
+            m_optionsButton =   new Button(TextureHandler.m_menuOptions,    new Vector2(Settings.m_screenWidth * 0.50f, Settings.m_screenHeight * 0.75f));
+            m_controlsButton =  new Button(TextureHandler.m_menuControls,   new Vector2(Settings.m_screenWidth * 0.75f, Settings.m_screenHeight * 0.75f));
+            m_backButton =      new Button(TextureHandler.m_menuBack,       new Vector2(Settings.m_screenWidth * 0.75f, Settings.m_screenHeight * 0.75f));
+            m_creditsButton =   new Button(TextureHandler.m_menuCredits,    new Vector2(Settings.m_screenWidth * 0.90f, Settings.m_screenHeight * 0.90f));
+            m_exitButton =      new Button(TextureHandler.m_menuExit,       new Vector2(Settings.m_screenWidth * 0.50f, Settings.m_screenHeight * 0.90f));
+            m_1Button =         new Button(TextureHandler.m_menu1,          new Vector2(Settings.m_screenWidth * 0.33f, Settings.m_screenHeight * 0.50f));
+            m_2Button =         new Button(TextureHandler.m_menu2,          new Vector2(Settings.m_screenWidth * 0.66f, Settings.m_screenHeight * 0.50f));
+            m_3Button =         new Button(TextureHandler.m_menu3,          new Vector2(Settings.m_screenWidth * 0.33f, Settings.m_screenHeight * 0.625f));
+            m_4Button =         new Button(TextureHandler.m_menu4,          new Vector2(Settings.m_screenWidth * 0.66f, Settings.m_screenHeight * 0.625f));
+            m_Cow1Button =      new Button(TextureHandler.m_cow1,           new Vector2(Settings.m_screenWidth * 0.33f, Settings.m_screenHeight * 0.75f));
+            m_Cow2Button =      new Button(TextureHandler.m_cow21,          new Vector2(Settings.m_screenWidth * 0.66f, Settings.m_screenHeight * 0.75f));
+            m_TankButton =      new Button(TextureHandler.m_tankGreen,      new Vector2(Settings.m_screenWidth * 0.53f - 20.0f, Settings.m_screenHeight * 0.5f + 50.0f));
+            m_CarButton =       new Button(TextureHandler.m_vehicleBlue,    new Vector2(Settings.m_screenWidth * 0.56f - 20.0f, Settings.m_screenHeight * 0.5f + 50.0f));
+            m_TractorButton =   new Button(TextureHandler.m_tractorBlue,    new Vector2(Settings.m_screenWidth * 0.59f - 20.0f, Settings.m_screenHeight * 0.5f + 50.0f));
+            m_Cow1Button.m_sprite.SetScale(0.5f);
+            m_Cow2Button.m_sprite.SetScale(0.5f);
 			// Set menu screen
 			m_currentScreen = MenuScreenState.MAIN_MENU;
+
+            m_touchState = TouchState.IDLE;
 
 			// Set initial next state
 			m_nextState = GameState.IN_GAME;
@@ -113,31 +134,41 @@ namespace Project_Cows.Source.Application {
 			// Update menu state
 			// ================
 
-            // Debug Purposes
+            // NOTE: Debug Purposes
             
-            if (Keyboard.GetState().IsKeyDown(Keys.Q))
-            {
+            if (Keyboard.GetState().IsKeyDown(Keys.Q)) {
                 m_currentScreen = MenuScreenState.MAIN_MENU;
             }
-            if (Keyboard.GetState().IsKeyDown(Keys.W))
-            {
+            if (Keyboard.GetState().IsKeyDown(Keys.W)) {
                 m_currentScreen = MenuScreenState.PLAYER_SELECT;
             }
-            if (Keyboard.GetState().IsKeyDown(Keys.E))
-            {
+            if (Keyboard.GetState().IsKeyDown(Keys.E)) {
                 m_currentScreen = MenuScreenState.TRACK_SELECT;
             }
-            if (Keyboard.GetState().IsKeyDown(Keys.R))
-            {
+            if (Keyboard.GetState().IsKeyDown(Keys.R)) {
                 m_currentScreen = MenuScreenState.OPTIONS;
             }
-            if (Keyboard.GetState().IsKeyDown(Keys.T))
-            {
+            if (Keyboard.GetState().IsKeyDown(Keys.T)) {
                 m_currentScreen = MenuScreenState.CREDITS;
             }
-            if (Keyboard.GetState().IsKeyDown(Keys.Y))
-            {
+            if (Keyboard.GetState().IsKeyDown(Keys.Y)) {
                 m_currentExecutionState = ExecutionState.CHANGING;
+            }
+            if (Keyboard.GetState().IsKeyDown(Keys.U))
+            {
+                m_currentScreen = MenuScreenState.PLAYER_1_SELECT;
+            }
+            if (Keyboard.GetState().IsKeyDown(Keys.I))
+            {
+                m_currentScreen = MenuScreenState.PLAYER_2_SELECT;
+            }
+            if (Keyboard.GetState().IsKeyDown(Keys.O))
+            {
+                m_currentScreen = MenuScreenState.PLAYER_3_SELECT;
+            }
+            if (Keyboard.GetState().IsKeyDown(Keys.P))
+            {
+                m_currentScreen = MenuScreenState.PLAYER_4_SELECT;
             }
               
             // Change player count with keys - TEMP
@@ -151,197 +182,338 @@ namespace Project_Cows.Source.Application {
                 Settings.m_numberOfPlayers = 4;
             }
 
-            Debug.AddText("Players: " + Settings.m_numberOfPlayers.ToString(), new Vector2(20, 800));
+            //Debug for cow selection
+            if (Keyboard.GetState().IsKeyDown(Keys.D7)){
+                TextureHandler.m_player_1_cow = TextureHandler.m_cow1;
+                m_player_1_cow.SetTexture(TextureHandler.m_player_1_cow);
+            }
+            if (Keyboard.GetState().IsKeyDown(Keys.D8))
+            {
+                TextureHandler.m_player_1_cow = TextureHandler.m_cow21;
+                m_player_1_cow.SetTexture(TextureHandler.m_player_1_cow);
+            }
+            
+            //Debug for vehicle selection
+            if (Keyboard.GetState().IsKeyDown(Keys.V))
+            {
+                TextureHandler.m_player_1_vehicle = TextureHandler.m_tankGreen;
+                m_player_1_vehicle.SetTexture(TextureHandler.m_player_1_vehicle);
+            }
+            if (Keyboard.GetState().IsKeyDown(Keys.B))
+            {
+                TextureHandler.m_player_1_vehicle = TextureHandler.m_tractorBlue;
+                m_player_1_vehicle.SetTexture(TextureHandler.m_player_1_vehicle);
+            }
+            if (Keyboard.GetState().IsKeyDown(Keys.C))
+            {
+                TextureHandler.m_player_1_vehicle = TextureHandler.m_vehicleBlue;
+                m_player_1_vehicle.SetTexture(TextureHandler.m_player_1_vehicle);
+            }
+            
+
+            Debug.AddText("7 for white cow, 8 for highland", new Vector2(20, 850));
+            Debug.AddText("C for car, B for tractor, V for tank", new Vector2(20, 900));
              
-
-
 			// Update touch input handler
 			touchHandler_.Update();
 
-			foreach(TouchLocation tl in touchHandler_.GetTouches()) {
+            foreach (TouchLocation tl in touchHandler_.GetTouches()) {
 
                 // TODO: Implement a check to see if the player has released their finger from the screen
                 //       perform action when player releases their finger -Dean
-				
 
-				switch(m_currentScreen) {
-					case MenuScreenState.MAIN_MENU:
-						// TODO:
-                        // If play button is pressed and play button is visible go to player select screen
-                        if (Play.IsInsideZone(tl.Position) 
-                            && m_sprites.Find(x => x.GetTexture().Name == "Play").IsVisible() == true)
-                        {
+                
+                
+            }
+            if (touchHandler_.GetTouches().Count > 0) {
+                m_touchState = TouchState.TOUCHING;
+                m_lastPosition = touchHandler_.GetTouches()[touchHandler_.GetTouches().Count - 1].Position;
+            }
+
+            if (touchHandler_.GetTouches().Count == 0 && m_touchState == TouchState.TOUCHING) {
+                switch (m_currentScreen) {
+                    case MenuScreenState.MAIN_MENU:
+                        // Main Menu screen
+
+                        if (m_playButton.m_touchZone.IsInsideZone(m_lastPosition) && m_playButton.m_active) {
+                            // Go to Player Select
                             m_currentScreen = MenuScreenState.PLAYER_SELECT;
                         }
-                        // If Exit button is pressed and exit button is visible exit the application
-                        if (Exit.IsInsideZone(tl.Position)
-                            && m_sprites.Find(x => x.GetTexture().Name == "Exit").IsVisible() == true)
-                        {
-                            // Close the application
-                            
+                        if (m_exitButton.m_touchZone.IsInsideZone(m_lastPosition) && m_exitButton.m_active) {
+                            // Close app
                         }
-                        // If the credits button is pressed and credits button is visible go to the credits screen
-                        if (Credit.IsInsideZone(tl.Position)
-                            && m_sprites.Find(x => x.GetTexture().Name == "Play").IsVisible() == true)
-                        {
+                        if (m_creditsButton.m_touchZone.IsInsideZone(m_lastPosition) && m_creditsButton.m_active) {
+                            // Go to Credits
                             m_currentScreen = MenuScreenState.CREDITS;
                         }
-                        if (Option.IsInsideZone(tl.Position)
-                            && m_sprites.Find(x => x.GetTexture().Name == "Options").IsVisible() == true)
-                        {
+                        if (m_optionsButton.m_touchZone.IsInsideZone(m_lastPosition) && m_optionsButton.m_active) {
+                            // Go to Options
                             m_currentScreen = MenuScreenState.OPTIONS;
                         }
-						break;
-					case MenuScreenState.PLAYER_SELECT:
-                        /*
-                        if (one.IsInsideZone(tl.Position))
-                        {
-                            numPlayers = 1;
+                        break;
+                    case MenuScreenState.PLAYER_SELECT:
+                        // Player Select screen
+                        if (m_1Button.m_touchZone.IsInsideZone(m_lastPosition) && m_1Button.m_active) {
+                            // Set number of players to 1
+                            Settings.m_numberOfPlayers = 1;
                         }
-                        if (two.IsInsideZone(tl.Position))
+                        if (m_2Button.m_touchZone.IsInsideZone(m_lastPosition) && m_2Button.m_active)
                         {
-                            numPlayers = 2;
+                            // Set number of players to 2
+                            Settings.m_numberOfPlayers = 2;
                         }
-                        if (three.IsInsideZone(tl.Position))
+                        if (m_3Button.m_touchZone.IsInsideZone(m_lastPosition) && m_3Button.m_active)
                         {
-                            numPlayers = 3;
+                            // Set number of players to 3
+                            Settings.m_numberOfPlayers = 3;
                         }
-                        if (four.IsInsideZone(tl.Position))
+                        if (m_4Button.m_touchZone.IsInsideZone(m_lastPosition) && m_4Button.m_active)
                         {
-                            numPlayers = 4;
-                        }*/
-						if (Play.IsInsideZone(tl.Position) 
-                            && m_sprites.Find(x => x.GetTexture().Name == "Play").IsVisible() == true /*&& numPlayers != 0*/)
-                        {
-                            m_currentScreen = MenuScreenState.TRACK_SELECT;
-                        }
-                       
-                        // If the Back button is pressed and Back button is visible go to the credits screen
-                        if (Back.IsInsideZone(tl.Position)
-                            && m_sprites.Find(x => x.GetTexture().Name == "Back").IsVisible() == true)
-                        {
-                            m_currentScreen = MenuScreenState.MAIN_MENU;
-                        }
-						break;
-					case MenuScreenState.TRACK_SELECT:
-						if (Play.IsInsideZone(tl.Position) 
-                            && m_sprites.Find(x => x.GetTexture().Name == "Play").IsVisible() == true)
-                        {
-                            m_currentExecutionState = ExecutionState.CHANGING;
+                            // Set number of players to 4
+                            Settings.m_numberOfPlayers = 4;
                         }
                         
-                        // If the Back button is pressed and Back button is visible go to the credits screen
-                        if (Back.IsInsideZone(tl.Position)
-                            && m_sprites.Find(x => x.GetTexture().Name == "Back").IsVisible() == true)
+                        if (m_playButton.m_touchZone.IsInsideZone(m_lastPosition) && m_playButton.m_active && Settings.m_numberOfPlayers != 0) {
+                            // Go to player 1 character selection
+                            m_currentScreen = MenuScreenState.PLAYER_1_SELECT;
+                        
+                        }
+                        if (m_backButton.m_touchZone.IsInsideZone(m_lastPosition) && m_backButton.m_active) {
+                            // Go back to Main Menu
+                            m_currentScreen = MenuScreenState.MAIN_MENU;
+                        }
+                        break;
+                    case MenuScreenState.PLAYER_1_SELECT:
+                        if (m_Cow1Button.m_touchZone.IsInsideZone(m_lastPosition) && m_Cow1Button.m_active) {
+                            // Set character to first cow
+                            TextureHandler.m_player_1_cow = TextureHandler.m_cow1;
+                            m_player_1_cow.SetTexture(TextureHandler.m_player_1_cow);
+                        }
+                        if (m_Cow2Button.m_touchZone.IsInsideZone(m_lastPosition) && m_Cow2Button.m_active)
                         {
+                            // Set character to first cow
+                            TextureHandler.m_player_1_cow = TextureHandler.m_cow21;
+                            m_player_1_cow.SetTexture(TextureHandler.m_player_1_cow);
+                        }
+                        
+                        if (m_TankButton.m_touchZone.IsInsideZone(m_lastPosition) && m_TankButton.m_active)
+                        {
+                            //Set player  1's vehicle to the tank
+                            TextureHandler.m_player_1_vehicle = TextureHandler.m_tankGreen;
+                            m_player_1_vehicle.SetTexture(TextureHandler.m_player_1_vehicle);
+                        }
+                        if (m_CarButton.m_touchZone.IsInsideZone(m_lastPosition) && m_CarButton.m_active)
+                        {
+                            //Set player 1's vehicle to the car
+                            TextureHandler.m_player_1_vehicle = TextureHandler.m_vehicleBlue;
+                            m_player_1_vehicle.SetTexture(TextureHandler.m_player_1_vehicle);
+                        }
+                        if (m_TractorButton.m_touchZone.IsInsideZone(m_lastPosition) && m_TractorButton.m_active)
+                        {
+                            //Set player 1's vehicle to the tractor
+                            TextureHandler.m_player_1_vehicle = TextureHandler.m_tractorBlue;
+                            m_player_1_vehicle.SetTexture(TextureHandler.m_player_1_vehicle);
+                        }
+                        
+                        // If player 1 has selected a character and vehicle
+                        if (m_playButton.m_touchZone.IsInsideZone(m_lastPosition) && m_playButton.m_active
+                            && TextureHandler.m_player_1_cow != null && TextureHandler.m_player_1_vehicle != null)
+                        {
+                            // If there is more than one player continue to other player selection
+                            if(Settings.m_numberOfPlayers > 1)
+                            {
+                                m_currentScreen = MenuScreenState.PLAYER_2_SELECT;
+                            }
+                            // else go to track selection
+                            else
+                            {
+                                m_currentScreen = MenuScreenState.TRACK_SELECT;
+                            }
+                        }
+                         
+                        break;
+                    case MenuScreenState.PLAYER_2_SELECT:
+                       if (m_Cow1Button.m_touchZone.IsInsideZone(m_lastPosition) && m_Cow1Button.m_active) {
+                            // Set character to first cow
+                            TextureHandler.m_player_2_cow = TextureHandler.m_cow1;
+                            m_player_2_cow.SetTexture(TextureHandler.m_player_2_cow);
+                        }
+                       if (m_Cow2Button.m_touchZone.IsInsideZone(m_lastPosition) && m_Cow2Button.m_active)
+                       {
+                           // Set character to first cow
+                           TextureHandler.m_player_2_cow = TextureHandler.m_cow21;
+                           m_player_2_cow.SetTexture(TextureHandler.m_player_2_cow);
+                       }
+                       
+                        // Set player 2's vehicle
+                        if (m_TankButton.m_touchZone.IsInsideZone(m_lastPosition) && m_TankButton.m_active)
+                        {
+                            //Set player  2's vehicle to the tank
+                            TextureHandler.m_player_2_vehicle = TextureHandler.m_tankGreen;
+                            m_player_2_vehicle.SetTexture(TextureHandler.m_player_2_vehicle);
+                        }
+                        if (m_CarButton.m_touchZone.IsInsideZone(m_lastPosition) && m_CarButton.m_active)
+                        {
+                            //Set player 2's vehicle to the car
+                            TextureHandler.m_player_2_vehicle = TextureHandler.m_vehicleOrange;
+                            m_player_2_vehicle.SetTexture(TextureHandler.m_player_2_vehicle);
+                        }
+                        if (m_TractorButton.m_touchZone.IsInsideZone(m_lastPosition) && m_TractorButton.m_active)
+                        {
+                            //Set player 2's vehicle to the tractor
+                            TextureHandler.m_player_2_vehicle = TextureHandler.m_tractorBlue;
+                            m_player_2_vehicle.SetTexture(TextureHandler.m_player_2_vehicle);
+                        }
+                        
+                        // If player 2 has selected a character and vehicle
+                        if (m_playButton.m_touchZone.IsInsideZone(m_lastPosition) && m_playButton.m_active
+                            && TextureHandler.m_player_2_cow != null && TextureHandler.m_player_2_vehicle != null)
+                        {
+                            // If there is more than two players continue to other player selection
+                            if(Settings.m_numberOfPlayers > 2)
+                            {
+                                m_currentScreen = MenuScreenState.PLAYER_3_SELECT;
+                            }
+                            // else go to track selection
+                            else
+                            {
+                                m_currentScreen = MenuScreenState.TRACK_SELECT;
+                            }
+                        }
+                        break;
+                    case MenuScreenState.PLAYER_3_SELECT:
+                        if (m_Cow1Button.m_touchZone.IsInsideZone(m_lastPosition) && m_Cow1Button.m_active) {
+                            // Set character to first cow
+                            TextureHandler.m_player_3_cow = TextureHandler.m_cow1;
+                            m_player_3_cow.SetTexture(TextureHandler.m_player_3_cow);
+                        }
+                        if (m_Cow2Button.m_touchZone.IsInsideZone(m_lastPosition) && m_Cow2Button.m_active)
+                        {
+                            // Set character to first cow
+                            TextureHandler.m_player_3_cow = TextureHandler.m_cow21;
+                            m_player_3_cow.SetTexture(TextureHandler.m_player_3_cow);
+                        }
+                        
+                        // Set player 3's vehicle
+                        if (m_TankButton.m_touchZone.IsInsideZone(m_lastPosition) && m_TankButton.m_active)
+                        {
+                            //Set player  3's vehicle to the tank
+                            TextureHandler.m_player_3_vehicle = TextureHandler.m_tankGreen;
+                            m_player_3_vehicle.SetTexture(TextureHandler.m_player_3_vehicle);
+                        }
+                        if (m_CarButton.m_touchZone.IsInsideZone(m_lastPosition) && m_CarButton.m_active)
+                        {
+                            //Set player 3's vehicle to the car
+                            TextureHandler.m_player_3_vehicle = TextureHandler.m_vehiclePurple;
+                            m_player_3_vehicle.SetTexture(TextureHandler.m_player_3_vehicle);
+                        }
+                        if (m_TractorButton.m_touchZone.IsInsideZone(m_lastPosition) && m_TractorButton.m_active)
+                        {
+                            //Set player 3's vehicle to the tractor
+                            TextureHandler.m_player_3_vehicle = TextureHandler.m_tractorBlue;
+                            m_player_3_vehicle.SetTexture(TextureHandler.m_player_3_vehicle);
+                        }
+                        
+                        // If player 3 has selected a character and vehicle
+                        if (m_playButton.m_touchZone.IsInsideZone(m_lastPosition) && m_playButton.m_active
+                            && TextureHandler.m_player_3_cow != null && TextureHandler.m_player_3_vehicle != null)
+                        {
+                            // If there is more than three players continue to other player selection
+                            if(Settings.m_numberOfPlayers > 3)
+                            {
+                                m_currentScreen = MenuScreenState.PLAYER_4_SELECT;
+                            }
+                            // else go to track selection
+                            else
+                            {
+                                m_currentScreen = MenuScreenState.TRACK_SELECT;
+                            }
+                        }
+                        break;
+                    case MenuScreenState.PLAYER_4_SELECT:
+                        if (m_Cow1Button.m_touchZone.IsInsideZone(m_lastPosition) && m_Cow1Button.m_active) {
+                            // Set character to first cow
+                            TextureHandler.m_player_4_cow = TextureHandler.m_cow1;
+                            m_player_4_cow.SetTexture(TextureHandler.m_player_4_cow);
+                        }
+                        if (m_Cow2Button.m_touchZone.IsInsideZone(m_lastPosition) && m_Cow2Button.m_active)
+                        {
+                            // Set character to first cow
+                            TextureHandler.m_player_4_cow = TextureHandler.m_cow21;
+                            m_player_4_cow.SetTexture(TextureHandler.m_player_4_cow);
+                        }
+                       
+                        // Set player 4's vehicle
+                        if (m_TankButton.m_touchZone.IsInsideZone(m_lastPosition) && m_TankButton.m_active)
+                        {
+                            //Set player  4's vehicle to the tank
+                            TextureHandler.m_player_4_vehicle = TextureHandler.m_tankGreen;
+                            m_player_4_vehicle.SetTexture(TextureHandler.m_player_4_vehicle);
+                        }
+                        if (m_CarButton.m_touchZone.IsInsideZone(m_lastPosition) && m_CarButton.m_active)
+                        {
+                            //Set player 4's vehicle to the car
+                            TextureHandler.m_player_4_vehicle = TextureHandler.m_vehicleYellow;
+                            m_player_4_vehicle.SetTexture(TextureHandler.m_player_4_vehicle);
+                        }
+                        if (m_TractorButton.m_touchZone.IsInsideZone(m_lastPosition) && m_TractorButton.m_active)
+                        {
+                            //Set player 4's vehicle to the tractor
+                            TextureHandler.m_player_4_vehicle = TextureHandler.m_tractorBlue;
+                            m_player_4_vehicle.SetTexture(TextureHandler.m_player_4_vehicle);
+                        }
+                        
+                        // If player 4 has selected a character and vehicle
+                        if (m_playButton.m_touchZone.IsInsideZone(m_lastPosition) && m_playButton.m_active
+                            && TextureHandler.m_player_4_cow != null && TextureHandler.m_player_4_vehicle != null)
+                        {
+                            // Go to track selection
+                                m_currentScreen = MenuScreenState.TRACK_SELECT;
+                            
+                        }
+                        break;
+                    case MenuScreenState.TRACK_SELECT:
+                        // Track Select screen
+
+                        if (m_playButton.m_touchZone.IsInsideZone(m_lastPosition) && m_playButton.m_active) {
+                            // Start the game
+                            m_currentExecutionState = ExecutionState.CHANGING;
+                        }
+                        if (m_backButton.m_touchZone.IsInsideZone(m_lastPosition) && m_backButton.m_active) {
+                            // Go back to Player Select
                             m_currentScreen = MenuScreenState.PLAYER_SELECT;
                         }
-						break;
-					case MenuScreenState.OPTIONS:
-                        // If the Back button is pressed and Back button is visible go to the credits screen
-                        if (Back.IsInsideZone(tl.Position)
-                            && m_sprites.Find(x => x.GetTexture().Name == "Back").IsVisible() == true)
-                        {
+                        break;
+                    case MenuScreenState.OPTIONS:
+                        // Options screen
+
+                        if (m_backButton.m_touchZone.IsInsideZone(m_lastPosition) && m_backButton.m_active) {
+                            // Go back to Main Menu
                             m_currentScreen = MenuScreenState.MAIN_MENU;
                         }
-						break;
-					case MenuScreenState.CREDITS:
-                        // If the Back button is pressed and Back button is visible go to the credits screen
-                        if (Back.IsInsideZone(tl.Position)
-                            && m_sprites.Find(x => x.GetTexture().Name == "Back").IsVisible() == true)
+                        break;
+                    case MenuScreenState.CONTROLS:
+                        // Controls Screen
+                        if (m_backButton.m_touchZone.IsInsideZone(m_lastPosition) && m_backButton.m_active)
                         {
+                            // Go back to the main Menu
                             m_currentScreen = MenuScreenState.MAIN_MENU;
                         }
-						break;
-				}
-			}
-            // Possibly not needed?
-			// Update screen (change options, animations, etc.)
-			switch(m_currentScreen) {
-				case MenuScreenState.MAIN_MENU:
+                        break;
+                    case MenuScreenState.CREDITS:
+                        // Credits screen
 
-                    m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\Play").SetPosition(new Vector2(Settings.m_screenWidth / 2, Settings.m_screenHeight / 2));
+                        if (m_backButton.m_touchZone.IsInsideZone(m_lastPosition) && m_backButton.m_active) {
+                            // Go back to Main Menu
+                            m_currentScreen = MenuScreenState.MAIN_MENU;
+                        }
+                        break;
+                }
 
-                    Play = new TouchZone(m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\Play").GetPosition(),
-               new Vector2(m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\Play").GetPosition().X + m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\Play").GetWidth(),
-                           m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\Play").GetPosition().Y + m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\Play").GetHeight()));
-                    Option = new TouchZone(m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\Options").GetPosition(),
-               new Vector2(m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\Options").GetPosition().X + m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\Options").GetWidth(),
-                           m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\Options").GetPosition().Y + m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\Options").GetHeight()));
-                    Credit = new TouchZone(m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\Credits").GetPosition(),
-               new Vector2(m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\Credits").GetPosition().X + m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\Credits").GetWidth(),
-                           m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\Credits").GetPosition().Y + m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\Credits").GetHeight()));
-                    Exit = new TouchZone(m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\Exit").GetPosition(),
-               new Vector2(m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\Exit").GetPosition().X + m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\Exit").GetWidth(),
-                           m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\Exit").GetPosition().Y + m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\Exit").GetHeight()));
-					// Reposition sprites to draw main menu
-                    /*
-                    m_sprites.Find(x => x.GetTexture().Name == "Menu").SetPosition(new Vector2(1000.0f, 500.0f));
-                    m_sprites.Find(x => x.GetTexture().Name == "Title").SetPosition(new Vector2(1000.0f, 200.0f));
-                    
-                    m_sprites.Find(x => x.GetTexture().Name == "Options").SetPosition(new Vector2(1000.0f, 460.0f));
-                    m_sprites.Find(x => x.GetTexture().Name == "Exit").SetPosition(new Vector2(1000.0f, 520.0f));
-                    m_sprites.Find(x => x.GetTexture().Name == "Logo").SetPosition(new Vector2(1000.0f, 950.0f));
-                    */
-					break;
-				case MenuScreenState.PLAYER_SELECT:
-
-                    m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\Play").SetPosition(new Vector2(Settings.m_screenWidth / 2, Settings.m_screenHeight / 2 + 100));
-
-                    Play = new TouchZone(m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\Play").GetPosition(),
-               new Vector2(m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\Play").GetPosition().X + m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\Play").GetWidth(),
-                           m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\Play").GetPosition().Y + m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\Play").GetHeight()));
-                    Back = new TouchZone(m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\Back").GetPosition(),
-               new Vector2(m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\Back").GetPosition().X + m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\Back").GetWidth(),
-                           m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\Back").GetPosition().Y + m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\Back").GetHeight()));
-					// Reposition sprites to draw player select screen
-                    /*
-                    m_sprites.Find(x => x.GetTexture().Name == "Menu").SetPosition(new Vector2(1000.0f, 500.0f));
-                    m_sprites.Find(x => x.GetTexture().Name == "Play").SetPosition(new Vector2(1000.0f, 400.0f));
-                    m_sprites.Find(x => x.GetTexture().Name == "Back").SetPosition(new Vector2(1000.0f, 800.0f));
-                     * */
-					break;
-				case MenuScreenState.TRACK_SELECT:
-
-                    m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\Play").SetPosition(new Vector2(Settings.m_screenWidth / 2, Settings.m_screenHeight / 2 + 200));
-
-                    Play = new TouchZone(m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\Play").GetPosition(),
-               new Vector2(m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\Play").GetPosition().X + m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\Play").GetWidth(),
-                           m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\Play").GetPosition().Y + m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\Play").GetHeight()));
-                    Back = new TouchZone(m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\Back").GetPosition(),
-               new Vector2(m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\Back").GetPosition().X + m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\Back").GetWidth(),
-                           m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\Back").GetPosition().Y + m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\Back").GetHeight()));
-					// Reposition sprites to draw track select screen
-                    /*
-                    m_sprites.Find(x => x.GetTexture().Name == "Menu").SetPosition(new Vector2(1000.0f, 500.0f));
-                    m_sprites.Find(x => x.GetTexture().Name == "Play").SetPosition(new Vector2(1000.0f, 400.0f));
-                    m_sprites.Find(x => x.GetTexture().Name == "Back").SetPosition(new Vector2(1000.0f, 800.0f));
-                     * */
-					break;
-				case MenuScreenState.OPTIONS:
-                    Back = new TouchZone(m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\Back").GetPosition(),
-               new Vector2(m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\Back").GetPosition().X + m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\Back").GetWidth(),
-                           m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\Back").GetPosition().Y + m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\Back").GetHeight()));
-					// Reposition sprites to draw options screen
-                    /*
-                    m_sprites.Find(x => x.GetTexture().Name == "Menu").SetPosition(new Vector2(1000.0f, 500.0f));
-                    m_sprites.Find(x => x.GetTexture().Name == "Back").SetPosition(new Vector2(1000.0f, 800.0f));
-                     * */
-					break;
-				case MenuScreenState.CREDITS:
-                    Back = new TouchZone(m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\Back").GetPosition(),
-               new Vector2(m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\Back").GetPosition().X + m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\Back").GetWidth(),
-                           m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\Back").GetPosition().Y + m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\Back").GetHeight()));
-					// Reposition sprites to draw credits screen
-                    /*
-                    m_sprites.Find(x => x.GetTexture().Name == "Menu").SetPosition(new Vector2(1000.0f, 500.0f));
-                    m_sprites.Find(x => x.GetTexture().Name == "Back").SetPosition(new Vector2(1000.0f, 800.0f));
-                     * */
-					break;
-			}
-
+                m_touchState = TouchState.IDLE;
+            }
             // Update sprites
-            foreach (AnimatedSprite anim in m_animatedSprites) {
+            /*foreach (AnimatedSprite anim in m_animatedSprites) {
                 // If currently animating
                 if (anim.GetCurrentState() == 1) {
                     // Change the frame
@@ -349,12 +521,10 @@ namespace Project_Cows.Source.Application {
                         anim.ChangeFrame(gameTime_.TotalGameTime.TotalMilliseconds);
                     }
                 }
-            }
+            }*/
 
             // Update particles
-            m_particles = GraphicsHandler.UpdatePFX(gameTime_.ElapsedGameTime.TotalMilliseconds);
-
-
+            //m_particles = GraphicsHandler.UpdatePFX(gameTime_.ElapsedGameTime.TotalMilliseconds);
 		}
 
 		public override void Draw(GraphicsDevice graphicsDevice_) {
@@ -362,110 +532,134 @@ namespace Project_Cows.Source.Application {
 			// ================
 			
 			// Clear the screen
-			graphicsDevice_.Clear(Color.Crimson);
-
-			switch(m_currentScreen) {
-				case MenuScreenState.MAIN_MENU:
-					// TODO: Render screen
-                    m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\Back").SetVisible(false);
-                    m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Promo\\Logo").SetVisible(true);
-                   // m_sprites.Find(x => x.GetTexture().Name == "Title").SetVisible(true);
-                    m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\Play").SetVisible(true);
-                    m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\Options").SetVisible(true);
-                    m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\Credits").SetVisible(true);
-                    m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\Exit").SetVisible(true);
-                    m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Vehicles\\V2_Cow_Highland_Brown").SetVisible(false);
-                    m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Vehicles\\V2_Cow_Plain").SetVisible(false);
-                    m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\1").SetVisible(false);
-                    m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\2").SetVisible(false);
-                    m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\3").SetVisible(false);
-                    m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\4").SetVisible(false);
-					break;
-				case MenuScreenState.PLAYER_SELECT:
-					// TODO: Render screen
-                    m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\Back").SetVisible(true);
-                    m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Promo\\Logo").SetVisible(false);
-                  //  m_sprites.Find(x => x.GetTexture().Name == "Title").SetVisible(false);
-                    m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\Play").SetVisible(true);
-                    m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\Options").SetVisible(false);
-                    m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\Credits").SetVisible(false);
-                    m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\Exit").SetVisible(false);
-                    m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Vehicles\\V2_Cow_Highland_Brown").SetVisible(true);
-                    m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Vehicles\\V2_Cow_Plain").SetVisible(true);
-                    m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\1").SetVisible(false);
-                    m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\2").SetVisible(false);
-                    m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\3").SetVisible(false);
-                    m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\4").SetVisible(false);
-					break;
-				case MenuScreenState.TRACK_SELECT:
-					// TODO: Render screen
-                    m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\Back").SetVisible(true);
-                    m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Promo\\Logo").SetVisible(false);
-                  //  m_sprites.Find(x => x.GetTexture().Name == "Title").SetVisible(false);
-                    m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\Play").SetVisible(true);
-                    m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\Options").SetVisible(false);
-                    m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\Credits").SetVisible(false);
-                    m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\Exit").SetVisible(false);
-                    m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Vehicles\\V2_Cow_Highland_Brown").SetVisible(false);
-                    m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Vehicles\\V2_Cow_Plain").SetVisible(false);
-                    m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\1").SetVisible(false);
-                    m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\2").SetVisible(false);
-                    m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\3").SetVisible(false);
-                    m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\4").SetVisible(false);
-					break;
-				case MenuScreenState.OPTIONS:
-					// TODO: Render screen
-                    m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\Back").SetVisible(true);
-                    m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Promo\\Logo").SetVisible(false);
-                  //  m_sprites.Find(x => x.GetTexture().Name == "Title").SetVisible(false);
-                    m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\Play").SetVisible(false);
-                    m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\Options").SetVisible(false);
-                    m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\Credits").SetVisible(false);
-                    m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\Exit").SetVisible(false);
-                    m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Vehicles\\V2_Cow_Highland_Brown").SetVisible(false);
-                    m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Vehicles\\V2_Cow_Plain").SetVisible(false);
-                    m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\1").SetVisible(false);
-                    m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\2").SetVisible(false);
-                    m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\3").SetVisible(false);
-                    m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\4").SetVisible(false);
-					break;
-				case MenuScreenState.CREDITS:
-					// TODO: Render screen
-                    m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\Back").SetVisible(true);
-                    m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Promo\\Logo").SetVisible(false);
-                 //   m_sprites.Find(x => x.GetTexture().Name == "Title").SetVisible(false);
-                    m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\Play").SetVisible(false);
-                    m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\Options").SetVisible(false);
-                    m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\Credits").SetVisible(false);
-                    m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\Exit").SetVisible(false);
-                    m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Vehicles\\V2_Cow_Highland_Brown").SetVisible(false);
-                    m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Vehicles\\V2_Cow_Plain").SetVisible(false);
-                    m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\1").SetVisible(false);
-                    m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\2").SetVisible(false);
-                    m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\3").SetVisible(false);
-                    m_sprites.Find(x => x.GetTexture().Name == "Sprites\\Menu\\4").SetVisible(false);
-					break;
-			}
+            graphicsDevice_.Clear(Color.LawnGreen);
 
             // Render graphics
             GraphicsHandler.StartDrawing();
 
+            // Draw sprites
+            GraphicsHandler.DrawSprite(m_background);
+            GraphicsHandler.DrawSprite(m_teamLogo);
+            //GraphicsHandler.DrawSprite(m_gameLogo);
+
+            // Draw buttons
+            switch (m_currentScreen) {
+                case MenuScreenState.MAIN_MENU:
+                    GraphicsHandler.DrawSprite(m_playButton.m_sprite);
+                    GraphicsHandler.DrawSprite(m_optionsButton.m_sprite);
+                    GraphicsHandler.DrawSprite(m_exitButton.m_sprite);
+                    GraphicsHandler.DrawSprite(m_creditsButton.m_sprite);
+                    GraphicsHandler.DrawSprite(m_controlsButton.m_sprite);
+                    break;
+                case MenuScreenState.PLAYER_SELECT:
+                    GraphicsHandler.DrawText("Player Selection", new Vector2(Settings.m_screenWidth * 0.50f, Settings.m_screenHeight * 0.50f), Color.Black);
+                    GraphicsHandler.DrawText("Number of Players: " + Settings.m_numberOfPlayers.ToString(), new Vector2(Settings.m_screenWidth * 0.475f, Settings.m_screenHeight * 0.5625f), Color.Black);
+                    GraphicsHandler.DrawSprite(m_playButton.m_sprite);
+                    GraphicsHandler.DrawSprite(m_backButton.m_sprite);
+                    GraphicsHandler.DrawSprite(m_1Button.m_sprite);
+                    GraphicsHandler.DrawSprite(m_2Button.m_sprite);
+                    GraphicsHandler.DrawSprite(m_3Button.m_sprite);
+                    GraphicsHandler.DrawSprite(m_4Button.m_sprite);
+                    break;
+                case MenuScreenState.PLAYER_1_SELECT:
+                    GraphicsHandler.DrawText("Player 1 select", new Vector2(Settings.m_screenWidth / 2, Settings.m_screenHeight / 2), Color.Black);
+                    GraphicsHandler.DrawSprite(m_playButton.m_sprite);
+                    GraphicsHandler.DrawSprite(m_Cow1Button.m_sprite);
+                    GraphicsHandler.DrawSprite(m_Cow2Button.m_sprite);
+                    GraphicsHandler.DrawSprite(m_TankButton.m_sprite);
+                    GraphicsHandler.DrawSprite(m_CarButton.m_sprite);
+                    GraphicsHandler.DrawSprite(m_TractorButton.m_sprite);
+                    GraphicsHandler.DrawSprite(m_player_1_vehicle);
+                    GraphicsHandler.DrawSprite(m_player_1_cow);
+                    GraphicsHandler.DrawText("PLAYER 1", new Vector2(Settings.m_screenWidth * 0.50f - 30.0f, Settings.m_screenHeight * 0.80f), Color.DarkBlue);
+                    
+                    
+                    break;
+                case MenuScreenState.PLAYER_2_SELECT:
+                    GraphicsHandler.DrawText("Player 2 select", new Vector2(Settings.m_screenWidth / 2, Settings.m_screenHeight / 2), Color.Black);
+                    GraphicsHandler.DrawSprite(m_playButton.m_sprite);
+                    GraphicsHandler.DrawSprite(m_Cow1Button.m_sprite);
+                    GraphicsHandler.DrawSprite(m_Cow2Button.m_sprite);
+                    GraphicsHandler.DrawSprite(m_TankButton.m_sprite);
+                    GraphicsHandler.DrawSprite(m_CarButton.m_sprite);
+                    GraphicsHandler.DrawSprite(m_TractorButton.m_sprite);
+                    GraphicsHandler.DrawSprite(m_player_2_vehicle);
+                    GraphicsHandler.DrawSprite(m_player_2_cow);
+                    GraphicsHandler.DrawText("PLAYER 2", new Vector2(Settings.m_screenWidth * 0.50f - 30.0f, Settings.m_screenHeight * 0.80f), Color.DarkBlue);
+                    break;
+                case MenuScreenState.PLAYER_3_SELECT:
+                    GraphicsHandler.DrawText("Player 3 select", new Vector2(Settings.m_screenWidth / 2, Settings.m_screenHeight / 2), Color.Black);
+                    GraphicsHandler.DrawSprite(m_playButton.m_sprite);
+                    GraphicsHandler.DrawSprite(m_Cow1Button.m_sprite);
+                    GraphicsHandler.DrawSprite(m_Cow2Button.m_sprite);
+                    GraphicsHandler.DrawSprite(m_TankButton.m_sprite);
+                    GraphicsHandler.DrawSprite(m_CarButton.m_sprite);
+                    GraphicsHandler.DrawSprite(m_TractorButton.m_sprite);
+                    GraphicsHandler.DrawSprite(m_player_3_vehicle);
+                    GraphicsHandler.DrawSprite(m_player_3_cow);
+                    GraphicsHandler.DrawText("PLAYER 3", new Vector2(Settings.m_screenWidth * 0.50f - 30.0f, Settings.m_screenHeight * 0.80f), Color.DarkBlue);
+                    break;
+                case MenuScreenState.PLAYER_4_SELECT:
+                    GraphicsHandler.DrawText("Player 4 select", new Vector2(Settings.m_screenWidth / 2, Settings.m_screenHeight / 2), Color.Black);
+                    GraphicsHandler.DrawSprite(m_playButton.m_sprite);
+                    GraphicsHandler.DrawSprite(m_Cow1Button.m_sprite);
+                    GraphicsHandler.DrawSprite(m_Cow2Button.m_sprite);
+                    GraphicsHandler.DrawSprite(m_TankButton.m_sprite);
+                    GraphicsHandler.DrawSprite(m_CarButton.m_sprite);
+                    GraphicsHandler.DrawSprite(m_TractorButton.m_sprite);
+                    GraphicsHandler.DrawSprite(m_player_4_vehicle);
+                    GraphicsHandler.DrawSprite(m_player_4_cow);
+                    GraphicsHandler.DrawText("PLAYER 4", new Vector2(Settings.m_screenWidth * 0.50f - 30.0f, Settings.m_screenHeight * 0.80f), Color.DarkBlue);
+                    break;
+                case MenuScreenState.TRACK_SELECT:
+                    GraphicsHandler.DrawText("Track Selection", new Vector2(Settings.m_screenWidth / 2, Settings.m_screenHeight / 2), Color.Black);
+                    GraphicsHandler.DrawSprite(m_playButton.m_sprite);
+                    GraphicsHandler.DrawSprite(m_backButton.m_sprite);
+                    // Insert buttons for playable tracks
+                    break;
+                case MenuScreenState.OPTIONS:
+                    // Insert buttons for options
+                    GraphicsHandler.DrawText("Options", new Vector2(Settings.m_screenWidth / 2, Settings.m_screenHeight / 2), Color.Black);
+                    GraphicsHandler.DrawSprite(m_backButton.m_sprite);
+                    break;
+                case MenuScreenState.CONTROLS:
+                    // Insert control scheme layout
+                    GraphicsHandler.DrawText("Controls", new Vector2(Settings.m_screenWidth / 2, Settings.m_screenHeight / 2), Color.Black);
+                    GraphicsHandler.DrawSprite(m_backButton.m_sprite);
+                    break;
+                case MenuScreenState.CREDITS:
+                    // Insert text for credits
+                    GraphicsHandler.DrawText("Team Leader: Dean Sinclair", new Vector2(Settings.m_screenWidth / 2 - 100, Settings.m_screenHeight * 0.4f), Color.Black);
+                    GraphicsHandler.DrawText("Producer: Dwyer McNally", new Vector2(Settings.m_screenWidth / 2 - 100, Settings.m_screenHeight * 0.4f + 25), Color.Black);
+                    GraphicsHandler.DrawText("Programmers:", new Vector2(Settings.m_screenWidth / 2 - 100, Settings.m_screenHeight * 0.4f + 50), Color.Black);
+                    GraphicsHandler.DrawText("            Daniel Divers", new Vector2(Settings.m_screenWidth / 2 - 100, Settings.m_screenHeight * 0.4f + 70), Color.Black);
+                    GraphicsHandler.DrawText("            Cameron Fleming:", new Vector2(Settings.m_screenWidth / 2 - 100, Settings.m_screenHeight * 0.4f + 90), Color.Black);
+                    GraphicsHandler.DrawText("            Nathan Headley", new Vector2(Settings.m_screenWidth / 2 - 100, Settings.m_screenHeight * 0.4f + 110), Color.Black);
+                    GraphicsHandler.DrawText("            Dean Sinclair", new Vector2(Settings.m_screenWidth / 2 - 100, Settings.m_screenHeight * 0.4f + 130), Color.Black);
+                    GraphicsHandler.DrawText("            Cemre Tekpinar", new Vector2(Settings.m_screenWidth / 2 - 100, Settings.m_screenHeight * 0.4f + 150), Color.Black);
+                    GraphicsHandler.DrawText("Game Design: Dwyer McNally", new Vector2(Settings.m_screenWidth / 2 - 100, Settings.m_screenHeight * 0.4f + 175), Color.Black);
+                    GraphicsHandler.DrawText("Art: Gillian Annandale", new Vector2(Settings.m_screenWidth / 2 - 100, Settings.m_screenHeight * 0.4f + 200), Color.Black);
+                    GraphicsHandler.DrawText("Audio: Russell Ferguson", new Vector2(Settings.m_screenWidth / 2 - 100, Settings.m_screenHeight * 0.4f + 225), Color.Black);
+                    GraphicsHandler.DrawSprite(m_backButton.m_sprite);
+                    break;
+            }
+            
+
+            // Draw animated sprites
             foreach (AnimatedSprite anim_ in m_animatedSprites) {
                 if (anim_.IsVisible()) {
                     GraphicsHandler.DrawAnimatedSprite(anim_);
                 }
             }
-            foreach (Sprite sprite_ in m_sprites) {
-                if (sprite_.IsVisible()) {
-                    GraphicsHandler.DrawSprite(sprite_);
-                }
-            }
+
+            // Draw particles
             foreach (Particle part_ in m_particles) {
                 if (part_.GetLife() > 0) {
                     //GraphicsHandler.DrawParticle(/*texture,*/ part_.GetPosition(), Color.White);
                 }
             }
 
+            // Stop rendering
             GraphicsHandler.StopDrawing();
 		}
 
@@ -492,8 +686,21 @@ namespace Project_Cows.Source.Application {
 		// ================
 		MAIN_MENU,
 		PLAYER_SELECT,
+        PLAYER_1_SELECT,
+        PLAYER_2_SELECT,
+        PLAYER_3_SELECT,
+        PLAYER_4_SELECT,
 		TRACK_SELECT,
 		OPTIONS,
+        CONTROLS,
 		CREDITS
 	}
+
+    enum TouchState {
+        // Enum for each touch state
+        // ================
+        IDLE,
+        TOUCHING,
+        RELEASED
+    }
 }

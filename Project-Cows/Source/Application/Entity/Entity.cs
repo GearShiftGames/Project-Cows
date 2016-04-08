@@ -1,12 +1,17 @@
-﻿// Project: Cow Racing -- GearShift Games
-// Written by D. Sinclair, 2016
-// ================
-// Entity.cs
+﻿/// Project: Cow Racing
+/// Developed by GearShift Games, 2015-2016
+///     D. Sinclair
+///     N. Headley
+///     D. Divers
+///     C. Fleming
+///     C. Tekpinar
+///     D. McNally
+///     G. Annandale
+///     R. Ferguson
+/// ================
+/// Entity.cs
 
-using System;
-using System.Collections.Generic;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
 using Project_Cows.Source.System;
@@ -35,9 +40,7 @@ namespace Project_Cows.Source.Application.Entity {
 			m_sprite = new Sprite(texture_, m_position, m_rotation, new Vector2(1.0f, 1.0f));
 			m_collidable = true;
 
-            Texture2D debugTexture = GraphicsHandler.m_content.Load<Texture2D>("Sprites\\Utility\\entityUncollided");
-            Texture2D cornerTexture = GraphicsHandler.m_content.Load<Texture2D>("Sprites\\Utility\\corner");
-            m_collider = new EntityCollider(cornerTexture, debugTexture, new Rectangle((int)(m_position.X - m_sprite.GetWidth() / 2), (int)(m_position.Y - m_sprite.GetHeight() / 2), (int)m_sprite.GetWidth(), (int)m_sprite.GetHeight()), m_rotation);
+            m_collider = new EntityCollider(TextureHandler.m_debugCorner, TextureHandler.m_debugCollider, new Rectangle((int)(m_position.X - m_sprite.GetWidth() / 2), (int)(m_position.Y - m_sprite.GetHeight() / 2), (int)m_sprite.GetWidth(), (int)m_sprite.GetHeight()), m_rotation);
         }
 
         public Entity(Texture2D texture_, EntityStruct entityStruct_) {
@@ -46,9 +49,7 @@ namespace Project_Cows.Source.Application.Entity {
             m_sprite = new Sprite(texture_, m_position, m_rotation, new Vector2(1.0f, 1.0f));
 			m_collidable = true;
 
-            Texture2D debugTexture = GraphicsHandler.m_content.Load<Texture2D>("Sprites\\Utility\\entityUncollided");
-            Texture2D cornerTexture = GraphicsHandler.m_content.Load<Texture2D>("Sprites\\Utility\\corner");
-            m_collider = new EntityCollider(cornerTexture, debugTexture, new Rectangle((int)(m_position.X - m_sprite.GetWidth() / 2), (int)(m_position.Y - m_sprite.GetHeight() / 2), (int)m_sprite.GetWidth(), (int)m_sprite.GetHeight()), m_rotation);
+            m_collider = new EntityCollider(TextureHandler.m_debugCorner, TextureHandler.m_debugCollider, new Rectangle((int)(m_position.X - m_sprite.GetWidth() / 2), (int)(m_position.Y - m_sprite.GetHeight() / 2), (int)m_sprite.GetWidth(), (int)m_sprite.GetHeight()), m_rotation);
         }
 
 		public void UpdateCollider() {

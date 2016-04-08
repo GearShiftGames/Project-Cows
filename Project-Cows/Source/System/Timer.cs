@@ -1,11 +1,15 @@
-﻿// Project: Cow Racing -- GearShift Games
-// Written by D. Sinclair, 2016
-// ================
-// Timer.cs
-
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿/// Project: Cow Racing
+/// Developed by GearShift Games, 2015-2016
+///     D. Sinclair
+///     N. Headley
+///     D. Divers
+///     C. Fleming
+///     C. Tekpinar
+///     D. McNally
+///     G. Annandale
+///     R. Ferguson
+/// ================
+/// Timer.cs
 
 namespace Project_Cows.Source.System {
     class Timer {

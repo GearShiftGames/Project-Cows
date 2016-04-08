@@ -1,10 +1,16 @@
-﻿// Project: Cow Racing -- GearShift Games
-// Written by D. Sinclair, 2015
-// ================
-// TouchZone.cs
+﻿/// Project: Cow Racing
+/// Developed by GearShift Games, 2015-2016
+///     D. Sinclair
+///     N. Headley
+///     D. Divers
+///     C. Fleming
+///     C. Tekpinar
+///     D. McNally
+///     G. Annandale
+///     R. Ferguson
+/// ================
+/// TouchZone.cs
 
-using System;
-using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 
 namespace Project_Cows.Source.System.Input {

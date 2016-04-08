@@ -1,13 +1,19 @@
-﻿// Project: Cow Racing -- GearShift Games
-// Written by D. Sinclair, 2016
-//            N. Headley, 2016
-// ================
-// InGameState.cs
+﻿/// Project: Cow Racing
+/// Developed by GearShift Games, 2015-2016
+///     D. Sinclair
+///     N. Headley
+///     D. Divers
+///     C. Fleming
+///     C. Tekpinar
+///     D. McNally
+///     G. Annandale
+///     R. Ferguson
+/// ================
+/// InGameState.cs
 
 using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Input.Touch;
@@ -34,9 +40,8 @@ namespace Project_Cows.Source.Application {
         //private List<Barrier> m_barriers = new List<Barrier>();
         private Timer startTimer = new Timer();
 
-        private Texture2D carTexture, squareTexture, backgroundTexture, cowTexture;
         private Sprite m_background;
-
+ 
         private List<int> m_rankings = new List<int>();
 
         bool finished;
@@ -55,14 +60,7 @@ namespace Project_Cows.Source.Application {
 			// Initialise in-game state
 			// ================
 
-            carTexture = GraphicsHandler.m_content.Load<Texture2D>("Sprites\\Temp\\Tractor_Blue");
-            squareTexture = GraphicsHandler.m_content.Load<Texture2D>("Sprites\\Temp\\square");
-            backgroundTexture = GraphicsHandler.m_content.Load<Texture2D>("Sprites\\Backgrounds\\V2_Background_Grass");
-            cowTexture = GraphicsHandler.m_content.Load<Texture2D>("Sprites\\Temp\\cow");
-            //barrierTexture = GraphicsHandler.m_content.Load<Texture2D>("Tyre");
-
-            Vector2 BackgroundScale = new Vector2((float)backgroundTexture.Width / (float)Settings.m_screenWidth);
-            m_background = new Sprite(backgroundTexture, new Vector2(Settings.m_screenWidth / 2, Settings.m_screenHeight / 2), 0.0f, BackgroundScale);
+            m_background = new Sprite(TextureHandler.m_gameBackground, new Vector2(Settings.m_screenWidth / 2, Settings.m_screenHeight / 2), 0.0f, Vector2.One);
 
             h_trackHandler.Initialise();
 
@@ -81,11 +79,25 @@ namespace Project_Cows.Source.Application {
                 }else if(i == 3){
                     quad = Quadrent.TOP_RIGHT;
                 }
-
-                m_players.Add(new Player(cowTexture, carTexture, h_trackHandler.m_vehicles[i], 0, quad, i+1));
-
-                m_players[i].m_controlScheme.SetSteeringSprite(new Sprite(GraphicsHandler.m_content.Load<Texture2D>("Sprites\\Temp\\controlTemp"), new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
-                m_players[i].m_controlScheme.SetInterfaceSprite(new Sprite(GraphicsHandler.m_content.Load<Texture2D>("Sprites\\Temp\\controlTempBG"), new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
+                // Link whichever cow & vehicle texture to what was selected in menu
+                if (i == 0) {
+                    m_players.Add(new Player(TextureHandler.m_player_1_cow, TextureHandler.m_player_1_vehicle, h_trackHandler.m_vehicles[i], 0, quad, i + 1));
+                    m_players[i].m_controlScheme.SetSteeringSprite(new Sprite(TextureHandler.m_userInterfaceWheelBlue, new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
+                    m_players[i].m_controlScheme.SetInterfaceSprite(new Sprite(TextureHandler.m_userInterfaceSlider, new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
+                } else if (i == 1) {
+                    m_players.Add(new Player(TextureHandler.m_player_2_cow, TextureHandler.m_player_2_vehicle, h_trackHandler.m_vehicles[i], 0, quad, i + 1));
+                    m_players[i].m_controlScheme.SetSteeringSprite(new Sprite(TextureHandler.m_userInterfaceWheelOrange, new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
+                    m_players[i].m_controlScheme.SetInterfaceSprite(new Sprite(TextureHandler.m_userInterfaceSlider, new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
+                } else if (i == 2) {
+                    m_players.Add(new Player(TextureHandler.m_player_3_cow, TextureHandler.m_player_3_vehicle, h_trackHandler.m_vehicles[i], 0, quad, i + 1));
+                    m_players[i].m_controlScheme.SetSteeringSprite(new Sprite(TextureHandler.m_userInterfaceWheelPurple, new Vector2(100.0f, 100.0f), 180, new Vector2(1.0f, 1.0f), true));
+                    m_players[i].m_controlScheme.SetInterfaceSprite(new Sprite(TextureHandler.m_userInterfaceSlider, new Vector2(100.0f, 100.0f), 180, new Vector2(1.0f, 1.0f), true));
+                } else if (i == 3) {
+                    m_players.Add(new Player(TextureHandler.m_player_4_cow, TextureHandler.m_player_4_vehicle, h_trackHandler.m_vehicles[i], 0, quad, i + 1));
+                    m_players[i].m_controlScheme.SetSteeringSprite(new Sprite(TextureHandler.m_userInterfaceWheelYellow, new Vector2(100.0f, 100.0f), 180, new Vector2(1.0f, 1.0f), true));
+                    m_players[i].m_controlScheme.SetInterfaceSprite(new Sprite(TextureHandler.m_userInterfaceSlider, new Vector2(100.0f, 100.0f), 180, new Vector2(1.0f, 1.0f), true));
+                }
+                
             }
 
             // Initialise sprites
@@ -111,10 +123,6 @@ namespace Project_Cows.Source.Application {
 			// Update touch input handler
 			touchHandler_.Update();
 
-            //Settings.SaveSettings();
-
-            //Settings.LoadSettings();
-
 			// Create lists to contain touches for each player
 			List<List<TouchLocation>> playerTouches = new List<List<TouchLocation>>();
 			for(int p = 0; p < m_players.Count; ++p) {
@@ -134,7 +142,6 @@ namespace Project_Cows.Source.Application {
 				// Penalise player
 				// NOTE: This should probably be done in the respective players' ControlScheme object -Dean
 			}
-
             startTimer.Update(gameTime_.ElapsedGameTime.Milliseconds);
             if (startTimer.timerFinished) {
                 foreach (Player p in m_players)
@@ -172,12 +179,52 @@ namespace Project_Cows.Source.Application {
             }
                 
 
-			// Update game objects
 			
+            // Update game objects
+            
+
             // Perform collision Checks
             foreach (Player p1 in m_players) {
+                bool move = true;
+
+                EntityCollider newColl = new EntityCollider(p1.GetVehicle().GetCollider());
+
+                // Player vs Barrier
+                foreach (Barrier b in h_trackHandler.m_barriers)
+                {
+
+                    if (CollisionHandler.CheckForCollision(p1.GetVehicle().GetCollider(), b.GetCollider()))
+                    {
+
+                        if (p1.GetVehicle().m_velocity.Length() < 2.0f && p1.GetVehicle().m_velocity.Length() > 0)
+                        {
+                            p1.GetVehicle().m_velocity = new Vector2(-2.5f, -2.5f);
+                            Debug.AddText(new DebugText("MY VELOCITY IS LESS THAN 2.0F", new Vector2(10.0f, 150.0f)));
+                        }
+                        else
+                        {
+                            p1.GetVehicle().m_velocity = -p1.GetVehicle().m_velocity * 0.9f;
+                            Debug.AddText(new DebugText("COLLIDDED WITH BARRRIERRRRRR", new Vector2(10.0f, 150.0f)));
+                        }
+                        // NOTE: Change needs to be made here, as this means that the vehicle would Update() twice in the same frame -Dean
+                        newColl.SetPosition(p1.GetVehicle().GetCollider().GetPosition() + p1.GetVehicle().GetVelocity());
+                    }
+
+                    if (CollisionHandler.CheckForCollision(newColl, b.GetCollider())) {
+                        move = false;
+                    }
+                }
+
+                if(move)
+                    p1.GetVehicle().SetPosition(p1.GetVehicle().GetPosition() + p1.GetVehicle().GetVelocity());
+
+                /*if (p1.GetVehicle().HasHitBarrier(h_trackHandler.m_barriers))
+                {
+                    p1.GetVehicle().m_velocity = -p1.GetVehicle().m_velocity * 0.6f;
+                }*/
+
                 // Player vs Player
-                /*foreach (Player p2 in m_players) {
+                foreach (Player p2 in m_players) {
                     if (p2.GetID() != p1.GetID()) {
                         if (CollisionHandler.CheckForCollision(p1.GetVehicle().GetCollider(), p2.GetVehicle().GetCollider())) {
 							p1.GetVehicle().m_velocity = -p1.GetVehicle().m_velocity * 0.6f;
@@ -187,28 +234,6 @@ namespace Project_Cows.Source.Application {
 
                             Debug.AddText(new DebugText("Defo COllided ye ken?", new Vector2(10.0f, 150.0f)));
                         }
-                    }
-                }*/
-
-                // Player vs Barrier
-                foreach (Barrier b in h_trackHandler.m_barriers) 
-				{
-                    if (CollisionHandler.CheckForCollision(p1.GetVehicle().GetCollider(), b.GetCollider())) 
-					{
-
-						if(p1.GetVehicle().m_velocity.Length() < 2.0f)
-						{
-							p1.GetVehicle().m_velocity = new Vector2(0.0f, 0.0f);
-						}
-						else 
-						{ 
-							p1.GetVehicle().m_velocity = -p1.GetVehicle().m_velocity * 0.6f;
-							p1.GetVehicle().Update();
-						}
-                        // NOTE: Change needs to be made here, as this means that the vehicle would Update() twice in the same frame -Dean
-                        
-
-                        Debug.AddText(new DebugText("Defo COllided ye ken?", new Vector2(10.0f, 150.0f)));
                     }
                 }
             }
@@ -274,6 +299,8 @@ namespace Project_Cows.Source.Application {
                 GraphicsHandler.DrawSprite(p.GetCow());
                 GraphicsHandler.DrawSprite(p.m_controlScheme.m_controlInterfaceSprite);
                 GraphicsHandler.DrawSprite(p.m_controlScheme.m_steeringIndicatorSprite);
+                // DELEEEETE ME
+                GraphicsHandler.DrawSprite(p.GetVehicle().debugSprite);
 			}
 
             if (!startTimer.timerFinished) {

@@ -1,11 +1,17 @@
-﻿// Project: Cow Racing -- GearShift Games
-// Written by D. Divers, 2016
-//            D. Sinclair, 2016
-// ================
-// EntityCollider.cs
+﻿/// Project: Cow Racing
+/// Developed by GearShift Games, 2015-2016
+///     D. Sinclair
+///     N. Headley
+///     D. Divers
+///     C. Fleming
+///     C. Tekpinar
+///     D. McNally
+///     G. Annandale
+///     R. Ferguson
+/// ================
+/// EntityCollider.cs
 
 using System;
-using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -43,6 +49,22 @@ namespace Project_Cows.Source.Application.Entity {
             m_corner4 = new Sprite(corner_, Vector2.Zero, 0, new Vector2(0.1f, 0.1f));
 			
 		}
+
+        public EntityCollider(EntityCollider collider_) {
+            // EntityCollider constructor
+            // ================
+
+            m_boundingBox = collider_.m_boundingBox;
+            m_rotation = collider_.m_rotation;
+
+            m_origin = collider_.m_origin;
+
+            m_debugSprite = collider_.m_debugSprite;
+            m_corner1 = collider_.m_corner1;
+            m_corner2 = collider_.m_corner2;
+            m_corner3 = collider_.m_corner3;
+            m_corner4 = collider_.m_corner4;
+        }
 
 		public void UpdateSprite() {
 			m_debugSprite.SetPosition(GetPosition());
