@@ -34,9 +34,9 @@ namespace Project_Cows.Source.Application.Entity.Vehicle {
         bool m_braking;
 
         const float MAX_SPEED = 200f;
-        const float MAX_REVERSE_SPEED = -1f;
+        const float MAX_REVERSE_SPEED = -20f;
         const float MAX_DRIVE_FORCE = 50f;
-        const float MAX_REVERSE_DRIVE_FORCE = 0.1f;
+        const float MAX_REVERSE_DRIVE_FORCE = -10f;
         const float MAX_LATERAL_IMPULSE = 3f;
 
         // NOTE: Make the variable scopes explicit -Dean
@@ -81,10 +81,10 @@ namespace Project_Cows.Source.Application.Entity.Vehicle {
             if (m_isPowered) {
                 // Get desired speed
                 float desiredSpeed = 0;
-                if (!m_braking) {
-                    desiredSpeed = MAX_SPEED;
-                } else {
+                if (m_braking) {
                     desiredSpeed = MAX_REVERSE_SPEED;
+                } else {
+                    desiredSpeed = MAX_SPEED;
                 }
 
                 // Find current forward speed
@@ -92,20 +92,31 @@ namespace Project_Cows.Source.Application.Entity.Vehicle {
                 float currentSpeed = Vector2.Dot(GetForwardVelocity(), currentForwardNormal);
 
                 // Apply necessary force
-                
                 float force = 0;
                 if (m_braking) {
                     force = MAX_REVERSE_DRIVE_FORCE;
                 }else{
                     force = MAX_DRIVE_FORCE;
                 }
-                if (desiredSpeed > currentSpeed) {
-                    force *= 1;
-                } else if (desiredSpeed < currentSpeed) {
-                    force *= -1;
+
+                if (!m_braking) {
+                    if (desiredSpeed > currentSpeed) {
+                        force *= 1;
+                    } else if (desiredSpeed < currentSpeed) {
+                        force *= -1;
+                    } else {
+                        return;
+                    }
                 } else {
-                    return;
+                    if (desiredSpeed < currentSpeed) {
+                        force *= 1;
+                    } else if (desiredSpeed > currentSpeed) {
+                        force *= -1;
+                    } else {
+                        return;
+                    }
                 }
+                
 
                 fs_body.ApplyForce(force * currentForwardNormal);
             }
@@ -117,7 +128,12 @@ namespace Project_Cows.Source.Application.Entity.Vehicle {
             if (impulse.Length() > MAX_LATERAL_IMPULSE) {
                 impulse *= MAX_LATERAL_IMPULSE / impulse.Length();
             }
-            fs_body.ApplyLinearImpulse(impulse);
+            if (m_vehicleQuadrent == Quadrent.BOTTOM_LEFT || m_vehicleQuadrent == Quadrent.BOTTOM_RIGHT) {
+                impulse *= 0.85f;
+            } else {
+                impulse *= 1f;
+            }
+            fs_body.ApplyLinearImpulse(impulse *0.25f);
 
             // Angular impulse
             fs_body.ApplyAngularImpulse(0.01f * fs_body.Inertia * -fs_body.AngularVelocity);
@@ -130,6 +146,7 @@ namespace Project_Cows.Source.Application.Entity.Vehicle {
         }
 
         public void UpdateTurn() {
+            // NOTE: DEPRECATED
             if (m_canSteer) {
                 float desiredTorque = 0;
                 desiredTorque = m_steeringValue * 0.001f;        // TODO: Replace magic number with const -Dean

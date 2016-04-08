@@ -47,7 +47,7 @@ namespace Project_Cows.Source.Application.Entity.Vehicle {
             // ================
 
             // Initialise the vehicle's main body
-            m_vehicleBody = new Entity(world_, texture_, entityStruct_.GetPosition(), 0, BodyType.Dynamic, 10);
+            m_vehicleBody = new Entity(world_, texture_, entityStruct_.GetPosition(), 0, BodyType.Dynamic, 10, 0.1f);
 
             m_vehicleBody.GetBody().AngularDamping = 1;
             m_vehicleBody.GetBody().LinearDamping = 1;
