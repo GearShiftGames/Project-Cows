@@ -193,18 +193,13 @@ namespace Project_Cows.Source.Application {
 
             startTimer.Update(gameTime_.ElapsedGameTime.Milliseconds);
             if (startTimer.timerFinished) {
-                foreach (Player p in m_players)
-                {
-                    if (p.m_currentLap == 4)
-                    {
-                        finished = true;
-                        winner = p.GetID();
+                for(int i = 0; i < m_players.Count; i++) {
+                    if (m_players[i].m_currentLap == 4) {
+                        m_players[i].SetFinished(true);
+                        m_players[i].AddFinishTime(gameTime_.ElapsedGameTime.Milliseconds);
+                        winner = m_players[i].GetID();
                     }
-                }
-                if (!finished)
-                {
-                    // Update each player
-                    for (int index = 0; index < m_players.Count; ++index)
+                    if (!m_players[i].GetFinished() || (m_players[i].GetFinished() && m_players[i].GetFinishTime() < 500))
                     {
                         bool left = false;
                         bool right = false;
@@ -222,13 +217,18 @@ namespace Project_Cows.Source.Application {
                             brake = true;
                         }
 
-                        m_players[index].KeyboardMove(left, right, brake);
-                        m_players[index].Update(playerTouches[index]);
+                        m_players[i].KeyboardMove(left, right, brake);
+                        m_players[i].Update(playerTouches[i]);
+                        m_players[i].AddRaceTime(gameTime_.ElapsedGameTime.Milliseconds);
                     }
                 }
             }
                 
-
+            // Victory state
+            if (m_players[0].GetFinished() && m_players[1].GetFinished() && 
+                m_players[2].GetFinished() && m_players[3].GetFinished()) {
+                    m_currentExecutionState = ExecutionState.CHANGING;
+            }
 			
             // Update game objects
 
@@ -330,6 +330,19 @@ namespace Project_Cows.Source.Application {
                     }
                 }
             }
+
+            /*if (m_rankings.Count != 0) {
+                GraphicsHandler.DrawText(new DebugText("1st - Player " + m_players[0].GetRaceTime(), new Vector2(1000f, 440f)));
+                if (m_rankings.Count > 1) {
+                    GraphicsHandler.DrawText(new DebugText("2nd - Player " + m_players[1].GetRaceTime(), new Vector2(1000f, 460f)));
+                    if (m_rankings.Count > 2) {
+                        GraphicsHandler.DrawText(new DebugText("3rd - Player " + m_players[2].GetRaceTime(), new Vector2(1000f, 480f)));
+                        if (m_rankings.Count > 3) {
+                            GraphicsHandler.DrawText(new DebugText("4th - Player " + m_players[3].GetRaceTime(), new Vector2(1000f, 500f)));
+                        }
+                    }
+                }
+            }*/
 
 
 

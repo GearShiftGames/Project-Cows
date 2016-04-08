@@ -45,6 +45,9 @@ namespace Project_Cows.Source.Application {
         private bool m_keyLeft;
         private bool m_keyRight;
         private bool m_keyBraking;
+        private bool m_finished;
+        private int m_raceTime;
+        private int m_finishTime;
 
         // Methods
         public Player(World world_, Texture2D cowTexture_, Texture2D texture_, EntityStruct entityStruct_, float speed_, Quadrent quadrent_, int id_ = 999) {
@@ -58,6 +61,7 @@ namespace Project_Cows.Source.Application {
 
             m_currentCheckpoint = Checkpoint.First(Vector2.Zero);
             m_currentLap = 1;
+            m_finished = false;
         }
 
         public void Update(List<TouchLocation> touches_) {
@@ -108,10 +112,32 @@ namespace Project_Cows.Source.Application {
 
 		public Vehicle GetVehicle() { return m_vehicle; }
         public Sprite GetCow() { return m_cow; }
+        public bool GetFinished() {
+            return m_finished;
+        }
+        public int GetRaceTime()
+        {
+            return m_raceTime;
+        }
+        public int GetFinishTime()
+        {
+            return m_finishTime;
+        }
 
 		// Setters
         public void SetCollideID(int ID_) {
             m_collideID = ID_;
+        }
+        public void SetFinished(bool finished_) {
+            m_finished = finished_;
+        }
+        public void AddRaceTime(int time_)
+        {
+            m_raceTime += time_;
+        }
+        public void AddFinishTime(int time_)
+        {
+            m_finishTime += time_;
         }
     }
 }
