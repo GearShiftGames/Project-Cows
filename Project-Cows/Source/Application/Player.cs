@@ -45,19 +45,29 @@ namespace Project_Cows.Source.Application {
         private bool m_keyLeft;
         private bool m_keyRight;
         private bool m_keyBraking;
+        private bool m_finished;
+        private int m_raceTime;
+        private int m_finishTime;
+
+        public bool m_ReadyUp; //for checking whether this player is ready to start
+        public Button m_ReadyButton;
 
         // Methods
-        public Player(World world_, Texture2D cowTexture_, Texture2D texture_, EntityStruct entityStruct_, float speed_, Quadrent quadrent_, int id_ = 999) {
+        public Player(World world_, Texture2D cowTexture_, Texture2D texture_,Texture2D ButtonTexture, Vector2 ButtonPosition, EntityStruct entityStruct_, float speed_, Quadrent quadrent_, int id_ = 999) {
             // Player constructor
             // ================
             m_vehicle = new Vehicle(world_, texture_, entityStruct_);
             m_cow = new Sprite(cowTexture_, entityStruct_.GetPosition(), entityStruct_.GetRotationDegrees(), new Vector2(0.1f, 0.1f));
+            m_ReadyButton = new Button(ButtonTexture, ButtonPosition);
 
             m_controlScheme = new ControlScheme(quadrent_);
             m_playerID = id_;
 
             m_currentCheckpoint = Checkpoint.First(Vector2.Zero);
             m_currentLap = 1;
+            m_finished = false;
+
+            m_ReadyUp = false;
         }
 
         public void Update(List<TouchLocation> touches_) {
@@ -108,10 +118,32 @@ namespace Project_Cows.Source.Application {
 
 		public Vehicle GetVehicle() { return m_vehicle; }
         public Sprite GetCow() { return m_cow; }
+        public bool GetFinished() {
+            return m_finished;
+        }
+        public int GetRaceTime()
+        {
+            return m_raceTime;
+        }
+        public int GetFinishTime()
+        {
+            return m_finishTime;
+        }
 
 		// Setters
         public void SetCollideID(int ID_) {
             m_collideID = ID_;
+        }
+        public void SetFinished(bool finished_) {
+            m_finished = finished_;
+        }
+        public void AddRaceTime(int time_)
+        {
+            m_raceTime += time_;
+        }
+        public void AddFinishTime(int time_)
+        {
+            m_finishTime += time_;
         }
     }
 }

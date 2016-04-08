@@ -102,7 +102,7 @@ namespace Project_Cows.Source.System.Graphics {
         public static void DrawText(string text_, Vector2 position_, Color colour_, SpriteFont font_) {
             // Draw text with custom font
             // ================
-            m_spriteBatch.DrawString(m_font, text_, position_, colour_);
+            m_spriteBatch.DrawString(font_, text_, position_, colour_);
         }
 
         public static List<Particle> UpdatePFX(double time_) {

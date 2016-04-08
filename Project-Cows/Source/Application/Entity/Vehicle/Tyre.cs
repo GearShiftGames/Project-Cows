@@ -149,7 +149,7 @@ namespace Project_Cows.Source.Application.Entity.Vehicle {
             // NOTE: DEPRECATED
             if (m_canSteer) {
                 float desiredTorque = 0;
-                desiredTorque = m_steeringValue * 0.001f;        // TODO: Replace magic number with const -Dean
+                desiredTorque = m_steeringValue * 0.0001f;        // TODO: Replace magic number with const -Dean
                 fs_body.ApplyTorque(desiredTorque);
             }
         }
