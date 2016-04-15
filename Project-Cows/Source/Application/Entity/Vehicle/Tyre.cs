@@ -32,12 +32,14 @@ namespace Project_Cows.Source.Application.Entity.Vehicle {
 
         float m_steeringValue;
         bool m_braking;
+        int m_ranking;
 
         const float MAX_SPEED = 200f;
         const float MAX_REVERSE_SPEED = -20f;
         const float MAX_DRIVE_FORCE = 50f;
         const float MAX_REVERSE_DRIVE_FORCE = -10f;
         const float MAX_LATERAL_IMPULSE = 3f;
+        const float RUBBER_BAND_INTERVAL = 10f;
 
         // NOTE: Make the variable scopes explicit -Dean
 
@@ -60,20 +62,11 @@ namespace Project_Cows.Source.Application.Entity.Vehicle {
 
         }
 
-        public void UpdateTyre(float steeringValue_, bool braking_) {
+        public void UpdateTyre(int ranking_, float steeringValue_, bool braking_) {
             m_steeringValue = steeringValue_;
             m_braking = braking_;
+            m_ranking = ranking_;
 
-            // NOTE: Might have to update the friction of all tyres, then update the drive of
-            //       the tyres instead of doing one at a time -Dean
-
-            /*if (m_isPowered) {
-                UpdateFriction();
-                UpdateDrive();
-                //UpdateTurn();
-            }*/
-
-            // Update tyre sprite - TEMP
             UpdateSprites();
         }
 
@@ -84,7 +77,7 @@ namespace Project_Cows.Source.Application.Entity.Vehicle {
                 if (m_braking) {
                     desiredSpeed = MAX_REVERSE_SPEED;
                 } else {
-                    desiredSpeed = MAX_SPEED;
+                    desiredSpeed = MAX_SPEED + ((m_ranking - 1) * RUBBER_BAND_INTERVAL);
                 }
 
                 // Find current forward speed

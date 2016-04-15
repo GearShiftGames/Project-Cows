@@ -25,7 +25,6 @@ using FarseerPhysics.Factories;
 using Project_Cows.Source.System;
 using Project_Cows.Source.System.Graphics;
 using Project_Cows.Source.System.Graphics.Sprites;
-using Project_Cows.Source.Application.Physics;
 
 namespace Project_Cows.Source.Application.Entity.Vehicle {
     class Vehicle {
@@ -39,7 +38,6 @@ namespace Project_Cows.Source.Application.Entity.Vehicle {
         private RevoluteJoint m_frontRightJoint;
         private RevoluteJoint m_backLeftJoint;
         private RevoluteJoint m_backRightJoint;
-
 
         // Methods
         public Vehicle(World world_, Texture2D texture_, EntityStruct entityStruct_) {
@@ -114,12 +112,12 @@ namespace Project_Cows.Source.Application.Entity.Vehicle {
             m_vehicleBody.UpdateSprites();
         }
 
-        public void Update(float steeringValue_ = 0, bool braking_ = false) {
+        public void Update(int ranking_, float steeringValue_ = 0, bool braking_ = false) {
             // Updates the vehicle
             // ================
 
             foreach (Tyre t in m_vehicleTyres) {
-                t.UpdateTyre(steeringValue_, braking_);
+                t.UpdateTyre(ranking_, steeringValue_, braking_);
                 t.UpdateFriction();
             }
 

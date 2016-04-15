@@ -19,7 +19,6 @@ using FarseerPhysics.Dynamics;
 using FarseerPhysics.Dynamics.Contacts;
 
 using Project_Cows.Source.Application.Entity;
-using Project_Cows.Source.Application.Physics;
 using Project_Cows.Source.System;
 using Project_Cows.Source.System.Graphics;
 

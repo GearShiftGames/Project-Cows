@@ -70,14 +70,14 @@ namespace Project_Cows.Source.Application {
             m_ReadyUp = false;
         }
 
-        public void Update(List<TouchLocation> touches_) {
+        public void Update(List<TouchLocation> touches_, int ranking_) {
             // Updates the player
             // ================
 
             m_controlScheme.Update(touches_);
 
             if (!m_keyLeft && !m_keyRight && !m_keyBraking) {
-                m_vehicle.Update(m_controlScheme.GetSteeringValue(), m_controlScheme.GetBraking());
+                m_vehicle.Update(ranking_, m_controlScheme.GetSteeringValue(), m_controlScheme.GetBraking());
             } else {
                 float turn = 0;
                 if (m_keyLeft) {
@@ -87,7 +87,7 @@ namespace Project_Cows.Source.Application {
                     turn += 1;
                   
                 }
-                m_vehicle.Update(turn, m_keyBraking);
+                m_vehicle.Update(ranking_, turn, m_keyBraking);
             }
 
             m_cow.SetPosition(m_vehicle.m_vehicleBody.GetPosition());

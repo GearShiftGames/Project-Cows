@@ -23,7 +23,6 @@ using FarseerPhysics.Dynamics;
 using Project_Cows.Source.Application.Entity.Vehicle;
 using Project_Cows.Source.Application.Entity;
 using Project_Cows.Source.Application.Track;
-using Project_Cows.Source.Application.Physics;
 using Project_Cows.Source.System.Graphics;
 using Project_Cows.Source.System.Graphics.Particles;
 using Project_Cows.Source.System.Graphics.Sprites;
@@ -235,7 +234,7 @@ namespace Project_Cows.Source.Application {
                             }
 
                             m_players[i].KeyboardMove(left, right, brake);
-                            m_players[i].Update(playerTouches[i]);
+                            m_players[i].Update(playerTouches[i], m_rankings[i]);
                             m_players[i].AddRaceTime(gameTime_.ElapsedGameTime.Milliseconds);
                         }
                     }
