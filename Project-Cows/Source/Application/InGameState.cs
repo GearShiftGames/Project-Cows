@@ -20,7 +20,6 @@ using Microsoft.Xna.Framework.Input.Touch;
 
 using FarseerPhysics.Dynamics;
 
-
 using Project_Cows.Source.Application.Entity.Vehicle;
 using Project_Cows.Source.Application.Entity;
 using Project_Cows.Source.Application.Track;
@@ -41,10 +40,6 @@ namespace Project_Cows.Source.Application {
         // <Farseer>
         World fs_world;
         // </Farseer>
-        //private Tire le_tire;
-
-        //private Tyre TYRE;
-        //private BestSuperVehicle bsv;
 
         private TrackHandler h_trackHandler = new TrackHandler();
         private List<AnimatedSprite> m_animatedSprites = new List<AnimatedSprite>();
@@ -55,7 +50,7 @@ namespace Project_Cows.Source.Application {
  
         private List<int> m_rankings = new List<int>();
 
-        int winner = 0;
+        int m_winner = 0;
 
         bool finished;
 
@@ -78,10 +73,6 @@ namespace Project_Cows.Source.Application {
 			// ================
 
             fs_world = new FarseerPhysics.Dynamics.World(Vector2.Zero);
-
-			//le_tire = new Tire(fs_world, TextureHandler.m_vehicleBlue, new Vector2(100.0f, 100.0f), 0f, 0.1f);
-            //TYRE = new Tyre(Quadrent.BOTTOM_RIGHT, fs_world, new Vector2(50, 30), 0f);
-            //bsv = new BestSuperVehicle(fs_world, TextureHandler.m_vehicleOrange, new EntityStruct(new Vector2(1000, 500), 0f));
 
             m_background = new Sprite(TextureHandler.m_gameBackground, new Vector2(Settings.m_screenWidth / 2, Settings.m_screenHeight / 2), 0.0f, Vector2.One);
 
@@ -147,12 +138,6 @@ namespace Project_Cows.Source.Application {
         {
             // Update in game state
             // ================
-
-            //TESTING IT YA BAM
-
-
-            //le_tire.updateFriction();
-            //le_tire.updateDrive(2);
 
             // Update touch input handler
             touchHandler_.Update();
@@ -226,7 +211,9 @@ namespace Project_Cows.Source.Application {
                         {
                             m_players[i].SetFinished(true);
                             m_players[i].AddFinishTime(gameTime_.ElapsedGameTime.Milliseconds);
-                            winner = m_players[i].GetID();      // FIXME: This currently sets the last person to cross the line as the winner -Dean
+                            if (m_winner == 0) {
+                                m_winner = m_players[i].GetID();
+                            }
                         }
                         if (!m_players[i].GetFinished() || (m_players[i].GetFinished() && m_players[i].GetFinishTime() < 500))
                         {
@@ -270,7 +257,6 @@ namespace Project_Cows.Source.Application {
 
                 // Update game objects
 
-
                 float turn = 0;
                 if (Keyboard.GetState().IsKeyDown(Keys.Left))
                 {
@@ -281,8 +267,6 @@ namespace Project_Cows.Source.Application {
                     turn++;
                 }
                 bool braked = Keyboard.GetState().IsKeyDown(Keys.Down);
-                //TYRE.UpdateTyre(turn, braked);
-                //bsv.Update(turn, braked);
 
 
                 h_trackHandler.Update(m_players, ref m_rankings);
@@ -303,6 +287,7 @@ namespace Project_Cows.Source.Application {
 
                 foreach (Player p in m_players)
                 {
+                    // FIXME: Should this be commented out? 
                     //p.UpdateSprites();
                 }
 
@@ -341,7 +326,7 @@ namespace Project_Cows.Source.Application {
             // Render particles             TEMP
             foreach (Particle part_ in m_particles) {
                 if (part_.GetLife() > 0) {
-                    //graphicsHandler_.DrawParticle(/*texture,*/ part_.GetPosition(), Color.White);
+                    GraphicsHandler.DrawParticle(part_.GetPosition(), part_.GetColour(), part_.GetLife());
                 }
             }
 
@@ -408,7 +393,7 @@ namespace Project_Cows.Source.Application {
                 GraphicsHandler.DrawText(((int)(startTimer.timeRemaining / 1000) + 1).ToString(), new Vector2(1000, 50), Color.Red);
             }
             if(finished){
-                GraphicsHandler.DrawText("Player " + winner.ToString() + " is the winner", new Vector2(500, 500), Color.Red);
+                GraphicsHandler.DrawText("Player " + m_winner.ToString() + " is the winner", new Vector2(500, 500), Color.Red);
             }
             
 

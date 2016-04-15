@@ -90,6 +90,9 @@ namespace Project_Cows.Source.System.Graphics {
         public static Texture2D m_tempRed;
         public static Texture2D m_vehicleTyre;
 
+        // GFX
+        public static Texture2D m_particleTexture;
+
         public static Texture2D m_THELORDANDSAVIOUR;
 
         // Methods
@@ -175,6 +178,10 @@ namespace Project_Cows.Source.System.Graphics {
             LoadTexture(ref m_vehicleTyre, "Sprites\\Temp\\vehicleTyre");
             LoadTexture(ref m_THELORDANDSAVIOUR, "Sprites\\Temp\\THELORD");
 
+            // GFX
+            LoadTexture(ref m_particleTexture, "Sprites\\Utility\\brown_particle");
+
+            LoadTexture(ref m_THELORDANDSAVIOUR, "Sprites\\Temp\\THELORD");
 
             // Defaults
             m_player_1_vehicle = m_vehicleBlue;

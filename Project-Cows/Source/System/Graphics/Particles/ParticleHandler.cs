@@ -30,13 +30,36 @@ namespace Project_Cows.Source.System.Graphics.Particles {
             m_particles = new List<Particle>();
         }
 
-        public void StartDirtTrail(float x_, float y_) {
+        public void StartFireTrail(int x_, int y_) {
             // Start a dirt trail of particles
             // ================
             Random rnd = new Random();
-            for (int i = 0; i < 50; i++) {
+            for (int i = 0; i < 12; i++) {
                 // Vector Position(x,y), double life, int angle, float velocity
-                m_particles.Add(new Particle(new Vector2(500.0f, rnd.Next(500, 525)), rnd.Next(1000, 2500), rnd.Next(160, 200), rnd.Next(10, 100)));
+                //m_particles.Add(new Particle(new Vector2(500.0f, rnd.Next(500, 525)), rnd.Next(1000, 2500), rnd.Next(160, 200), rnd.Next(10, 100)));
+                m_particles.Add(new Particle(new Vector2(x_, rnd.Next(y_ - 3, y_ + 3)), rnd.Next(50, 100), rnd.Next(170, 190), rnd.Next(10, 100), Color.Red));
+            }
+        }
+
+        public void StartDriveTrail(int x_, int y_) {
+            // Start a dirt trail of particles
+            // ================
+            Random rnd = new Random();
+            for (int i = 0; i < 4; i++) {
+                // Vector Position(x,y), double life, int angle, float velocity
+                //m_particles.Add(new Particle(new Vector2(500.0f, rnd.Next(500, 525)), rnd.Next(1000, 2500), rnd.Next(160, 200), rnd.Next(10, 100)));
+                m_particles.Add(new Particle(new Vector2(x_, rnd.Next(y_ - 3, y_ + 3)), rnd.Next(50, 100), rnd.Next(170, 190), rnd.Next(10, 100), Color.Gray));
+            }
+        }
+
+        public void StartBrakeTrail(int x_, int y_) {
+            // Start a dirt trail of particles
+            // ================
+            Random rnd = new Random();
+            for (int i = 0; i < 8; i++) {
+                // Vector Position(x,y), double life, int angle, float velocity
+                //m_particles.Add(new Particle(new Vector2(500.0f, rnd.Next(500, 525)), rnd.Next(1000, 2500), rnd.Next(160, 200), rnd.Next(10, 100)));
+                m_particles.Add(new Particle(new Vector2(x_, rnd.Next(y_ - 3, y_ + 3)), rnd.Next(50, 150), rnd.Next(160, 200), rnd.Next(10, 100), Color.Gray));
             }
         }
 

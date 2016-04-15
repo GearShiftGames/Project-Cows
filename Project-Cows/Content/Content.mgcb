@@ -724,6 +724,17 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/Temp/THELORD.png
 
+#begin Sprites/Utility/brown_particle.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Utility/brown_particle.png
+
 #begin Sprites/Menu/PlayerSelect/1Button.png
 /importer:TextureImporter
 /processor:TextureProcessor

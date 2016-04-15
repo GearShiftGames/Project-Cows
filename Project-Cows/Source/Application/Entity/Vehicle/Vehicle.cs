@@ -124,6 +124,18 @@ namespace Project_Cows.Source.Application.Entity.Vehicle {
             foreach (Tyre t in m_vehicleTyres) {
                 t.UpdateDrive();
 
+                if (t.IsPowered()) {
+                    if (t.GetBody().LinearVelocity.Length() > 3.0f) {
+                        GraphicsHandler.StartFireTrail(t.GetPositionDisplay());
+                    } else if (t.GetBody().LinearVelocity.Length() > 2.0f) {
+                        GraphicsHandler.StartDriveTrail(t.GetPositionDisplay());
+                    } else if (t.GetBody().LinearVelocity.Length() > 0.0f) {
+                        GraphicsHandler.StartBrakeTrail(t.GetPositionDisplay());
+                    } else if (t.GetBody().LinearVelocity.Length() < 0.0f) {
+                        GraphicsHandler.StartBrakeTrail(t.GetPositionDisplay());
+                    }
+                }
+
                 float lockAngle = Util.DegreesToRadians(20);
                 float turnSpeedPerSec = Util.DegreesToRadians(320);
                 float turnPerTimeStep = turnSpeedPerSec / 60;

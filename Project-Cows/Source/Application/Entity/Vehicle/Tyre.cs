@@ -138,15 +138,6 @@ namespace Project_Cows.Source.Application.Entity.Vehicle {
             fs_body.ApplyForce(dragForceMagnitude * currentForwardNormal);
         }
 
-        public void UpdateTurn() {
-            // NOTE: DEPRECATED
-            if (m_canSteer) {
-                float desiredTorque = 0;
-                desiredTorque = m_steeringValue * 0.0001f;        // TODO: Replace magic number with const -Dean
-                fs_body.ApplyTorque(desiredTorque);
-            }
-        }
-
         private Vector2 GetLateralVelocity() {
             // Returns the lateral (right) velocity of the tyre
             // ================
@@ -162,7 +153,9 @@ namespace Project_Cows.Source.Application.Entity.Vehicle {
         }
 
         // Getters
-
+        public bool IsPowered() {
+            return m_isPowered;
+        }
 
         // Setters
     }

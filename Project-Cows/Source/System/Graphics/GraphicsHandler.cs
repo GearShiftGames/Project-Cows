@@ -112,10 +112,29 @@ namespace Project_Cows.Source.System.Graphics {
             return m_particleHandler.GetParticles();
         }
 
-        public static void DrawParticle(Texture2D texture_, Vector2 position_, Color colour_) {
+        //Texture2D texture_, 
+        public static void DrawParticle(Vector2 position_, Color colour_, double life_) {
             // Draw a particle
             // ================
-            m_spriteBatch.Draw(texture_, position_, colour_);
+            // Big fire = 0.005f
+            Vector3 rgb = colour_.ToVector3();
+            if (rgb.X == 1f) {
+                rgb.Y += (0.02f * (float)life_);
+            }
+            Color color = new Color(rgb);
+            m_spriteBatch.Draw(TextureHandler.m_particleTexture, position_, color);
+        }
+
+        public static void StartDriveTrail(Vector2 position_) {
+            m_particleHandler.StartDriveTrail((int)position_.X, (int)position_.Y);
+        }
+
+        public static void StartBrakeTrail(Vector2 position_) {
+            m_particleHandler.StartBrakeTrail((int)position_.X, (int)position_.Y);
+        }
+
+        public static void StartFireTrail(Vector2 position_) {
+            m_particleHandler.StartFireTrail((int)position_.X, (int)position_.Y);
         }
     }
 }
