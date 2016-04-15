@@ -31,6 +31,7 @@ namespace Project_Cows.Source.System {
 
         // Game Settings
         public static int m_numberOfPlayers = 2;                        // Number of players
+        public static bool[] m_joinedPlayers = { false, false, false, false };
         //public static int m_track
 
 		// Methods

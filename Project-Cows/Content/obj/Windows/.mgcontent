@@ -25,10 +25,6 @@
     <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Fonts/basic_font.spritefont</File>
     <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Fonts/game_font.spritefont</File>
     <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Fonts/NewSpriteFont.spritefont</File>
-    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Menu/1Button.png</File>
-    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Menu/2Button.png</File>
-    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Menu/3Button.png</File>
-    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Menu/4Button.png</File>
     <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Menu/backButton.png</File>
     <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Menu/background.png</File>
     <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Menu/Button_Controls_Normal.png</File>
@@ -74,5 +70,16 @@
     <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Vehicles/vehiclePurple.png</File>
     <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Vehicles/vehicleYellow.png</File>
     <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Temp/THELORD.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Menu/PlayerSelect/1Button.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Menu/PlayerSelect/2Button.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Menu/PlayerSelect/3Button.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Menu/PlayerSelect/4Button.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Menu/PlayerSelect/actionJoin.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Menu/PlayerSelect/actionReady.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Menu/PlayerSelect/choice1.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Menu/PlayerSelect/choice2.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Menu/PlayerSelect/choice3.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Menu/PlayerSelect/choice4.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Menu/PlayerSelect/vehicleChoice.png</File>
   </SourceFiles>
 </SourceFileCollection>
