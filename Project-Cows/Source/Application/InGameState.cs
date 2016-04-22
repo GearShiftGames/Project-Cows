@@ -90,25 +90,25 @@ namespace Project_Cows.Source.Application {
 
             // Link whichever cow & vehicle texture to what was selected in menu
             if (Settings.m_joinedPlayers[0]) {
-                m_players.Add(new Player(fs_world, TextureHandler.m_player_1_cow, TextureHandler.m_player_1_vehicle, TextureHandler.m_THELORDANDSAVIOUR, new Vector2(100, Settings.m_screenHeight - 100), h_trackHandler.m_vehicles[playerIndex], 0, Quadrent.BOTTOM_LEFT, playerIndex + 1));
+                m_players.Add(new Player(fs_world, TextureHandler.m_player_1_cow, TextureHandler.m_player_1_vehicle, TextureHandler.m_THELORDANDSAVIOUR, new Vector2(100, Settings.m_screenHeight - 100), h_trackHandler.m_vehicles[playerIndex], 0, Quadrent.BOTTOM_LEFT, 1));
                 m_players[m_players.Count-1].m_controlScheme.SetSteeringSprite(new Sprite(TextureHandler.m_userInterfaceWheelBlue, new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
                 m_players[m_players.Count-1].m_controlScheme.SetInterfaceSprite(new Sprite(TextureHandler.m_userInterfaceSlider, new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
                 playerIndex++;
             }
             if (Settings.m_joinedPlayers[1]) {
-                m_players.Add(new Player(fs_world, TextureHandler.m_player_2_cow, TextureHandler.m_player_2_vehicle, TextureHandler.m_THELORDANDSAVIOUR, new Vector2(Settings.m_screenWidth - 100, Settings.m_screenHeight - 100), h_trackHandler.m_vehicles[playerIndex], 0, Quadrent.BOTTOM_RIGHT, playerIndex + 1));
+                m_players.Add(new Player(fs_world, TextureHandler.m_player_2_cow, TextureHandler.m_player_2_vehicle, TextureHandler.m_THELORDANDSAVIOUR, new Vector2(Settings.m_screenWidth - 100, Settings.m_screenHeight - 100), h_trackHandler.m_vehicles[playerIndex], 0, Quadrent.BOTTOM_RIGHT, 2));
                 m_players[m_players.Count-1].m_controlScheme.SetSteeringSprite(new Sprite(TextureHandler.m_userInterfaceWheelOrange, new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
                 m_players[m_players.Count-1].m_controlScheme.SetInterfaceSprite(new Sprite(TextureHandler.m_userInterfaceSlider, new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
                 playerIndex++;
             }
             if (Settings.m_joinedPlayers[2]) {
-                m_players.Add(new Player(fs_world, TextureHandler.m_player_3_cow, TextureHandler.m_player_3_vehicle, TextureHandler.m_THELORDANDSAVIOUR, new Vector2(100, 100), h_trackHandler.m_vehicles[playerIndex], 0, Quadrent.TOP_LEFT, playerIndex + 1));
+                m_players.Add(new Player(fs_world, TextureHandler.m_player_3_cow, TextureHandler.m_player_3_vehicle, TextureHandler.m_THELORDANDSAVIOUR, new Vector2(100, 100), h_trackHandler.m_vehicles[playerIndex], 0, Quadrent.TOP_LEFT, 3));
                 m_players[m_players.Count-1].m_controlScheme.SetSteeringSprite(new Sprite(TextureHandler.m_userInterfaceWheelPurple, new Vector2(100.0f, 100.0f), 180, new Vector2(1.0f, 1.0f), true));
                 m_players[m_players.Count-1].m_controlScheme.SetInterfaceSprite(new Sprite(TextureHandler.m_userInterfaceSlider, new Vector2(100.0f, 100.0f), 180, new Vector2(1.0f, 1.0f), true));
                 playerIndex++;
             }
             if (Settings.m_joinedPlayers[3]) {
-                m_players.Add(new Player(fs_world, TextureHandler.m_player_4_cow, TextureHandler.m_player_4_vehicle, TextureHandler.m_THELORDANDSAVIOUR, new Vector2(Settings.m_screenWidth - 100, 100), h_trackHandler.m_vehicles[playerIndex], 0, Quadrent.TOP_RIGHT, playerIndex + 1));
+                m_players.Add(new Player(fs_world, TextureHandler.m_player_4_cow, TextureHandler.m_player_4_vehicle, TextureHandler.m_THELORDANDSAVIOUR, new Vector2(Settings.m_screenWidth - 100, 100), h_trackHandler.m_vehicles[playerIndex], 0, Quadrent.TOP_RIGHT, 4));
                 m_players[m_players.Count-1].m_controlScheme.SetSteeringSprite(new Sprite(TextureHandler.m_userInterfaceWheelYellow, new Vector2(100.0f, 100.0f), 180, new Vector2(1.0f, 1.0f), true));
                 m_players[m_players.Count-1].m_controlScheme.SetInterfaceSprite(new Sprite(TextureHandler.m_userInterfaceSlider, new Vector2(100.0f, 100.0f), 180, new Vector2(1.0f, 1.0f), true));
                 playerIndex++;
