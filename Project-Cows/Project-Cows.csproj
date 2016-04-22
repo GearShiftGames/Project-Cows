@@ -40,21 +40,20 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Source\Application\Application.cs" />
-    <Compile Include="Source\Application\Barrier.cs" />
-    <Compile Include="Source\Application\Button.cs" />
+    <Compile Include="Source\Application\Entity\Barrier.cs" />
+    <Compile Include="Source\Application\Entity\Button.cs" />
     <Compile Include="Source\Application\Entity\EntityStruct.cs" />
     <Compile Include="Source\Application\Entity\Vehicle\Tyre.cs" />
     <Compile Include="Source\Application\Track\Checkpoint.cs" />
     <Compile Include="Source\Application\Entity\Entity.cs" />
-    <Compile Include="Source\Application\Entity\EntityCollider.cs" />
     <Compile Include="Source\Application\Entity\Vehicle\Vehicle.cs" />
     <Compile Include="Source\Application\InGameState.cs" />
     <Compile Include="Source\Application\MenuState.cs" />
-    <Compile Include="Source\Application\Physics\CollisionHandler.cs" />
     <Compile Include="Source\Application\Player.cs" />
     <Compile Include="Source\Application\Track\CheckpointContainer.cs" />
     <Compile Include="Source\Application\Track\TrackHandler.cs" />
     <Compile Include="Source\Application\VictoryState.cs" />
+    <Compile Include="Source\System\AudioHandler.cs" />
     <Compile Include="Source\System\Debug.cs" />
     <Compile Include="Source\System\FrameCounter.cs" />
     <Compile Include="Source\System\Graphics\GraphicsHandler.cs" />

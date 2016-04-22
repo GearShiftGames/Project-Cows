@@ -18,13 +18,13 @@ using Project_Cows.Source.System.Input;
 using Project_Cows.Source.System.Graphics.Sprites;
 
 namespace Project_Cows.Source.Application {
-    class Button {
+    public class Button {
         // Class for menu buttons
         // ================
 
         // Variables
         public Sprite m_sprite;
-        public TouchZone m_touchZone;
+        private TouchZone m_touchZone;
         public bool m_active;
 
         // Methods
@@ -52,6 +52,13 @@ namespace Project_Cows.Source.Application {
             m_sprite = sprite_;
 
             m_active = true;
+        }
+
+        public bool Activated(Vector2 position_) {
+            if (m_active) {
+                return m_touchZone.IsInsideZone(position_);
+            }
+            return false;
         }
         
         // Getters

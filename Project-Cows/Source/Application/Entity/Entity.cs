@@ -65,6 +65,10 @@ namespace Project_Cows.Source.Application.Entity {
             return fs_body.Position;
         }
 
+        public Vector2 GetPositionDisplay() {
+            return FarseerPhysics.ConvertUnits.ToDisplayUnits(GetPosition());
+        }
+
         public float GetRotationDegrees() {
 			// Returns the entity's rotation, in degrees
 			// ================

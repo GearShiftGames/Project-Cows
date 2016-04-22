@@ -29,16 +29,9 @@ namespace Project_Cows.Source.System.Graphics {
 
         private static ParticleHandler m_particleHandler = new ParticleHandler();
         private static SpriteBatch m_spriteBatch;
-        private static SpriteFont m_font;
+        private static SpriteFont m_font, m_largeFont, m_hugeFont;
 
         // Methods
-        /*public GraphicsHandler(GraphicsDevice graphicsDevice_, ContentManager content_) {
-            // GraphicsHandler constructor
-            // ================
-            m_particleHandler = new ParticleHandler();
-            m_spriteBatch = new SpriteBatch(graphicsDevice_);
-            m_font = content_.Load<SpriteFont>("Fonts\\basic_font");
-        }*/
 
         public static void Initialise(GraphicsDevice device_, ContentManager content_) {
             // Initialise the Graphics Handler
@@ -48,6 +41,8 @@ namespace Project_Cows.Source.System.Graphics {
             m_particleHandler = new ParticleHandler();
             m_spriteBatch = new SpriteBatch(device_);
             m_font = m_content.Load<SpriteFont>("Fonts\\basic_font");
+            m_largeFont = m_content.Load<SpriteFont>("Fonts\\large_font");
+            m_hugeFont = m_content.Load<SpriteFont>("Fonts\\huge_font");
         }
 
         public static void StartDrawing() {
@@ -83,7 +78,6 @@ namespace Project_Cows.Source.System.Graphics {
                                              animSprite_.GetFrameHeight() * animSprite_.GetCurrentVertical(),
                                              animSprite_.GetFrameWidth(),
                                              animSprite_.GetFrameHeight());
-            // FIXME: Origin doesn't work> - Nathan
             m_spriteBatch.Draw(animSprite_.GetTexture(), destination, source, Color.White, animSprite_.GetRotationRadians(), animSprite_.GetOrigin(), SpriteEffects.None, 0);
         }
 
@@ -91,6 +85,23 @@ namespace Project_Cows.Source.System.Graphics {
             // Draw text with standard font
             // ================
             m_spriteBatch.DrawString(m_font, text_, position_, colour_);
+        }
+
+        public static void DrawText(string text_, Vector2 position_, Color colour_, int size_) {
+            // Draw text with standard font
+            // ================
+            switch (size_) {
+                case 1:
+                    m_spriteBatch.DrawString(m_font, text_, position_, colour_);
+                    break;
+                case 2:
+                    m_spriteBatch.DrawString(m_largeFont, text_, position_, colour_);
+                    break;
+                case 3:
+                    m_spriteBatch.DrawString(m_hugeFont, text_, position_, colour_);
+                    break;
+            }
+            
         }
 
         public static void DrawText(DebugText text_) {
@@ -112,10 +123,36 @@ namespace Project_Cows.Source.System.Graphics {
             return m_particleHandler.GetParticles();
         }
 
-        public static void DrawParticle(Texture2D texture_, Vector2 position_, Color colour_) {
+        //Texture2D texture_, 
+        public static void DrawParticle(Vector2 position_, Color colour_, double life_) {
             // Draw a particle
             // ================
-            m_spriteBatch.Draw(texture_, position_, colour_);
+            // Big fire = 0.005f
+            Vector3 rgb = colour_.ToVector3();
+            Color color = new Color();
+            if (rgb.X == 1f) {
+                rgb.Y += (0.02f * (float)life_);
+                color = new Color(rgb);
+            } else {
+                color = new Color(colour_, (0.0005f * (float)life_));
+            }
+            m_spriteBatch.Draw(TextureHandler.m_particleTexture, position_, color);
+        }
+
+        public static void StartSkidMarks(Vector2 position_) {
+            m_particleHandler.StartSkidMarks((int)position_.X, (int)position_.Y);
+        }
+
+        public static void StartDriveTrail(Vector2 position_) {
+            m_particleHandler.StartDriveTrail((int)position_.X, (int)position_.Y);
+        }
+
+        public static void StartBrakeTrail(Vector2 position_) {
+            m_particleHandler.StartBrakeTrail((int)position_.X, (int)position_.Y);
+        }
+
+        public static void StartFireTrail(Vector2 position_) {
+            m_particleHandler.StartFireTrail((int)position_.X, (int)position_.Y);
         }
     }
 }

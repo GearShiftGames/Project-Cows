@@ -126,11 +126,12 @@ namespace Project_Cows.Source.Application {
             }
             if (touchHandler_.GetTouches().Count == 0 && m_touchState == TouchState.TOUCHING) { 
                 // If play button is pressed, launch back into race
-                if (m_Race_Again_Button.m_touchZone.IsInsideZone(m_lastPosition) && m_Race_Again_Button.m_active) {
+                if (m_Race_Again_Button.Activated(m_lastPosition)) {
                     m_nextState = GameState.IN_GAME;
                 }
                 // If Menu button is pressed, go back to the main menu
-                if (m_Main_Menu_Button.m_touchZone.IsInsideZone(m_lastPosition) && m_Main_Menu_Button.m_active) {
+                if (m_Main_Menu_Button.Activated(m_lastPosition))
+                {
                     m_nextState = GameState.MAIN_MENU;
                 }
                 // Change to the appropriate screen

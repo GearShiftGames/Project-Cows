@@ -23,12 +23,6 @@
     <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Utility/entityUncollided.png</File>
     <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Vehicles/V2_Cow_Army.png</File>
     <File>M:/Project Cow Racing/Project-Cows/Content/Fonts/basic_font.spritefont</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Fonts/game_font.spritefont</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Fonts/NewSpriteFont.spritefont</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Menu/1Button.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Menu/2Button.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Menu/3Button.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Menu/4Button.png</File>
     <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Menu/backButton.png</File>
     <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Menu/background.png</File>
     <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Menu/Button_Controls_Normal.png</File>
@@ -81,5 +75,27 @@
     <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Menu/Victory/Trophy_Silver.png</File>
     <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Track/Grass.png</File>
     <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Menu/Victory/Victory_Screen.png</File>
+    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Utility/brown_particle.png</File>
+    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Menu/PlayerSelect/1Button.png</File>
+    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Menu/PlayerSelect/2Button.png</File>
+    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Menu/PlayerSelect/3Button.png</File>
+    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Menu/PlayerSelect/4Button.png</File>
+    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Menu/PlayerSelect/actionJoin.png</File>
+    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Menu/PlayerSelect/actionReady.png</File>
+    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Menu/PlayerSelect/choice1.png</File>
+    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Menu/PlayerSelect/choice2.png</File>
+    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Menu/PlayerSelect/choice3.png</File>
+    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Menu/PlayerSelect/choice4.png</File>
+    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Menu/PlayerSelect/vehicleChoice.png</File>
+    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Temp/FlyingPig.png</File>
+    <File>M:/Project Cow Racing/Project-Cows/Content/Fonts/large_font.spritefont</File>
+    <File>M:/Project Cow Racing/Project-Cows/Content/Fonts/huge_font.spritefont</File>
+    <File>M:/Project Cow Racing/Project-Cows/Content/Audio/Brake.mp3</File>
+    <File>M:/Project Cow Racing/Project-Cows/Content/Audio/cargo.mp3</File>
+    <File>M:/Project Cow Racing/Project-Cows/Content/Audio/carsound.mp3</File>
+    <File>M:/Project Cow Racing/Project-Cows/Content/Audio/cow.mp3</File>
+    <File>M:/Project Cow Racing/Project-Cows/Content/Audio/CowMoo2.mp3</File>
+    <File>M:/Project Cow Racing/Project-Cows/Content/Audio/Driving.mp3</File>
+    <File>M:/Project Cow Racing/Project-Cows/Content/Audio/Single Cow-SoundBible.com-2051754137.mp3</File>
   </SourceFiles>
 </SourceFileCollection>

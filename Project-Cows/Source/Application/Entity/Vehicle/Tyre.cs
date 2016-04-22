@@ -32,12 +32,14 @@ namespace Project_Cows.Source.Application.Entity.Vehicle {
 
         float m_steeringValue;
         bool m_braking;
+        int m_ranking;
 
         const float MAX_SPEED = 200f;
         const float MAX_REVERSE_SPEED = -20f;
         const float MAX_DRIVE_FORCE = 50f;
         const float MAX_REVERSE_DRIVE_FORCE = -10f;
         const float MAX_LATERAL_IMPULSE = 3f;
+        const float RUBBER_BAND_INTERVAL = 10f;
 
         // NOTE: Make the variable scopes explicit -Dean
 
@@ -60,20 +62,11 @@ namespace Project_Cows.Source.Application.Entity.Vehicle {
 
         }
 
-        public void UpdateTyre(float steeringValue_, bool braking_) {
+        public void UpdateTyre(int ranking_, float steeringValue_, bool braking_) {
             m_steeringValue = steeringValue_;
             m_braking = braking_;
+            m_ranking = ranking_;
 
-            // NOTE: Might have to update the friction of all tyres, then update the drive of
-            //       the tyres instead of doing one at a time -Dean
-
-            /*if (m_isPowered) {
-                UpdateFriction();
-                UpdateDrive();
-                //UpdateTurn();
-            }*/
-
-            // Update tyre sprite - TEMP
             UpdateSprites();
         }
 
@@ -84,7 +77,7 @@ namespace Project_Cows.Source.Application.Entity.Vehicle {
                 if (m_braking) {
                     desiredSpeed = MAX_REVERSE_SPEED;
                 } else {
-                    desiredSpeed = MAX_SPEED;
+                    desiredSpeed = MAX_SPEED + ((m_ranking - 1) * RUBBER_BAND_INTERVAL);
                 }
 
                 // Find current forward speed
@@ -94,6 +87,7 @@ namespace Project_Cows.Source.Application.Entity.Vehicle {
                 // Apply necessary force
                 float force = 0;
                 if (m_braking) {
+                    //GraphicsHandler.StartSkidMarks(new Vector2(FarseerPhysics.ConvertUnits.ToDisplayUnits(GetBody().Position.X), FarseerPhysics.ConvertUnits.ToDisplayUnits(GetBody().Position.Y)));
                     force = MAX_REVERSE_DRIVE_FORCE;
                 }else{
                     force = MAX_DRIVE_FORCE;
@@ -101,7 +95,7 @@ namespace Project_Cows.Source.Application.Entity.Vehicle {
 
                 if (!m_braking) {
                     if (desiredSpeed > currentSpeed) {
-                        force *= 1;
+                        force *= 1;                             // Dean did this   
                     } else if (desiredSpeed < currentSpeed) {
                         force *= -1;
                     } else {
@@ -145,15 +139,6 @@ namespace Project_Cows.Source.Application.Entity.Vehicle {
             fs_body.ApplyForce(dragForceMagnitude * currentForwardNormal);
         }
 
-        public void UpdateTurn() {
-            // NOTE: DEPRECATED
-            if (m_canSteer) {
-                float desiredTorque = 0;
-                desiredTorque = m_steeringValue * 0.0001f;        // TODO: Replace magic number with const -Dean
-                fs_body.ApplyTorque(desiredTorque);
-            }
-        }
-
         private Vector2 GetLateralVelocity() {
             // Returns the lateral (right) velocity of the tyre
             // ================
@@ -169,7 +154,9 @@ namespace Project_Cows.Source.Application.Entity.Vehicle {
         }
 
         // Getters
-
+        public bool IsPowered() {
+            return m_isPowered;
+        }
 
         // Setters
     }

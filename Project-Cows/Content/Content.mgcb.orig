@@ -690,7 +690,11 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/Temp/THELORD.png
 
+<<<<<<< HEAD
 #begin Sprites/Menu/controls.png
+=======
+#begin Sprites/Utility/brown_particle.png
+>>>>>>> 297e86f94e7373648f2a3c0e2d89004c1a89c71f
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -699,108 +703,15 @@
 /processorParam:PremultiplyAlpha=True
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:TextureFormat=Color
+<<<<<<< HEAD
 /build:Sprites/Menu/controls.png
 
 #begin Sprites/Menu/Button_Menu_Normal.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:TextureFormat=Color
-/build:Sprites/Menu/Button_Menu_Normal.png
-
-#begin Sprites/Menu/Victory/Button_Race_Again.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:TextureFormat=Color
-/build:Sprites/Menu/Victory/Button_Race_Again.png
-
-#begin Sprites/Menu/Victory/Leaderboard_NoText.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:TextureFormat=Color
-/build:Sprites/Menu/Victory/Leaderboard_NoText.png
-
-#begin Sprites/Menu/Victory/Trophy.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:TextureFormat=Color
-/build:Sprites/Menu/Victory/Trophy.png
-
-#begin Sprites/Menu/Victory/Trophy_Bronze.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:TextureFormat=Color
-/build:Sprites/Menu/Victory/Trophy_Bronze.png
-
-#begin Sprites/Menu/Victory/Trophy_Silver.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:TextureFormat=Color
-/build:Sprites/Menu/Victory/Trophy_Silver.png
-
-#begin Sprites/Track/Grass.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:TextureFormat=Color
-/build:Sprites/Track/Grass.png
-
-#begin Sprites/Menu/Victory/Victory_Screen.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:TextureFormat=Color
-/build:Sprites/Menu/Victory/Victory_Screen.png
-
-#begin Sprites/Utility/brown_particle.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:TextureFormat=Color
+=======
 /build:Sprites/Utility/brown_particle.png
 
 #begin Sprites/Menu/PlayerSelect/1Button.png
+>>>>>>> 297e86f94e7373648f2a3c0e2d89004c1a89c71f
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -809,9 +720,15 @@
 /processorParam:PremultiplyAlpha=True
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:TextureFormat=Color
+<<<<<<< HEAD
+/build:Sprites/Menu/Button_Menu_Normal.png
+
+#begin Sprites/Menu/Victory/Button_Race_Again.png
+=======
 /build:Sprites/Menu/PlayerSelect/1Button.png
 
 #begin Sprites/Menu/PlayerSelect/2Button.png
+>>>>>>> 297e86f94e7373648f2a3c0e2d89004c1a89c71f
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -820,9 +737,15 @@
 /processorParam:PremultiplyAlpha=True
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:TextureFormat=Color
+<<<<<<< HEAD
+/build:Sprites/Menu/Victory/Button_Race_Again.png
+
+#begin Sprites/Menu/Victory/Leaderboard_NoText.png
+=======
 /build:Sprites/Menu/PlayerSelect/2Button.png
 
 #begin Sprites/Menu/PlayerSelect/3Button.png
+>>>>>>> 297e86f94e7373648f2a3c0e2d89004c1a89c71f
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -831,9 +754,15 @@
 /processorParam:PremultiplyAlpha=True
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:TextureFormat=Color
+<<<<<<< HEAD
+/build:Sprites/Menu/Victory/Leaderboard_NoText.png
+
+#begin Sprites/Menu/Victory/Trophy.png
+=======
 /build:Sprites/Menu/PlayerSelect/3Button.png
 
 #begin Sprites/Menu/PlayerSelect/4Button.png
+>>>>>>> 297e86f94e7373648f2a3c0e2d89004c1a89c71f
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -842,9 +771,15 @@
 /processorParam:PremultiplyAlpha=True
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:TextureFormat=Color
+<<<<<<< HEAD
+/build:Sprites/Menu/Victory/Trophy.png
+
+#begin Sprites/Menu/Victory/Trophy_Bronze.png
+=======
 /build:Sprites/Menu/PlayerSelect/4Button.png
 
 #begin Sprites/Menu/PlayerSelect/actionJoin.png
+>>>>>>> 297e86f94e7373648f2a3c0e2d89004c1a89c71f
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -853,9 +788,15 @@
 /processorParam:PremultiplyAlpha=True
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:TextureFormat=Color
+<<<<<<< HEAD
+/build:Sprites/Menu/Victory/Trophy_Bronze.png
+
+#begin Sprites/Menu/Victory/Trophy_Silver.png
+=======
 /build:Sprites/Menu/PlayerSelect/actionJoin.png
 
 #begin Sprites/Menu/PlayerSelect/actionReady.png
+>>>>>>> 297e86f94e7373648f2a3c0e2d89004c1a89c71f
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -864,9 +805,15 @@
 /processorParam:PremultiplyAlpha=True
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:TextureFormat=Color
+<<<<<<< HEAD
+/build:Sprites/Menu/Victory/Trophy_Silver.png
+
+#begin Sprites/Track/Grass.png
+=======
 /build:Sprites/Menu/PlayerSelect/actionReady.png
 
 #begin Sprites/Menu/PlayerSelect/choice1.png
+>>>>>>> 297e86f94e7373648f2a3c0e2d89004c1a89c71f
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -875,9 +822,15 @@
 /processorParam:PremultiplyAlpha=True
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:TextureFormat=Color
+<<<<<<< HEAD
+/build:Sprites/Track/Grass.png
+
+#begin Sprites/Menu/Victory/Victory_Screen.png
+=======
 /build:Sprites/Menu/PlayerSelect/choice1.png
 
 #begin Sprites/Menu/PlayerSelect/choice2.png
+>>>>>>> 297e86f94e7373648f2a3c0e2d89004c1a89c71f
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -886,6 +839,9 @@
 /processorParam:PremultiplyAlpha=True
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:TextureFormat=Color
+<<<<<<< HEAD
+/build:Sprites/Menu/Victory/Victory_Screen.png
+=======
 /build:Sprites/Menu/PlayerSelect/choice2.png
 
 #begin Sprites/Menu/PlayerSelect/choice3.png
@@ -985,4 +941,5 @@
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:Audio/Single Cow-SoundBible.com-2051754137.mp3
+>>>>>>> 297e86f94e7373648f2a3c0e2d89004c1a89c71f
 

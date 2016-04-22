@@ -19,7 +19,7 @@ using FarseerPhysics.Dynamics;
 using Project_Cows.Source.System;
 
 namespace Project_Cows.Source.Application.Entity{
-    class Barrier : Entity{
+    class Barrier : Entity {
         // Class for the track barriers
         // ================
 
@@ -31,7 +31,6 @@ namespace Project_Cows.Source.Application.Entity{
             : base(world_, texture_, entityStruct_.GetPosition(), entityStruct_.GetRotationDegrees(), BodyType.Static) {
             // Barrier constructor
             // ================
-            //GetSprite().SetScale(new Vector2(0.4f, 0.4f));      // TEMP: Will be replaced in future by correctly sized assets -Dean
         }
 
         // Getters

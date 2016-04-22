@@ -30,6 +30,14 @@ namespace Project_Cows.Source.System.Graphics {
         public static Texture2D m_menuControls;
         public static Texture2D m_menuOptions;
         public static Texture2D m_menuCredits;
+            // Player Select
+        public static Texture2D m_actionJoin;
+        public static Texture2D m_actionReady;
+        public static Texture2D m_choice1;
+        public static Texture2D m_choice2;
+        public static Texture2D m_choice3;
+        public static Texture2D m_choice4;
+        public static Texture2D m_vehicleChoice;
         public static Texture2D m_menuMain;  
         public static Texture2D m_menu1;
         public static Texture2D m_menu2;
@@ -95,6 +103,9 @@ namespace Project_Cows.Source.System.Graphics {
         public static Texture2D m_tempRed;
         public static Texture2D m_vehicleTyre;
 
+        // GFX
+        public static Texture2D m_particleTexture;
+
         public static Texture2D m_THELORDANDSAVIOUR;
 
         // Methods
@@ -114,6 +125,15 @@ namespace Project_Cows.Source.System.Graphics {
             LoadTexture(ref m_menuControls, "Sprites\\Menu\\Button_Controls_Normal");
             LoadTexture(ref m_menuOptions, "Sprites\\Menu\\Button_Options_Normal");
             LoadTexture(ref m_menuCredits, "Sprites\\Menu\\creditsButton");
+            
+                // Player Select
+            LoadTexture(ref m_actionJoin, "Sprites\\Menu\\PlayerSelect\\actionJoin");
+            LoadTexture(ref m_actionReady, "Sprites\\Menu\\PlayerSelect\\actionReady");
+            LoadTexture(ref m_choice1, "Sprites\\Menu\\PlayerSelect\\choice1");
+            LoadTexture(ref m_choice2, "Sprites\\Menu\\PlayerSelect\\choice2");
+            LoadTexture(ref m_choice3, "Sprites\\Menu\\PlayerSelect\\choice3");
+            LoadTexture(ref m_choice4, "Sprites\\Menu\\PlayerSelect\\choice4");
+            LoadTexture(ref m_vehicleChoice, "Sprites\\Menu\\PlayerSelect\\vehicleChoice");
             LoadTexture(ref m_menuMain, "Sprites\\Menu\\Button_Menu_Normal");
          
             LoadTexture(ref m_menu1, "Sprites\\Menu\\1Button");
@@ -121,6 +141,8 @@ namespace Project_Cows.Source.System.Graphics {
             LoadTexture(ref m_menu3, "Sprites\\Menu\\3Button");
             LoadTexture(ref m_menu4, "Sprites\\Menu\\4Button");
             LoadTexture(ref m_controlInfo, "Sprites\\Menu\\controls");
+
+
 
             // Victory Screen
             LoadTexture(ref m_victoryBackground, "Sprites\\Menu\\Victory\\Victory_Screen");
@@ -173,8 +195,22 @@ namespace Project_Cows.Source.System.Graphics {
             // Temp
             LoadTexture(ref m_tempRed, "Sprites\\Temp\\Red");
             LoadTexture(ref m_vehicleTyre, "Sprites\\Temp\\vehicleTyre");
+            LoadTexture(ref m_THELORDANDSAVIOUR, "Sprites\\Temp\\THELORD");
+
+            // GFX
+            LoadTexture(ref m_particleTexture, "Sprites\\Utility\\brown_particle");
 
             LoadTexture(ref m_THELORDANDSAVIOUR, "Sprites\\Temp\\THELORD");
+
+            // Defaults
+            m_player_1_vehicle = m_vehicleBlue;
+            m_player_2_vehicle = m_vehicleOrange;
+            m_player_3_vehicle = m_vehicleYellow;
+            m_player_4_vehicle = m_vehiclePurple;
+            m_player_1_cow = m_cow1;
+            m_player_2_cow = m_cow2;
+            m_player_3_cow = m_cow3;
+            m_player_4_cow = m_cow4;
         }
 
         private static void LoadTexture(ref Texture2D texture_, string file_) {
