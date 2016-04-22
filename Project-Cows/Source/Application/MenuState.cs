@@ -93,14 +93,6 @@ namespace Project_Cows.Source.Application {
 
 
 
-
-
-
-
-
-
-
-
             // Initialise sprites
             m_background =      new Sprite(TextureHandler.m_menuBackground, new Vector2(Settings.m_screenWidth / 2, Settings.m_screenHeight / 2), 0, Vector2.One);
             m_teamLogo =        new Sprite(TextureHandler.m_teamLogo,       new Vector2(Settings.m_screenWidth / 1.2f, Settings.m_screenHeight / 6), 0, Vector2.One);
@@ -129,32 +121,33 @@ namespace Project_Cows.Source.Application {
             // Player Select
             players[0].m_actionButton = new Button(TextureHandler.m_actionJoin, new Vector2(Settings.m_screenWidth * 0.1f, Settings.m_screenHeight * 0.9f));
             players[1].m_actionButton = new Button(TextureHandler.m_actionJoin, new Vector2(Settings.m_screenWidth * 0.9f, Settings.m_screenHeight * 0.9f));
-            players[2].m_actionButton = new Button(TextureHandler.m_actionJoin, new Vector2(Settings.m_screenWidth * 0.9f, Settings.m_screenHeight * 0.1f));
-            players[3].m_actionButton = new Button(TextureHandler.m_actionJoin, new Vector2(Settings.m_screenWidth * 0.1f, Settings.m_screenHeight * 0.1f));
-                // Player 1
+            players[2].m_actionButton = new Button(TextureHandler.m_actionJoin, new Vector2(Settings.m_screenWidth * 0.1f, Settings.m_screenHeight * 0.1f));
+            players[3].m_actionButton = new Button(TextureHandler.m_actionJoin, new Vector2(Settings.m_screenWidth * 0.9f, Settings.m_screenHeight * 0.1f));
+                // Player 1 -- BOTTOM_LEFT
             players[0].m_choice1Button = new Button(TextureHandler.m_choice1, new Vector2(Settings.m_screenWidth * 0.1f, Settings.m_screenHeight * 0.8f));
             players[0].m_choice2Button = new Button(TextureHandler.m_choice2, new Vector2(Settings.m_screenWidth * 0.2f, Settings.m_screenHeight * 0.8f));
             players[0].m_choice3Button = new Button(TextureHandler.m_choice3, new Vector2(Settings.m_screenWidth * 0.3f, Settings.m_screenHeight * 0.8f));
             players[0].m_choice4Button = new Button(TextureHandler.m_choice4, new Vector2(Settings.m_screenWidth * 0.4f, Settings.m_screenHeight * 0.8f));
             players[0].m_vehicleChoiceButton = new Button(TextureHandler.m_vehicleChoice, new Vector2(Settings.m_screenWidth * 0.25f, Settings.m_screenHeight * 0.65f));
-                // Player 2
+                // Player 2 -- BOTTOM_RIGHT
             players[1].m_choice1Button = new Button(TextureHandler.m_choice1, new Vector2(Settings.m_screenWidth * 0.9f, Settings.m_screenHeight * 0.8f));
             players[1].m_choice2Button = new Button(TextureHandler.m_choice2, new Vector2(Settings.m_screenWidth * 0.8f, Settings.m_screenHeight * 0.8f));
             players[1].m_choice3Button = new Button(TextureHandler.m_choice3, new Vector2(Settings.m_screenWidth * 0.7f, Settings.m_screenHeight * 0.8f));
             players[1].m_choice4Button = new Button(TextureHandler.m_choice4, new Vector2(Settings.m_screenWidth * 0.6f, Settings.m_screenHeight * 0.8f));
             players[1].m_vehicleChoiceButton = new Button(TextureHandler.m_vehicleChoice, new Vector2(Settings.m_screenWidth * 0.75f, Settings.m_screenHeight * 0.65f));
-                // Player 3
-            players[2].m_choice1Button = new Button(TextureHandler.m_choice1, new Vector2(Settings.m_screenWidth * 0.9f, Settings.m_screenHeight * 0.2f));
-            players[2].m_choice2Button = new Button(TextureHandler.m_choice2, new Vector2(Settings.m_screenWidth * 0.8f, Settings.m_screenHeight * 0.2f));
-            players[2].m_choice3Button = new Button(TextureHandler.m_choice3, new Vector2(Settings.m_screenWidth * 0.7f, Settings.m_screenHeight * 0.2f));
-            players[2].m_choice4Button = new Button(TextureHandler.m_choice4, new Vector2(Settings.m_screenWidth * 0.6f, Settings.m_screenHeight * 0.2f));
-            players[2].m_vehicleChoiceButton = new Button(TextureHandler.m_vehicleChoice, new Vector2(Settings.m_screenWidth * 0.75f, Settings.m_screenHeight * 0.35f));
-                // Player 4
-            players[3].m_choice1Button = new Button(TextureHandler.m_choice1, new Vector2(Settings.m_screenWidth * 0.1f, Settings.m_screenHeight * 0.2f));
-            players[3].m_choice2Button = new Button(TextureHandler.m_choice2, new Vector2(Settings.m_screenWidth * 0.2f, Settings.m_screenHeight * 0.2f));
-            players[3].m_choice3Button = new Button(TextureHandler.m_choice3, new Vector2(Settings.m_screenWidth * 0.3f, Settings.m_screenHeight * 0.2f));
-            players[3].m_choice4Button = new Button(TextureHandler.m_choice4, new Vector2(Settings.m_screenWidth * 0.4f, Settings.m_screenHeight * 0.2f));
-            players[3].m_vehicleChoiceButton = new Button(TextureHandler.m_vehicleChoice, new Vector2(Settings.m_screenWidth * 0.25f, Settings.m_screenHeight * 0.35f));
+                // Player 3 -- TOP_LEFT
+            players[2].m_choice1Button = new Button(TextureHandler.m_choice1, new Vector2(Settings.m_screenWidth * 0.1f, Settings.m_screenHeight * 0.2f));
+            players[2].m_choice2Button = new Button(TextureHandler.m_choice2, new Vector2(Settings.m_screenWidth * 0.2f, Settings.m_screenHeight * 0.2f));
+            players[2].m_choice3Button = new Button(TextureHandler.m_choice3, new Vector2(Settings.m_screenWidth * 0.3f, Settings.m_screenHeight * 0.2f));
+            players[2].m_choice4Button = new Button(TextureHandler.m_choice4, new Vector2(Settings.m_screenWidth * 0.4f, Settings.m_screenHeight * 0.2f));
+            players[2].m_vehicleChoiceButton = new Button(TextureHandler.m_vehicleChoice, new Vector2(Settings.m_screenWidth * 0.25f, Settings.m_screenHeight * 0.35f));
+                // Player 4 -- TOP_RIGHT
+            players[3].m_choice1Button = new Button(TextureHandler.m_choice1, new Vector2(Settings.m_screenWidth * 0.9f, Settings.m_screenHeight * 0.2f));
+            players[3].m_choice2Button = new Button(TextureHandler.m_choice2, new Vector2(Settings.m_screenWidth * 0.8f, Settings.m_screenHeight * 0.2f));
+            players[3].m_choice3Button = new Button(TextureHandler.m_choice3, new Vector2(Settings.m_screenWidth * 0.7f, Settings.m_screenHeight * 0.2f));
+            players[3].m_choice4Button = new Button(TextureHandler.m_choice4, new Vector2(Settings.m_screenWidth * 0.6f, Settings.m_screenHeight * 0.2f));
+            players[3].m_vehicleChoiceButton = new Button(TextureHandler.m_vehicleChoice, new Vector2(Settings.m_screenWidth * 0.75f, Settings.m_screenHeight * 0.35f));
+            
                 // Misc
             m_playerBackButton = new Button(TextureHandler.m_menuBack, new Vector2(Settings.m_screenWidth * 0.45f, Settings.m_screenHeight * 0.5f));
             m_playerGoButton = new Button(TextureHandler.m_menuBack, new Vector2(Settings.m_screenWidth * 0.55f, Settings.m_screenHeight * 0.5f));
@@ -186,9 +179,6 @@ namespace Project_Cows.Source.Application {
             if (Keyboard.GetState().IsKeyDown(Keys.W)) {
                 m_currentScreen = MenuScreenState.PLAYER_SELECT;
             }
-            if (Keyboard.GetState().IsKeyDown(Keys.E)) {
-                m_currentScreen = MenuScreenState.TRACK_SELECT;
-            }
             if (Keyboard.GetState().IsKeyDown(Keys.R)) {
                 m_currentScreen = MenuScreenState.OPTIONS;
             }
@@ -197,22 +187,6 @@ namespace Project_Cows.Source.Application {
             }
             if (Keyboard.GetState().IsKeyDown(Keys.Y)) {
                 m_currentExecutionState = ExecutionState.CHANGING;
-            }
-            if (Keyboard.GetState().IsKeyDown(Keys.U))
-            {
-                m_currentScreen = MenuScreenState.PLAYER_1_SELECT;
-            }
-            if (Keyboard.GetState().IsKeyDown(Keys.I))
-            {
-                m_currentScreen = MenuScreenState.PLAYER_2_SELECT;
-            }
-            if (Keyboard.GetState().IsKeyDown(Keys.O))
-            {
-                m_currentScreen = MenuScreenState.PLAYER_3_SELECT;
-            }
-            if (Keyboard.GetState().IsKeyDown(Keys.P))
-            {
-                m_currentScreen = MenuScreenState.PLAYER_4_SELECT;
             }
               
             // Change player count with keys - TEMP
@@ -253,6 +227,7 @@ namespace Project_Cows.Source.Application {
                 TextureHandler.m_player_1_vehicle = TextureHandler.m_vehicleBlue;
                 m_player_1_vehicle.SetTexture(TextureHandler.m_player_1_vehicle);
             }
+
             
 
             Debug.AddText("7 for white cow, 8 for highland", new Vector2(20, 850));
@@ -268,6 +243,19 @@ namespace Project_Cows.Source.Application {
             }
             if (Keyboard.GetState().IsKeyDown(Keys.NumPad3)) {
                 players[0].m_playerState = PlayerState.READY;
+                Settings.m_joinedPlayers[0] = true;
+            }
+            if (Keyboard.GetState().IsKeyDown(Keys.NumPad7)) {
+                players[1].m_playerState = PlayerState.READY;
+                Settings.m_joinedPlayers[1] = true;
+            }
+            if (Keyboard.GetState().IsKeyDown(Keys.NumPad8)) {
+                players[2].m_playerState = PlayerState.READY;
+                Settings.m_joinedPlayers[2] = true;
+            }
+            if (Keyboard.GetState().IsKeyDown(Keys.NumPad9)) {
+                players[3].m_playerState = PlayerState.READY;
+                Settings.m_joinedPlayers[3] = true;
             }
              
 			// Update touch input handler
@@ -357,23 +345,11 @@ namespace Project_Cows.Source.Application {
                             }
                             // Check if players are ready
                             if (ready && readyCount > 0) {
-                                Settings.m_numberOfPlayers = readyCount++;
-                                m_currentScreen = MenuScreenState.TRACK_SELECT;
+                                Settings.m_numberOfPlayers = readyCount;
+                                m_currentExecutionState = ExecutionState.CHANGING;
                             }
                         }
 
-                        break;
-                    case MenuScreenState.TRACK_SELECT:
-                        // Track Select screen
-
-                        if (m_playButton.Activated(m_lastPosition)) {
-                            // Start the game
-                            m_currentExecutionState = ExecutionState.CHANGING;
-                        }
-                        if (m_backButton.Activated(m_lastPosition)) {
-                            // Go back to Player Select
-                            m_currentScreen = MenuScreenState.PLAYER_SELECT;
-                        }
                         break;
                     case MenuScreenState.OPTIONS:
                         // Options screen
@@ -449,7 +425,8 @@ namespace Project_Cows.Source.Application {
                     }
 
                     // TODO: Render "back" and "go" buttons
-                    
+                    GraphicsHandler.DrawSprite(m_playerBackButton.m_sprite);
+                    GraphicsHandler.DrawSprite(m_playerGoButton.m_sprite);
 
 
 
@@ -464,12 +441,6 @@ namespace Project_Cows.Source.Application {
 
 
 
-                    break;
-                case MenuScreenState.TRACK_SELECT:
-                    GraphicsHandler.DrawText("Track Selection", new Vector2(Settings.m_screenWidth / 2, Settings.m_screenHeight / 2), Color.Black);
-                    GraphicsHandler.DrawSprite(m_playButton.m_sprite);
-                    GraphicsHandler.DrawSprite(m_backButton.m_sprite);
-                    // Insert buttons for playable tracks
                     break;
                 case MenuScreenState.OPTIONS:
                     // Insert buttons for options
@@ -540,11 +511,6 @@ namespace Project_Cows.Source.Application {
 		// ================
 		MAIN_MENU,
 		PLAYER_SELECT,
-        PLAYER_1_SELECT,
-        PLAYER_2_SELECT,
-        PLAYER_3_SELECT,
-        PLAYER_4_SELECT,
-		TRACK_SELECT,
 		OPTIONS,
         CONTROLS,
 		CREDITS
