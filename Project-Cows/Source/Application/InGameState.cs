@@ -47,10 +47,10 @@ namespace Project_Cows.Source.Application {
         private Timer startTimer = new Timer();
 
         private Sprite m_background;
-        private List<Sprite> m_rankingSprites = new List<Sprite>();
+        private Sprite m_grassbackground;
 
-        //for use of showing which player is in which position
-        private List<int> m_rankings = new List<int>();
+        private List<Sprite> m_rankingSprites = new List<Sprite>();
+      //  private List<int> m_rankings = new List<int>();
 
         int m_winner = 0;
 
@@ -77,12 +77,17 @@ namespace Project_Cows.Source.Application {
             fs_world = new FarseerPhysics.Dynamics.World(Vector2.Zero);
 
             m_background = new Sprite(TextureHandler.m_gameBackground, new Vector2(Settings.m_screenWidth / 2, Settings.m_screenHeight / 2), 0.0f, Vector2.One);
+            m_grassbackground = new Sprite(TextureHandler.m_grassBackground, new Vector2(0.0f, 0.0f), 0.0f, new Vector2(2.0f,2.0f));
 
             h_trackHandler.Initialise(fs_world);
 
             //Ready Up Stuff
             PlayersReady = true;
             NoPlayersReady = 0;
+
+            // Initialise rankings
+            m_rankings = new List<int>();
+            m_rankings.Clear();
 
 			// Initialise players
             m_players = new List<Player>();
@@ -311,6 +316,7 @@ namespace Project_Cows.Source.Application {
             GraphicsHandler.StartDrawing();
 
             // Render background
+            GraphicsHandler.DrawSprite(m_grassbackground);
             GraphicsHandler.DrawSprite(m_background);
 
             // Render animated sprites

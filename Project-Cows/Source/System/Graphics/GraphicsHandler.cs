@@ -129,10 +129,13 @@ namespace Project_Cows.Source.System.Graphics {
             // ================
             // Big fire = 0.005f
             Vector3 rgb = colour_.ToVector3();
+            Color color = new Color();
             if (rgb.X == 1f) {
                 rgb.Y += (0.02f * (float)life_);
+                color = new Color(rgb);
+            } else {
+                color = new Color(colour_, (0.0005f * (float)life_));
             }
-            Color color = new Color(rgb);
             m_spriteBatch.Draw(TextureHandler.m_particleTexture, position_, color);
         }
 

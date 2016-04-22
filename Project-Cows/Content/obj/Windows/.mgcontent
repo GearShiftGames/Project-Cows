@@ -32,8 +32,6 @@
     <File>M:/Project Cows/Project-Cows/Content/Sprites/Menu/exitButton.png</File>
     <File>M:/Project Cows/Project-Cows/Content/Sprites/Menu/optionsButton.png</File>
     <File>M:/Project Cows/Project-Cows/Content/Sprites/Menu/playButton.png</File>
-    <File>M:/Project Cows/Project-Cows/Content/Sprites/Menu/Victory_Screen.png</File>
-    <File>M:/Project Cows/Project-Cows/Content/Sprites/Menu/Victory_Screen_3.jpg</File>
     <File>M:/Project Cows/Project-Cows/Content/Sprites/Promo/teamLogo.png</File>
     <File>M:/Project Cows/Project-Cows/Content/Sprites/Temp/Cow_Car_Blue.png</File>
     <File>M:/Project Cows/Project-Cows/Content/Sprites/Temp/Cow_Car_Orange.png</File>
@@ -62,6 +60,15 @@
     <File>M:/Project Cows/Project-Cows/Content/Sprites/Vehicles/vehiclePurple.png</File>
     <File>M:/Project Cows/Project-Cows/Content/Sprites/Vehicles/vehicleYellow.png</File>
     <File>M:/Project Cows/Project-Cows/Content/Sprites/Temp/THELORD.png</File>
+    <File>M:/Project Cows/Project-Cows/Content/Sprites/Menu/controls.png</File>
+    <File>M:/Project Cows/Project-Cows/Content/Sprites/Menu/Button_Menu_Normal.png</File>
+    <File>M:/Project Cows/Project-Cows/Content/Sprites/Menu/Victory/Button_Race_Again.png</File>
+    <File>M:/Project Cows/Project-Cows/Content/Sprites/Menu/Victory/Leaderboard_NoText.png</File>
+    <File>M:/Project Cows/Project-Cows/Content/Sprites/Menu/Victory/Trophy.png</File>
+    <File>M:/Project Cows/Project-Cows/Content/Sprites/Menu/Victory/Trophy_Bronze.png</File>
+    <File>M:/Project Cows/Project-Cows/Content/Sprites/Menu/Victory/Trophy_Silver.png</File>
+    <File>M:/Project Cows/Project-Cows/Content/Sprites/Track/Grass.png</File>
+    <File>M:/Project Cows/Project-Cows/Content/Sprites/Menu/Victory/Victory_Screen.png</File>
     <File>M:/Project Cows/Project-Cows/Content/Sprites/Utility/brown_particle.png</File>
     <File>M:/Project Cows/Project-Cows/Content/Sprites/Menu/PlayerSelect/1Button.png</File>
     <File>M:/Project Cows/Project-Cows/Content/Sprites/Menu/PlayerSelect/2Button.png</File>

@@ -12,6 +12,7 @@
 /// Settings.cs
 
 using System;
+using System.Collections.Generic;
 using Project_Cows.Source.System.StateMachine;
 
 namespace Project_Cows.Source.System {
