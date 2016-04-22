@@ -29,16 +29,9 @@ namespace Project_Cows.Source.System.Graphics {
 
         private static ParticleHandler m_particleHandler = new ParticleHandler();
         private static SpriteBatch m_spriteBatch;
-        private static SpriteFont m_font;
+        private static SpriteFont m_font, m_largeFont, m_hugeFont;
 
         // Methods
-        /*public GraphicsHandler(GraphicsDevice graphicsDevice_, ContentManager content_) {
-            // GraphicsHandler constructor
-            // ================
-            m_particleHandler = new ParticleHandler();
-            m_spriteBatch = new SpriteBatch(graphicsDevice_);
-            m_font = content_.Load<SpriteFont>("Fonts\\basic_font");
-        }*/
 
         public static void Initialise(GraphicsDevice device_, ContentManager content_) {
             // Initialise the Graphics Handler
@@ -48,6 +41,8 @@ namespace Project_Cows.Source.System.Graphics {
             m_particleHandler = new ParticleHandler();
             m_spriteBatch = new SpriteBatch(device_);
             m_font = m_content.Load<SpriteFont>("Fonts\\basic_font");
+            m_largeFont = m_content.Load<SpriteFont>("Fonts\\large_font");
+            m_hugeFont = m_content.Load<SpriteFont>("Fonts\\huge_font");
         }
 
         public static void StartDrawing() {
@@ -92,6 +87,23 @@ namespace Project_Cows.Source.System.Graphics {
             m_spriteBatch.DrawString(m_font, text_, position_, colour_);
         }
 
+        public static void DrawText(string text_, Vector2 position_, Color colour_, int size_) {
+            // Draw text with standard font
+            // ================
+            switch (size_) {
+                case 1:
+                    m_spriteBatch.DrawString(m_font, text_, position_, colour_);
+                    break;
+                case 2:
+                    m_spriteBatch.DrawString(m_largeFont, text_, position_, colour_);
+                    break;
+                case 3:
+                    m_spriteBatch.DrawString(m_hugeFont, text_, position_, colour_);
+                    break;
+            }
+            
+        }
+
         public static void DrawText(DebugText text_) {
 			// Draw text with standard font, using DebugText
 			// ================
@@ -122,6 +134,10 @@ namespace Project_Cows.Source.System.Graphics {
             }
             Color color = new Color(rgb);
             m_spriteBatch.Draw(TextureHandler.m_particleTexture, position_, color);
+        }
+
+        public static void StartSkidMarks(Vector2 position_) {
+            m_particleHandler.StartSkidMarks((int)position_.X, (int)position_.Y);
         }
 
         public static void StartDriveTrail(Vector2 position_) {

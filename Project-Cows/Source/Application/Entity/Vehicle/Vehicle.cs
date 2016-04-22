@@ -144,6 +144,11 @@ namespace Project_Cows.Source.Application.Entity.Vehicle {
                 float angleToTurn = desiredAngle - angleNow;
                 angleToTurn = FarseerPhysics.Common.MathUtils.Clamp(angleToTurn, -turnPerTimeStep, turnPerTimeStep);
                 float newAngle = angleNow + angleToTurn;
+
+                if (desiredAngle > 0.25) {
+                    GraphicsHandler.StartSkidMarks(t.GetPositionDisplay());
+                }
+
                 m_frontLeftJoint.SetLimits(newAngle, newAngle);
                 m_frontRightJoint.SetLimits(newAngle, newAngle);
 

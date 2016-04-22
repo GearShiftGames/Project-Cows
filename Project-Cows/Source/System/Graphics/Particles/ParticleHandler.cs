@@ -22,12 +22,17 @@ namespace Project_Cows.Source.System.Graphics.Particles {
 
         // Variables
         List<Particle> m_particles;
+        //List<Particle> m_skidMarks;
 
         // Methods
         public ParticleHandler() {
             // ParticleHandler constructor
             // ================
             m_particles = new List<Particle>();
+        }
+
+        public void StartSkidMarks(int x_, int y_) {
+            m_particles.Add(new Particle(new Vector2(x_, y_), 2000, 0, 0, Color.Black));
         }
 
         public void StartFireTrail(int x_, int y_) {

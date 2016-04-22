@@ -119,8 +119,8 @@ namespace Project_Cows.Source.Application {
             }
 
             // Initialise sprites
-            m_animatedSprites.Add(new AnimatedSprite(GraphicsHandler.m_content.Load<Texture2D>("Sprites\\Temp\\animation"), 
-                new Vector2(0.0f, 0.0f), 10, 10, 250, true, 0, 50));
+            m_animatedSprites.Add(new AnimatedSprite(GraphicsHandler.m_content.Load<Texture2D>("Sprites\\Temp\\FlyingPig"), 
+                new Vector2(0.0f, 0.0f), 39, 39, 250, true, 0, 5));
 
             // Start timer
             startTimer.StartTimer(3000.0f);
@@ -205,7 +205,7 @@ namespace Project_Cows.Source.Application {
                         if (m_players[i].m_currentLap == 2)
                         {
                             m_players[i].SetFinished(true);
-                            m_players[i].GetVehicle().m_vehicleBody.GetBody().IsSensor = true;
+                            m_players[i].GetVehicle().SetToSensor();
                             m_players[i].AddFinishTime(gameTime_.ElapsedGameTime.Milliseconds);
                             if (m_winner == 0) {
                                 m_winner = m_players[i].GetID();
@@ -306,10 +306,10 @@ namespace Project_Cows.Source.Application {
             // Render background
             GraphicsHandler.DrawSprite(m_background);
 
-            // Render animated sprites      TEMP
+            // Render animated sprites
             foreach (AnimatedSprite anim_ in m_animatedSprites) {
                 if (anim_.IsVisible()) {
-                    //graphicsHandler_.DrawAnimatedSprite(anim_);
+                    GraphicsHandler.DrawAnimatedSprite(anim_);
                 }
             }
 
@@ -368,11 +368,12 @@ namespace Project_Cows.Source.Application {
 
 
 
-
-            Debug.AddSprite(m_players[0].GetVehicle().m_vehicleTyres[0].GetSprite());
-            Debug.AddSprite(m_players[0].GetVehicle().m_vehicleTyres[1].GetSprite());
-            Debug.AddSprite(m_players[0].GetVehicle().m_vehicleTyres[2].GetSprite());
-            Debug.AddSprite(m_players[0].GetVehicle().m_vehicleTyres[3].GetSprite());
+            foreach(Player p in m_players) {
+                Debug.AddSprite(p.GetVehicle().m_vehicleBody.GetSprite());
+                foreach (Tyre t in p.GetVehicle().m_vehicleTyres) {
+                    Debug.AddSprite(t.GetSprite());
+                }
+            }
 
 
             //GraphicsHandler.DrawSprite(bsv.m_vehicleBody.GetSprite());*/
@@ -380,7 +381,7 @@ namespace Project_Cows.Source.Application {
 
 
             if (!startTimer.timerFinished) {
-                GraphicsHandler.DrawText(((int)(startTimer.timeRemaining / 1000) + 1).ToString(), new Vector2(1000, 50), Color.Red);
+                GraphicsHandler.DrawText(((int)(startTimer.timeRemaining / 1000) + 1).ToString(), new Vector2(1000, 50), Color.Red, 3);
             }
             if(finished){
                 GraphicsHandler.DrawText("Player " + m_winner.ToString() + " is the winner", new Vector2(500, 500), Color.Red);

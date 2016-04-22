@@ -23,8 +23,6 @@
     <File>M:/Project Cows/Project-Cows/Content/Sprites/Utility/entityUncollided.png</File>
     <File>M:/Project Cows/Project-Cows/Content/Sprites/Vehicles/V2_Cow_Army.png</File>
     <File>M:/Project Cows/Project-Cows/Content/Fonts/basic_font.spritefont</File>
-    <File>M:/Project Cows/Project-Cows/Content/Fonts/game_font.spritefont</File>
-    <File>M:/Project Cows/Project-Cows/Content/Fonts/NewSpriteFont.spritefont</File>
     <File>M:/Project Cows/Project-Cows/Content/Sprites/Menu/backButton.png</File>
     <File>M:/Project Cows/Project-Cows/Content/Sprites/Menu/background.png</File>
     <File>M:/Project Cows/Project-Cows/Content/Sprites/Menu/Button_Controls_Normal.png</File>
@@ -82,6 +80,8 @@
     <File>M:/Project Cows/Project-Cows/Content/Sprites/Menu/PlayerSelect/choice3.png</File>
     <File>M:/Project Cows/Project-Cows/Content/Sprites/Menu/PlayerSelect/choice4.png</File>
     <File>M:/Project Cows/Project-Cows/Content/Sprites/Menu/PlayerSelect/vehicleChoice.png</File>
-    <File>M:/Project Cows/Project-Cows/Content/Fonts/Arial.spritefont</File>
+    <File>M:/Project Cows/Project-Cows/Content/Sprites/Temp/FlyingPig.png</File>
+    <File>M:/Project Cows/Project-Cows/Content/Fonts/large_font.spritefont</File>
+    <File>M:/Project Cows/Project-Cows/Content/Fonts/huge_font.spritefont</File>
   </SourceFiles>
 </SourceFileCollection>
