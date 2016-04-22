@@ -47,7 +47,9 @@ namespace Project_Cows.Source.Application {
         private Timer startTimer = new Timer();
 
         private Sprite m_background;
- 
+        private List<Sprite> m_rankingSprites = new List<Sprite>();
+
+        //for use of showing which player is in which position
         private List<int> m_rankings = new List<int>();
 
         int m_winner = 0;
@@ -103,18 +105,29 @@ namespace Project_Cows.Source.Application {
                     m_players.Add(new Player(fs_world, TextureHandler.m_player_1_cow, TextureHandler.m_player_1_vehicle, TextureHandler.m_THELORDANDSAVIOUR, new Vector2(100, Settings.m_screenHeight - 100), h_trackHandler.m_vehicles[i], 0, quad, i + 1));
                     m_players[i].m_controlScheme.SetSteeringSprite(new Sprite(TextureHandler.m_userInterfaceWheelBlue, new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
                     m_players[i].m_controlScheme.SetInterfaceSprite(new Sprite(TextureHandler.m_userInterfaceSlider, new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
+
+                    m_rankingSprites.Add(new Sprite(TextureHandler.m_player_1_vehicle, new Vector2(Settings.m_screenWidth / 2 - 400, Settings.m_screenHeight / 2 - 30), 0, new Vector2(1.0f, 1.0f), true));
+
                 } else if (i == 1) {
                     m_players.Add(new Player(fs_world, TextureHandler.m_player_2_cow, TextureHandler.m_player_2_vehicle, TextureHandler.m_THELORDANDSAVIOUR, new Vector2(Settings.m_screenWidth - 100, Settings.m_screenHeight - 100), h_trackHandler.m_vehicles[i], 0, quad, i + 1));
                     m_players[i].m_controlScheme.SetSteeringSprite(new Sprite(TextureHandler.m_userInterfaceWheelOrange, new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
                     m_players[i].m_controlScheme.SetInterfaceSprite(new Sprite(TextureHandler.m_userInterfaceSlider, new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
+
+                    m_rankingSprites.Add(new Sprite(TextureHandler.m_player_2_vehicle, new Vector2(Settings.m_screenWidth / 2 - 300, Settings.m_screenHeight / 2 - 30), 0, new Vector2(1.0f, 1.0f), true));
+
                 } else if (i == 2) {
                     m_players.Add(new Player(fs_world, TextureHandler.m_player_3_cow, TextureHandler.m_player_3_vehicle, TextureHandler.m_THELORDANDSAVIOUR, new Vector2(100, 100), h_trackHandler.m_vehicles[i], 0, quad, i + 1));
                     m_players[i].m_controlScheme.SetSteeringSprite(new Sprite(TextureHandler.m_userInterfaceWheelPurple, new Vector2(100.0f, 100.0f), 180, new Vector2(1.0f, 1.0f), true));
                     m_players[i].m_controlScheme.SetInterfaceSprite(new Sprite(TextureHandler.m_userInterfaceSlider, new Vector2(100.0f, 100.0f), 180, new Vector2(1.0f, 1.0f), true));
+
+                    m_rankingSprites.Add(new Sprite(TextureHandler.m_player_3_vehicle, new Vector2(Settings.m_screenWidth / 2 - 200, Settings.m_screenHeight / 2 - 30), 0, new Vector2(1.0f, 1.0f), true));
+
                 } else if (i == 3) {
                     m_players.Add(new Player(fs_world, TextureHandler.m_player_4_cow, TextureHandler.m_player_4_vehicle, TextureHandler.m_THELORDANDSAVIOUR, new Vector2(Settings.m_screenWidth - 100, 100), h_trackHandler.m_vehicles[i], 0, quad, i + 1));
                     m_players[i].m_controlScheme.SetSteeringSprite(new Sprite(TextureHandler.m_userInterfaceWheelYellow, new Vector2(100.0f, 100.0f), 180, new Vector2(1.0f, 1.0f), true));
                     m_players[i].m_controlScheme.SetInterfaceSprite(new Sprite(TextureHandler.m_userInterfaceSlider, new Vector2(100.0f, 100.0f), 180, new Vector2(1.0f, 1.0f), true));
+
+                    m_rankingSprites.Add(new Sprite(TextureHandler.m_player_4_vehicle, new Vector2(Settings.m_screenWidth / 2 - 100, Settings.m_screenHeight / 2 - 30), 0, new Vector2(1.0f, 1.0f), true));
                 }
             }
 
@@ -207,7 +220,7 @@ namespace Project_Cows.Source.Application {
                 {
                     for (int i = 0; i < m_players.Count; ++i)
                     {
-                        if (m_players[i].m_currentLap == 4)
+                        if (m_players[i].m_currentLap == Settings.m_number_laps)
                         {
                             m_players[i].SetFinished(true);
                             m_players[i].AddFinishTime(gameTime_.ElapsedGameTime.Milliseconds);
@@ -296,6 +309,12 @@ namespace Project_Cows.Source.Application {
                     cp.GetEntity().UpdateSprites();
                 }
 
+                //this set the sprite for the rankings, to the players to the corresponding rank
+                for (int i = 0; i < m_rankings.Count; i++)
+                {
+                    m_rankingSprites[i].SetTexture(m_players[m_rankings[i] - 1].GetVehicle().m_vehicleBody.GetSprite().GetTexture());
+                }
+              
                 // Update particles
                 m_particles = GraphicsHandler.UpdatePFX(gameTime_.ElapsedGameTime.TotalMilliseconds);
 
@@ -345,21 +364,34 @@ namespace Project_Cows.Source.Application {
                 }
 			}
 
-            // RENDER UI
+            for (int i = 0; i < Settings.m_numberOfPlayers; i ++)
+            {
+                GraphicsHandler.DrawSprite(m_rankingSprites[i]);
+            }
 
-            // Render ranking text
-            if (m_rankings.Count != 0) {
-                GraphicsHandler.DrawText(new DebugText("1st - Player " + m_rankings[0].ToString(), new Vector2(1000f, 440f)));
-                if (m_rankings.Count > 1) {
-                    GraphicsHandler.DrawText(new DebugText("2nd - Player " + m_rankings[1].ToString(), new Vector2(1000f, 460f)));
-                    if (m_rankings.Count > 2) {
-                        GraphicsHandler.DrawText(new DebugText("3rd - Player " + m_rankings[2].ToString(), new Vector2(1000f, 480f)));
-                        if (m_rankings.Count > 3) {
-                            GraphicsHandler.DrawText(new DebugText("4th - Player " + m_rankings[3].ToString(), new Vector2(1000f, 500f)));
+                // RENDER UI
+
+                // Render ranking text
+                if (m_rankings.Count != 0)
+                {
+                    GraphicsHandler.DrawText(new DebugText("1st - Player " + m_rankings[0].ToString(), new Vector2(Settings.m_screenWidth / 2 - 450, Settings.m_screenHeight / 2 - 80)));
+                   
+                    if (m_rankings.Count > 1)
+                    {
+                        GraphicsHandler.DrawText(new DebugText("2nd - Player " + m_rankings[1].ToString(), new Vector2(Settings.m_screenWidth / 2 - 350, Settings.m_screenHeight / 2 - 80)));
+                        if (m_rankings.Count > 2)
+                        {
+                            GraphicsHandler.DrawText(new DebugText("3rd - Player " + m_rankings[2].ToString(), new Vector2(Settings.m_screenWidth / 2 - 250, Settings.m_screenHeight / 2 - 80)));
+                            if (m_rankings.Count > 3)
+                            {
+                                GraphicsHandler.DrawText(new DebugText("4th - Player " + m_rankings[3].ToString(), new Vector2(Settings.m_screenWidth / 2 - 150, Settings.m_screenHeight / 2 - 80)));
+                            }
                         }
                     }
                 }
-            }
+
+                
+
 
             /*if (m_rankings.Count != 0) {
                 GraphicsHandler.DrawText(new DebugText("1st - Player " + m_players[0].GetRaceTime(), new Vector2(1000f, 440f)));
@@ -395,7 +427,6 @@ namespace Project_Cows.Source.Application {
             if(finished){
                 GraphicsHandler.DrawText("Player " + m_winner.ToString() + " is the winner", new Vector2(500, 500), Color.Red);
             }
-            
 
             // Stop rendering graphics
             GraphicsHandler.StopDrawing();
