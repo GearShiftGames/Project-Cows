@@ -53,6 +53,7 @@
     <Compile Include="Source\Application\Track\CheckpointContainer.cs" />
     <Compile Include="Source\Application\Track\TrackHandler.cs" />
     <Compile Include="Source\Application\VictoryState.cs" />
+    <Compile Include="Source\System\AudioHandler.cs" />
     <Compile Include="Source\System\Debug.cs" />
     <Compile Include="Source\System\FrameCounter.cs" />
     <Compile Include="Source\System\Graphics\GraphicsHandler.cs" />

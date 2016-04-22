@@ -62,6 +62,8 @@ namespace Project_Cows.Source.Application {
 
             TextureHandler.LoadContent();
 
+            AudioHandler.LoadContent();
+
 			// Initialise states
             m_menuState = new MenuState();
             m_inGameState = new InGameState();

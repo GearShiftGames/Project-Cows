@@ -17,6 +17,8 @@ using System.Linq;
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Media;
 
 using FarseerPhysics.Dynamics;
 using FarseerPhysics.Dynamics.Joints;
@@ -38,6 +40,7 @@ namespace Project_Cows.Source.Application.Entity.Vehicle {
         private RevoluteJoint m_frontRightJoint;
         private RevoluteJoint m_backLeftJoint;
         private RevoluteJoint m_backRightJoint;
+        private SoundEffectInstance go, carbrake; // ADDED
 
         // Methods
         public Vehicle(World world_, Texture2D texture_, EntityStruct entityStruct_) {
@@ -110,6 +113,12 @@ namespace Project_Cows.Source.Application.Entity.Vehicle {
 
             m_vehicleBody.SetRotationDegrees(entityStruct_.GetRotationDegrees());
             m_vehicleBody.UpdateSprites();
+
+            // AUDIO
+
+            //TouchPanel.EnableMouseTouchPoint = true;//ADDED
+            go = AudioHandler.cargo.CreateInstance();//ADDED
+            carbrake = AudioHandler.brake.CreateInstance();//ADDED
         }
 
         public void Update(int ranking_, float steeringValue_ = 0, bool braking_ = false) {
@@ -148,6 +157,18 @@ namespace Project_Cows.Source.Application.Entity.Vehicle {
                 m_frontRightJoint.SetLimits(newAngle, newAngle);
 
                 t.UpdateSprites();
+
+                // AUDIO
+                if (!braking_)
+                {
+                    carbrake.Stop(); //ADDED
+                    go.Play(); // ADDED
+                }
+                else
+                {
+                    go.Stop(); //ADDED
+                    carbrake.Play(); // ADDED
+                }
             }
 
             Debug.AddText("Body position D: " + FarseerPhysics.ConvertUnits.ToDisplayUnits(m_vehicleBody.GetPosition()).ToString(), new Vector2(10, 300));
