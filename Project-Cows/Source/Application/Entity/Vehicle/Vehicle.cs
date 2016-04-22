@@ -160,6 +160,14 @@ namespace Project_Cows.Source.Application.Entity.Vehicle {
             Debug.AddText("FR rotation: " + Util.RadiansToDegrees(m_frontRightJoint.JointAngle).ToString(), new Vector2(10, 460));
             m_vehicleBody.UpdateSprites();
         }
+
+        public void SetToSensor() {
+            m_vehicleBody.GetBody().IsSensor = true;
+            for (int i = 0; i < 4; i++) {
+                m_vehicleTyres[i].GetBody().IsSensor = true;
+            }
+        }
+    
     }
 }
 
