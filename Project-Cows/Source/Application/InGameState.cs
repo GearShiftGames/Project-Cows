@@ -159,11 +159,6 @@ namespace Project_Cows.Source.Application {
                         playerTouches[index].Add(tl);
                     }
                 }
-
-                // TODO:
-                // Check if touch zone has had three simultaneous touches
-                // Penalise player
-                // NOTE: This should probably be done in the respective players' ControlScheme object -Dean
             }
 
             //only want to do this when the main game isnt running
@@ -207,9 +202,10 @@ namespace Project_Cows.Source.Application {
                 {
                     for (int i = 0; i < m_players.Count; ++i)
                     {
-                        if (m_players[i].m_currentLap == 4)
+                        if (m_players[i].m_currentLap == 2)
                         {
                             m_players[i].SetFinished(true);
+                            m_players[i].GetVehicle().m_vehicleBody.GetBody().IsSensor = true;
                             m_players[i].AddFinishTime(gameTime_.ElapsedGameTime.Milliseconds);
                             if (m_winner == 0) {
                                 m_winner = m_players[i].GetID();
@@ -283,12 +279,6 @@ namespace Project_Cows.Source.Application {
                             anim.ChangeFrame(gameTime_.TotalGameTime.TotalMilliseconds);
                         }
                     }
-                }
-
-                foreach (Player p in m_players)
-                {
-                    // FIXME: Should this be commented out? 
-                    //p.UpdateSprites();
                 }
 
                 foreach (CheckpointContainer cp in h_trackHandler.m_checkpoints)
@@ -379,10 +369,10 @@ namespace Project_Cows.Source.Application {
 
 
 
-            /*Debug.AddSprite(m_players[0].GetVehicle().m_vehicleTyres[0].GetSprite());
+            Debug.AddSprite(m_players[0].GetVehicle().m_vehicleTyres[0].GetSprite());
             Debug.AddSprite(m_players[0].GetVehicle().m_vehicleTyres[1].GetSprite());
             Debug.AddSprite(m_players[0].GetVehicle().m_vehicleTyres[2].GetSprite());
-            Debug.AddSprite(m_players[0].GetVehicle().m_vehicleTyres[3].GetSprite());*/
+            Debug.AddSprite(m_players[0].GetVehicle().m_vehicleTyres[3].GetSprite());
 
 
             //GraphicsHandler.DrawSprite(bsv.m_vehicleBody.GetSprite());*/
