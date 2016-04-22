@@ -217,18 +217,6 @@
 /processorParam:TextureFormat=Compressed
 /build:Fonts/basic_font.spritefont
 
-#begin Fonts/game_font.spritefont
-/importer:FontDescriptionImporter
-/processor:FontDescriptionProcessor
-/processorParam:TextureFormat=Compressed
-/build:Fonts/game_font.spritefont
-
-#begin Fonts/NewSpriteFont.spritefont
-/importer:FontDescriptionImporter
-/processor:FontDescriptionProcessor
-/processorParam:TextureFormat=Compressed
-/build:Fonts/NewSpriteFont.spritefont
-
 #begin Sprites/Menu/backButton.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -856,11 +844,28 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/Menu/PlayerSelect/vehicleChoice.png
 
-#begin Fonts/Arial.spritefont
+#begin Sprites/Temp/FlyingPig.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Temp/FlyingPig.png
+
+#begin Fonts/large_font.spritefont
 /importer:FontDescriptionImporter
 /processor:FontDescriptionProcessor
 /processorParam:TextureFormat=Compressed
-/build:Fonts/Arial.spritefont
+/build:Fonts/large_font.spritefont
+
+#begin Fonts/huge_font.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:TextureFormat=Compressed
+/build:Fonts/huge_font.spritefont
 
 #begin Audio/Brake.mp3
 /importer:Mp3Importer

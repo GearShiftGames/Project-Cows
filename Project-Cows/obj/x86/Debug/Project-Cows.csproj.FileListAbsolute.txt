@@ -495,3 +495,6 @@ M:\Project Cows Git\Project-Cows\bin\Windows\Debug\Content\Audio\Driving.wma
 M:\Project Cows Git\Project-Cows\bin\Windows\Debug\Content\Audio\Driving.xnb
 M:\Project Cows Git\Project-Cows\bin\Windows\Debug\Content\Audio\Single Cow-SoundBible.com-2051754137.wma
 M:\Project Cows Git\Project-Cows\bin\Windows\Debug\Content\Audio\Single Cow-SoundBible.com-2051754137.xnb
+M:\Project Cows Git\Project-Cows\bin\Windows\Debug\Content\Fonts\huge_font.xnb
+M:\Project Cows Git\Project-Cows\bin\Windows\Debug\Content\Fonts\large_font.xnb
+M:\Project Cows Git\Project-Cows\bin\Windows\Debug\Content\Sprites\Temp\FlyingPig.xnb

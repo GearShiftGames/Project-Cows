@@ -87,6 +87,7 @@ namespace Project_Cows.Source.Application.Entity.Vehicle {
                 // Apply necessary force
                 float force = 0;
                 if (m_braking) {
+                    //GraphicsHandler.StartSkidMarks(new Vector2(FarseerPhysics.ConvertUnits.ToDisplayUnits(GetBody().Position.X), FarseerPhysics.ConvertUnits.ToDisplayUnits(GetBody().Position.Y)));
                     force = MAX_REVERSE_DRIVE_FORCE;
                 }else{
                     force = MAX_DRIVE_FORCE;
@@ -94,7 +95,7 @@ namespace Project_Cows.Source.Application.Entity.Vehicle {
 
                 if (!m_braking) {
                     if (desiredSpeed > currentSpeed) {
-                        force *= 1;
+                        force *= 1;                             // Dean did this   
                     } else if (desiredSpeed < currentSpeed) {
                         force *= -1;
                     } else {
