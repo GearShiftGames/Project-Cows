@@ -30,13 +30,21 @@ namespace Project_Cows.Source.System.Graphics {
         public static Texture2D m_menuControls;
         public static Texture2D m_menuOptions;
         public static Texture2D m_menuCredits;
+        public static Texture2D m_menuMain;  
         public static Texture2D m_menu1;
         public static Texture2D m_menu2;
         public static Texture2D m_menu3;
         public static Texture2D m_menu4;
+        public static Texture2D m_controlInfo;
 
         // Victory Screen
         public static Texture2D m_victoryBackground;
+        public static Texture2D m_menuRaceAgain;
+        public static Texture2D m_trophyFirst;
+        public static Texture2D m_trophySecond;
+        public static Texture2D m_trophyThird;
+        public static Texture2D m_leaderboard;
+
         // Used for character selection & vehicle selection
         public static Texture2D m_player_1_cow;
         public static Texture2D m_player_2_cow;
@@ -78,6 +86,7 @@ namespace Project_Cows.Source.System.Graphics {
         public static Texture2D m_gameBackground;
         public static Texture2D m_gameBarrier;
         public static Texture2D m_gameFinishLine;
+        public static Texture2D m_grassBackground;
         // Debug
         public static Texture2D m_debugCorner;
         public static Texture2D m_debugCheckpoint;
@@ -100,21 +109,27 @@ namespace Project_Cows.Source.System.Graphics {
             // Menu
             LoadTexture(ref m_menuBackground, "Sprites\\Menu\\background");
             LoadTexture(ref m_menuBack, "Sprites\\Menu\\backButton");
-            LoadTexture(ref m_menuPlay, "Sprites\\Menu\\Button_Play_Normal");
             LoadTexture(ref m_menuExit, "Sprites\\Menu\\exitButton");
+            LoadTexture(ref m_menuPlay, "Sprites\\Menu\\Button_Play_Normal");   
             LoadTexture(ref m_menuControls, "Sprites\\Menu\\Button_Controls_Normal");
             LoadTexture(ref m_menuOptions, "Sprites\\Menu\\Button_Options_Normal");
-            LoadTexture(ref m_menuPlay, "Sprites\\Menu\\Button_Play_Normal");
-            LoadTexture(ref m_menuExit, "Sprites\\Menu\\exitButton");
             LoadTexture(ref m_menuCredits, "Sprites\\Menu\\creditsButton");
+            LoadTexture(ref m_menuMain, "Sprites\\Menu\\Button_Menu_Normal");
+         
             LoadTexture(ref m_menu1, "Sprites\\Menu\\1Button");
             LoadTexture(ref m_menu2, "Sprites\\Menu\\2Button");
             LoadTexture(ref m_menu3, "Sprites\\Menu\\3Button");
             LoadTexture(ref m_menu4, "Sprites\\Menu\\4Button");
+            LoadTexture(ref m_controlInfo, "Sprites\\Menu\\controls");
 
             // Victory Screen
-            LoadTexture(ref m_victoryBackground, "Sprites\\Menu\\Victory_Screen");
-
+            LoadTexture(ref m_victoryBackground, "Sprites\\Menu\\Victory\\Victory_Screen");
+            LoadTexture(ref m_menuRaceAgain, "Sprites\\Menu\\Victory\\Button_Race_Again");
+            LoadTexture(ref m_trophyFirst, "Sprites\\Menu\\Victory\\Trophy");
+            LoadTexture(ref m_trophySecond, "Sprites\\Menu\\Victory\\Trophy_Silver");
+            LoadTexture(ref m_trophyThird, "Sprites\\Menu\\Victory\\Trophy_Bronze");
+            LoadTexture(ref m_leaderboard, "Sprites\\Menu\\Victory\\Leaderboard_NoText");
+            
             // Vehicles
             LoadTexture(ref m_vehicleBlue, "Sprites\\Vehicles\\Cow_Car_Blue");
             LoadTexture(ref m_vehicleOrange, "Sprites\\Vehicles\\Cow_Car_Orange");
@@ -132,11 +147,6 @@ namespace Project_Cows.Source.System.Graphics {
              *LoadTexture(ref m_tractorYellow, "Sprites\\Vehicles\\Cow_Tractor_Yellow");
              */
             LoadTexture(ref m_cow21, "Sprites\\Vehicles\\cow2.1");
-            // Vehicles
-            LoadTexture(ref m_vehicleBlue, "Sprites\\Vehicles\\vehicleBlue");
-            LoadTexture(ref m_vehicleOrange, "Sprites\\Vehicles\\vehicleOrange");
-            LoadTexture(ref m_vehiclePurple, "Sprites\\Vehicles\\vehiclePurple");
-            LoadTexture(ref m_vehicleYellow, "Sprites\\Vehicles\\vehicleYellow");
             LoadTexture(ref m_cow1, "Sprites\\Vehicles\\cow1");
             LoadTexture(ref m_cow2, "Sprites\\Vehicles\\cow2");
             LoadTexture(ref m_cow3, "Sprites\\Vehicles\\cow3");
@@ -153,6 +163,7 @@ namespace Project_Cows.Source.System.Graphics {
             LoadTexture(ref m_gameBackground, "Sprites\\Track\\background");
             LoadTexture(ref m_gameBarrier, "Sprites\\Track\\Barriers\\barrier");
             LoadTexture(ref m_gameFinishLine, "Sprites\\Track\\finishLine");
+            LoadTexture(ref m_grassBackground, "Sprites\\Track\\Grass");
             
             // Debug
             LoadTexture(ref m_debugCorner, "Sprites\\Utility\\corner");

@@ -28,7 +28,8 @@ namespace Project_Cows.Source.System.StateMachine {
 		protected GameState m_nextState;
 		protected ExecutionState m_currentExecutionState;
 
-        protected List<Player> m_players;
+        protected static List<Player> m_players;
+        protected static List<int>    m_rankings;
 
 		// Methods
 		public State() { }

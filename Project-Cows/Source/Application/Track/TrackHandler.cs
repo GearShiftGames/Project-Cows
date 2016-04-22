@@ -32,7 +32,7 @@ namespace Project_Cows.Source.Application.Track {
         public List<CheckpointContainer> m_checkpoints = new List<CheckpointContainer>();
         public List<EntityStruct> m_vehicles = new List<EntityStruct>();
         public List<Barrier> m_barriers = new List<Barrier>();      // TEMP
-        private List<int> m_rankings = new List<int>();
+        private List<int> m_rank = new List<int>();
 
         private World fs_world;
 
@@ -48,7 +48,7 @@ namespace Project_Cows.Source.Application.Track {
             m_checkpoints.Clear();
             m_vehicles.Clear();
             m_barriers.Clear();
-            m_rankings.Clear();
+            m_rank.Clear();
 
             // Add checkpoints
             Level.LoadLevel("0");       // NOTE: This would be done in the in-game state in future -Dean
@@ -111,8 +111,8 @@ namespace Project_Cows.Source.Application.Track {
             }
 
             // Get rankings
-            m_rankings.Clear();
-            while (m_rankings.Count != players_.Count) {
+            m_rank.Clear();
+            while (m_rank.Count != players_.Count) {
                 int highestID = 0;
                 int highestScore = 0;
 
@@ -121,7 +121,7 @@ namespace Project_Cows.Source.Application.Track {
                     int checkpointScore = p.m_currentLap * (m_checkpoints.Count - 1) + p.m_currentCheckpoint.GetID();
                     if (checkpointScore > highestScore) {
                         bool ranked = false;
-                        foreach (int i in m_rankings) {
+                        foreach (int i in m_rank) {
                             if (p.GetID() == i) {
                                 ranked = true;
                             }
@@ -134,10 +134,10 @@ namespace Project_Cows.Source.Application.Track {
                     }
                 }
                 // Add front-most player to rankings
-                m_rankings.Add(highestID);
+                m_rank.Add(highestID);
             }
 
-            rankings_ = m_rankings;
+            rankings_ = m_rank;
 
             foreach (Barrier b in m_barriers) {
                 b.UpdateSprites();

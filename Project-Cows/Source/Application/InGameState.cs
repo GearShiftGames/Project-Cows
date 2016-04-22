@@ -53,8 +53,10 @@ namespace Project_Cows.Source.Application {
         private Timer startTimer = new Timer();
 
         private Sprite m_background;
+        private Sprite m_grassbackground;
  
-        private List<int> m_rankings = new List<int>();
+      //  private List<int> m_rankings = new List<int>();
+
 
         int winner = 0;
 
@@ -85,12 +87,17 @@ namespace Project_Cows.Source.Application {
             //bsv = new BestSuperVehicle(fs_world, TextureHandler.m_vehicleOrange, new EntityStruct(new Vector2(1000, 500), 0f));
 
             m_background = new Sprite(TextureHandler.m_gameBackground, new Vector2(Settings.m_screenWidth / 2, Settings.m_screenHeight / 2), 0.0f, Vector2.One);
+            m_grassbackground = new Sprite(TextureHandler.m_grassBackground, new Vector2(0.0f, 0.0f), 0.0f, new Vector2(2.0f,2.0f));
 
             h_trackHandler.Initialise(fs_world);
 
             //Ready Up Stuff
             PlayersReady = true;
             NoPlayersReady = 0;
+
+            // Initialise rankings
+            m_rankings = new List<int>();
+            m_rankings.Clear();
 
 			// Initialise players
             m_players = new List<Player>();
@@ -330,6 +337,7 @@ namespace Project_Cows.Source.Application {
             GraphicsHandler.StartDrawing();
 
             // Render background
+            GraphicsHandler.DrawSprite(m_grassbackground);
             GraphicsHandler.DrawSprite(m_background);
 
             // Render animated sprites      TEMP
@@ -366,11 +374,14 @@ namespace Project_Cows.Source.Application {
             // Render ranking text
             if (m_rankings.Count != 0) {
                 GraphicsHandler.DrawText(new DebugText("1st - Player " + m_rankings[0].ToString(), new Vector2(1000f, 440f)));
-                if (m_rankings.Count > 1) {
+                if (m_rankings.Count > 1)
+                {
                     GraphicsHandler.DrawText(new DebugText("2nd - Player " + m_rankings[1].ToString(), new Vector2(1000f, 460f)));
-                    if (m_rankings.Count > 2) {
+                    if (m_rankings.Count > 2)
+                    {
                         GraphicsHandler.DrawText(new DebugText("3rd - Player " + m_rankings[2].ToString(), new Vector2(1000f, 480f)));
-                        if (m_rankings.Count > 3) {
+                        if (m_rankings.Count > 3)
+                        {
                             GraphicsHandler.DrawText(new DebugText("4th - Player " + m_rankings[3].ToString(), new Vector2(1000f, 500f)));
                         }
                     }
@@ -411,8 +422,6 @@ namespace Project_Cows.Source.Application {
             if(finished){
                 GraphicsHandler.DrawText("Player " + winner.ToString() + " is the winner", new Vector2(500, 500), Color.Red);
             }
-            
-
             // Stop rendering graphics
             GraphicsHandler.StopDrawing();
 		}

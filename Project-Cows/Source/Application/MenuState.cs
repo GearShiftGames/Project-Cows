@@ -47,11 +47,13 @@ namespace Project_Cows.Source.Application {
         private Sprite m_player_3_vehicle;
         private Sprite m_player_4_cow;
         private Sprite m_player_4_vehicle;
+        private Sprite m_control_scheme;
+        
         // Buttons
         private Button m_playButton;
         private Button m_optionsButton;
         private Button m_exitButton;
-        private Button m_backButton;
+        private Button m_MenuButton;
         private Button m_creditsButton;
         private Button m_controlsButton;
         private Button m_1Button;
@@ -89,7 +91,8 @@ namespace Project_Cows.Source.Application {
 
             // Initialise sprites
             m_background =      new Sprite(TextureHandler.m_menuBackground, new Vector2(Settings.m_screenWidth / 2, Settings.m_screenHeight / 2), 0, Vector2.One);
-            m_teamLogo =        new Sprite(TextureHandler.m_teamLogo,       new Vector2(Settings.m_screenWidth / 1.2f, Settings.m_screenHeight / 6), 0, Vector2.One);
+            m_teamLogo =        new Sprite(TextureHandler.m_teamLogo,       new Vector2(Settings.m_screenWidth - 150, Settings.m_screenHeight / 11), 0, new  Vector2(0.5f,0.5f));
+            m_control_scheme =  new Sprite(TextureHandler.m_controlInfo,    new Vector2(Settings.m_screenWidth * 0.5f, Settings.m_screenHeight * 0.5f), 0, Vector2.One);
             //m_gameLogo = new Sprite(TextureHandler.m_gameLogo, new Vector2(Settings.m_screenWidth / 2, Settings.m_screenHeight / 2), 0, Vector2.One);
             // Not sure about this part. Maybe Move to update function
             m_player_1_cow =    new Sprite(TextureHandler.m_cow1,           new Vector2(Settings.m_screenWidth * 0.50f - 10.0f, Settings.m_screenHeight * 0.75f ), 0, new Vector2(0.1f, 0.1f));
@@ -104,7 +107,7 @@ namespace Project_Cows.Source.Application {
             m_playButton =      new Button(TextureHandler.m_menuPlay,       new Vector2(Settings.m_screenWidth * 0.25f, Settings.m_screenHeight * 0.75f));
             m_optionsButton =   new Button(TextureHandler.m_menuOptions,    new Vector2(Settings.m_screenWidth * 0.50f, Settings.m_screenHeight * 0.75f));
             m_controlsButton =  new Button(TextureHandler.m_menuControls,   new Vector2(Settings.m_screenWidth * 0.75f, Settings.m_screenHeight * 0.75f));
-            m_backButton =      new Button(TextureHandler.m_menuBack,       new Vector2(Settings.m_screenWidth * 0.75f, Settings.m_screenHeight * 0.75f));
+            m_MenuButton =      new Button(TextureHandler.m_menuMain,       new Vector2(Settings.m_screenWidth * 0.75f, Settings.m_screenHeight * 0.75f));
             m_creditsButton =   new Button(TextureHandler.m_menuCredits,    new Vector2(Settings.m_screenWidth * 0.90f, Settings.m_screenHeight * 0.90f));
             m_exitButton =      new Button(TextureHandler.m_menuExit,       new Vector2(Settings.m_screenWidth * 0.50f, Settings.m_screenHeight * 0.90f));
             m_1Button =         new Button(TextureHandler.m_menu1,          new Vector2(Settings.m_screenWidth * 0.33f, Settings.m_screenHeight * 0.50f));
@@ -169,6 +172,15 @@ namespace Project_Cows.Source.Application {
             if (Keyboard.GetState().IsKeyDown(Keys.P))
             {
                 m_currentScreen = MenuScreenState.PLAYER_4_SELECT;
+            }
+            if (Keyboard.GetState().IsKeyDown(Keys.A))
+            {
+                m_currentScreen = MenuScreenState.CONTROLS;
+            }
+            if (Keyboard.GetState().IsKeyDown(Keys.D))
+            {
+                m_nextState = GameState.VICTORY_SCREEN;
+                m_currentExecutionState = ExecutionState.CHANGING;
             }
               
             // Change player count with keys - TEMP
@@ -250,6 +262,11 @@ namespace Project_Cows.Source.Application {
                             // Go to Options
                             m_currentScreen = MenuScreenState.OPTIONS;
                         }
+                        if (m_controlsButton.m_touchZone.IsInsideZone(m_lastPosition) && m_controlsButton.m_active)
+                        {
+                            // Go to control scheme screen
+                            m_currentScreen = MenuScreenState.CONTROLS;
+                        }
                         break;
                     case MenuScreenState.PLAYER_SELECT:
                         // Player Select screen
@@ -278,7 +295,7 @@ namespace Project_Cows.Source.Application {
                             m_currentScreen = MenuScreenState.PLAYER_1_SELECT;
                         
                         }
-                        if (m_backButton.m_touchZone.IsInsideZone(m_lastPosition) && m_backButton.m_active) {
+                        if (m_MenuButton.m_touchZone.IsInsideZone(m_lastPosition) && m_MenuButton.m_active) {
                             // Go back to Main Menu
                             m_currentScreen = MenuScreenState.MAIN_MENU;
                         }
@@ -479,7 +496,7 @@ namespace Project_Cows.Source.Application {
                             // Start the game
                             m_currentExecutionState = ExecutionState.CHANGING;
                         }
-                        if (m_backButton.m_touchZone.IsInsideZone(m_lastPosition) && m_backButton.m_active) {
+                        if (m_MenuButton.m_touchZone.IsInsideZone(m_lastPosition) && m_MenuButton.m_active) {
                             // Go back to Player Select
                             m_currentScreen = MenuScreenState.PLAYER_SELECT;
                         }
@@ -487,14 +504,14 @@ namespace Project_Cows.Source.Application {
                     case MenuScreenState.OPTIONS:
                         // Options screen
 
-                        if (m_backButton.m_touchZone.IsInsideZone(m_lastPosition) && m_backButton.m_active) {
+                        if (m_MenuButton.m_touchZone.IsInsideZone(m_lastPosition) && m_MenuButton.m_active) {
                             // Go back to Main Menu
                             m_currentScreen = MenuScreenState.MAIN_MENU;
                         }
                         break;
                     case MenuScreenState.CONTROLS:
                         // Controls Screen
-                        if (m_backButton.m_touchZone.IsInsideZone(m_lastPosition) && m_backButton.m_active)
+                        if (m_MenuButton.m_touchZone.IsInsideZone(m_lastPosition) && m_MenuButton.m_active)
                         {
                             // Go back to the main Menu
                             m_currentScreen = MenuScreenState.MAIN_MENU;
@@ -503,7 +520,7 @@ namespace Project_Cows.Source.Application {
                     case MenuScreenState.CREDITS:
                         // Credits screen
 
-                        if (m_backButton.m_touchZone.IsInsideZone(m_lastPosition) && m_backButton.m_active) {
+                        if (m_MenuButton.m_touchZone.IsInsideZone(m_lastPosition) && m_MenuButton.m_active) {
                             // Go back to Main Menu
                             m_currentScreen = MenuScreenState.MAIN_MENU;
                         }
@@ -555,7 +572,7 @@ namespace Project_Cows.Source.Application {
                     GraphicsHandler.DrawText("Player Selection", new Vector2(Settings.m_screenWidth * 0.50f, Settings.m_screenHeight * 0.50f), Color.Black);
                     GraphicsHandler.DrawText("Number of Players: " + Settings.m_numberOfPlayers.ToString(), new Vector2(Settings.m_screenWidth * 0.475f, Settings.m_screenHeight * 0.5625f), Color.Black);
                     GraphicsHandler.DrawSprite(m_playButton.m_sprite);
-                    GraphicsHandler.DrawSprite(m_backButton.m_sprite);
+                    GraphicsHandler.DrawSprite(m_MenuButton.m_sprite);
                     GraphicsHandler.DrawSprite(m_1Button.m_sprite);
                     GraphicsHandler.DrawSprite(m_2Button.m_sprite);
                     GraphicsHandler.DrawSprite(m_3Button.m_sprite);
@@ -614,18 +631,19 @@ namespace Project_Cows.Source.Application {
                 case MenuScreenState.TRACK_SELECT:
                     GraphicsHandler.DrawText("Track Selection", new Vector2(Settings.m_screenWidth / 2, Settings.m_screenHeight / 2), Color.Black);
                     GraphicsHandler.DrawSprite(m_playButton.m_sprite);
-                    GraphicsHandler.DrawSprite(m_backButton.m_sprite);
+                    GraphicsHandler.DrawSprite(m_MenuButton.m_sprite);
                     // Insert buttons for playable tracks
                     break;
                 case MenuScreenState.OPTIONS:
                     // Insert buttons for options
                     GraphicsHandler.DrawText("Options", new Vector2(Settings.m_screenWidth / 2, Settings.m_screenHeight / 2), Color.Black);
-                    GraphicsHandler.DrawSprite(m_backButton.m_sprite);
+                    GraphicsHandler.DrawSprite(m_MenuButton.m_sprite);
                     break;
                 case MenuScreenState.CONTROLS:
                     // Insert control scheme layout
                     GraphicsHandler.DrawText("Controls", new Vector2(Settings.m_screenWidth / 2, Settings.m_screenHeight / 2), Color.Black);
-                    GraphicsHandler.DrawSprite(m_backButton.m_sprite);
+                    GraphicsHandler.DrawSprite(m_control_scheme);
+                    GraphicsHandler.DrawSprite(m_MenuButton.m_sprite);
                     break;
                 case MenuScreenState.CREDITS:
                     // Insert text for credits
@@ -640,7 +658,7 @@ namespace Project_Cows.Source.Application {
                     GraphicsHandler.DrawText("Game Design: Dwyer McNally", new Vector2(Settings.m_screenWidth / 2 - 100, Settings.m_screenHeight * 0.4f + 175), Color.Black);
                     GraphicsHandler.DrawText("Art: Gillian Annandale", new Vector2(Settings.m_screenWidth / 2 - 100, Settings.m_screenHeight * 0.4f + 200), Color.Black);
                     GraphicsHandler.DrawText("Audio: Russell Ferguson", new Vector2(Settings.m_screenWidth / 2 - 100, Settings.m_screenHeight * 0.4f + 225), Color.Black);
-                    GraphicsHandler.DrawSprite(m_backButton.m_sprite);
+                    GraphicsHandler.DrawSprite(m_MenuButton.m_sprite);
                     break;
             }
             
