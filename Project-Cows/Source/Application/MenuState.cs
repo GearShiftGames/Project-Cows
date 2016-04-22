@@ -396,6 +396,13 @@ namespace Project_Cows.Source.Application {
                                     pss.m_playerState = PlayerState.VEHICLE_SELECTED;
                                 }
                             }
+                            else if (pss.m_playerState == PlayerState.VEHICLE_SELECTED)
+                            {
+                                if (pss.m_actionButton.Activated(m_lastPosition))
+                                {
+                                    pss.m_playerState = PlayerState.READY;
+                                }
+                            }
 
                             counter++;
                         }
