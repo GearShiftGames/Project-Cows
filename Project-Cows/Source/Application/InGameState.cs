@@ -91,8 +91,8 @@ namespace Project_Cows.Source.Application {
             int playerIndex = 0;
 
             if (Settings.m_joinedPlayers[0]) {
-                m_players.Add(new Player(fs_world, TextureHandler.m_player_1_cow, TextureHandler.m_player_1_vehicle, TextureHandler.m_THELORDANDSAVIOUR, new Vector2(Settings.m_screenWidth - 100, Settings.m_screenHeight - 100), h_trackHandler.m_vehicles[playerIndex], 0, Quadrent.BOTTOM_RIGHT, playerIndex + 1));
-                m_players[m_players.Count-1].m_controlScheme.SetSteeringSprite(new Sprite(TextureHandler.m_userInterfaceWheelOrange, new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
+                m_players.Add(new Player(fs_world, TextureHandler.m_player_1_cow, TextureHandler.m_player_1_vehicle, TextureHandler.m_THELORDANDSAVIOUR, new Vector2(Settings.m_screenWidth - 100, Settings.m_screenHeight - 100), h_trackHandler.m_vehicles[playerIndex], 0, Quadrent.BOTTOM_LEFT, playerIndex + 1));
+                m_players[m_players.Count-1].m_controlScheme.SetSteeringSprite(new Sprite(TextureHandler.m_userInterfaceWheelBlue, new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
                 m_players[m_players.Count-1].m_controlScheme.SetInterfaceSprite(new Sprite(TextureHandler.m_userInterfaceSlider, new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
                 m_rankingSprites.Add(new Sprite(TextureHandler.m_player_1_vehicle, new Vector2(Settings.m_screenWidth / 2 - 400, Settings.m_screenHeight / 2 - 30), 0, new Vector2(1.0f, 1.0f), true));
                 playerIndex++;
@@ -399,7 +399,7 @@ namespace Project_Cows.Source.Application {
 
 
 
-                    Debug.AddSprite(m_players[0].GetVehicle().m_vehicleTyres[0].GetSprite());
+            Debug.AddSprite(m_players[0].GetVehicle().m_vehicleTyres[0].GetSprite());
             Debug.AddSprite(m_players[0].GetVehicle().m_vehicleTyres[1].GetSprite());
             Debug.AddSprite(m_players[0].GetVehicle().m_vehicleTyres[2].GetSprite());
             Debug.AddSprite(m_players[0].GetVehicle().m_vehicleTyres[3].GetSprite());

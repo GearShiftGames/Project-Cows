@@ -51,11 +51,38 @@ namespace Project_Cows.Source.System.Graphics {
         public static Texture2D m_player_3_vehicle;
         public static Texture2D m_player_4_vehicle;
         // Vehicle
+        #region playableVehicles
+
         public static Texture2D m_vehicleBlue;
         public static Texture2D m_vehicleOrange;
         public static Texture2D m_vehiclePurple;
+        public static Texture2D m_vehicleWhite;
         public static Texture2D m_vehicleYellow;
+
         public static Texture2D m_tractorBlue;
+        public static Texture2D m_tractorOrange;
+        public static Texture2D m_tractorPurple;
+        public static Texture2D m_tractorWhite;
+        public static Texture2D m_tractorYellow;
+
+        #endregion
+
+        #region DisplayVehicles
+
+        public static Texture2D m_Display_vehicleBlue;
+        public static Texture2D m_Display_vehicleOrange;
+        public static Texture2D m_Display_vehiclePurple;
+        public static Texture2D m_Display_vehicleWhite;
+        public static Texture2D m_Display_vehicleYellow;
+
+        public static Texture2D m_Display_tractorBlue;
+        public static Texture2D m_Display_tractorOrange;
+        public static Texture2D m_Display_tractorPurple;
+        public static Texture2D m_Display_tractorWhite;
+        public static Texture2D m_Display_tractorYellow;
+
+        #endregion
+
         public static Texture2D m_tankGreen;
         // Waiting for these assets
         /*
@@ -115,7 +142,7 @@ namespace Project_Cows.Source.System.Graphics {
             LoadTexture(ref m_menuExit, "Sprites\\Menu\\exitButton");
             LoadTexture(ref m_menuCredits, "Sprites\\Menu\\creditsButton");
             
-                // Player Select
+            // Player Select
             LoadTexture(ref m_actionJoin, "Sprites\\Menu\\PlayerSelect\\actionJoin");
             LoadTexture(ref m_actionReady, "Sprites\\Menu\\PlayerSelect\\actionReady");
             LoadTexture(ref m_choice1, "Sprites\\Menu\\PlayerSelect\\choice1");
@@ -124,17 +151,46 @@ namespace Project_Cows.Source.System.Graphics {
             LoadTexture(ref m_choice4, "Sprites\\Menu\\PlayerSelect\\choice4");
             LoadTexture(ref m_vehicleChoice, "Sprites\\Menu\\PlayerSelect\\vehicleChoice");
 
-
-
             // Victory Screen
             LoadTexture(ref m_victoryBackground, "Sprites\\Menu\\Victory_Screen");
 
-            // Vehicles
-            LoadTexture(ref m_vehicleBlue, "Sprites\\Vehicles\\Cow_Car_Blue");
-            LoadTexture(ref m_vehicleOrange, "Sprites\\Vehicles\\Cow_Car_Orange");
-            LoadTexture(ref m_vehiclePurple, "Sprites\\Vehicles\\Cow_Car_Purple");
-            LoadTexture(ref m_vehicleYellow, "Sprites\\Vehicles\\Cow_Car_Yellow");
-            LoadTexture(ref m_tractorBlue, "Sprites\\Vehicles\\Cow_Tractor_Blue");
+            #region PlayableVehicles
+            //Cars
+            LoadTexture(ref m_vehicleBlue, "Sprites\\Vehicles\\SmallImages\\Cow_Car_Blue");
+            LoadTexture(ref m_vehicleOrange, "Sprites\\Vehicles\\SmallImages\\Cow_Car_Orange");
+            LoadTexture(ref m_vehiclePurple, "Sprites\\Vehicles\\SmallImages\\Cow_Car_Purple");
+            LoadTexture(ref m_vehicleYellow, "Sprites\\Vehicles\\SmallImages\\Cow_Car_Yellow");
+            LoadTexture(ref m_vehicleWhite, "Sprites\\Vehicles\\SmallImages\\Cow_Car_White");
+            
+            //Tractors
+            LoadTexture(ref m_tractorBlue, "Sprites\\Vehicles\\SmallImages\\Cow_Tractor_Blue");
+            LoadTexture(ref m_tractorOrange, "Sprites\\Vehicles\\SmallImages\\Cow_Tractor_Orange");
+            LoadTexture(ref m_tractorPurple, "Sprites\\Vehicles\\SmallImages\\Cow_Tractor_Purple");
+            LoadTexture(ref m_tractorYellow, "Sprites\\Vehicles\\SmallImages\\Cow_Tractor_Yellow");
+            LoadTexture(ref m_tractorWhite, "Sprites\\Vehicles\\SmallImages\\Cow_Tractor_White");
+
+            #endregion
+
+            #region DisplayVehicles
+            //Cars
+            LoadTexture(ref m_Display_vehicleBlue, "Sprites\\Vehicles\\LargeImages\\Cow_Car_Blue");
+            LoadTexture(ref m_Display_vehicleOrange, "Sprites\\Vehicles\\LargeImages\\Cow_Car_Orange");
+            LoadTexture(ref m_Display_vehiclePurple, "Sprites\\Vehicles\\LargeImages\\Cow_Car_Purple");
+            LoadTexture(ref m_Display_vehicleYellow, "Sprites\\Vehicles\\LargeImages\\Cow_Car_Yellow");
+            LoadTexture(ref m_Display_vehicleWhite, "Sprites\\Vehicles\\LargeImages\\Cow_Car_White");
+
+            //Tractors
+            LoadTexture(ref m_Display_tractorBlue, "Sprites\\Vehicles\\LargeImages\\Cow_Tractor_Blue");
+            LoadTexture(ref m_Display_tractorOrange, "Sprites\\Vehicles\\LargeImages\\Cow_Tractor_Orange");
+            LoadTexture(ref m_Display_tractorPurple, "Sprites\\Vehicles\\LargeImages\\Cow_Tractor_Purple");
+            LoadTexture(ref m_Display_tractorYellow, "Sprites\\Vehicles\\LargeImages\\Cow_Tractor_Yellow");
+            LoadTexture(ref m_Display_tractorWhite, "Sprites\\Vehicles\\LargeImages\\Cow_Tractor_White");
+
+            #endregion
+
+
+
+
             LoadTexture(ref m_tankGreen, "Sprites\\Vehicles\\Cow_Tank_Green");
             /*
              *LoadTexture(ref m_tankBlue, "Sprites\\Vehicles\\Cow_Tank_Blue"); 
@@ -145,12 +201,9 @@ namespace Project_Cows.Source.System.Graphics {
              *LoadTexture(ref m_tractorPurple, "Sprites\\Vehicles\\Cow_Tractor_Purple");
              *LoadTexture(ref m_tractorYellow, "Sprites\\Vehicles\\Cow_Tractor_Yellow");
              */
+
             LoadTexture(ref m_cow21, "Sprites\\Vehicles\\cow2.1");
-            // Vehicles
-            LoadTexture(ref m_vehicleBlue, "Sprites\\Vehicles\\vehicleBlue");
-            LoadTexture(ref m_vehicleOrange, "Sprites\\Vehicles\\vehicleOrange");
-            LoadTexture(ref m_vehiclePurple, "Sprites\\Vehicles\\vehiclePurple");
-            LoadTexture(ref m_vehicleYellow, "Sprites\\Vehicles\\vehicleYellow");
+         
             LoadTexture(ref m_cow1, "Sprites\\Vehicles\\cow1");
             LoadTexture(ref m_cow2, "Sprites\\Vehicles\\cow2");
             LoadTexture(ref m_cow3, "Sprites\\Vehicles\\cow3");
@@ -180,7 +233,6 @@ namespace Project_Cows.Source.System.Graphics {
 
             // GFX
             LoadTexture(ref m_particleTexture, "Sprites\\Utility\\brown_particle");
-
             LoadTexture(ref m_THELORDANDSAVIOUR, "Sprites\\Temp\\THELORD");
 
             // Defaults

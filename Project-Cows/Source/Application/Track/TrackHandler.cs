@@ -155,7 +155,7 @@ namespace Project_Cows.Source.Application.Track {
             // Add checkpoints to Debug screen
             foreach (CheckpointContainer cc in m_checkpoints) {
                 if (cc.GetCheckpoint().GetType() == CheckpointType.FIRST) {
-                    GraphicsHandler.DrawSprite(cc.GetEntity().GetSprite());
+                    //GraphicsHandler.DrawSprite(cc.GetEntity().GetSprite());
                 } else {
                     Debug.AddSprite(cc.GetEntity().GetSprite());                    
                 }

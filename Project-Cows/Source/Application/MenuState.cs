@@ -64,6 +64,8 @@ namespace Project_Cows.Source.Application {
         private List<AnimatedSprite> m_animatedSprites = new List<AnimatedSprite>();
         private List<Particle> m_particles = new List<Particle>();
 
+        private int counter = 0; //for selecting the correct coloured texture
+
 		// Methods
         public MenuState() : base() {
 			// MenuState constructor
@@ -95,7 +97,7 @@ namespace Project_Cows.Source.Application {
 
             // Initialise sprites
             m_background =      new Sprite(TextureHandler.m_menuBackground, new Vector2(Settings.m_screenWidth / 2, Settings.m_screenHeight / 2), 0, Vector2.One);
-            m_teamLogo =        new Sprite(TextureHandler.m_teamLogo,       new Vector2(Settings.m_screenWidth / 1.2f, Settings.m_screenHeight / 6), 0, Vector2.One);
+            m_teamLogo =        new Sprite(TextureHandler.m_teamLogo,       new Vector2(Settings.m_screenWidth * 0.885f, Settings.m_screenHeight * 0.1f), 0, Vector2.One);
             //m_gameLogo = new Sprite(TextureHandler.m_gameLogo, new Vector2(Settings.m_screenWidth / 2, Settings.m_screenHeight / 2), 0, Vector2.One);
             // Not sure about this part. Maybe Move to update function
             m_player_1_cow =    new Sprite(TextureHandler.m_cow1,           new Vector2(Settings.m_screenWidth * 0.50f - 10.0f, Settings.m_screenHeight * 0.75f ), 0, new Vector2(0.1f, 0.1f));
@@ -124,26 +126,26 @@ namespace Project_Cows.Source.Application {
             players[2].m_actionButton = new Button(TextureHandler.m_actionJoin, new Vector2(Settings.m_screenWidth * 0.1f, Settings.m_screenHeight * 0.1f));
             players[3].m_actionButton = new Button(TextureHandler.m_actionJoin, new Vector2(Settings.m_screenWidth * 0.9f, Settings.m_screenHeight * 0.1f));
                 // Player 1 -- BOTTOM_LEFT
-            players[0].m_choice1Button = new Button(TextureHandler.m_choice1, new Vector2(Settings.m_screenWidth * 0.1f, Settings.m_screenHeight * 0.8f));
-            players[0].m_choice2Button = new Button(TextureHandler.m_choice2, new Vector2(Settings.m_screenWidth * 0.2f, Settings.m_screenHeight * 0.8f));
+            players[0].m_choice1Button = new Button(TextureHandler.m_Display_vehicleWhite, new Vector2(Settings.m_screenWidth * 0.1f, Settings.m_screenHeight * 0.8f));
+            players[0].m_choice2Button = new Button(TextureHandler.m_Display_tractorWhite, new Vector2(Settings.m_screenWidth * 0.2f, Settings.m_screenHeight * 0.8f));
             players[0].m_choice3Button = new Button(TextureHandler.m_choice3, new Vector2(Settings.m_screenWidth * 0.3f, Settings.m_screenHeight * 0.8f));
             players[0].m_choice4Button = new Button(TextureHandler.m_choice4, new Vector2(Settings.m_screenWidth * 0.4f, Settings.m_screenHeight * 0.8f));
             players[0].m_vehicleChoiceButton = new Button(TextureHandler.m_vehicleChoice, new Vector2(Settings.m_screenWidth * 0.25f, Settings.m_screenHeight * 0.65f));
                 // Player 2 -- BOTTOM_RIGHT
-            players[1].m_choice1Button = new Button(TextureHandler.m_choice1, new Vector2(Settings.m_screenWidth * 0.9f, Settings.m_screenHeight * 0.8f));
-            players[1].m_choice2Button = new Button(TextureHandler.m_choice2, new Vector2(Settings.m_screenWidth * 0.8f, Settings.m_screenHeight * 0.8f));
+            players[1].m_choice1Button = new Button(TextureHandler.m_Display_vehicleWhite, new Vector2(Settings.m_screenWidth * 0.9f, Settings.m_screenHeight * 0.8f));
+            players[1].m_choice2Button = new Button(TextureHandler.m_Display_tractorWhite, new Vector2(Settings.m_screenWidth * 0.8f, Settings.m_screenHeight * 0.8f));
             players[1].m_choice3Button = new Button(TextureHandler.m_choice3, new Vector2(Settings.m_screenWidth * 0.7f, Settings.m_screenHeight * 0.8f));
             players[1].m_choice4Button = new Button(TextureHandler.m_choice4, new Vector2(Settings.m_screenWidth * 0.6f, Settings.m_screenHeight * 0.8f));
             players[1].m_vehicleChoiceButton = new Button(TextureHandler.m_vehicleChoice, new Vector2(Settings.m_screenWidth * 0.75f, Settings.m_screenHeight * 0.65f));
                 // Player 3 -- TOP_LEFT
-            players[2].m_choice1Button = new Button(TextureHandler.m_choice1, new Vector2(Settings.m_screenWidth * 0.1f, Settings.m_screenHeight * 0.2f));
-            players[2].m_choice2Button = new Button(TextureHandler.m_choice2, new Vector2(Settings.m_screenWidth * 0.2f, Settings.m_screenHeight * 0.2f));
+            players[2].m_choice1Button = new Button(TextureHandler.m_Display_vehicleWhite, new Vector2(Settings.m_screenWidth * 0.1f, Settings.m_screenHeight * 0.2f));
+            players[2].m_choice2Button = new Button(TextureHandler.m_Display_tractorWhite, new Vector2(Settings.m_screenWidth * 0.2f, Settings.m_screenHeight * 0.2f));
             players[2].m_choice3Button = new Button(TextureHandler.m_choice3, new Vector2(Settings.m_screenWidth * 0.3f, Settings.m_screenHeight * 0.2f));
             players[2].m_choice4Button = new Button(TextureHandler.m_choice4, new Vector2(Settings.m_screenWidth * 0.4f, Settings.m_screenHeight * 0.2f));
             players[2].m_vehicleChoiceButton = new Button(TextureHandler.m_vehicleChoice, new Vector2(Settings.m_screenWidth * 0.25f, Settings.m_screenHeight * 0.35f));
                 // Player 4 -- TOP_RIGHT
-            players[3].m_choice1Button = new Button(TextureHandler.m_choice1, new Vector2(Settings.m_screenWidth * 0.9f, Settings.m_screenHeight * 0.2f));
-            players[3].m_choice2Button = new Button(TextureHandler.m_choice2, new Vector2(Settings.m_screenWidth * 0.8f, Settings.m_screenHeight * 0.2f));
+            players[3].m_choice1Button = new Button(TextureHandler.m_Display_vehicleWhite, new Vector2(Settings.m_screenWidth * 0.9f, Settings.m_screenHeight * 0.2f));
+            players[3].m_choice2Button = new Button(TextureHandler.m_Display_tractorWhite, new Vector2(Settings.m_screenWidth * 0.8f, Settings.m_screenHeight * 0.2f));
             players[3].m_choice3Button = new Button(TextureHandler.m_choice3, new Vector2(Settings.m_screenWidth * 0.7f, Settings.m_screenHeight * 0.2f));
             players[3].m_choice4Button = new Button(TextureHandler.m_choice4, new Vector2(Settings.m_screenWidth * 0.6f, Settings.m_screenHeight * 0.2f));
             players[3].m_vehicleChoiceButton = new Button(TextureHandler.m_vehicleChoice, new Vector2(Settings.m_screenWidth * 0.75f, Settings.m_screenHeight * 0.35f));
@@ -293,6 +295,9 @@ namespace Project_Cows.Source.Application {
                     case MenuScreenState.PLAYER_SELECT:
                         // Player Select screen
 
+                        //counter for amount of players
+                        //so we can assign the proper texture                    
+
                         // Loop logic for each player
                         foreach (PlayerSelectStruct pss in players) {
                             // Check player's join state
@@ -307,12 +312,62 @@ namespace Project_Cows.Source.Application {
                                 // If vehicle button is pressed
                                 if (pss.m_choice1Button.Activated(m_lastPosition)) {
                                     // TODO: Check if the vehicle has already been chosen
-                                    pss.m_vehicleChoiceButton.m_sprite.SetTexture(TextureHandler.m_choice1);
                                     pss.m_playerState = PlayerState.VEHICLE_SELECTED;
+
+                                    #region PickCorrectColour
+
+                                    if (counter == 0)
+                                    {
+                                        pss.m_vehicleChoiceButton.m_sprite.SetTexture(TextureHandler.m_Display_vehicleBlue);
+                                        TextureHandler.m_player_1_vehicle = TextureHandler.m_vehicleBlue;
+                                    }
+                                    else if(counter == 1)
+                                    {
+                                        pss.m_vehicleChoiceButton.m_sprite.SetTexture(TextureHandler.m_Display_vehicleOrange);
+                                        TextureHandler.m_player_2_vehicle = TextureHandler.m_vehicleOrange;
+                                    }
+                                    else if (counter == 2)
+                                    {
+                                        pss.m_vehicleChoiceButton.m_sprite.SetTexture(TextureHandler.m_Display_vehiclePurple);
+                                        TextureHandler.m_player_3_vehicle = TextureHandler.m_vehiclePurple;
+                                    }
+                                    else if (counter == 3)
+                                    {
+                                        pss.m_vehicleChoiceButton.m_sprite.SetTexture(TextureHandler.m_Display_vehicleYellow);
+                                        TextureHandler.m_player_4_vehicle = TextureHandler.m_vehicleYellow;
+                                    }
+
+                                    #endregion
+
                                 } else if (pss.m_choice2Button.Activated(m_lastPosition)) {
                                     // TODO: Check if the vehicle has already been chosen
-                                    pss.m_vehicleChoiceButton.m_sprite.SetTexture(TextureHandler.m_choice2);
                                     pss.m_playerState = PlayerState.VEHICLE_SELECTED;
+
+                                    #region PickCorrectColour
+
+                                    if (counter == 0)
+                                    {
+                                        pss.m_vehicleChoiceButton.m_sprite.SetTexture(TextureHandler.m_Display_tractorBlue);
+                                        TextureHandler.m_player_1_vehicle = TextureHandler.m_tractorBlue;
+                                    }
+                                    else if (counter == 1)
+                                    {
+                                        pss.m_vehicleChoiceButton.m_sprite.SetTexture(TextureHandler.m_Display_tractorOrange);
+                                        TextureHandler.m_player_2_vehicle = TextureHandler.m_tractorOrange;
+                                    }
+                                    else if (counter == 2)
+                                    {
+                                        pss.m_vehicleChoiceButton.m_sprite.SetTexture(TextureHandler.m_Display_tractorPurple);
+                                        TextureHandler.m_player_3_vehicle = TextureHandler.m_tractorPurple;
+                                    }
+                                    else if (counter == 3)
+                                    {
+                                        pss.m_vehicleChoiceButton.m_sprite.SetTexture(TextureHandler.m_Display_tractorYellow);
+                                        TextureHandler.m_player_4_vehicle = TextureHandler.m_tractorYellow;
+                                    }
+
+                                    #endregion
+
                                 } else if (pss.m_choice3Button.Activated(m_lastPosition)) {
                                     // TODO: Check if the vehicle has already been chosen
                                     pss.m_vehicleChoiceButton.m_sprite.SetTexture(TextureHandler.m_choice3);
@@ -323,6 +378,8 @@ namespace Project_Cows.Source.Application {
                                     pss.m_playerState = PlayerState.VEHICLE_SELECTED;
                                 }
                             }
+
+                            counter++;
                         }
 
                         // Check if all players are ready
