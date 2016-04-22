@@ -856,3 +856,9 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/Menu/PlayerSelect/vehicleChoice.png
 
+#begin Fonts/Arial.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:TextureFormat=Compressed
+/build:Fonts/Arial.spritefont
+

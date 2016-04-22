@@ -83,7 +83,6 @@ namespace Project_Cows.Source.System.Graphics {
                                              animSprite_.GetFrameHeight() * animSprite_.GetCurrentVertical(),
                                              animSprite_.GetFrameWidth(),
                                              animSprite_.GetFrameHeight());
-            // FIXME: Origin doesn't work> - Nathan
             m_spriteBatch.Draw(animSprite_.GetTexture(), destination, source, Color.White, animSprite_.GetRotationRadians(), animSprite_.GetOrigin(), SpriteEffects.None, 0);
         }
 
