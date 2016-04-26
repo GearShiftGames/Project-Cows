@@ -149,7 +149,7 @@ namespace Project_Cows.Source.Application.Track {
 
             // Render barriers
             foreach (Barrier b in m_barriers) {
-                GraphicsHandler.DrawSprite(b.GetSprite());
+                //GraphicsHandler.DrawSprite(b.GetSprite());
             }
 
             // Add checkpoints to Debug screen
@@ -159,9 +159,7 @@ namespace Project_Cows.Source.Application.Track {
                 } else {
                     Debug.AddSprite(cc.GetEntity().GetSprite());                    
                 }
-            }
-
-            
+            }    
         }
 
         private bool AreBodiesColliding(Body bodyA_, Body bodyB_){

@@ -252,6 +252,9 @@ namespace Project_Cows.Source.Application {
             if (Keyboard.GetState().IsKeyDown(Keys.NumPad1)) {
                 players[0].m_playerState = PlayerState.JOINED;
                 players[0].m_actionButton.m_sprite.SetTexture(TextureHandler.m_actionReady);
+
+                players[0].m_vehicleChoiceButton.m_sprite.SetTexture(TextureHandler.m_Display_vehicleBlue);
+                TextureHandler.m_player_1_vehicle = TextureHandler.m_vehicleBlue;
             }
             if (Keyboard.GetState().IsKeyDown(Keys.NumPad2)) {
                 players[0].m_playerState = PlayerState.VEHICLE_SELECTED;
