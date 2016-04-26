@@ -1041,17 +1041,6 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/Vehicles/SmallImages/Cow_Tractor_White.png
 
-#begin Sprites/Vehicles/SmallImages/Cow_Tractor_Yellow.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:TextureFormat=Color
-/build:Sprites/Vehicles/SmallImages/Cow_Tractor_Yellow.png
-
 #begin Sprites/Vehicles/LargeImages/Cow_Car_Blue.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -1151,7 +1140,7 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/Vehicles/LargeImages/Cow_Tractor_White.png
 
-#begin Sprites/Vehicles/LargeImages/Cow_Tractor_Yellow.png
+#begin Sprites/Vehicles/SmallImages/Cow_Tank_Blue.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -1160,5 +1149,115 @@
 /processorParam:PremultiplyAlpha=True
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:TextureFormat=Color
-/build:Sprites/Vehicles/LargeImages/Cow_Tractor_Yellow.png
+/build:Sprites/Vehicles/SmallImages/Cow_Tank_Blue.png
+
+#begin Sprites/Vehicles/SmallImages/Cow_Tank_Orange.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Vehicles/SmallImages/Cow_Tank_Orange.png
+
+#begin Sprites/Vehicles/SmallImages/Cow_Tank_Purple.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Vehicles/SmallImages/Cow_Tank_Purple.png
+
+#begin Sprites/Vehicles/SmallImages/Cow_Tank_White.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Vehicles/SmallImages/Cow_Tank_White.png
+
+#begin Sprites/Vehicles/LargeImages/Cow_Tank_Blue.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Vehicles/LargeImages/Cow_Tank_Blue.png
+
+#begin Sprites/Vehicles/LargeImages/Cow_Tank_Green.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Vehicles/LargeImages/Cow_Tank_Green.png
+
+#begin Sprites/Vehicles/LargeImages/Cow_Tank_Orange.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Vehicles/LargeImages/Cow_Tank_Orange.png
+
+#begin Sprites/Vehicles/LargeImages/Cow_Tank_Purple.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Vehicles/LargeImages/Cow_Tank_Purple.png
+
+#begin Sprites/Vehicles/LargeImages/Cow_Tank_White.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Vehicles/LargeImages/Cow_Tank_White.png
+
+#begin Sprites/Vehicles/LargeImages/Cow_Tractor_Green.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Vehicles/LargeImages/Cow_Tractor_Green.png
+
+#begin Sprites/Vehicles/SmallImages/Cow_Tractor_Green.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Vehicles/SmallImages/Cow_Tractor_Green.png
 

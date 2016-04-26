@@ -125,8 +125,8 @@ namespace Project_Cows.Source.Application {
             }
 
             // Initialise sprites
-            m_animatedSprites.Add(new AnimatedSprite(GraphicsHandler.m_content.Load<Texture2D>("Sprites\\Temp\\FlyingPig"), 
-                new Vector2(0.0f, 0.0f), 39, 39, 250, true, 0, 5));
+            //m_animatedSprites.Add(new AnimatedSprite(GraphicsHandler.m_content.Load<Texture2D>("Sprites\\Temp\\FlyingPig"), 
+                //new Vector2(0.0f, 0.0f), 39, 39, 250, true, 0, 5));
 
             // Start timer
             startTimer.StartTimer(3000.0f);
@@ -350,7 +350,7 @@ namespace Project_Cows.Source.Application {
 
             for (int i = 0; i < Settings.m_numberOfPlayers; i ++)
             {
-                GraphicsHandler.DrawSprite(m_rankingSprites[i]);
+                //GraphicsHandler.DrawSprite(m_rankingSprites[i]);
             }
 
                 // RENDER UI

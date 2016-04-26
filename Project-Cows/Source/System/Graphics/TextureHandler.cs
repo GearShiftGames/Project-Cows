@@ -75,7 +75,13 @@ namespace Project_Cows.Source.System.Graphics {
         public static Texture2D m_tractorOrange;
         public static Texture2D m_tractorPurple;
         public static Texture2D m_tractorWhite;
-        public static Texture2D m_tractorYellow;
+        public static Texture2D m_tractorGreen;
+
+        public static Texture2D m_tankBlue;
+        public static Texture2D m_tankOrange;
+        public static Texture2D m_tankPurple;
+        public static Texture2D m_tankWhite;
+        public static Texture2D m_tankGreen;
 
         #endregion
 
@@ -91,21 +97,16 @@ namespace Project_Cows.Source.System.Graphics {
         public static Texture2D m_Display_tractorOrange;
         public static Texture2D m_Display_tractorPurple;
         public static Texture2D m_Display_tractorWhite;
-        public static Texture2D m_Display_tractorYellow;
+        public static Texture2D m_Display_tractorGreen;
+
+        public static Texture2D m_Display_tankBlue;
+        public static Texture2D m_Display_tankOrange;
+        public static Texture2D m_Display_tankPurple;
+        public static Texture2D m_Display_tankWhite;
+        public static Texture2D m_Display_tankGreen;
 
         #endregion
 
-        public static Texture2D m_tankGreen;
-        // Waiting for these assets
-        /*
-         * public static Texture2D m_tractorOrange; 
-         * public static Texture2D m_tractorPurple;
-         * public static Texture2D m_tractorYellow;
-         * public static Texture2D m_tankBlue;
-         * public static Texture2D m_tankOrange;
-         * public static Texture2D m_tankPurple;
-         * public static Texture2D m_tankYellow;
-         */
         public static Texture2D m_cow1;
         public static Texture2D m_cow2;
         public static Texture2D m_cow21;
@@ -162,11 +163,11 @@ namespace Project_Cows.Source.System.Graphics {
             LoadTexture(ref m_choice4, "Sprites\\Menu\\PlayerSelect\\choice4");
             LoadTexture(ref m_vehicleChoice, "Sprites\\Menu\\PlayerSelect\\vehicleChoice");
             LoadTexture(ref m_menuMain, "Sprites\\Menu\\Button_Menu_Normal");
-         
-            LoadTexture(ref m_menu1, "Sprites\\Menu\\1Button");
-            LoadTexture(ref m_menu2, "Sprites\\Menu\\2Button");
-            LoadTexture(ref m_menu3, "Sprites\\Menu\\3Button");
-            LoadTexture(ref m_menu4, "Sprites\\Menu\\4Button");
+
+            LoadTexture(ref m_menu1, "Sprites\\Menu\\PlayerSelect\\1Button");
+            LoadTexture(ref m_menu2, "Sprites\\Menu\\PlayerSelect\\2Button");
+            LoadTexture(ref m_menu3, "Sprites\\Menu\\PlayerSelect\\3Button");
+            LoadTexture(ref m_menu4, "Sprites\\Menu\\PlayerSelect\\4Button");
             LoadTexture(ref m_controlInfo, "Sprites\\Menu\\controls");
 
             // Victory Screen
@@ -189,8 +190,15 @@ namespace Project_Cows.Source.System.Graphics {
             LoadTexture(ref m_tractorBlue, "Sprites\\Vehicles\\SmallImages\\Cow_Tractor_Blue");
             LoadTexture(ref m_tractorOrange, "Sprites\\Vehicles\\SmallImages\\Cow_Tractor_Orange");
             LoadTexture(ref m_tractorPurple, "Sprites\\Vehicles\\SmallImages\\Cow_Tractor_Purple");
-            LoadTexture(ref m_tractorYellow, "Sprites\\Vehicles\\SmallImages\\Cow_Tractor_Yellow");
+            LoadTexture(ref m_tractorGreen, "Sprites\\Vehicles\\SmallImages\\Cow_Tractor_Green");
             LoadTexture(ref m_tractorWhite, "Sprites\\Vehicles\\SmallImages\\Cow_Tractor_White");
+
+            //Tanks
+            LoadTexture(ref m_tankBlue, "Sprites\\Vehicles\\SmallImages\\Cow_Tank_Blue");
+            LoadTexture(ref m_tankOrange, "Sprites\\Vehicles\\SmallImages\\Cow_Tank_Orange");
+            LoadTexture(ref m_tankPurple, "Sprites\\Vehicles\\SmallImages\\Cow_Tank_Purple");
+            LoadTexture(ref m_tankGreen, "Sprites\\Vehicles\\SmallImages\\Cow_Tank_Green");
+            LoadTexture(ref m_tankWhite, "Sprites\\Vehicles\\SmallImages\\Cow_Tank_White");
 
             #endregion
 
@@ -206,8 +214,15 @@ namespace Project_Cows.Source.System.Graphics {
             LoadTexture(ref m_Display_tractorBlue, "Sprites\\Vehicles\\LargeImages\\Cow_Tractor_Blue");
             LoadTexture(ref m_Display_tractorOrange, "Sprites\\Vehicles\\LargeImages\\Cow_Tractor_Orange");
             LoadTexture(ref m_Display_tractorPurple, "Sprites\\Vehicles\\LargeImages\\Cow_Tractor_Purple");
-            LoadTexture(ref m_Display_tractorYellow, "Sprites\\Vehicles\\LargeImages\\Cow_Tractor_Yellow");
+            LoadTexture(ref m_Display_tractorGreen, "Sprites\\Vehicles\\LargeImages\\Cow_Tractor_Green");
             LoadTexture(ref m_Display_tractorWhite, "Sprites\\Vehicles\\LargeImages\\Cow_Tractor_White");
+
+            //Tractors
+            LoadTexture(ref m_Display_tankBlue, "Sprites\\Vehicles\\LargeImages\\Cow_Tank_Blue");
+            LoadTexture(ref m_Display_tankOrange, "Sprites\\Vehicles\\LargeImages\\Cow_Tank_Orange");
+            LoadTexture(ref m_Display_tankPurple, "Sprites\\Vehicles\\LargeImages\\Cow_Tank_Purple");
+            LoadTexture(ref m_Display_tankGreen, "Sprites\\Vehicles\\LargeImages\\Cow_Tank_Green");
+            LoadTexture(ref m_Display_tankWhite, "Sprites\\Vehicles\\LargeImages\\Cow_Tank_White");
 
             #endregion
 

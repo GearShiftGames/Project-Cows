@@ -102,7 +102,6 @@
     <File>M:/Project Cows/Project-Cows/Content/Sprites/Vehicles/SmallImages/Cow_Tractor_Orange.png</File>
     <File>M:/Project Cows/Project-Cows/Content/Sprites/Vehicles/SmallImages/Cow_Tractor_Purple.png</File>
     <File>M:/Project Cows/Project-Cows/Content/Sprites/Vehicles/SmallImages/Cow_Tractor_White.png</File>
-    <File>M:/Project Cows/Project-Cows/Content/Sprites/Vehicles/SmallImages/Cow_Tractor_Yellow.png</File>
     <File>M:/Project Cows/Project-Cows/Content/Sprites/Vehicles/LargeImages/Cow_Car_Blue.png</File>
     <File>M:/Project Cows/Project-Cows/Content/Sprites/Vehicles/LargeImages/Cow_Car_Orange.png</File>
     <File>M:/Project Cows/Project-Cows/Content/Sprites/Vehicles/LargeImages/Cow_Car_Purple.png</File>
@@ -112,6 +111,16 @@
     <File>M:/Project Cows/Project-Cows/Content/Sprites/Vehicles/LargeImages/Cow_Tractor_Orange.png</File>
     <File>M:/Project Cows/Project-Cows/Content/Sprites/Vehicles/LargeImages/Cow_Tractor_Purple.png</File>
     <File>M:/Project Cows/Project-Cows/Content/Sprites/Vehicles/LargeImages/Cow_Tractor_White.png</File>
-    <File>M:/Project Cows/Project-Cows/Content/Sprites/Vehicles/LargeImages/Cow_Tractor_Yellow.png</File>
+    <File>M:/Project Cows/Project-Cows/Content/Sprites/Vehicles/SmallImages/Cow_Tank_Blue.png</File>
+    <File>M:/Project Cows/Project-Cows/Content/Sprites/Vehicles/SmallImages/Cow_Tank_Orange.png</File>
+    <File>M:/Project Cows/Project-Cows/Content/Sprites/Vehicles/SmallImages/Cow_Tank_Purple.png</File>
+    <File>M:/Project Cows/Project-Cows/Content/Sprites/Vehicles/SmallImages/Cow_Tank_White.png</File>
+    <File>M:/Project Cows/Project-Cows/Content/Sprites/Vehicles/LargeImages/Cow_Tank_Blue.png</File>
+    <File>M:/Project Cows/Project-Cows/Content/Sprites/Vehicles/LargeImages/Cow_Tank_Green.png</File>
+    <File>M:/Project Cows/Project-Cows/Content/Sprites/Vehicles/LargeImages/Cow_Tank_Orange.png</File>
+    <File>M:/Project Cows/Project-Cows/Content/Sprites/Vehicles/LargeImages/Cow_Tank_Purple.png</File>
+    <File>M:/Project Cows/Project-Cows/Content/Sprites/Vehicles/LargeImages/Cow_Tank_White.png</File>
+    <File>M:/Project Cows/Project-Cows/Content/Sprites/Vehicles/LargeImages/Cow_Tractor_Green.png</File>
+    <File>M:/Project Cows/Project-Cows/Content/Sprites/Vehicles/SmallImages/Cow_Tractor_Green.png</File>
   </SourceFiles>
 </SourceFileCollection>
