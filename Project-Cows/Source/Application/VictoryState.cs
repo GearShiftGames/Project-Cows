@@ -111,7 +111,6 @@ namespace Project_Cows.Source.Application {
                          m_playerThird.SetTexture(m_players[m_rankings[2] - 1].GetCow().GetTexture());
             }
             
-            ///////////////////////////////////// NOT WORKING
 			// Update touch input handler
 			touchHandler_.Update();
 
@@ -178,37 +177,68 @@ namespace Project_Cows.Source.Application {
                 GraphicsHandler.DrawText("Player " + m_rankings[0].ToString(), new Vector2(475, 200), Color.Black);
                 
             }
-            int sec = m_players[m_rankings[0] - 1].GetRaceTime() / 1000;
-            int mins = sec / 60;
-            int msec = m_players[m_rankings[0] - 1].GetRaceTime();
-            GraphicsHandler.DrawText(mins + ":" + sec, new Vector2(825, 200), Color.Black);
+            int time = m_players[m_rankings[0] - 1].GetRaceTime() / 1000;
+            int mins = time / 60;
+            int sec = time - (mins * 60);
+            if (sec < 10)
+            {
+                GraphicsHandler.DrawText(mins + ":" + "0" + sec, new Vector2(825, 200), Color.Black);
+            }
+            else
+            {
+                GraphicsHandler.DrawText(mins + ":" + sec, new Vector2(825, 200), Color.Black);
+            }
             if (Settings.m_numberOfPlayers > 1)
             {
-                sec = m_players[m_rankings[1] - 1].GetRaceTime() / 1000;
-                mins = sec / 60;
+                time = m_players[m_rankings[1] - 1].GetRaceTime() / 1000;
+                mins = time / 60;
+                sec = time - (mins * 60);
                 GraphicsHandler.DrawSprite(m_silverTrophy);
                 GraphicsHandler.DrawSprite(m_playerSecond);
                 GraphicsHandler.DrawText("2nd", new Vector2(150, 275), Color.Black);
                 GraphicsHandler.DrawText("Player " + m_rankings[1].ToString(), new Vector2(475, 275), Color.Black);
-                GraphicsHandler.DrawText(mins + ":" + sec + ":" + msec, new Vector2(825, 275), Color.Black);
+                if (sec < 10)
+                {
+                    GraphicsHandler.DrawText(mins + ":" + "0" + sec, new Vector2(825, 275), Color.Black);
+                }
+                else
+                {
+                    GraphicsHandler.DrawText(mins + ":" + sec, new Vector2(825, 275), Color.Black);
+                }
             }
             if (Settings.m_numberOfPlayers > 2)
             {
-                sec = m_players[m_rankings[2] - 1].GetRaceTime() / 1000;
-                mins = sec / 60;
+                time = m_players[m_rankings[2] - 1].GetRaceTime() / 1000;
+                mins = time / 60;
+                sec = time - (mins * 60);
                 GraphicsHandler.DrawSprite(m_bronzeTrophy);
                 GraphicsHandler.DrawSprite(m_playerThird);
                 GraphicsHandler.DrawText("3rd", new Vector2(150, 375), Color.Black);
                 GraphicsHandler.DrawText("Player " + m_rankings[2].ToString(), new Vector2(475, 375), Color.Black);
-                GraphicsHandler.DrawText(mins + ":" + sec + ":" + msec, new Vector2(825, 375), Color.Black);
+                if (sec < 10)
+                {
+                    GraphicsHandler.DrawText(mins + ":" + "0" + sec, new Vector2(825, 375), Color.Black);
+                }
+                else
+                {
+                    GraphicsHandler.DrawText(mins + ":" + sec, new Vector2(825, 375), Color.Black);
+                }
             }
             if (Settings.m_numberOfPlayers > 3)
             {
-                sec = m_players[m_rankings[3] - 1].GetRaceTime() / 1000;
-                mins = sec / 60;
+                time = m_players[m_rankings[3] - 1].GetRaceTime() / 1000;
+                mins = time / 60;
+                sec = time - (mins * 60);
                 GraphicsHandler.DrawText("4th", new Vector2(150, 450), Color.Black);
                 GraphicsHandler.DrawText("Player " + m_rankings[3].ToString(), new Vector2(475, 450), Color.Black);
-                GraphicsHandler.DrawText(mins + ":" + sec + ":" + msec, new Vector2(825, 450), Color.Black);
+                if (sec < 10)
+                {
+                    GraphicsHandler.DrawText(mins + ":" + "0" + sec, new Vector2(825, 450), Color.Black);
+                }
+                else
+                {
+                    GraphicsHandler.DrawText(mins + ":" + sec, new Vector2(825, 450), Color.Black);
+                }
             }
             GraphicsHandler.DrawSprite(m_Race_Again_Button.m_sprite);
             GraphicsHandler.DrawSprite(m_Main_Menu_Button.m_sprite);
