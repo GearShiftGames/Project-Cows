@@ -29,7 +29,7 @@ namespace Project_Cows.Source.System.Graphics {
 
         private static ParticleHandler m_particleHandler = new ParticleHandler();
         private static SpriteBatch m_spriteBatch;
-        private static SpriteFont m_font, m_largeFont, m_hugeFont;
+        private static SpriteFont m_smallFont, m_font, m_largeFont, m_hugeFont;
 
         // Methods
 
@@ -40,6 +40,7 @@ namespace Project_Cows.Source.System.Graphics {
 
             m_particleHandler = new ParticleHandler();
             m_spriteBatch = new SpriteBatch(device_);
+            m_smallFont = m_content.Load<SpriteFont>("Fonts\\small_font");
             m_font = m_content.Load<SpriteFont>("Fonts\\basic_font");
             m_largeFont = m_content.Load<SpriteFont>("Fonts\\large_font");
             m_hugeFont = m_content.Load<SpriteFont>("Fonts\\huge_font");
@@ -91,6 +92,9 @@ namespace Project_Cows.Source.System.Graphics {
             // Draw text with standard font
             // ================
             switch (size_) {
+                case 0:
+                    m_spriteBatch.DrawString(m_smallFont, text_, position_, colour_);
+                    break;
                 case 1:
                     m_spriteBatch.DrawString(m_font, text_, position_, colour_);
                     break;
