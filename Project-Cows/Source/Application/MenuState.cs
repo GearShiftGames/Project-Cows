@@ -316,236 +316,239 @@ namespace Project_Cows.Source.Application {
             }
 
                 // If there are no touches on the screen (finger released button)
-                if (touchHandler_.GetTouches().Count == 0 && m_touchState == TouchState.TOUCHING)
+            if (touchHandler_.GetTouches().Count == 0 && m_touchState == TouchState.TOUCHING)
+            {
+                switch (m_currentScreen)
                 {
-                    switch (m_currentScreen)
-                    {
-                        case MenuScreenState.MAIN_MENU:
-                            // Main Menu screen
+                    case MenuScreenState.MAIN_MENU:
+                        // Main Menu screen
 
-                            if (m_playButton.Activated(m_lastPosition))
-                            {
-                                // Go to Player Select
-                                m_currentScreen = MenuScreenState.PLAYER_SELECT;
-                            }
-                            if (m_exitButton.Activated(m_lastPosition))
-                            {
-                                // Close app
-                            }
-                            if (m_creditsButton.Activated(m_lastPosition))
-                            {
-                                // Go to Credits
-                                m_currentScreen = MenuScreenState.CREDITS;
-                            }
-                            if (m_optionsButton.Activated(m_lastPosition))
-                            {
-                                // Go to Options
-                                m_currentScreen = MenuScreenState.OPTIONS;
-                            }
-                            if (m_controlsButton.Activated(m_lastPosition))
-                            {
-                                // Go to control scheme screen
-                                m_currentScreen = MenuScreenState.CONTROLS;
-                            }
-                            break;
-                        case MenuScreenState.PLAYER_SELECT:
-                            // Player Select screen
+                        if (m_playButton.Activated(m_lastPosition))
+                        {
+                            // Go to Player Select
+                            m_currentScreen = MenuScreenState.PLAYER_SELECT;
+                        }
+                        if (m_exitButton.Activated(m_lastPosition))
+                        {
+                            // Close app
+                        }
+                        if (m_creditsButton.Activated(m_lastPosition))
+                        {
+                            // Go to Credits
+                            m_currentScreen = MenuScreenState.CREDITS;
+                        }
+                        if (m_optionsButton.Activated(m_lastPosition))
+                        {
+                            // Go to Options
+                            m_currentScreen = MenuScreenState.OPTIONS;
+                        }
+                        if (m_controlsButton.Activated(m_lastPosition))
+                        {
+                            // Go to control scheme screen
+                            m_currentScreen = MenuScreenState.CONTROLS;
+                        }
+                        break;
+                    case MenuScreenState.PLAYER_SELECT:
+                        // Player Select screen
 
-                            //counter for amount of players
-                            //so we can assign the proper texture                    
+                        //counter for amount of players
+                        //so we can assign the proper texture                    
 
-                            // Loop logic for each player
-                            foreach (PlayerSelectStruct pss in players)
-                            {
+                        // Loop logic for each player
+                        foreach (PlayerSelectStruct pss in players)
+                        {
 
 
-                                // Check player's join state
-                                if (pss.m_playerState == PlayerState.NONE)
+                            // Check player's join state
+                            if (pss.m_playerState == PlayerState.NONE)
+                            {
+                                // If action button has been pressed
+                                if (pss.m_actionButton.Activated(m_lastPosition))
                                 {
-                                    // If action button has been pressed
-                                    if (pss.m_actionButton.Activated(m_lastPosition))
-                                    {
-                                        // Add player to game
-                                        pss.m_playerState = PlayerState.JOINED;
-                                        pss.m_actionButton.m_sprite.SetTexture(TextureHandler.m_actionReady);
-                                    }
-                                }
-                                else if (pss.m_playerState == PlayerState.JOINED)
-                                {
-                                    // If vehicle button is pressed
-                                    if (pss.m_choice1Button.Activated(m_lastPosition))
-                                    {
-                                        // TODO: Check if the vehicle has already been chosen
-                                        pss.m_playerState = PlayerState.VEHICLE_SELECTED;
-
-                                        #region PickCorrectColour
-
-                                        if (pss.ID == 0)
-                                        {
-                                            pss.m_vehicleChoiceButton.m_sprite.SetTexture(TextureHandler.m_Display_vehicleBlue);
-                                            TextureHandler.m_player_1_vehicle = TextureHandler.m_vehicleBlue;
-                                        }
-                                        else if (pss.ID == 1)
-                                        {
-                                            pss.m_vehicleChoiceButton.m_sprite.SetTexture(TextureHandler.m_Display_vehicleOrange);
-                                            TextureHandler.m_player_2_vehicle = TextureHandler.m_vehicleOrange;
-                                        }
-                                        else if (pss.ID == 2)
-                                        {
-                                            pss.m_vehicleChoiceButton.m_sprite.SetTexture(TextureHandler.m_Display_vehiclePurple);
-                                            TextureHandler.m_player_3_vehicle = TextureHandler.m_vehiclePurple;
-                                        }
-                                        else if (pss.ID == 3)
-                                        {
-                                            pss.m_vehicleChoiceButton.m_sprite.SetTexture(TextureHandler.m_Display_vehicleYellow);
-                                            TextureHandler.m_player_4_vehicle = TextureHandler.m_vehicleYellow;
-                                        }
-
-                                        #endregion
-
-                                    }
-                                    else if (pss.m_choice2Button.Activated(m_lastPosition))
-                                    {
-                                        // TODO: Check if the vehicle has already been chosen
-                                        pss.m_playerState = PlayerState.VEHICLE_SELECTED;
-
-                                        #region PickCorrectColour
-
-                                        if (pss.ID == 0)
-                                        {
-                                            pss.m_vehicleChoiceButton.m_sprite.SetTexture(TextureHandler.m_Display_tractorBlue);
-                                            TextureHandler.m_player_1_vehicle = TextureHandler.m_tractorBlue;
-                                        }
-                                        else if (pss.ID == 1)
-                                        {
-                                            pss.m_vehicleChoiceButton.m_sprite.SetTexture(TextureHandler.m_Display_tractorOrange);
-                                            TextureHandler.m_player_2_vehicle = TextureHandler.m_tractorOrange;
-                                        }
-                                        else if (pss.ID == 2)
-                                        {
-                                            pss.m_vehicleChoiceButton.m_sprite.SetTexture(TextureHandler.m_Display_tractorPurple);
-                                            TextureHandler.m_player_3_vehicle = TextureHandler.m_tractorPurple;
-                                        }
-                                        else if (pss.ID == 3)
-                                        {
-                                            pss.m_vehicleChoiceButton.m_sprite.SetTexture(TextureHandler.m_Display_tractorGreen);
-                                            TextureHandler.m_player_4_vehicle = TextureHandler.m_tractorGreen;
-                                        }
-
-                                        #endregion
-
-                                    }
-                                    else if (pss.m_choice3Button.Activated(m_lastPosition))
-                                    {
-                                        // TODO: Check if the vehicle has already been chosen
-                                        pss.m_playerState = PlayerState.VEHICLE_SELECTED;
-
-                                        #region PickCorrectColour
-
-                                        if (pss.ID == 0)
-                                        {
-                                            pss.m_vehicleChoiceButton.m_sprite.SetTexture(TextureHandler.m_Display_tankBlue);
-                                            TextureHandler.m_player_1_vehicle = TextureHandler.m_tractorBlue;
-                                        }
-                                        else if (pss.ID == 1)
-                                        {
-                                            pss.m_vehicleChoiceButton.m_sprite.SetTexture(TextureHandler.m_Display_tankOrange);
-                                            TextureHandler.m_player_2_vehicle = TextureHandler.m_tractorOrange;
-                                        }
-                                        else if (pss.ID == 2)
-                                        {
-                                            pss.m_vehicleChoiceButton.m_sprite.SetTexture(TextureHandler.m_Display_tankPurple);
-                                            TextureHandler.m_player_3_vehicle = TextureHandler.m_tractorPurple;
-                                        }
-                                        else if (pss.ID == 3)
-                                        {
-                                            pss.m_vehicleChoiceButton.m_sprite.SetTexture(TextureHandler.m_Display_tankGreen);
-                                            TextureHandler.m_player_4_vehicle = TextureHandler.m_tractorGreen;
-                                        }
-
-                                        #endregion
-
-                                    }
-                                    else if (pss.m_choice4Button.Activated(m_lastPosition))
-                                    {
-                                        // TODO: Check if the vehicle has already been chosen
-                                        pss.m_vehicleChoiceButton.m_sprite.SetTexture(TextureHandler.m_choice4);
-                                        pss.m_playerState = PlayerState.VEHICLE_SELECTED;
-                                    }
-                                }
-                                else if (pss.m_playerState == PlayerState.VEHICLE_SELECTED)
-                                {
-                                    if (pss.m_actionButton.Activated(m_lastPosition))
-                                    {
-                                        pss.m_playerState = PlayerState.READY;
-                                    }
+                                    // Add player to game
+                                    pss.m_playerState = PlayerState.JOINED;
+                                    pss.m_actionButton.m_sprite.SetTexture(TextureHandler.m_actionReady);
                                 }
                             }
-
-                            // Check if all players are ready
-                            if (m_playerBackButton.Activated(m_lastPosition))
+                            else if (pss.m_playerState == PlayerState.JOINED)
                             {
-
-                                /*// Check if players are ready
-                                if (ready && readyCount > 0) {
-                                    Settings.m_numberOfPlayers = readyCount;
-                                    m_currentExecutionState = ExecutionState.CHANGING;
-                                }*/
-                            }
-                            if (m_playerGoButton.Activated(m_lastPosition))
-                            {
-                                bool ready = true;
-                                int readyCount = 0;
-
-                                // Loop through each player
-                                for (int i = 0; i < players.Count; i++)
+                                // If vehicle button is pressed
+                                if (pss.m_choice1Button.Activated(m_lastPosition))
                                 {
+                                    // TODO: Check if the vehicle has already been chosen
+                                    pss.m_playerState = PlayerState.VEHICLE_SELECTED;
 
-                                    if (players[i].m_playerState == PlayerState.JOINED || players[i].m_playerState == PlayerState.VEHICLE_SELECTED)
+                                    #region PickCorrectColour
+
+                                    if (pss.ID == 0)
                                     {
-                                        ready = false;
-                                        // If the player has joined
-                                        if (players[i].m_playerState == PlayerState.JOINED)
-                                        {
-                                            Settings.m_joinedPlayers[i] = true;
-                                        }
+                                        pss.m_vehicleChoiceButton.m_sprite.SetTexture(TextureHandler.m_Display_vehicleBlue);
+                                        TextureHandler.m_player_1_vehicle = TextureHandler.m_vehicleBlue;
                                     }
-                                    else if (players[i].m_playerState == PlayerState.READY)
+                                    else if (pss.ID == 1)
                                     {
-                                        readyCount++;
+                                        pss.m_vehicleChoiceButton.m_sprite.SetTexture(TextureHandler.m_Display_vehicleOrange);
+                                        TextureHandler.m_player_2_vehicle = TextureHandler.m_vehicleOrange;
                                     }
+                                    else if (pss.ID == 2)
+                                    {
+                                        pss.m_vehicleChoiceButton.m_sprite.SetTexture(TextureHandler.m_Display_vehiclePurple);
+                                        TextureHandler.m_player_3_vehicle = TextureHandler.m_vehiclePurple;
+                                    }
+                                    else if (pss.ID == 3)
+                                    {
+                                        pss.m_vehicleChoiceButton.m_sprite.SetTexture(TextureHandler.m_Display_vehicleYellow);
+                                        TextureHandler.m_player_4_vehicle = TextureHandler.m_vehicleYellow;
+                                    }
+
+                                    #endregion
+
                                 }
+                                else if (pss.m_choice2Button.Activated(m_lastPosition))
+                                {
+                                    // TODO: Check if the vehicle has already been chosen
+                                    pss.m_playerState = PlayerState.VEHICLE_SELECTED;
+
+                                    #region PickCorrectColour
+
+                                    if (pss.ID == 0)
+                                    {
+                                        pss.m_vehicleChoiceButton.m_sprite.SetTexture(TextureHandler.m_Display_tractorBlue);
+                                        TextureHandler.m_player_1_vehicle = TextureHandler.m_tractorBlue;
+                                    }
+                                    else if (pss.ID == 1)
+                                    {
+                                        pss.m_vehicleChoiceButton.m_sprite.SetTexture(TextureHandler.m_Display_tractorOrange);
+                                        TextureHandler.m_player_2_vehicle = TextureHandler.m_tractorOrange;
+                                    }
+                                    else if (pss.ID == 2)
+                                    {
+                                        pss.m_vehicleChoiceButton.m_sprite.SetTexture(TextureHandler.m_Display_tractorPurple);
+                                        TextureHandler.m_player_3_vehicle = TextureHandler.m_tractorPurple;
+                                    }
+                                    else if (pss.ID == 3)
+                                    {
+                                        pss.m_vehicleChoiceButton.m_sprite.SetTexture(TextureHandler.m_Display_tractorGreen);
+                                        TextureHandler.m_player_4_vehicle = TextureHandler.m_tractorGreen;
+                                    }
+
+                                    #endregion
+
+                                }
+                                else if (pss.m_choice3Button.Activated(m_lastPosition))
+                                {
+                                    // TODO: Check if the vehicle has already been chosen
+                                    pss.m_playerState = PlayerState.VEHICLE_SELECTED;
+
+                                    #region PickCorrectColour
+
+                                    if (pss.ID == 0)
+                                    {
+                                        pss.m_vehicleChoiceButton.m_sprite.SetTexture(TextureHandler.m_Display_tankBlue);
+                                        TextureHandler.m_player_1_vehicle = TextureHandler.m_tractorBlue;
+                                    }
+                                    else if (pss.ID == 1)
+                                    {
+                                        pss.m_vehicleChoiceButton.m_sprite.SetTexture(TextureHandler.m_Display_tankOrange);
+                                        TextureHandler.m_player_2_vehicle = TextureHandler.m_tractorOrange;
+                                    }
+                                    else if (pss.ID == 2)
+                                    {
+                                        pss.m_vehicleChoiceButton.m_sprite.SetTexture(TextureHandler.m_Display_tankPurple);
+                                        TextureHandler.m_player_3_vehicle = TextureHandler.m_tractorPurple;
+                                    }
+                                    else if (pss.ID == 3)
+                                    {
+                                        pss.m_vehicleChoiceButton.m_sprite.SetTexture(TextureHandler.m_Display_tankGreen);
+                                        TextureHandler.m_player_4_vehicle = TextureHandler.m_tractorGreen;
+                                    }
+
+                                    #endregion
+
+                                }
+                                else if (pss.m_choice4Button.Activated(m_lastPosition))
+                                {
+                                    // TODO: Check if the vehicle has already been chosen
+                                    pss.m_vehicleChoiceButton.m_sprite.SetTexture(TextureHandler.m_choice4);
+                                    pss.m_playerState = PlayerState.VEHICLE_SELECTED;
+                                }
+                            }
+                            else if (pss.m_playerState == PlayerState.VEHICLE_SELECTED)
+                            {
+                                if (pss.m_actionButton.Activated(m_lastPosition))
+                                {
+                                    pss.m_playerState = PlayerState.READY;
+                                }
+                            }
+                        }
+
+                        // Check if all players are ready
+                        if (m_playerBackButton.Activated(m_lastPosition))
+                        {
+
+                            /*// Check if players are ready
+                            if (ready && readyCount > 0) {
                                 Settings.m_numberOfPlayers = readyCount;
                                 m_currentExecutionState = ExecutionState.CHANGING;
-                            }
+                            }*/
+                        }
+                        if (m_playerGoButton.Activated(m_lastPosition))
+                        {
+                            bool ready = true;
+                            int readyCount = 0;
 
-                            break;
-                        case MenuScreenState.OPTIONS:
-                            // Options screen
-
-                            if (m_backButton.Activated(m_lastPosition))
+                            // Loop through each player
+                            for (int i = 0; i < players.Count; i++)
                             {
-                                // Go back to Main Menu
-                                m_currentScreen = MenuScreenState.MAIN_MENU;
-                            }
-                            break;
-                        case MenuScreenState.CONTROLS:
-                            // Controls Screen
-                            if (m_backButton.Activated(m_lastPosition))
-                            {
-                                // Go back to the main Menu
-                                m_currentScreen = MenuScreenState.MAIN_MENU;
-                            }
-                            break;
-                        case MenuScreenState.CREDITS:
-                            // Credits screen
 
-                        if (m_MenuButton.Activated(m_lastPosition)) {
+                                if (players[i].m_playerState == PlayerState.JOINED || players[i].m_playerState == PlayerState.VEHICLE_SELECTED)
+                                {
+                                    ready = false;
+                                    // If the player has joined
+                                    if (players[i].m_playerState == PlayerState.JOINED)
+                                    {
+                                        Settings.m_joinedPlayers[i] = true;
+                                    }
+                                }
+                                else if (players[i].m_playerState == PlayerState.READY)
+                                {
+                                    readyCount++;
+                                }
+                            }
+                            Settings.m_numberOfPlayers = readyCount;
+                            m_currentExecutionState = ExecutionState.CHANGING;
+                        }
+
+                        break;
+                    case MenuScreenState.OPTIONS:
+                        // Options screen
+
+                        if (m_backButton.Activated(m_lastPosition))
+                        {
+                            // Go back to Main Menu
+                            m_currentScreen = MenuScreenState.MAIN_MENU;
+                        }
+                        break;
+                    case MenuScreenState.CONTROLS:
+                        // Controls Screen
+                        if (m_backButton.Activated(m_lastPosition))
+                        {
+                            // Go back to the main Menu
+                            m_currentScreen = MenuScreenState.MAIN_MENU;
+                        }
+                        break;
+                    case MenuScreenState.CREDITS:
+                        // Credits screen
+
+                        if (m_MenuButton.Activated(m_lastPosition))
+                        {
                             // Go back to Main Menu
                             m_currentScreen = MenuScreenState.MAIN_MENU;
                         }
                         break;
                 }
+            }
+            m_touchState = TouchState.IDLE;
 		}
 
 		public override void Draw(GraphicsDevice graphicsDevice_) {
