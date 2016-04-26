@@ -440,14 +440,14 @@ namespace Project_Cows.Source.Application {
                     case MenuScreenState.OPTIONS:
                         // Options screen
 
-                        if (m_backButton.Activated(m_lastPosition)) {
+                        if (m_MenuButton.Activated(m_lastPosition)) {
                             // Go back to Main Menu
                             m_currentScreen = MenuScreenState.MAIN_MENU;
                         }
                         break;
                     case MenuScreenState.CONTROLS:
                         // Controls Screen
-                        if (m_backButton.Activated(m_lastPosition))
+                        if (m_MenuButton.Activated(m_lastPosition))
                         {
                             // Go back to the main Menu
                             m_currentScreen = MenuScreenState.MAIN_MENU;
@@ -456,7 +456,7 @@ namespace Project_Cows.Source.Application {
                     case MenuScreenState.CREDITS:
                         // Credits screen
 
-                        if (m_backButton.Activated(m_lastPosition)) {
+                        if (m_MenuButton.Activated(m_lastPosition)) {
                             // Go back to Main Menu
                             m_currentScreen = MenuScreenState.MAIN_MENU;
                         }
