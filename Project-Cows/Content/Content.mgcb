@@ -867,45 +867,33 @@
 /processorParam:TextureFormat=Compressed
 /build:Fonts/huge_font.spritefont
 
-#begin Audio/Brake.mp3
-/importer:Mp3Importer
+#begin Audio/Car_Brake_Loop.wav
+/importer:WavImporter
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
-/build:Audio/Brake.mp3
+/build:Audio/Car_Brake_Loop.wav
 
-#begin Audio/cargo.mp3
-/importer:Mp3Importer
+#begin Audio/Car_Engine_Loop.wav
+/importer:WavImporter
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
-/build:Audio/cargo.mp3
+/build:Audio/Car_Engine_Loop.wav
 
-#begin Audio/carsound.mp3
-/importer:Mp3Importer
-/processor:SoundEffectProcessor
+#begin Audio/Menu-Background_Music.wav
+/importer:WavImporter
+/processor:SongProcessor
 /processorParam:Quality=Best
-/build:Audio/carsound.mp3
+/build:Audio/Menu-Background_Music.wav
 
-#begin Audio/cow.mp3
-/importer:Mp3Importer
-/processor:SoundEffectProcessor
+#begin Audio/Game_Music.wav
+/importer:WavImporter
+/processor:SongProcessor
 /processorParam:Quality=Best
-/build:Audio/cow.mp3
+/build:Audio/Game_Music.wav
 
-#begin Audio/CowMoo2.mp3
-/importer:Mp3Importer
+#begin Audio/Countdown_Sound.wav
+/importer:WavImporter
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
-/build:Audio/CowMoo2.mp3
-
-#begin Audio/Driving.mp3
-/importer:Mp3Importer
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Audio/Driving.mp3
-
-#begin Audio/Single Cow-SoundBible.com-2051754137.mp3
-/importer:Mp3Importer
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Audio/Single Cow-SoundBible.com-2051754137.mp3
+/build:Audio/Countdown_Sound.wav
 

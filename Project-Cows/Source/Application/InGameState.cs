@@ -17,6 +17,8 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Input.Touch;
+using Microsoft.Xna.Framework.Audio;// ADDED
+using Microsoft.Xna.Framework.Media; // ADDED
 
 using FarseerPhysics.Dynamics;
 
@@ -49,12 +51,15 @@ namespace Project_Cows.Source.Application {
         private Sprite m_background;
         private List<Sprite> m_rankingSprites = new List<Sprite>();
 
+         private SoundEffectInstance startRace; // ADDED
+
         //for use of showing which player is in which position
         private List<int> m_rankings = new List<int>();
 
         int m_winner = 0;
 
         bool finished;
+        bool playCountdownSFX;
 
         //will be used to determine if all players have readied up
         bool PlayersReady;
@@ -73,6 +78,8 @@ namespace Project_Cows.Source.Application {
 		public override void Initialise() {
 			// Initialise in-game state
 			// ================
+
+          
 
             fs_world = new FarseerPhysics.Dynamics.World(Vector2.Zero);
 
@@ -133,8 +140,12 @@ namespace Project_Cows.Source.Application {
 
 			// Change execution state
 			m_currentExecutionState = ExecutionState.RUNNING;
-		}
 
+            startRace = AudioHandler.countdown.CreateInstance(); // ADDED
+            startRace.IsLooped = false; // ADDED
+            playCountdownSFX = true; // ADDED
+            MediaPlayer.Play(AudioHandler.game); // ADDED
+		}
         public override void Update(ref TouchHandler touchHandler_, GameTime gameTime_)
         {
             // Update in game state
@@ -142,6 +153,8 @@ namespace Project_Cows.Source.Application {
 
             // Update touch input handler
             touchHandler_.Update();
+
+        
 
             // Create lists to contain touches for each player
             List<List<TouchLocation>> playerTouches = new List<List<TouchLocation>>();
@@ -161,7 +174,11 @@ namespace Project_Cows.Source.Application {
                     }
                 }
             }
-
+            if (PlayersReady && playCountdownSFX){ // ADDED
+              
+                startRace.Play(); // ADDED
+                playCountdownSFX = false; //ADDED
+            } 
             //only want to do this when the main game isnt running
             if (!PlayersReady)
             {

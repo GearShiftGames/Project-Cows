@@ -83,12 +83,10 @@
     <File>M:/Project Cows Git/Project-Cows/Content/Sprites/Temp/FlyingPig.png</File>
     <File>M:/Project Cows Git/Project-Cows/Content/Fonts/large_font.spritefont</File>
     <File>M:/Project Cows Git/Project-Cows/Content/Fonts/huge_font.spritefont</File>
-    <File>M:/Project Cows Git/Project-Cows/Content/Audio/Brake.mp3</File>
-    <File>M:/Project Cows Git/Project-Cows/Content/Audio/cargo.mp3</File>
-    <File>M:/Project Cows Git/Project-Cows/Content/Audio/carsound.mp3</File>
-    <File>M:/Project Cows Git/Project-Cows/Content/Audio/cow.mp3</File>
-    <File>M:/Project Cows Git/Project-Cows/Content/Audio/CowMoo2.mp3</File>
-    <File>M:/Project Cows Git/Project-Cows/Content/Audio/Driving.mp3</File>
-    <File>M:/Project Cows Git/Project-Cows/Content/Audio/Single Cow-SoundBible.com-2051754137.mp3</File>
+    <File>M:/Project Cows Git/Project-Cows/Content/Audio/Car_Brake_Loop.wav</File>
+    <File>M:/Project Cows Git/Project-Cows/Content/Audio/Car_Engine_Loop.wav</File>
+    <File>M:/Project Cows Git/Project-Cows/Content/Audio/Menu-Background_Music.wav</File>
+    <File>M:/Project Cows Git/Project-Cows/Content/Audio/Game_Music.wav</File>
+    <File>M:/Project Cows Git/Project-Cows/Content/Audio/Countdown_Sound.wav</File>
   </SourceFiles>
 </SourceFileCollection>

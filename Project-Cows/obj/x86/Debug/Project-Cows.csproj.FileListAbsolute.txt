@@ -482,19 +482,19 @@ M:\Project Cows Git\Project-Cows\bin\Windows\Debug\SharpDX.RawInput.xml
 M:\Project Cows Git\Project-Cows\bin\Windows\Debug\SharpDX.Direct3D9.xml
 M:\Project Cows Git\Project-Cows\obj\x86\Debug\Project-Cows.csprojResolveAssemblyReference.cache
 M:\Project Cows Git\Project-Cows\bin\Windows\Debug\Content\Audio\Brake.wma
-M:\Project Cows Git\Project-Cows\bin\Windows\Debug\Content\Audio\Brake.xnb
 M:\Project Cows Git\Project-Cows\bin\Windows\Debug\Content\Audio\cargo.wma
-M:\Project Cows Git\Project-Cows\bin\Windows\Debug\Content\Audio\cargo.xnb
 M:\Project Cows Git\Project-Cows\bin\Windows\Debug\Content\Audio\carsound.wma
-M:\Project Cows Git\Project-Cows\bin\Windows\Debug\Content\Audio\carsound.xnb
 M:\Project Cows Git\Project-Cows\bin\Windows\Debug\Content\Audio\cow.wma
-M:\Project Cows Git\Project-Cows\bin\Windows\Debug\Content\Audio\cow.xnb
 M:\Project Cows Git\Project-Cows\bin\Windows\Debug\Content\Audio\CowMoo2.wma
-M:\Project Cows Git\Project-Cows\bin\Windows\Debug\Content\Audio\CowMoo2.xnb
 M:\Project Cows Git\Project-Cows\bin\Windows\Debug\Content\Audio\Driving.wma
-M:\Project Cows Git\Project-Cows\bin\Windows\Debug\Content\Audio\Driving.xnb
 M:\Project Cows Git\Project-Cows\bin\Windows\Debug\Content\Audio\Single Cow-SoundBible.com-2051754137.wma
-M:\Project Cows Git\Project-Cows\bin\Windows\Debug\Content\Audio\Single Cow-SoundBible.com-2051754137.xnb
 M:\Project Cows Git\Project-Cows\bin\Windows\Debug\Content\Fonts\huge_font.xnb
 M:\Project Cows Git\Project-Cows\bin\Windows\Debug\Content\Fonts\large_font.xnb
 M:\Project Cows Git\Project-Cows\bin\Windows\Debug\Content\Sprites\Temp\FlyingPig.xnb
+M:\Project Cows Git\Project-Cows\bin\Windows\Debug\Content\Audio\Car_Brake_Loop.xnb
+M:\Project Cows Git\Project-Cows\bin\Windows\Debug\Content\Audio\Car_Engine_Loop.xnb
+M:\Project Cows Git\Project-Cows\bin\Windows\Debug\Content\Audio\Menu-Background_Music.xnb
+M:\Project Cows Git\Project-Cows\bin\Windows\Debug\Content\Audio\Menu-Background_Music.wma
+M:\Project Cows Git\Project-Cows\bin\Windows\Debug\Content\Audio\Game_Music.xnb
+M:\Project Cows Git\Project-Cows\bin\Windows\Debug\Content\Audio\Game_Music.wma
+M:\Project Cows Git\Project-Cows\bin\Windows\Debug\Content\Audio\Countdown_Sound.xnb

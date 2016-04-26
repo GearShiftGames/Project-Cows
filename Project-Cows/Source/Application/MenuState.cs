@@ -16,7 +16,9 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Input.Touch;
+using Microsoft.Xna.Framework.Media;
 
 using Project_Cows.Source.System;
 using Project_Cows.Source.System.Graphics;
@@ -60,6 +62,7 @@ namespace Project_Cows.Source.Application {
         private Button m_playerBackButton;
         private Button m_playerGoButton;
 
+     
 
         private List<AnimatedSprite> m_animatedSprites = new List<AnimatedSprite>();
         private List<Particle> m_particles = new List<Particle>();
@@ -70,6 +73,10 @@ namespace Project_Cows.Source.Application {
 			// ================
 
 			m_currentState = GameState.MAIN_MENU;
+
+         
+              
+            
 
 			m_currentExecutionState = ExecutionState.INITIALISING;
 
@@ -166,12 +173,16 @@ namespace Project_Cows.Source.Application {
 
 			// Change exectution state
 			m_currentExecutionState = ExecutionState.RUNNING;
+            MediaPlayer.Play(AudioHandler.menu); // ADDED
+         
 		}
 
-		public override void Update(ref TouchHandler touchHandler_, GameTime gameTime_) {
+		public override void Update(ref TouchHandler touchHandler_, GameTime gameTime_ ) {
 			// Update menu state
 			// ================
 
+           
+   
             // NOTE: Debug Purposes
             if (Keyboard.GetState().IsKeyDown(Keys.Q)) {
                 m_currentScreen = MenuScreenState.MAIN_MENU;
