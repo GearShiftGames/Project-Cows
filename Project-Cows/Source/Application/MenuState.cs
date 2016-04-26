@@ -275,7 +275,7 @@ namespace Project_Cows.Source.Application {
                 players[3].m_playerState = PlayerState.READY;
                 Settings.m_joinedPlayers[3] = true;
             }
-             
+
 			// Update touch input handler
 			touchHandler_.Update();
 
@@ -298,6 +298,7 @@ namespace Project_Cows.Source.Application {
                         }
                         if (m_exitButton.Activated(m_lastPosition)) {
                             // Close app
+                            Settings.m_exit = true;
                         }
                         if (m_creditsButton.Activated(m_lastPosition)) {
                             // Go to Credits
