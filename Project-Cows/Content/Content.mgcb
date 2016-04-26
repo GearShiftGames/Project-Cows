@@ -1261,3 +1261,9 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/Vehicles/SmallImages/Cow_Tractor_Green.png
 
+#begin Fonts/small_font.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:TextureFormat=Compressed
+/build:Fonts/small_font.spritefont
+

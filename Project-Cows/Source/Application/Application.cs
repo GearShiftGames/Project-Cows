@@ -115,6 +115,12 @@ namespace Project_Cows.Source.Application {
 				Exit();
 			}
 
+            if(Settings.m_exit == true)
+            {
+                Settings.SaveSettings();
+                Exit();
+            }
+
             // Reset state - TEMP
             if (Keyboard.GetState().IsKeyDown(Keys.F5)) {
                 m_currentState.SetExecutionState(ExecutionState.INITIALISING);

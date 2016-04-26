@@ -295,7 +295,7 @@ namespace Project_Cows.Source.Application {
                 players[3].m_playerState = PlayerState.READY;
                 Settings.m_joinedPlayers[3] = true;
             }
-             
+
 			// Update touch input handler
 			touchHandler_.Update();
 
@@ -540,15 +540,11 @@ namespace Project_Cows.Source.Application {
                         case MenuScreenState.CREDITS:
                             // Credits screen
 
-                            if (m_backButton.Activated(m_lastPosition))
-                            {
-                                // Go back to Main Menu
-                                m_currentScreen = MenuScreenState.MAIN_MENU;
-                            }
-                            break;
-                    }
-
-                    m_touchState = TouchState.IDLE;
+                        if (m_MenuButton.Activated(m_lastPosition)) {
+                            // Go back to Main Menu
+                            m_currentScreen = MenuScreenState.MAIN_MENU;
+                        }
+                        break;
                 }
 		}
 
