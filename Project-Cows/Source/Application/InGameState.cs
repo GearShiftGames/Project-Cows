@@ -178,7 +178,7 @@ namespace Project_Cows.Source.Application {
                         if (m_players[index].m_ReadyButton.Activated(tl.Position))
                         {
                             m_players[index].m_ReadyUp = true;
-                            m_players[index].m_ReadyButton.m_sprite.SetTexture(TextureHandler.m_gameLogo);//changes texture so we know who has readied up
+                            //m_players[index].m_ReadyButton.m_sprite.SetTexture(TextureHandler.gameLogo);//changes texture so we know who has readied up
                         }
                     }
                 }
