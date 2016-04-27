@@ -4,115 +4,115 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Temp/animation.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Temp/barrierLARGE.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Temp/car.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Temp/controlTemp.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Temp/controlTempBG.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Temp/cow.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Temp/pixel.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Temp/purpleCar.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Temp/Square.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Temp/Title.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Temp/Tractor_Blue.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Temp/Tyre.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Utility/carCollider.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Utility/checkpoint.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Utility/corner.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Utility/entityCollided.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Utility/entityUncollided.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Vehicles/V2_Cow_Army.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Fonts/basic_font.spritefont</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Menu/backButton.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Menu/background.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Menu/Button_Controls_Normal.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Menu/Button_Options_Normal.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Menu/Button_Play_Normal.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Menu/creditsButton.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Menu/exitButton.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Menu/optionsButton.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Menu/playButton.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Promo/teamLogo.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Temp/Cow_Car_Blue.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Temp/Cow_Car_Orange.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Temp/Cow_Car_Purple.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Temp/Cow_Car_Yellow.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Temp/Red.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Temp/V2_Cow_Tank.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Temp/vehicleTyre.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Track/Barriers/barrier.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Track/background.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Track/finishLine.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/UI/slider.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/UI/steeringWheelPurple.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/UI/wheelBlue.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/UI/wheelOrange.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/UI/wheelPurple.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/UI/wheelYellow.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Vehicles/cow1.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Vehicles/cow2.1.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Vehicles/cow2.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Vehicles/cow3.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Vehicles/cow4.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Vehicles/V2_Cow_Plain.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Vehicles/vehicleBlue.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Vehicles/vehicleOrange.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Vehicles/vehiclePurple.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Vehicles/vehicleYellow.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Temp/THELORD.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Menu/controls.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Menu/Button_Menu_Normal.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Menu/Victory/Button_Race_Again.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Menu/Victory/Leaderboard_NoText.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Menu/Victory/Trophy.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Menu/Victory/Trophy_Bronze.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Menu/Victory/Trophy_Silver.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Track/Grass.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Menu/Victory/Victory_Screen.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Utility/brown_particle.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Menu/PlayerSelect/1Button.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Menu/PlayerSelect/2Button.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Menu/PlayerSelect/3Button.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Menu/PlayerSelect/4Button.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Menu/PlayerSelect/actionJoin.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Menu/PlayerSelect/actionReady.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Menu/PlayerSelect/choice1.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Menu/PlayerSelect/choice2.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Menu/PlayerSelect/choice3.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Menu/PlayerSelect/choice4.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Menu/PlayerSelect/vehicleChoice.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Temp/FlyingPig.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Fonts/large_font.spritefont</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Fonts/huge_font.spritefont</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Audio/Brake.mp3</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Audio/cargo.mp3</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Audio/carsound.mp3</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Audio/cow.mp3</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Audio/CowMoo2.mp3</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Audio/Driving.mp3</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Audio/Single Cow-SoundBible.com-2051754137.mp3</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Vehicles/V2_Cow_Highland_Brown.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Vehicles/SmallImages/Cow_Car_Blue.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Vehicles/SmallImages/Cow_Car_Orange.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Vehicles/SmallImages/Cow_Car_Purple.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Vehicles/SmallImages/Cow_Car_White.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Vehicles/SmallImages/Cow_Car_Yellow.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Vehicles/SmallImages/Cow_Tank_Green.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Vehicles/SmallImages/Cow_Tractor_Blue.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Vehicles/SmallImages/Cow_Tractor_Orange.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Vehicles/SmallImages/Cow_Tractor_Purple.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Vehicles/SmallImages/Cow_Tractor_White.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Vehicles/SmallImages/Cow_Tractor_Yellow.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Vehicles/LargeImages/Cow_Car_Blue.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Vehicles/LargeImages/Cow_Car_Orange.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Vehicles/LargeImages/Cow_Car_Purple.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Vehicles/LargeImages/Cow_Car_White.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Vehicles/LargeImages/Cow_Car_Yellow.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Vehicles/LargeImages/Cow_Tractor_Blue.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Vehicles/LargeImages/Cow_Tractor_Orange.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Vehicles/LargeImages/Cow_Tractor_Purple.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Vehicles/LargeImages/Cow_Tractor_White.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Sprites/Vehicles/LargeImages/Cow_Tractor_Yellow.png</File>
-    <File>M:/Project Cow Racing/Project-Cows/Content/Fonts/small_font.spritefont</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Temp/animation.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Temp/barrierLARGE.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Temp/car.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Temp/controlTemp.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Temp/controlTempBG.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Temp/cow.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Temp/pixel.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Temp/purpleCar.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Temp/Square.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Temp/Title.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Temp/Tractor_Blue.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Temp/Tyre.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Utility/carCollider.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Utility/checkpoint.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Utility/corner.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Utility/entityCollided.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Utility/entityUncollided.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Vehicles/V2_Cow_Army.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Fonts/basic_font.spritefont</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Menu/backButton.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Menu/background.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Menu/Button_Controls_Normal.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Menu/Button_Options_Normal.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Menu/Button_Play_Normal.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Menu/creditsButton.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Menu/exitButton.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Menu/optionsButton.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Menu/playButton.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Promo/teamLogo.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Temp/Cow_Car_Blue.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Temp/Cow_Car_Orange.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Temp/Cow_Car_Purple.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Temp/Cow_Car_Yellow.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Temp/Red.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Temp/V2_Cow_Tank.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Temp/vehicleTyre.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Track/Barriers/barrier.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Track/background.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Track/finishLine.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/UI/slider.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/UI/steeringWheelPurple.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/UI/wheelBlue.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/UI/wheelOrange.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/UI/wheelPurple.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/UI/wheelYellow.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Vehicles/cow1.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Vehicles/cow2.1.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Vehicles/cow2.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Vehicles/cow3.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Vehicles/cow4.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Vehicles/V2_Cow_Plain.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Vehicles/vehicleBlue.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Vehicles/vehicleOrange.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Vehicles/vehiclePurple.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Vehicles/vehicleYellow.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Temp/THELORD.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Menu/controls.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Menu/Button_Menu_Normal.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Menu/Victory/Button_Race_Again.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Menu/Victory/Leaderboard_NoText.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Menu/Victory/Trophy.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Menu/Victory/Trophy_Bronze.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Menu/Victory/Trophy_Silver.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Track/Grass.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Menu/Victory/Victory_Screen.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Utility/brown_particle.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Menu/PlayerSelect/1Button.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Menu/PlayerSelect/2Button.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Menu/PlayerSelect/3Button.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Menu/PlayerSelect/4Button.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Menu/PlayerSelect/actionJoin.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Menu/PlayerSelect/actionReady.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Menu/PlayerSelect/choice1.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Menu/PlayerSelect/choice2.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Menu/PlayerSelect/choice3.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Menu/PlayerSelect/choice4.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Menu/PlayerSelect/vehicleChoice.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Temp/FlyingPig.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Fonts/large_font.spritefont</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Fonts/huge_font.spritefont</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Audio/Brake.mp3</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Audio/cargo.mp3</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Audio/carsound.mp3</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Audio/cow.mp3</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Audio/CowMoo2.mp3</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Audio/Driving.mp3</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Audio/Single Cow-SoundBible.com-2051754137.mp3</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Vehicles/V2_Cow_Highland_Brown.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Vehicles/SmallImages/Cow_Car_Blue.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Vehicles/SmallImages/Cow_Car_Orange.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Vehicles/SmallImages/Cow_Car_Purple.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Vehicles/SmallImages/Cow_Car_White.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Vehicles/SmallImages/Cow_Car_Yellow.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Vehicles/SmallImages/Cow_Tank_Green.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Vehicles/SmallImages/Cow_Tractor_Blue.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Vehicles/SmallImages/Cow_Tractor_Orange.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Vehicles/SmallImages/Cow_Tractor_Purple.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Vehicles/SmallImages/Cow_Tractor_White.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Vehicles/SmallImages/Cow_Tractor_Yellow.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Vehicles/LargeImages/Cow_Car_Blue.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Vehicles/LargeImages/Cow_Car_Orange.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Vehicles/LargeImages/Cow_Car_Purple.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Vehicles/LargeImages/Cow_Car_White.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Vehicles/LargeImages/Cow_Car_Yellow.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Vehicles/LargeImages/Cow_Tractor_Blue.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Vehicles/LargeImages/Cow_Tractor_Orange.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Vehicles/LargeImages/Cow_Tractor_Purple.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Vehicles/LargeImages/Cow_Tractor_White.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Sprites/Vehicles/LargeImages/Cow_Tractor_Yellow.png</File>
+    <File>M:/University-Work/Year 3/Prototype Game Development/Project Cows/Project-Cows/Content/Fonts/small_font.spritefont</File>
   </SourceFiles>
 </SourceFileCollection>

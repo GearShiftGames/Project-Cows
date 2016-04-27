@@ -163,10 +163,6 @@ namespace Project_Cows.Source.System.Graphics {
             LoadTexture(ref m_vehicleChoice, "Sprites\\Menu\\PlayerSelect\\vehicleChoice");
             LoadTexture(ref m_menuMain, "Sprites\\Menu\\Button_Menu_Normal");
          
-            LoadTexture(ref m_menu1, "Sprites\\Menu\\1Button");
-            LoadTexture(ref m_menu2, "Sprites\\Menu\\2Button");
-            LoadTexture(ref m_menu3, "Sprites\\Menu\\3Button");
-            LoadTexture(ref m_menu4, "Sprites\\Menu\\4Button");
             LoadTexture(ref m_controlInfo, "Sprites\\Menu\\controls");
 
             // Victory Screen
