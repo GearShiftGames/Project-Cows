@@ -229,7 +229,7 @@ namespace Project_Cows.Source.System.Graphics {
 
 
 
-            LoadTexture(ref m_tankGreen, "Sprites\\Vehicles\\Cow_Tank_Green");
+            //LoadTexture(ref m_tankGreen, "Sprites\\Vehicles\\Cow_Tank_Green");
             /*
              *LoadTexture(ref m_tankBlue, "Sprites\\Vehicles\\Cow_Tank_Blue"); 
              *LoadTexture(ref m_tankOrange, "Sprites\\Vehicles\\Cow_Tank_Orange"); 
