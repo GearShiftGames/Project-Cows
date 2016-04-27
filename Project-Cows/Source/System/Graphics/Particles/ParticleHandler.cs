@@ -32,7 +32,7 @@ namespace Project_Cows.Source.System.Graphics.Particles {
         }
 
         public void StartSkidMarks(int x_, int y_) {
-            m_particles.Add(new Particle(new Vector2(x_, y_), 4000, 0, 0, Color.Black));
+            m_particles.Add(new Particle(new Vector2(x_, y_), 2000, 0, 0, Color.Black));
         }
 
         public void StartFireTrail(int x_, int y_) {

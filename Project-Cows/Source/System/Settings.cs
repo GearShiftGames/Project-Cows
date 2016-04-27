@@ -12,7 +12,6 @@
 /// Settings.cs
 
 using System;
-using System.Collections.Generic;
 using Project_Cows.Source.System.StateMachine;
 
 namespace Project_Cows.Source.System {
@@ -33,7 +32,6 @@ namespace Project_Cows.Source.System {
         // Game Settings
         public static int m_numberOfPlayers = 2;                        // Number of players
         public static bool[] m_joinedPlayers = { false, false, false, false };
-        public static bool m_exit = false;
         //public static int m_track
 
 		// Methods

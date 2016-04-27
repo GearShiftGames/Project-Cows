@@ -31,7 +31,7 @@ namespace Project_Cows.Source.Application.Track {
         public List<CheckpointContainer> m_checkpoints = new List<CheckpointContainer>();
         public List<EntityStruct> m_vehicles = new List<EntityStruct>();
         public List<Barrier> m_barriers = new List<Barrier>();      // TEMP
-        private List<int> m_rank = new List<int>();
+        private List<int> m_rankings = new List<int>();
 
         private World fs_world;
 
@@ -47,7 +47,7 @@ namespace Project_Cows.Source.Application.Track {
             m_checkpoints.Clear();
             m_vehicles.Clear();
             m_barriers.Clear();
-            m_rank.Clear();
+            m_rankings.Clear();
 
             // Add checkpoints
             Level.LoadLevel("0");       // NOTE: This would be done in the in-game state in future -Dean
@@ -110,8 +110,8 @@ namespace Project_Cows.Source.Application.Track {
             }
 
             // Get rankings
-            m_rank.Clear();
-            while (m_rank.Count != players_.Count) {
+            m_rankings.Clear();
+            while (m_rankings.Count != players_.Count) {
                 int highestID = 0;
                 int highestScore = 0;
 
@@ -120,7 +120,7 @@ namespace Project_Cows.Source.Application.Track {
                     int checkpointScore = p.m_currentLap * (m_checkpoints.Count - 1) + p.m_currentCheckpoint.GetID();
                     if (checkpointScore > highestScore) {
                         bool ranked = false;
-                        foreach (int i in m_rank) {
+                        foreach (int i in m_rankings) {
                             if (p.GetID() == i) {
                                 ranked = true;
                             }
@@ -133,10 +133,10 @@ namespace Project_Cows.Source.Application.Track {
                     }
                 }
                 // Add front-most player to rankings
-                m_rank.Add(highestID);
+                m_rankings.Add(highestID);
             }
 
-            rankings_ = m_rank;
+            rankings_ = m_rankings;
 
             foreach (Barrier b in m_barriers) {
                 b.UpdateSprites();
@@ -149,17 +149,19 @@ namespace Project_Cows.Source.Application.Track {
 
             // Render barriers
             foreach (Barrier b in m_barriers) {
-                //GraphicsHandler.DrawSprite(b.GetSprite());
+                GraphicsHandler.DrawSprite(b.GetSprite());
             }
 
             // Add checkpoints to Debug screen
             foreach (CheckpointContainer cc in m_checkpoints) {
                 if (cc.GetCheckpoint().GetType() == CheckpointType.FIRST) {
-                    //GraphicsHandler.DrawSprite(cc.GetEntity().GetSprite());
+                    GraphicsHandler.DrawSprite(cc.GetEntity().GetSprite());
                 } else {
                     Debug.AddSprite(cc.GetEntity().GetSprite());                    
                 }
-            }    
+            }
+
+            
         }
 
         private bool AreBodiesColliding(Body bodyA_, Body bodyB_){

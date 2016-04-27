@@ -624,105 +624,6 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/Temp/THELORD.png
 
-#begin Sprites/Menu/controls.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:TextureFormat=Color
-/build:Sprites/Menu/controls.png
-
-#begin Sprites/Menu/Button_Menu_Normal.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:TextureFormat=Color
-/build:Sprites/Menu/Button_Menu_Normal.png
-
-#begin Sprites/Menu/Victory/Button_Race_Again.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:TextureFormat=Color
-/build:Sprites/Menu/Victory/Button_Race_Again.png
-
-#begin Sprites/Menu/Victory/Leaderboard_NoText.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:TextureFormat=Color
-/build:Sprites/Menu/Victory/Leaderboard_NoText.png
-
-#begin Sprites/Menu/Victory/Trophy.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:TextureFormat=Color
-/build:Sprites/Menu/Victory/Trophy.png
-
-#begin Sprites/Menu/Victory/Trophy_Bronze.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:TextureFormat=Color
-/build:Sprites/Menu/Victory/Trophy_Bronze.png
-
-#begin Sprites/Menu/Victory/Trophy_Silver.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:TextureFormat=Color
-/build:Sprites/Menu/Victory/Trophy_Silver.png
-
-#begin Sprites/Track/Grass.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:TextureFormat=Color
-/build:Sprites/Track/Grass.png
-
-#begin Sprites/Menu/Victory/Victory_Screen.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:TextureFormat=Color
-/build:Sprites/Menu/Victory/Victory_Screen.png
-
 #begin Sprites/Utility/brown_particle.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -878,49 +779,43 @@
 /processorParam:TextureFormat=Compressed
 /build:Fonts/huge_font.spritefont
 
-#begin Audio/Brake.mp3
-/importer:Mp3Importer
+#begin Audio/Car_Brake_Loop.wav
+/importer:WavImporter
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
-/build:Audio/Brake.mp3
+/build:Audio/Car_Brake_Loop.wav
 
-#begin Audio/cargo.mp3
-/importer:Mp3Importer
+#begin Audio/Car_Engine_Loop.wav
+/importer:WavImporter
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
-/build:Audio/cargo.mp3
+/build:Audio/Car_Engine_Loop.wav
 
-#begin Audio/carsound.mp3
-/importer:Mp3Importer
+#begin Audio/Menu-Background_Music.wav
+/importer:WavImporter
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Audio/Menu-Background_Music.wav
+
+#begin Audio/Game_Music.wav
+/importer:WavImporter
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Audio/Game_Music.wav
+
+#begin Audio/Countdown_Sound.wav
+/importer:WavImporter
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
-/build:Audio/carsound.mp3
+/build:Audio/Countdown_Sound.wav
 
-#begin Audio/cow.mp3
-/importer:Mp3Importer
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Audio/cow.mp3
+#begin Fonts/small_font.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:TextureFormat=Compressed
+/build:Fonts/small_font.spritefont
 
-#begin Audio/CowMoo2.mp3
-/importer:Mp3Importer
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Audio/CowMoo2.mp3
-
-#begin Audio/Driving.mp3
-/importer:Mp3Importer
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Audio/Driving.mp3
-
-#begin Audio/Single Cow-SoundBible.com-2051754137.mp3
-/importer:Mp3Importer
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Audio/Single Cow-SoundBible.com-2051754137.mp3
-
-#begin Sprites/Vehicles/V2_Cow_Highland_Brown.png
+#begin Sprites/Debug/checkpoint.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -929,9 +824,9 @@
 /processorParam:PremultiplyAlpha=True
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:TextureFormat=Color
-/build:Sprites/Vehicles/V2_Cow_Highland_Brown.png
+/build:Sprites/Debug/checkpoint.png
 
-#begin Sprites/Vehicles/SmallImages/Cow_Car_Blue.png
+#begin Sprites/Debug/collider.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -940,9 +835,9 @@
 /processorParam:PremultiplyAlpha=True
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:TextureFormat=Color
-/build:Sprites/Vehicles/SmallImages/Cow_Car_Blue.png
+/build:Sprites/Debug/collider.png
 
-#begin Sprites/Vehicles/SmallImages/Cow_Car_Orange.png
+#begin Sprites/Debug/corner.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -951,9 +846,9 @@
 /processorParam:PremultiplyAlpha=True
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:TextureFormat=Color
-/build:Sprites/Vehicles/SmallImages/Cow_Car_Orange.png
+/build:Sprites/Debug/corner.png
 
-#begin Sprites/Vehicles/SmallImages/Cow_Car_Purple.png
+#begin Sprites/GFX/brown_particle.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -962,9 +857,9 @@
 /processorParam:PremultiplyAlpha=True
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:TextureFormat=Color
-/build:Sprites/Vehicles/SmallImages/Cow_Car_Purple.png
+/build:Sprites/GFX/brown_particle.png
 
-#begin Sprites/Vehicles/SmallImages/Cow_Car_White.png
+#begin Sprites/Menu/PlayerSelect/backButton.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -973,9 +868,9 @@
 /processorParam:PremultiplyAlpha=True
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:TextureFormat=Color
-/build:Sprites/Vehicles/SmallImages/Cow_Car_White.png
+/build:Sprites/Menu/PlayerSelect/backButton.png
 
-#begin Sprites/Vehicles/SmallImages/Cow_Car_Yellow.png
+#begin Sprites/Menu/PlayerSelect/startButton.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -984,9 +879,9 @@
 /processorParam:PremultiplyAlpha=True
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:TextureFormat=Color
-/build:Sprites/Vehicles/SmallImages/Cow_Car_Yellow.png
+/build:Sprites/Menu/PlayerSelect/startButton.png
 
-#begin Sprites/Vehicles/SmallImages/Cow_Tank_Green.png
+#begin Sprites/Menu/Victory/Button_Race_Again.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -995,9 +890,9 @@
 /processorParam:PremultiplyAlpha=True
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:TextureFormat=Color
-/build:Sprites/Vehicles/SmallImages/Cow_Tank_Green.png
+/build:Sprites/Menu/Victory/Button_Race_Again.png
 
-#begin Sprites/Vehicles/SmallImages/Cow_Tractor_Blue.png
+#begin Sprites/Menu/Victory/Leaderboard_NoText.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -1006,9 +901,9 @@
 /processorParam:PremultiplyAlpha=True
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:TextureFormat=Color
-/build:Sprites/Vehicles/SmallImages/Cow_Tractor_Blue.png
+/build:Sprites/Menu/Victory/Leaderboard_NoText.png
 
-#begin Sprites/Vehicles/SmallImages/Cow_Tractor_Orange.png
+#begin Sprites/Menu/Victory/Trophy.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -1017,9 +912,9 @@
 /processorParam:PremultiplyAlpha=True
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:TextureFormat=Color
-/build:Sprites/Vehicles/SmallImages/Cow_Tractor_Orange.png
+/build:Sprites/Menu/Victory/Trophy.png
 
-#begin Sprites/Vehicles/SmallImages/Cow_Tractor_Purple.png
+#begin Sprites/Menu/Victory/Trophy_Bronze.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -1028,9 +923,9 @@
 /processorParam:PremultiplyAlpha=True
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:TextureFormat=Color
-/build:Sprites/Vehicles/SmallImages/Cow_Tractor_Purple.png
+/build:Sprites/Menu/Victory/Trophy_Bronze.png
 
-#begin Sprites/Vehicles/SmallImages/Cow_Tractor_White.png
+#begin Sprites/Menu/Victory/Trophy_Silver.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -1039,9 +934,9 @@
 /processorParam:PremultiplyAlpha=True
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:TextureFormat=Color
-/build:Sprites/Vehicles/SmallImages/Cow_Tractor_White.png
+/build:Sprites/Menu/Victory/Trophy_Silver.png
 
-#begin Sprites/Vehicles/SmallImages/Cow_Tractor_Yellow.png
+#begin Sprites/Menu/Victory/Victory_Screen.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -1050,7 +945,40 @@
 /processorParam:PremultiplyAlpha=True
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:TextureFormat=Color
-/build:Sprites/Vehicles/SmallImages/Cow_Tractor_Yellow.png
+/build:Sprites/Menu/Victory/Victory_Screen.png
+
+#begin Sprites/Menu/Button_Menu_Normal.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Menu/Button_Menu_Normal.png
+
+#begin Sprites/Menu/controls.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Menu/controls.png
+
+#begin Sprites/Temp/FUHRORDEAN.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Temp/FUHRORDEAN.png
 
 #begin Sprites/Vehicles/LargeImages/Cow_Car_Blue.png
 /importer:TextureImporter
@@ -1107,6 +1035,61 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/Vehicles/LargeImages/Cow_Car_Yellow.png
 
+#begin Sprites/Vehicles/LargeImages/Cow_Tank_Blue.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Vehicles/LargeImages/Cow_Tank_Blue.png
+
+#begin Sprites/Vehicles/LargeImages/Cow_Tank_Green.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Vehicles/LargeImages/Cow_Tank_Green.png
+
+#begin Sprites/Vehicles/LargeImages/Cow_Tank_Orange.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Vehicles/LargeImages/Cow_Tank_Orange.png
+
+#begin Sprites/Vehicles/LargeImages/Cow_Tank_Purple.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Vehicles/LargeImages/Cow_Tank_Purple.png
+
+#begin Sprites/Vehicles/LargeImages/Cow_Tank_White.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Vehicles/LargeImages/Cow_Tank_White.png
+
 #begin Sprites/Vehicles/LargeImages/Cow_Tractor_Blue.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -1117,6 +1100,17 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:TextureFormat=Color
 /build:Sprites/Vehicles/LargeImages/Cow_Tractor_Blue.png
+
+#begin Sprites/Vehicles/LargeImages/Cow_Tractor_Green.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Vehicles/LargeImages/Cow_Tractor_Green.png
 
 #begin Sprites/Vehicles/LargeImages/Cow_Tractor_Orange.png
 /importer:TextureImporter
@@ -1151,7 +1145,7 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/Vehicles/LargeImages/Cow_Tractor_White.png
 
-#begin Sprites/Vehicles/LargeImages/Cow_Tractor_Yellow.png
+#begin Sprites/Vehicles/SmallImages/Cow_Car_Blue.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -1160,11 +1154,192 @@
 /processorParam:PremultiplyAlpha=True
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:TextureFormat=Color
-/build:Sprites/Vehicles/LargeImages/Cow_Tractor_Yellow.png
+/build:Sprites/Vehicles/SmallImages/Cow_Car_Blue.png
 
-#begin Fonts/small_font.spritefont
-/importer:FontDescriptionImporter
-/processor:FontDescriptionProcessor
-/processorParam:TextureFormat=Compressed
-/build:Fonts/small_font.spritefont
+#begin Sprites/Vehicles/SmallImages/Cow_Car_Orange.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Vehicles/SmallImages/Cow_Car_Orange.png
+
+#begin Sprites/Vehicles/SmallImages/Cow_Car_Purple.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Vehicles/SmallImages/Cow_Car_Purple.png
+
+#begin Sprites/Vehicles/SmallImages/Cow_Car_White.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Vehicles/SmallImages/Cow_Car_White.png
+
+#begin Sprites/Vehicles/SmallImages/Cow_Car_Yellow.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Vehicles/SmallImages/Cow_Car_Yellow.png
+
+#begin Sprites/Vehicles/SmallImages/Cow_Tank_Blue.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Vehicles/SmallImages/Cow_Tank_Blue.png
+
+#begin Sprites/Vehicles/SmallImages/Cow_Tank_Green.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Vehicles/SmallImages/Cow_Tank_Green.png
+
+#begin Sprites/Vehicles/SmallImages/Cow_Tank_Orange.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Vehicles/SmallImages/Cow_Tank_Orange.png
+
+#begin Sprites/Vehicles/SmallImages/Cow_Tank_Purple.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Vehicles/SmallImages/Cow_Tank_Purple.png
+
+#begin Sprites/Vehicles/SmallImages/Cow_Tank_White.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Vehicles/SmallImages/Cow_Tank_White.png
+
+#begin Sprites/Vehicles/SmallImages/Cow_Tractor_Blue.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Vehicles/SmallImages/Cow_Tractor_Blue.png
+
+#begin Sprites/Vehicles/SmallImages/Cow_Tractor_Green.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Vehicles/SmallImages/Cow_Tractor_Green.png
+
+#begin Sprites/Vehicles/SmallImages/Cow_Tractor_Orange.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Vehicles/SmallImages/Cow_Tractor_Orange.png
+
+#begin Sprites/Vehicles/SmallImages/Cow_Tractor_Purple.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Vehicles/SmallImages/Cow_Tractor_Purple.png
+
+#begin Sprites/Vehicles/SmallImages/Cow_Tractor_White.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Vehicles/SmallImages/Cow_Tractor_White.png
+
+#begin Sprites/Vehicles/SmallImages/Cow_Tractor_Yellow.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Vehicles/SmallImages/Cow_Tractor_Yellow.png
+
+#begin Sprites/Vehicles/V2_Cow_Highland_Brown.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Vehicles/V2_Cow_Highland_Brown.png
+
+#begin Sprites/Track/Grass.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Track/Grass.png
 

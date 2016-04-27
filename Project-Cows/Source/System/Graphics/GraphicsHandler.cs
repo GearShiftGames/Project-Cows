@@ -29,7 +29,7 @@ namespace Project_Cows.Source.System.Graphics {
 
         private static ParticleHandler m_particleHandler = new ParticleHandler();
         private static SpriteBatch m_spriteBatch;
-        private static SpriteFont m_smallFont, m_font, m_largeFont, m_hugeFont;
+        private static SpriteFont m_font, m_largeFont, m_hugeFont;
 
         // Methods
 
@@ -40,7 +40,6 @@ namespace Project_Cows.Source.System.Graphics {
 
             m_particleHandler = new ParticleHandler();
             m_spriteBatch = new SpriteBatch(device_);
-            m_smallFont = m_content.Load<SpriteFont>("Fonts\\small_font");
             m_font = m_content.Load<SpriteFont>("Fonts\\basic_font");
             m_largeFont = m_content.Load<SpriteFont>("Fonts\\large_font");
             m_hugeFont = m_content.Load<SpriteFont>("Fonts\\huge_font");
@@ -92,9 +91,6 @@ namespace Project_Cows.Source.System.Graphics {
             // Draw text with standard font
             // ================
             switch (size_) {
-                case 0:
-                    m_spriteBatch.DrawString(m_smallFont, text_, position_, colour_);
-                    break;
                 case 1:
                     m_spriteBatch.DrawString(m_font, text_, position_, colour_);
                     break;
@@ -133,13 +129,10 @@ namespace Project_Cows.Source.System.Graphics {
             // ================
             // Big fire = 0.005f
             Vector3 rgb = colour_.ToVector3();
-            Color color = new Color();
             if (rgb.X == 1f) {
                 rgb.Y += (0.02f * (float)life_);
-                color = new Color(rgb);
-            } else {
-                color = new Color(colour_, (0.0005f * (float)life_));
             }
+            Color color = new Color(rgb);
             m_spriteBatch.Draw(TextureHandler.m_particleTexture, position_, color);
         }
 
