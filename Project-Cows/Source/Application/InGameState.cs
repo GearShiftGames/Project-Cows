@@ -401,12 +401,12 @@ namespace Project_Cows.Source.Application {
                 }
             }
 
-
-            Debug.AddSprite(m_players[0].GetVehicle().m_vehicleTyres[0].GetSprite());
-            Debug.AddSprite(m_players[0].GetVehicle().m_vehicleTyres[1].GetSprite());
-            Debug.AddSprite(m_players[0].GetVehicle().m_vehicleTyres[2].GetSprite());
-            Debug.AddSprite(m_players[0].GetVehicle().m_vehicleTyres[3].GetSprite());
-
+			foreach(Player p in m_players) {
+				Debug.AddSprite(p.GetVehicle().m_vehicleTyres[0].GetSprite());
+				Debug.AddSprite(p.GetVehicle().m_vehicleTyres[1].GetSprite());
+				Debug.AddSprite(p.GetVehicle().m_vehicleTyres[2].GetSprite());
+				Debug.AddSprite(p.GetVehicle().m_vehicleTyres[3].GetSprite());
+			}
             //GraphicsHandler.DrawSprite(bsv.m_vehicleBody.GetSprite());*/
 
 
