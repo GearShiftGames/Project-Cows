@@ -93,7 +93,7 @@
     <File>M:/Project Cows/Project-Cows/Content/Sprites/Vehicles/Cows/cow2.png</File>
     <File>M:/Project Cows/Project-Cows/Content/Sprites/Vehicles/Cows/cow3.png</File>
     <File>M:/Project Cows/Project-Cows/Content/Sprites/Vehicles/Cows/cow4.png</File>
-    <File>M:/Project Cows/Project-Cows/Content/Sprites/Debug/checkpoint.png</File>
-    <File>M:/Project Cows/Project-Cows/Content/Sprites/Debug/vehicleTyre.png</File>
+    <File>M:/Project Cows/Project-Cows/Content/Sprites/Game/Track/vehicleTyre.png</File>
+    <File>M:/Project Cows/Project-Cows/Content/Sprites/Game/Track/checkpoint.png</File>
   </SourceFiles>
 </SourceFileCollection>

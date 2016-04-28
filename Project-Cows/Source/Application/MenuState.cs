@@ -135,7 +135,11 @@ namespace Project_Cows.Source.Application {
             players[1].m_actionButton = new Button(TextureHandler.joinButton, new Vector2(Settings.m_screenWidth * 0.9f, Settings.m_screenHeight * 0.9f));
             players[2].m_actionButton = new Button(TextureHandler.joinButton, new Vector2(Settings.m_screenWidth * 0.1f, Settings.m_screenHeight * 0.1f));
             players[3].m_actionButton = new Button(TextureHandler.joinButton, new Vector2(Settings.m_screenWidth * 0.9f, Settings.m_screenHeight * 0.1f));
-                // Player 1 -- BOTTOM_LEFT
+
+            players[2].m_actionButton.m_sprite.SetRotationDegrees(180);
+            players[3].m_actionButton.m_sprite.SetRotationDegrees(180);
+
+            // Player 1 -- BOTTOM_LEFT
             players[0].m_choice1Button = new Button(TextureHandler.vehicleLargeCarWhite, new Vector2(Settings.m_screenWidth * 0.1f, Settings.m_screenHeight * 0.7f));
             players[0].m_choice2Button = new Button(TextureHandler.vehicleLargeTractorWhite, new Vector2(Settings.m_screenWidth * 0.2f, Settings.m_screenHeight * 0.7f));
             players[0].m_choice3Button = new Button(TextureHandler.vehicleLargeTankWhite, new Vector2(Settings.m_screenWidth * 0.3f, Settings.m_screenHeight * 0.7f));
@@ -307,10 +311,6 @@ namespace Project_Cows.Source.Application {
                 {
                     case MenuScreenState.MAIN_MENU:
                         // Main Menu screen
-                       
-                        //reset player count back to zero , so no overlapping images
-                        players.Clear();
-                        Settings.m_numberOfPlayers = 0;
 
                         if (m_playButton.Activated(m_lastPosition))
                         {
@@ -476,6 +476,11 @@ namespace Project_Cows.Source.Application {
                                 {
 									pss.m_actionButton.m_sprite.SetTexture(TextureHandler.readySelectedButton);
                                     pss.m_playerState = PlayerState.READY;
+
+                                    if(pss.ID == 3 || pss.ID == 4)
+                                    {
+                                        pss.m_actionButton.m_sprite.SetRotationDegrees(180);
+                                    }
                                 }
                             }
                         }
