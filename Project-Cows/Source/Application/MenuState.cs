@@ -320,6 +320,7 @@ namespace Project_Cows.Source.Application {
                         if (m_exitButton.Activated(m_lastPosition))
                         {
                             // Close app
+                            Settings.m_exit = true;
                         }
                         if (m_creditsButton.Activated(m_lastPosition))
                         {

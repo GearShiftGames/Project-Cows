@@ -51,6 +51,8 @@ namespace Project_Cows.Source.Application {
         private List<AnimatedSprite> m_animatedSprites = new List<AnimatedSprite>();
         private List<Particle> m_particles = new List<Particle>();
 
+        int player1time, player2time, player3time, player4time;
+
 
 		// Methods
 		public VictoryState() : base() {
@@ -74,7 +76,7 @@ namespace Project_Cows.Source.Application {
             m_bronzeTrophy      = new Sprite(TextureHandler.victoryTrophyThird,         new Vector2(Settings.m_screenWidth * 0.85f, Settings.m_screenHeight * 0.35f), 0, new Vector2(0.5f, 0.5f));
 
             // Set player podium textures to default cows
-            m_playerFirst       = new Sprite(TextureHandler.cow1,                new Vector2(Settings.m_screenWidth * 0.75f - 20, Settings.m_screenHeight * 0.25f - 40), 180, new Vector2(0.75f,0.75f));
+            m_playerFirst       = new Sprite(TextureHandler.cow1,new Vector2(Settings.m_screenWidth * 0.75f - 20, Settings.m_screenHeight * 0.25f - 40), 180, new Vector2(0.75f,0.75f));
            
             if (Settings.m_numberOfPlayers > 1) {
                 m_playerSecond = new Sprite(TextureHandler.cow2, new Vector2(Settings.m_screenWidth * 0.65f - 25, Settings.m_screenHeight * 0.35f), 180, new Vector2(0.75f,0.75f));
@@ -86,7 +88,7 @@ namespace Project_Cows.Source.Application {
               
  //           // Initialise Buttons
             m_Race_Again_Button = new Button(TextureHandler.menuPlayAgainButton,       new Vector2(Settings.m_screenWidth * 0.25f, Settings.m_screenHeight * 0.8f));
-            m_Main_Menu_Button  = new Button(TextureHandler.menuMainMenuButton,            new Vector2(Settings.m_screenWidth * 0.75f, Settings.m_screenHeight * 0.8f));
+            m_Main_Menu_Button  = new Button(TextureHandler.menuMainMenuButton,        new Vector2(Settings.m_screenWidth * 0.75f, Settings.m_screenHeight * 0.8f));
 
 
             m_touchState = TouchState.IDLE;
@@ -101,41 +103,45 @@ namespace Project_Cows.Source.Application {
 			// Update victory state
 			// ================
 
-
-            // Set cow textures for victory podium
-           m_playerFirst.SetTexture(m_players[m_rankings[0] - 1].GetCow().GetTexture());
-            if (Settings.m_numberOfPlayers > 1) {
-                        m_playerSecond.SetTexture(m_players[m_rankings[1] - 1].GetCow().GetTexture());
-            }
-            if (Settings.m_numberOfPlayers > 2) {
-                         m_playerThird.SetTexture(m_players[m_rankings[2] - 1].GetCow().GetTexture());
+            for (int i = 0; i < m_rankings.Count; i++)
+            {
+                // Set cow textures for victory podium
+                m_playerFirst.SetTexture(m_players[m_rankings[0]].GetCow().GetTexture());
+                if (Settings.m_numberOfPlayers > 1)
+                {
+                    m_playerSecond.SetTexture(m_players[m_rankings[1]].GetCow().GetTexture());
+                }
+                if (Settings.m_numberOfPlayers > 2)
+                {
+                    m_playerThird.SetTexture(m_players[m_rankings[2]].GetCow().GetTexture());
+                }
             }
             
 			// Update touch input handler
 			touchHandler_.Update();
 
-			foreach(TouchLocation tl in touchHandler_.GetTouches()) {
-
-                // TODO: Implement a check to see if the player has released their finger from the screen
-                //       perform action when player releases their finger -Dean
-			}
-            if (touchHandler_.GetTouches().Count > 0) { 
+            // If there is a touch on the screen
+            if (touchHandler_.GetTouches().Count > 0)
+            {
+                // Get the position of the last touch 
                 m_touchState = TouchState.TOUCHING;
                 m_lastPosition = touchHandler_.GetTouches()[touchHandler_.GetTouches().Count - 1].Position;
             }
+
             if (touchHandler_.GetTouches().Count == 0 && m_touchState == TouchState.TOUCHING) { 
                 // If play button is pressed, launch back into race
                 if (m_Race_Again_Button.Activated(m_lastPosition)) {
                     m_nextState = GameState.IN_GAME;
+                    // Change to the appropriate screen
+                    m_currentExecutionState = ExecutionState.CHANGING;
                 }
                 // If Menu button is pressed, go back to the main menu
                 if (m_Main_Menu_Button.Activated(m_lastPosition))
                 {
                     m_nextState = GameState.MAIN_MENU;
+                    // Change to the appropriate screen
+                    m_currentExecutionState = ExecutionState.CHANGING;
                 }
-                // Change to the appropriate screen
-                m_currentExecutionState = ExecutionState.CHANGING;
-
                 m_touchState = TouchState.IDLE;
             }
 
@@ -177,7 +183,7 @@ namespace Project_Cows.Source.Application {
                 GraphicsHandler.DrawText("Player " + m_rankings[0].ToString(), new Vector2(475, 200), Color.Black);
                 
             }
-            int time = m_players[m_rankings[0] - 1].GetRaceTime() / 1000;
+            int time = m_players[m_rankings[0]].GetRaceTime() / 1000;
             int mins = time / 60;
             int sec = time - (mins * 60);
             if (sec < 10)
@@ -190,7 +196,7 @@ namespace Project_Cows.Source.Application {
             }
             if (Settings.m_numberOfPlayers > 1)
             {
-                time = m_players[m_rankings[1] - 1].GetRaceTime() / 1000;
+                time = m_players[m_rankings[1]].GetRaceTime() / 1000;
                 mins = time / 60;
                 sec = time - (mins * 60);
                 GraphicsHandler.DrawSprite(m_silverTrophy);
@@ -208,7 +214,7 @@ namespace Project_Cows.Source.Application {
             }
             if (Settings.m_numberOfPlayers > 2)
             {
-                time = m_players[m_rankings[2] - 1].GetRaceTime() / 1000;
+                time = m_players[m_rankings[2]].GetRaceTime() / 1000;
                 mins = time / 60;
                 sec = time - (mins * 60);
                 GraphicsHandler.DrawSprite(m_bronzeTrophy);
@@ -226,7 +232,7 @@ namespace Project_Cows.Source.Application {
             }
             if (Settings.m_numberOfPlayers > 3)
             {
-                time = m_players[m_rankings[3] - 1].GetRaceTime() / 1000;
+                time = m_players[m_rankings[3]].GetRaceTime() / 1000;
                 mins = time / 60;
                 sec = time - (mins * 60);
                 GraphicsHandler.DrawText("4th", new Vector2(150, 450), Color.Black);
