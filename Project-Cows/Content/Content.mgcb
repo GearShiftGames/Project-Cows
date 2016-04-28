@@ -937,7 +937,7 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/Vehicles/Cows/cow4.png
 
-#begin Sprites/Debug/checkpoint.png
+#begin Sprites/Game/Track/vehicleTyre.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -946,9 +946,9 @@
 /processorParam:PremultiplyAlpha=True
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:TextureFormat=Color
-/build:Sprites/Debug/checkpoint.png
+/build:Sprites/Game/Track/vehicleTyre.png
 
-#begin Sprites/Debug/vehicleTyre.png
+#begin Sprites/Game/Track/checkpoint.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -957,5 +957,5 @@
 /processorParam:PremultiplyAlpha=True
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:TextureFormat=Color
-/build:Sprites/Debug/vehicleTyre.png
+/build:Sprites/Game/Track/checkpoint.png
 

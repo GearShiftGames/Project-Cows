@@ -258,8 +258,8 @@ namespace Project_Cows.Source.System.Graphics {
 			LoadTexture(ref particleBrown, "Sprites/GFX/particleBrown");
 
             // Debug
-            LoadTexture(ref debugCheckpoint, "Sprites/Debug/checkpoint");
-			LoadTexture(ref vehicleTyre, "Sprites/Debug/vehicleTyre");
+            LoadTexture(ref debugCheckpoint, "Sprites/Game/Track/checkpoint");
+			LoadTexture(ref vehicleTyre, "Sprites/Game/Track/vehicleTyre");
 
 
             // Defaults
