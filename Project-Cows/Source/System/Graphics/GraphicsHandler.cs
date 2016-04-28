@@ -140,7 +140,7 @@ namespace Project_Cows.Source.System.Graphics {
             } else {
                 color = new Color(colour_, (0.0005f * (float)life_));
             }
-            m_spriteBatch.Draw(TextureHandler.m_particleTexture, position_, color);
+            m_spriteBatch.Draw(TextureHandler.particleBrown, position_, color);
         }
 
         public static void StartSkidMarks(Vector2 position_) {

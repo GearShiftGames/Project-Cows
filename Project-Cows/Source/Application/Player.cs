@@ -53,12 +53,13 @@ namespace Project_Cows.Source.Application {
         public Button m_ReadyButton;
 
         // Methods
-        public Player(World world_, Texture2D cowTexture_, Texture2D texture_,Texture2D ButtonTexture, Vector2 ButtonPosition, EntityStruct entityStruct_, float speed_, Quadrent quadrent_, int id_ = 999) {
+        public Player(World world_, Texture2D cowTexture_, Texture2D texture_,Texture2D ButtonTexture, Vector2 ButtonPosition, float ButtonRotation, EntityStruct entityStruct_, float speed_, Quadrent quadrent_, int id_ = 999) {
             // Player constructor
             // ================
             m_vehicle = new Vehicle(world_, texture_, entityStruct_);
             m_cow = new Sprite(cowTexture_, entityStruct_.GetPosition(), entityStruct_.GetRotationDegrees(), new Vector2(0.1f, 0.1f));
             m_ReadyButton = new Button(ButtonTexture, ButtonPosition);
+			m_ReadyButton.m_sprite.SetRotationDegrees(ButtonRotation);
 
             m_controlScheme = new ControlScheme(quadrent_);
             m_playerID = id_;

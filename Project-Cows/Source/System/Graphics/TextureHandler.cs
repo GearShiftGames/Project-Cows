@@ -30,6 +30,8 @@ namespace Project_Cows.Source.System.Graphics {
         public static Texture2D menuControlsButton;
         public static Texture2D menuExitButton;
         public static Texture2D menuCreditsButton;
+		public static Texture2D menuPlayAgainButton;
+		public static Texture2D menuMainMenuButton;
 
         // Player Select
         public static Texture2D playerSelectBackground;
@@ -99,123 +101,47 @@ namespace Project_Cows.Source.System.Graphics {
         public static Texture2D vehicleSmallBuggyWhite;
         public static Texture2D vehicleSmallBuggyYellow;
 
+		// Controller
+		public static Texture2D controlWheelBlue;
+		public static Texture2D controlWheelOrange;
+		public static Texture2D controlWheelPurple;
+		public static Texture2D controlWheelYellow;
+		public static Texture2D controlSliderBackground;
 
+		// In Game
+		public static Texture2D gameBackground;
+		public static Texture2D gameTrack;
+		public static Texture2D gameBarrier;
 
+		// Victory Screen
+		public static Texture2D victoryBackground;
+		public static Texture2D victoryTrophyFirst;
+		public static Texture2D victoryTrophySecond;
+		public static Texture2D victoryTrophyThird;
+		public static Texture2D victoryLeaderboard;
 
+		// Cows
+		public static Texture2D cow1;
+		public static Texture2D cow2;
+		public static Texture2D cow3;
+		public static Texture2D cow4;
 
-        // Menu
-        //public static Texture2D m_menuBackground;
-        //public static Texture2D m_menuBack;
-        //public static Texture2D m_menuPlay;
-        //public static Texture2D m_menuExit;
-        //public static Texture2D m_menuControls;
-        //public static Texture2D m_menuOptions;
-        //public static Texture2D m_menuCredits;
-            // Player Select
-        //public static Texture2D m_actionJoin;
-        //public static Texture2D m_actionReady;
-        //public static Texture2D m_choice1;
-        //public static Texture2D m_choice2;
-        //public static Texture2D m_choice3;
-        public static Texture2D m_choice4;
-        public static Texture2D m_vehicleChoice;
-        public static Texture2D m_menuMain;  
-        public static Texture2D m_menu1;
-        public static Texture2D m_menu2;
-        public static Texture2D m_menu3;
-        public static Texture2D m_menu4;
-        //public static Texture2D m_controlInfo;
+		// GFX
+		public static Texture2D particleBrown;
 
-        // Victory Screen
-        public static Texture2D m_victoryBackground;
-        public static Texture2D m_menuRaceAgain;
-        public static Texture2D m_trophyFirst;
-        public static Texture2D m_trophySecond;
-        public static Texture2D m_trophyThird;
-        public static Texture2D m_leaderboard;
+		// Debug
+		public static Texture2D debugCheckpoint;
+		public static Texture2D vehicleTyre;
 
-        // Used for character selection & vehicle selection
-        public static Texture2D m_player_1_cow;
-        public static Texture2D m_player_2_cow;
-        public static Texture2D m_player_3_cow;
-        public static Texture2D m_player_4_cow;
-        public static Texture2D m_player_1_vehicle;
-        public static Texture2D m_player_2_vehicle;
-        public static Texture2D m_player_3_vehicle;
-        public static Texture2D m_player_4_vehicle;
-        // Vehicle
-        #region playableVehicles
-
-        /*public static Texture2D m_vehicleBlue;
-        public static Texture2D m_vehicleOrange;
-        public static Texture2D m_vehiclePurple;
-        public static Texture2D m_vehicleWhite;
-        public static Texture2D m_vehicleYellow;
-
-        public static Texture2D m_tractorBlue;
-        public static Texture2D m_tractorOrange;
-        public static Texture2D m_tractorPurple;
-        public static Texture2D m_tractorWhite;
-        public static Texture2D m_tractorGreen;
-
-        public static Texture2D m_tankBlue;
-        public static Texture2D m_tankOrange;
-        public static Texture2D m_tankPurple;
-        public static Texture2D m_tankWhite;
-        public static Texture2D m_tankGreen;
-        */
-        #endregion
-
-        #region DisplayVehicles
-        /*
-        public static Texture2D m_Display_vehicleBlue;
-        public static Texture2D m_Display_vehicleOrange;
-        public static Texture2D m_Display_vehiclePurple;
-        public static Texture2D m_Display_vehicleWhite;
-        public static Texture2D m_Display_vehicleYellow;
-
-        public static Texture2D m_Display_tractorBlue;
-        public static Texture2D m_Display_tractorOrange;
-        public static Texture2D m_Display_tractorPurple;
-        public static Texture2D m_Display_tractorWhite;
-        public static Texture2D m_Display_tractorGreen;
-
-        public static Texture2D m_Display_tankBlue;
-        public static Texture2D m_Display_tankOrange;
-        public static Texture2D m_Display_tankPurple;
-        public static Texture2D m_Display_tankWhite;
-        public static Texture2D m_Display_tankGreen;
-        */
-        #endregion
-
-        public static Texture2D m_cow1;
-        public static Texture2D m_cow2;
-        public static Texture2D m_cow21;
-        public static Texture2D m_cow3;
-        public static Texture2D m_cow4;
-        // User Interface
-        public static Texture2D m_userInterfaceWheelBlue;
-        public static Texture2D m_userInterfaceWheelOrange;
-        public static Texture2D m_userInterfaceWheelPurple;
-        public static Texture2D m_userInterfaceWheelYellow;
-        public static Texture2D m_userInterfaceSlider;
-        // In Game
-        public static Texture2D m_gameBackground;
-        public static Texture2D m_gameBarrier;
-        public static Texture2D m_gameFinishLine;
-        public static Texture2D m_grassBackground;
-        // Debug
-        public static Texture2D m_debugCorner;
-        public static Texture2D m_debugCheckpoint;
-        public static Texture2D m_debugCollider;
-        // Temp
-        public static Texture2D m_tempRed;
-        public static Texture2D m_vehicleTyre;
-
-        // GFX
-        public static Texture2D m_particleTexture;
-
-        public static Texture2D m_THELORDANDSAVIOUR;
+        // Defaults (for player vehicle selection)
+		public static Texture2D player1Cow;
+		public static Texture2D player2Cow;
+		public static Texture2D player3Cow;
+		public static Texture2D player4Cow;
+        public static Texture2D player1Vehicle;
+		public static Texture2D player2Vehicle;
+		public static Texture2D player3Vehicle;
+		public static Texture2D player4Vehicle;
 
         // Methods
         public static void LoadContent() {
@@ -231,7 +157,9 @@ namespace Project_Cows.Source.System.Graphics {
             LoadTexture(ref menuPlayButton, "Sprites/Menu/Main/playButton");
             LoadTexture(ref menuControlsButton, "Sprites/Menu/Main/controlsButton");
             LoadTexture(ref menuExitButton, "Sprites/Menu/Main/exitButton");
-            LoadTexture(ref menuCreditsButton, "Sprites/Menu/Main/creditsButton");
+			LoadTexture(ref menuCreditsButton, "Sprites/Menu/Main/creditsButton");
+			LoadTexture(ref menuPlayAgainButton, "Sprites/Menu/Main/playAgainButton");
+			LoadTexture(ref menuMainMenuButton, "Sprites/Menu/Main/mainMenuButton");
 
             // Player Select
             LoadTexture(ref playerSelectBackground, "Sprites/Menu/PlayerSelect/background");
@@ -301,143 +229,48 @@ namespace Project_Cows.Source.System.Graphics {
             LoadTexture(ref vehicleSmallBuggyWhite, "Sprites/Vehicles/Small/buggyWhite");
             LoadTexture(ref vehicleSmallBuggyYellow, "Sprites/Vehicles/Small/buggyYellow");
 
+			// Controller
+			LoadTexture(ref controlWheelBlue, "Sprites/Game/Controllers/controlWheelBlue");
+			LoadTexture(ref controlWheelOrange, "Sprites/Game/Controllers/controlWheelOrange");
+			LoadTexture(ref controlWheelPurple, "Sprites/Game/Controllers/controlWheelPurple");
+			LoadTexture(ref controlWheelYellow, "Sprites/Game/Controllers/controlWheelYellow");
+			LoadTexture(ref controlSliderBackground, "Sprites/Game/Controllers/controlWheelSlider");
 
+			// In Game
+			LoadTexture(ref gameBackground, "Sprites/Game/Track/gameBackground");
+			LoadTexture(ref gameTrack, "Sprites/Game/Track/gameTrack");
+			LoadTexture(ref gameBarrier, "Sprites/Game/Track/barrier");
 
+			// Victory Screen
+			LoadTexture(ref victoryBackground, "Sprites/Menu/Victory/background");
+			LoadTexture(ref victoryTrophyFirst, "Sprites/Menu/Victory/trophyFirst");
+			LoadTexture(ref victoryTrophySecond, "Sprites/Menu/Victory/trophySecond");
+			LoadTexture(ref victoryTrophyThird, "Sprites/Menu/Victory/trophyThird");
+			LoadTexture(ref victoryLeaderboard, "Sprites/Menu/Victory/leaderboard");
 
+			// Cows
+			LoadTexture(ref cow1, "Sprites/Vehicles/Cows/cow1");
+			LoadTexture(ref cow2, "Sprites/Vehicles/Cows/cow2");
+			LoadTexture(ref cow3, "Sprites/Vehicles/Cows/cow3");
+			LoadTexture(ref cow4, "Sprites/Vehicles/Cows/cow4");
 
+			// GFX
+			LoadTexture(ref particleBrown, "Sprites/GFX/particleBrown");
 
-
-
-            //LoadTexture(ref m_menuBack, "Sprites\\Menu\\backButton");
-            
-            // Player Select
-            //LoadTexture(ref m_actionJoin, "Sprites\\Menu\\PlayerSelect\\actionJoin");
-            //LoadTexture(ref m_actionReady, "Sprites\\Menu\\PlayerSelect\\actionReady");
-            //LoadTexture(ref m_choice1, "Sprites\\Menu\\PlayerSelect\\choice1");
-            //LoadTexture(ref m_choice2, "Sprites\\Menu\\PlayerSelect\\choice2");
-            //LoadTexture(ref m_choice3, "Sprites\\Menu\\PlayerSelect\\choice3");
-            LoadTexture(ref m_choice4, "Sprites\\Menu\\PlayerSelect\\choice4");
-            LoadTexture(ref m_vehicleChoice, "Sprites\\Menu\\PlayerSelect\\vehicleChoice");
-            LoadTexture(ref m_menuMain, "Sprites\\Menu\\Button_Menu_Normal");
-
-            //LoadTexture(ref m_menu1, "Sprites\\Menu\\PlayerSelect\\1Button");
-            //LoadTexture(ref m_menu2, "Sprites\\Menu\\PlayerSelect\\2Button");
-            //LoadTexture(ref m_menu3, "Sprites\\Menu\\PlayerSelect\\3Button");
-            //LoadTexture(ref m_menu4, "Sprites\\Menu\\PlayerSelect\\4Button");
-            //LoadTexture(ref m_controlInfo, "Sprites\\Menu\\controls");
-
-            // Victory Screen
-            LoadTexture(ref m_victoryBackground, "Sprites\\Menu\\Victory\\Victory_Screen");
-            LoadTexture(ref m_menuRaceAgain, "Sprites\\Menu\\Victory\\Button_Race_Again");
-            LoadTexture(ref m_trophyFirst, "Sprites\\Menu\\Victory\\Trophy");
-            LoadTexture(ref m_trophySecond, "Sprites\\Menu\\Victory\\Trophy_Silver");
-            LoadTexture(ref m_trophyThird, "Sprites\\Menu\\Victory\\Trophy_Bronze");
-            LoadTexture(ref m_leaderboard, "Sprites\\Menu\\Victory\\Leaderboard_NoText");
-            
-            #region PlayableVehicles
-            //Cars
-            /*LoadTexture(ref m_vehicleBlue, "Sprites\\Vehicles\\SmallImages\\Cow_Car_Blue");
-            LoadTexture(ref m_vehicleOrange, "Sprites\\Vehicles\\SmallImages\\Cow_Car_Orange");
-            LoadTexture(ref m_vehiclePurple, "Sprites\\Vehicles\\SmallImages\\Cow_Car_Purple");
-            LoadTexture(ref m_vehicleYellow, "Sprites\\Vehicles\\SmallImages\\Cow_Car_Yellow");
-            LoadTexture(ref m_vehicleWhite, "Sprites\\Vehicles\\SmallImages\\Cow_Car_White");
-            
-            //Tractors
-            LoadTexture(ref m_tractorBlue, "Sprites\\Vehicles\\SmallImages\\Cow_Tractor_Blue");
-            LoadTexture(ref m_tractorOrange, "Sprites\\Vehicles\\SmallImages\\Cow_Tractor_Orange");
-            LoadTexture(ref m_tractorPurple, "Sprites\\Vehicles\\SmallImages\\Cow_Tractor_Purple");
-            LoadTexture(ref m_tractorGreen, "Sprites\\Vehicles\\SmallImages\\Cow_Tractor_Green");
-            LoadTexture(ref m_tractorWhite, "Sprites\\Vehicles\\SmallImages\\Cow_Tractor_White");
-
-            //Tanks
-            LoadTexture(ref m_tankBlue, "Sprites\\Vehicles\\SmallImages\\Cow_Tank_Blue");
-            LoadTexture(ref m_tankOrange, "Sprites\\Vehicles\\SmallImages\\Cow_Tank_Orange");
-            LoadTexture(ref m_tankPurple, "Sprites\\Vehicles\\SmallImages\\Cow_Tank_Purple");
-            LoadTexture(ref m_tankGreen, "Sprites\\Vehicles\\SmallImages\\Cow_Tank_Green");
-            LoadTexture(ref m_tankWhite, "Sprites\\Vehicles\\SmallImages\\Cow_Tank_White");*/
-
-            #endregion
-
-            #region DisplayVehicles
-            //Cars
-            /*LoadTexture(ref m_Display_vehicleBlue, "Sprites\\Vehicles\\LargeImages\\Cow_Car_Blue");
-            LoadTexture(ref m_Display_vehicleOrange, "Sprites\\Vehicles\\LargeImages\\Cow_Car_Orange");
-            LoadTexture(ref m_Display_vehiclePurple, "Sprites\\Vehicles\\LargeImages\\Cow_Car_Purple");
-            LoadTexture(ref m_Display_vehicleYellow, "Sprites\\Vehicles\\LargeImages\\Cow_Car_Yellow");
-            LoadTexture(ref m_Display_vehicleWhite, "Sprites\\Vehicles\\LargeImages\\Cow_Car_White");
-
-            //Tractors
-            LoadTexture(ref m_Display_tractorBlue, "Sprites\\Vehicles\\LargeImages\\Cow_Tractor_Blue");
-            LoadTexture(ref m_Display_tractorOrange, "Sprites\\Vehicles\\LargeImages\\Cow_Tractor_Orange");
-            LoadTexture(ref m_Display_tractorPurple, "Sprites\\Vehicles\\LargeImages\\Cow_Tractor_Purple");
-            LoadTexture(ref m_Display_tractorGreen, "Sprites\\Vehicles\\LargeImages\\Cow_Tractor_Green");
-            LoadTexture(ref m_Display_tractorWhite, "Sprites\\Vehicles\\LargeImages\\Cow_Tractor_White");
-
-            //Tractors
-            LoadTexture(ref m_Display_tankBlue, "Sprites\\Vehicles\\LargeImages\\Cow_Tank_Blue");
-            LoadTexture(ref m_Display_tankOrange, "Sprites\\Vehicles\\LargeImages\\Cow_Tank_Orange");
-            LoadTexture(ref m_Display_tankPurple, "Sprites\\Vehicles\\LargeImages\\Cow_Tank_Purple");
-            LoadTexture(ref m_Display_tankGreen, "Sprites\\Vehicles\\LargeImages\\Cow_Tank_Green");
-            LoadTexture(ref m_Display_tankWhite, "Sprites\\Vehicles\\LargeImages\\Cow_Tank_White");*/
-
-            #endregion
-
-
-
-
-            //LoadTexture(ref m_tankGreen, "Sprites\\Vehicles\\Cow_Tank_Green");
-            /*
-             *LoadTexture(ref m_tankBlue, "Sprites\\Vehicles\\Cow_Tank_Blue"); 
-             *LoadTexture(ref m_tankOrange, "Sprites\\Vehicles\\Cow_Tank_Orange"); 
-             *LoadTexture(ref m_tankPurple, "Sprites\\Vehicles\\Cow_Tank_Purple");
-             *LoadTexture(ref m_tankYellow, "Sprites\\Vehicles\\Cow_Tank_Yellow");
-             *LoadTexture(ref m_tractorOrange, "Sprites\\Vehicles\\Cow_Tractor_Orange");
-             *LoadTexture(ref m_tractorPurple, "Sprites\\Vehicles\\Cow_Tractor_Purple");
-             *LoadTexture(ref m_tractorYellow, "Sprites\\Vehicles\\Cow_Tractor_Yellow");
-             */
-
-            LoadTexture(ref m_cow21, "Sprites\\Vehicles\\cow2.1");
-            LoadTexture(ref m_cow1, "Sprites\\Vehicles\\cow1");
-            LoadTexture(ref m_cow2, "Sprites\\Vehicles\\cow2");
-            LoadTexture(ref m_cow3, "Sprites\\Vehicles\\cow3");
-            LoadTexture(ref m_cow4, "Sprites\\Vehicles\\cow4");
-
-            // User Interface
-            LoadTexture(ref m_userInterfaceWheelBlue, "Sprites\\UI\\wheelBlue");
-            LoadTexture(ref m_userInterfaceWheelOrange, "Sprites\\UI\\wheelOrange");
-            LoadTexture(ref m_userInterfaceWheelPurple, "Sprites\\UI\\wheelPurple");
-            LoadTexture(ref m_userInterfaceWheelYellow, "Sprites\\UI\\wheelYellow");
-            LoadTexture(ref m_userInterfaceSlider, "Sprites\\UI\\slider");
-
-            // In Game
-            LoadTexture(ref m_gameBackground, "Sprites\\Track\\background");
-            LoadTexture(ref m_gameBarrier, "Sprites\\Track\\Barriers\\barrier");
-            LoadTexture(ref m_gameFinishLine, "Sprites\\Track\\finishLine");
-            LoadTexture(ref m_grassBackground, "Sprites\\Track\\Grass");
-            
             // Debug
-            LoadTexture(ref m_debugCorner, "Sprites\\Utility\\corner");
-            LoadTexture(ref m_debugCheckpoint, "Sprites\\Utility\\checkpoint");
-            LoadTexture(ref m_debugCollider, "Sprites\\Utility\\carCollider");
+            LoadTexture(ref debugCheckpoint, "Sprites/Debug/checkpoint");
+			LoadTexture(ref vehicleTyre, "Sprites/Debug/vehicleTyre");
 
-            // Temp
-            LoadTexture(ref m_tempRed, "Sprites\\Temp\\Red");
-            LoadTexture(ref m_vehicleTyre, "Sprites\\Temp\\vehicleTyre");
-            LoadTexture(ref m_THELORDANDSAVIOUR, "Sprites\\Temp\\THELORD");
-
-            // GFX
-            LoadTexture(ref m_particleTexture, "Sprites\\Utility\\brown_particle");
-            LoadTexture(ref m_THELORDANDSAVIOUR, "Sprites\\Temp\\THELORD");
 
             // Defaults
-            m_player_1_vehicle = vehicleSmallCarBlue;
-            m_player_2_vehicle = vehicleSmallCarOrange;
-            m_player_3_vehicle = vehicleSmallCarYellow;
-            m_player_4_vehicle = vehicleSmallCarPurple;
-            m_player_1_cow = m_cow1;
-            m_player_2_cow = m_cow2;
-            m_player_3_cow = m_cow3;
-            m_player_4_cow = m_cow4;
+            player1Vehicle = vehicleSmallCarBlue;
+			player2Vehicle = vehicleSmallCarOrange;
+			player3Vehicle = vehicleSmallCarYellow;
+			player4Vehicle = vehicleSmallCarPurple;
+            player1Cow = cow1;
+			player2Cow = cow2;
+			player3Cow = cow3;
+			player4Cow = cow4;
         }
 
         private static void LoadTexture(ref Texture2D texture_, string file_) {

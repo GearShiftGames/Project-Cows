@@ -67,26 +67,26 @@ namespace Project_Cows.Source.Application {
 			// ================
             // Initialise Sprites
             
-            m_background        = new Sprite(TextureHandler.m_victoryBackground,   new Vector2(Settings.m_screenWidth / 2, Settings.m_screenHeight / 2), 0, Vector2.One);
-            m_leaderboard       = new Sprite(TextureHandler.m_leaderboard,         new Vector2(Settings.m_screenWidth * 0.25f + 20, Settings.m_screenHeight * 0.25f), 0, new Vector2(1.5f,1.5f));
-            m_goldTrophy        = new Sprite(TextureHandler.m_trophyFirst,         new Vector2(Settings.m_screenWidth * 0.75f - 20, Settings.m_screenHeight * 0.05f + 20), 0, new Vector2(0.5f,0.5f));
-            m_silverTrophy      = new Sprite(TextureHandler.m_trophySecond,        new Vector2(Settings.m_screenWidth * 0.65f - 25 , Settings.m_screenHeight * 0.25f - 40), 0, new Vector2(0.5f, 0.5f));
-            m_bronzeTrophy      = new Sprite(TextureHandler.m_trophyThird,         new Vector2(Settings.m_screenWidth * 0.85f, Settings.m_screenHeight * 0.35f), 0, new Vector2(0.5f, 0.5f));
+            m_background        = new Sprite(TextureHandler.victoryBackground,   new Vector2(Settings.m_screenWidth / 2, Settings.m_screenHeight / 2), 0, Vector2.One);
+            m_leaderboard       = new Sprite(TextureHandler.victoryLeaderboard,         new Vector2(Settings.m_screenWidth * 0.25f + 20, Settings.m_screenHeight * 0.25f), 0, new Vector2(1.5f,1.5f));
+            m_goldTrophy        = new Sprite(TextureHandler.victoryTrophyFirst,         new Vector2(Settings.m_screenWidth * 0.75f - 20, Settings.m_screenHeight * 0.05f + 20), 0, new Vector2(0.5f,0.5f));
+            m_silverTrophy      = new Sprite(TextureHandler.victoryTrophySecond,        new Vector2(Settings.m_screenWidth * 0.65f - 25 , Settings.m_screenHeight * 0.25f - 40), 0, new Vector2(0.5f, 0.5f));
+            m_bronzeTrophy      = new Sprite(TextureHandler.victoryTrophyThird,         new Vector2(Settings.m_screenWidth * 0.85f, Settings.m_screenHeight * 0.35f), 0, new Vector2(0.5f, 0.5f));
 
             // Set player podium textures to default cows
-            m_playerFirst       = new Sprite(TextureHandler.m_cow1,                new Vector2(Settings.m_screenWidth * 0.75f - 20, Settings.m_screenHeight * 0.25f - 40), 180, new Vector2(0.75f,0.75f));
+            m_playerFirst       = new Sprite(TextureHandler.cow1,                new Vector2(Settings.m_screenWidth * 0.75f - 20, Settings.m_screenHeight * 0.25f - 40), 180, new Vector2(0.75f,0.75f));
            
             if (Settings.m_numberOfPlayers > 1) {
-                m_playerSecond = new Sprite(TextureHandler.m_cow1, new Vector2(Settings.m_screenWidth * 0.65f - 25, Settings.m_screenHeight * 0.35f), 180, new Vector2(0.75f,0.75f));
+                m_playerSecond = new Sprite(TextureHandler.cow2, new Vector2(Settings.m_screenWidth * 0.65f - 25, Settings.m_screenHeight * 0.35f), 180, new Vector2(0.75f,0.75f));
             }
             
             if (Settings.m_numberOfPlayers > 2) {
-                m_playerThird = new Sprite(TextureHandler.m_cow1, new Vector2(Settings.m_screenWidth * 0.85f, Settings.m_screenHeight * 0.5f - 20), 180, new Vector2(0.75f,0.75f));
+                m_playerThird = new Sprite(TextureHandler.cow3, new Vector2(Settings.m_screenWidth * 0.85f, Settings.m_screenHeight * 0.5f - 20), 180, new Vector2(0.75f,0.75f));
             }
               
  //           // Initialise Buttons
-            m_Race_Again_Button = new Button(TextureHandler.m_menuRaceAgain,       new Vector2(Settings.m_screenWidth * 0.25f, Settings.m_screenHeight * 0.8f));
-            m_Main_Menu_Button  = new Button(TextureHandler.m_menuMain,            new Vector2(Settings.m_screenWidth * 0.75f, Settings.m_screenHeight * 0.8f));
+            m_Race_Again_Button = new Button(TextureHandler.menuPlayAgainButton,       new Vector2(Settings.m_screenWidth * 0.25f, Settings.m_screenHeight * 0.8f));
+            m_Main_Menu_Button  = new Button(TextureHandler.menuMainMenuButton,            new Vector2(Settings.m_screenWidth * 0.75f, Settings.m_screenHeight * 0.8f));
 
 
             m_touchState = TouchState.IDLE;

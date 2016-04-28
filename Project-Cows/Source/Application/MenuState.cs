@@ -17,6 +17,8 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Input.Touch;
+using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Media;
 
 using Project_Cows.Source.System;
 using Project_Cows.Source.System.Graphics;
@@ -62,6 +64,8 @@ namespace Project_Cows.Source.Application {
         private Button m_playerBackButton;
         private Button m_playerGoButton;
 
+		
+
 
         private List<AnimatedSprite> m_animatedSprites = new List<AnimatedSprite>();
         private List<Particle> m_particles = new List<Particle>();
@@ -106,18 +110,18 @@ namespace Project_Cows.Source.Application {
             m_control_scheme =  new Sprite(TextureHandler.controlsInformation,    new Vector2(Settings.m_screenWidth * 0.5f, Settings.m_screenHeight * 0.5f), 0, Vector2.One);
             //m_gameLogo = new Sprite(TextureHandler.m_gameLogo, new Vector2(Settings.m_screenWidth / 2, Settings.m_screenHeight / 2), 0, Vector2.One);
             // Not sure about this part. Maybe Move to update function
-            m_player_1_cow =    new Sprite(TextureHandler.m_cow1,           new Vector2(Settings.m_screenWidth * 0.50f - 10.0f, Settings.m_screenHeight * 0.75f ), 0, new Vector2(0.1f, 0.1f));
-            m_player_1_vehicle =new Sprite(TextureHandler.m_player_1_vehicle,    new Vector2(Settings.m_screenWidth * 0.50f, Settings.m_screenHeight * 0.75f), 0, Vector2.One);
-            m_player_2_cow =    new Sprite(TextureHandler.m_cow1,           new Vector2(Settings.m_screenWidth * 0.50f - 10.0f, Settings.m_screenHeight * 0.75f), 0, new Vector2(0.1f, 0.1f));
-            m_player_2_vehicle = new Sprite(TextureHandler.m_player_2_vehicle, new Vector2(Settings.m_screenWidth * 0.50f, Settings.m_screenHeight * 0.75f), 0, Vector2.One);
-            m_player_3_cow =    new Sprite(TextureHandler.m_cow1,           new Vector2(Settings.m_screenWidth * 0.50f - 10.0f, Settings.m_screenHeight * 0.75f), 0, new Vector2(0.1f, 0.1f));
-            m_player_3_vehicle = new Sprite(TextureHandler.m_player_3_vehicle, new Vector2(Settings.m_screenWidth * 0.50f, Settings.m_screenHeight * 0.75f), 0, Vector2.One);
-            m_player_4_cow =    new Sprite(TextureHandler.m_cow1,           new Vector2(Settings.m_screenWidth * 0.50f - 10.0f, Settings.m_screenHeight * 0.75f), 0, new Vector2(0.1f, 0.1f));
-            m_player_4_vehicle = new Sprite(TextureHandler.m_player_4_vehicle, new Vector2(Settings.m_screenWidth * 0.50f, Settings.m_screenHeight * 0.75f), 0, Vector2.One);
+            m_player_1_cow =    new Sprite(TextureHandler.cow1,           new Vector2(Settings.m_screenWidth * 0.50f - 10.0f, Settings.m_screenHeight * 0.75f ), 0, new Vector2(0.1f, 0.1f));
+            m_player_1_vehicle =new Sprite(TextureHandler.player1Vehicle,    new Vector2(Settings.m_screenWidth * 0.50f, Settings.m_screenHeight * 0.75f), 0, Vector2.One);
+            m_player_2_cow =    new Sprite(TextureHandler.cow2,           new Vector2(Settings.m_screenWidth * 0.50f - 10.0f, Settings.m_screenHeight * 0.75f), 0, new Vector2(0.1f, 0.1f));
+			m_player_2_vehicle = new Sprite(TextureHandler.player2Vehicle, new Vector2(Settings.m_screenWidth * 0.50f, Settings.m_screenHeight * 0.75f), 0, Vector2.One);
+			m_player_3_cow = new Sprite(TextureHandler.cow3, new Vector2(Settings.m_screenWidth * 0.50f - 10.0f, Settings.m_screenHeight * 0.75f), 0, new Vector2(0.1f, 0.1f));
+			m_player_3_vehicle = new Sprite(TextureHandler.player3Vehicle, new Vector2(Settings.m_screenWidth * 0.50f, Settings.m_screenHeight * 0.75f), 0, Vector2.One);
+			m_player_4_cow = new Sprite(TextureHandler.cow4, new Vector2(Settings.m_screenWidth * 0.50f - 10.0f, Settings.m_screenHeight * 0.75f), 0, new Vector2(0.1f, 0.1f));
+			m_player_4_vehicle = new Sprite(TextureHandler.player4Vehicle, new Vector2(Settings.m_screenWidth * 0.50f, Settings.m_screenHeight * 0.75f), 0, Vector2.One);
             // Initialise buttons
             m_playButton =      new Button(TextureHandler.menuPlayButton,       new Vector2(Settings.m_screenWidth * 0.25f, Settings.m_screenHeight * 0.75f));
             m_controlsButton =  new Button(TextureHandler.menuControlsButton,   new Vector2(Settings.m_screenWidth * 0.50f, Settings.m_screenHeight * 0.75f));
-            m_MenuButton =      new Button(TextureHandler.m_menuMain,       new Vector2(Settings.m_screenWidth * 0.75f, Settings.m_screenHeight * 0.75f));
+            m_MenuButton =      new Button(TextureHandler.menuMainMenuButton,       new Vector2(Settings.m_screenWidth * 0.75f, Settings.m_screenHeight * 0.75f));
             m_creditsButton =   new Button(TextureHandler.menuCreditsButton,    new Vector2(Settings.m_screenWidth * 0.90f, Settings.m_screenHeight * 0.90f));
             m_exitButton =      new Button(TextureHandler.menuExitButton,       new Vector2(Settings.m_screenWidth * 0.75f, Settings.m_screenHeight * 0.75f));
 			m_backButton = new Button(TextureHandler.backButton, new Vector2(Settings.m_screenWidth * 0.75f, Settings.m_screenHeight * 0.75f));
@@ -169,7 +173,9 @@ namespace Project_Cows.Source.Application {
             m_playerGoButton = new Button(TextureHandler.startButton, new Vector2(Settings.m_screenWidth * 0.55f, Settings.m_screenHeight * 0.5f));
 
 
-
+			// Play song
+			MediaPlayer.Play(AudioHandler.menuMusic);
+			MediaPlayer.IsRepeating = true;
 
 
 			// Set menu screen
@@ -243,34 +249,6 @@ namespace Project_Cows.Source.Application {
                 Settings.m_numberOfPlayers = 4;
             }
 
-            //Debug for cow selection
-            if (Keyboard.GetState().IsKeyDown(Keys.D7)){
-                TextureHandler.m_player_1_cow = TextureHandler.m_cow1;
-                m_player_1_cow.SetTexture(TextureHandler.m_player_1_cow);
-            }
-            if (Keyboard.GetState().IsKeyDown(Keys.D8))
-            {
-                TextureHandler.m_player_1_cow = TextureHandler.m_cow21;
-                m_player_1_cow.SetTexture(TextureHandler.m_player_1_cow);
-            }
-            
-            //Debug for vehicle selection
-            if (Keyboard.GetState().IsKeyDown(Keys.V))
-            {
-                TextureHandler.m_player_1_vehicle = TextureHandler.vehicleSmallTankGreen;
-                m_player_1_vehicle.SetTexture(TextureHandler.m_player_1_vehicle);
-            }
-            if (Keyboard.GetState().IsKeyDown(Keys.B))
-            {
-                TextureHandler.m_player_1_vehicle = TextureHandler.vehicleSmallTractorBlue;
-                m_player_1_vehicle.SetTexture(TextureHandler.m_player_1_vehicle);
-            }
-            if (Keyboard.GetState().IsKeyDown(Keys.C))
-            {
-                TextureHandler.m_player_1_vehicle = TextureHandler.vehicleSmallCarBlue;
-                m_player_1_vehicle.SetTexture(TextureHandler.m_player_1_vehicle);
-            }
-
             
 
             Debug.AddText("7 for white cow, 8 for highland", new Vector2(20, 850));
@@ -285,7 +263,7 @@ namespace Project_Cows.Source.Application {
             if (Keyboard.GetState().IsKeyDown(Keys.NumPad2)) {
                 players[0].m_playerState = PlayerState.VEHICLE_SELECTED;
                 players[0].m_vehicleChoice.SetTexture(TextureHandler.vehicleLargeCarBlue);
-                TextureHandler.m_player_1_vehicle = TextureHandler.vehicleSmallCarBlue;
+				TextureHandler.player1Vehicle = TextureHandler.vehicleSmallCarBlue;
             }
             if (Keyboard.GetState().IsKeyDown(Keys.NumPad3)) {
                 players[0].m_playerState = PlayerState.READY;
@@ -385,22 +363,22 @@ namespace Project_Cows.Source.Application {
                                     if (pss.ID == 0)
                                     {
                                         pss.m_vehicleChoice.SetTexture(TextureHandler.vehicleLargeCarBlue);
-                                        TextureHandler.m_player_1_vehicle = TextureHandler.vehicleSmallCarBlue;
+										TextureHandler.player1Vehicle = TextureHandler.vehicleSmallCarBlue;
                                     }
                                     else if (pss.ID == 1)
                                     {
                                         pss.m_vehicleChoice.SetTexture(TextureHandler.vehicleLargeCarOrange);
-                                        TextureHandler.m_player_2_vehicle = TextureHandler.vehicleSmallCarOrange;
+										TextureHandler.player2Vehicle = TextureHandler.vehicleSmallCarOrange;
                                     }
                                     else if (pss.ID == 2)
                                     {
                                         pss.m_vehicleChoice.SetTexture(TextureHandler.vehicleLargeCarPurple);
-                                        TextureHandler.m_player_3_vehicle = TextureHandler.vehicleSmallCarPurple;
+										TextureHandler.player3Vehicle = TextureHandler.vehicleSmallCarPurple;
                                     }
                                     else if (pss.ID == 3)
                                     {
                                         pss.m_vehicleChoice.SetTexture(TextureHandler.vehicleLargeCarYellow);
-                                        TextureHandler.m_player_4_vehicle = TextureHandler.vehicleSmallCarYellow;
+										TextureHandler.player4Vehicle = TextureHandler.vehicleSmallCarYellow;
                                     }
 
                                     #endregion
@@ -416,22 +394,22 @@ namespace Project_Cows.Source.Application {
                                     if (pss.ID == 0)
                                     {
                                         pss.m_vehicleChoice.SetTexture(TextureHandler.vehicleLargeTractorBlue);
-                                        TextureHandler.m_player_1_vehicle = TextureHandler.vehicleSmallTractorBlue;
+										TextureHandler.player1Vehicle = TextureHandler.vehicleSmallTractorBlue;
                                     }
                                     else if (pss.ID == 1)
                                     {
                                         pss.m_vehicleChoice.SetTexture(TextureHandler.vehicleLargeTractorOrange);
-                                        TextureHandler.m_player_2_vehicle = TextureHandler.vehicleSmallTractorOrange;
+										TextureHandler.player2Vehicle = TextureHandler.vehicleSmallTractorOrange;
                                     }
                                     else if (pss.ID == 2)
                                     {
                                         pss.m_vehicleChoice.SetTexture(TextureHandler.vehicleLargeTractorPurple);
-                                        TextureHandler.m_player_3_vehicle = TextureHandler.vehicleSmallTractorPurple;
+										TextureHandler.player3Vehicle = TextureHandler.vehicleSmallTractorPurple;
                                     }
                                     else if (pss.ID == 3)
                                     {
                                         pss.m_vehicleChoice.SetTexture(TextureHandler.vehicleLargeTractorGreen);
-                                        TextureHandler.m_player_4_vehicle = TextureHandler.vehicleSmallTractorGreen;
+										TextureHandler.player4Vehicle = TextureHandler.vehicleSmallTractorGreen;
                                     }
 
                                     #endregion
@@ -447,22 +425,22 @@ namespace Project_Cows.Source.Application {
                                     if (pss.ID == 0)
                                     {
                                         pss.m_vehicleChoice.SetTexture(TextureHandler.vehicleLargeTankBlue);
-                                        TextureHandler.m_player_1_vehicle = TextureHandler.vehicleSmallTankBlue;
+										TextureHandler.player1Vehicle = TextureHandler.vehicleSmallTankBlue;
                                     }
                                     else if (pss.ID == 1)
                                     {
-                                        pss.m_vehicleChoice.SetTexture(TextureHandler.vehicleLargeTractorOrange);
-                                        TextureHandler.m_player_2_vehicle = TextureHandler.vehicleSmallTractorOrange;
+										pss.m_vehicleChoice.SetTexture(TextureHandler.vehicleLargeTankOrange);
+										TextureHandler.player2Vehicle = TextureHandler.vehicleSmallTankOrange;
                                     }
                                     else if (pss.ID == 2)
                                     {
-                                        pss.m_vehicleChoice.SetTexture(TextureHandler.vehicleLargeTractorPurple);
-                                        TextureHandler.m_player_3_vehicle = TextureHandler.vehicleSmallTractorPurple;
+										pss.m_vehicleChoice.SetTexture(TextureHandler.vehicleLargeTankPurple);
+										TextureHandler.player3Vehicle = TextureHandler.vehicleSmallTankPurple;
                                     }
                                     else if (pss.ID == 3)
                                     {
-                                        pss.m_vehicleChoice.SetTexture(TextureHandler.vehicleLargeTractorGreen);
-                                        TextureHandler.m_player_4_vehicle = TextureHandler.vehicleSmallTractorGreen;
+										pss.m_vehicleChoice.SetTexture(TextureHandler.vehicleLargeTankGreen);
+										TextureHandler.player4Vehicle = TextureHandler.vehicleSmallTankGreen;
                                     }
 
                                     #endregion
@@ -475,16 +453,16 @@ namespace Project_Cows.Source.Application {
 
                                     if (pss.ID == 0) {
                                         pss.m_vehicleChoice.SetTexture(TextureHandler.vehicleLargeBuggyBlue);
-                                        TextureHandler.m_player_1_vehicle = TextureHandler.vehicleSmallBuggyBlue;
+										TextureHandler.player1Vehicle = TextureHandler.vehicleSmallBuggyBlue;
                                     } else if (pss.ID == 1) {
                                         pss.m_vehicleChoice.SetTexture(TextureHandler.vehicleLargeBuggyOrange);
-                                        TextureHandler.m_player_2_vehicle = TextureHandler.vehicleSmallBuggyOrange;
+										TextureHandler.player2Vehicle = TextureHandler.vehicleSmallBuggyOrange;
                                     } else if (pss.ID == 2) {
                                         pss.m_vehicleChoice.SetTexture(TextureHandler.vehicleLargeBuggyPurple);
-                                        TextureHandler.m_player_3_vehicle = TextureHandler.vehicleSmallBuggyPurple;
+										TextureHandler.player3Vehicle = TextureHandler.vehicleSmallBuggyPurple;
                                     } else if (pss.ID == 3) {
                                         pss.m_vehicleChoice.SetTexture(TextureHandler.vehicleLargeBuggyYellow);
-                                        TextureHandler.m_player_4_vehicle = TextureHandler.vehicleSmallBuggyYellow;
+										TextureHandler.player4Vehicle = TextureHandler.vehicleSmallBuggyYellow;
                                     }
                                 }
                             }
@@ -526,6 +504,7 @@ namespace Project_Cows.Source.Application {
 								}
 							}
 							if(ready && readyCount > 0) {
+								MediaPlayer.Stop();
 								Settings.m_numberOfPlayers = readyCount;
 								m_currentExecutionState = ExecutionState.CHANGING;
 							}

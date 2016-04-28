@@ -4,94 +4,16 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Temp/animation.png</File>
-    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Temp/barrierLARGE.png</File>
-    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Temp/car.png</File>
-    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Temp/controlTemp.png</File>
-    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Temp/controlTempBG.png</File>
-    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Temp/cow.png</File>
-    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Temp/pixel.png</File>
-    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Temp/purpleCar.png</File>
-    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Temp/Square.png</File>
-    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Temp/Title.png</File>
-    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Temp/Tractor_Blue.png</File>
-    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Temp/Tyre.png</File>
-    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Utility/carCollider.png</File>
-    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Utility/checkpoint.png</File>
-    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Utility/corner.png</File>
-    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Utility/entityCollided.png</File>
-    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Utility/entityUncollided.png</File>
-    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Vehicles/V2_Cow_Army.png</File>
     <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Fonts/basic_font.spritefont</File>
     <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Promo/teamLogo.png</File>
-    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Temp/Cow_Car_Blue.png</File>
-    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Temp/Cow_Car_Orange.png</File>
-    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Temp/Cow_Car_Purple.png</File>
-    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Temp/Cow_Car_Yellow.png</File>
-    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Temp/Red.png</File>
-    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Temp/V2_Cow_Tank.png</File>
-    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Temp/vehicleTyre.png</File>
-    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Track/Barriers/barrier.png</File>
-    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Track/background.png</File>
-    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Track/finishLine.png</File>
-    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/UI/slider.png</File>
-    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/UI/steeringWheelPurple.png</File>
-    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/UI/wheelBlue.png</File>
-    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/UI/wheelOrange.png</File>
-    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/UI/wheelPurple.png</File>
-    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/UI/wheelYellow.png</File>
-    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Vehicles/cow1.png</File>
-    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Vehicles/cow2.1.png</File>
-    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Vehicles/cow2.png</File>
-    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Vehicles/cow3.png</File>
-    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Vehicles/cow4.png</File>
-    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Vehicles/V2_Cow_Plain.png</File>
-    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Vehicles/vehicleBlue.png</File>
-    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Vehicles/vehicleOrange.png</File>
-    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Vehicles/vehiclePurple.png</File>
-    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Vehicles/vehicleYellow.png</File>
-    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Temp/THELORD.png</File>
-    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Menu/Victory/Button_Race_Again.png</File>
-    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Menu/Victory/Leaderboard_NoText.png</File>
-    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Menu/Victory/Trophy.png</File>
-    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Menu/Victory/Trophy_Bronze.png</File>
-    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Menu/Victory/Trophy_Silver.png</File>
-    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Track/Grass.png</File>
-    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Menu/Victory/Victory_Screen.png</File>
-    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Utility/brown_particle.png</File>
-    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Menu/PlayerSelect/choice1.png</File>
-    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Menu/PlayerSelect/choice2.png</File>
-    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Menu/PlayerSelect/choice3.png</File>
-    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Menu/PlayerSelect/choice4.png</File>
-    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Menu/PlayerSelect/vehicleChoice.png</File>
-    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Temp/FlyingPig.png</File>
     <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Fonts/large_font.spritefont</File>
     <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Fonts/huge_font.spritefont</File>
-    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Audio/Brake.mp3</File>
-    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Audio/cargo.mp3</File>
-    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Audio/carsound.mp3</File>
-    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Audio/cow.mp3</File>
-    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Audio/CowMoo2.mp3</File>
-    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Audio/Driving.mp3</File>
-    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Audio/Single Cow-SoundBible.com-2051754137.mp3</File>
-    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Vehicles/V2_Cow_Highland_Brown.png</File>
     <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Fonts/small_font.spritefont</File>
-    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Menu/defunct/creditsButton.png</File>
-    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Menu/defunct/exitButton.png</File>
-    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Menu/defunct/optionsButton.png</File>
-    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Menu/defunct/playButton.png</File>
     <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Menu/Main/controlsButton.png</File>
     <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Menu/Main/creditsButton.png</File>
     <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Menu/Main/exitButton.png</File>
     <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Menu/Main/playButton.png</File>
     <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Promo/gameLogo.png</File>
-    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Menu/Button_Menu_Normal.png</File>
-    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Menu/PlayerSelect/defunct/1Button.png</File>
-    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Menu/PlayerSelect/defunct/2Button.png</File>
-    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Menu/PlayerSelect/defunct/3Button.png</File>
-    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Menu/PlayerSelect/defunct/4Button.png</File>
-    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Menu/PlayerSelect/defunct/actionJoin.png</File>
-    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Menu/PlayerSelect/defunct/actionReady.png</File>
     <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Menu/Main/background.png</File>
     <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Menu/PlayerSelect/background.png</File>
     <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Menu/Buttons/backButton.png</File>
@@ -100,7 +22,6 @@
     <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Menu/Buttons/readyUnselectedButton.png</File>
     <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Menu/Buttons/startButton.png</File>
     <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Menu/Controls/background.png</File>
-    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Menu/Controls/controls.png</File>
     <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Menu/Credits/background.png</File>
     <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Menu/Credits/credits.png</File>
     <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Vehicles/Large/buggyBlue.png</File>
@@ -143,5 +64,36 @@
     <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Vehicles/Small/tractorPurple.png</File>
     <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Vehicles/Small/tractorWhite.png</File>
     <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Vehicles/Small/buggyYellow.png</File>
+    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Audio/Music/menuMusic.wav</File>
+    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Audio/Music/raceMusic.wav</File>
+    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Audio/SFX/Miscellaneous/cheer.wav</File>
+    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Audio/SFX/Miscellaneous/countdownBeeps.wav</File>
+    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Audio/SFX/Miscellaneous/fanfareCheer.wav</File>
+    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Audio/SFX/Vehicles/vehicleBrake.wav</File>
+    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Audio/SFX/Vehicles/vehicleEngine.wav</File>
+    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Menu/Controls/controls.jpg</File>
+    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Menu/Victory/background.png</File>
+    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Menu/Victory/leaderboard.png</File>
+    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Menu/Victory/trophyFirst.png</File>
+    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Menu/Victory/trophySecond.png</File>
+    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Menu/Victory/trophyThird.png</File>
+    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Game/Controllers/controlWheelBlue.png</File>
+    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Game/Controllers/controlWheelOrange.png</File>
+    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Game/Controllers/controlWheelPurple.png</File>
+    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Game/Controllers/controlWheelSlider.png</File>
+    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Game/Controllers/controlWheelWhite.png</File>
+    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Game/Track/barrier.png</File>
+    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Game/Track/gameBackground.png</File>
+    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Game/Track/gameTrack.png</File>
+    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/GFX/particleBrown.png</File>
+    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Menu/Main/mainMenuButton.png</File>
+    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Menu/Main/playAgainButton.png</File>
+    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Game/Controllers/controlWheelYellow.png</File>
+    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Vehicles/Cows/cow1.png</File>
+    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Vehicles/Cows/cow2.png</File>
+    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Vehicles/Cows/cow3.png</File>
+    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Vehicles/Cows/cow4.png</File>
+    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Debug/checkpoint.png</File>
+    <File>C:/Users/deano/MEGA/University/Year-3/Prototype-Game-Development/Projects/Project-Cows/Project-Cows/Content/Sprites/Debug/vehicleTyre.png</File>
   </SourceFiles>
 </SourceFileCollection>

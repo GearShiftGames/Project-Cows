@@ -45,7 +45,7 @@ namespace Project_Cows.Source.Application.Entity.Vehicle {
 
         // Methods
         public Tyre(Quadrent quadrent_, World world_, Vector2 position_, float rotation_)
-            : base(world_, TextureHandler.m_vehicleTyre, position_, rotation_, BodyType.Dynamic, 1, 1) {
+            : base(world_, TextureHandler.vehicleTyre, position_, rotation_, BodyType.Dynamic, 1, 1) {
             // Tyre constructor
             // ================
 

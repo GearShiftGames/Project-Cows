@@ -54,11 +54,7 @@ namespace Project_Cows.Source.Application.Track {
             m_checkpoints = Level.GetCheckpoints();
             // Add entities to the checkpoints
             foreach (CheckpointContainer cc in m_checkpoints) {
-                if (cc.GetCheckpoint().GetType() == CheckpointType.FIRST) {
-                    cc.SetEntity(fs_world, TextureHandler.m_gameFinishLine, cc.GetCheckpoint().GetRotation());
-                } else {
-                    cc.SetEntity(fs_world, TextureHandler.m_debugCheckpoint, cc.GetCheckpoint().GetRotation());
-                }
+				cc.SetEntity(fs_world, TextureHandler.debugCheckpoint, cc.GetCheckpoint().GetRotation());
             }
 
             // Add vehicles
@@ -69,7 +65,7 @@ namespace Project_Cows.Source.Application.Track {
             m_barrierEntityStructs = Level.GetBarriers();
             // Add entities to Barriers
             foreach (EntityStruct es in m_barrierEntityStructs) {
-                m_barriers.Add(new Barrier(fs_world, TextureHandler.m_gameBarrier, es));
+                m_barriers.Add(new Barrier(fs_world, TextureHandler.gameBarrier, es));
             }
         }
 

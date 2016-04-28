@@ -17,6 +17,8 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Input.Touch;
+using Microsoft.Xna.Framework.Media;
+using Microsoft.Xna.Framework.Audio;
 
 using FarseerPhysics.Dynamics;
 
@@ -60,6 +62,8 @@ namespace Project_Cows.Source.Application {
         bool PlayersReady;
         int NoPlayersReady;
 
+		SoundEffectInstance countdownBeeps;
+
 		// Methods
 		public InGameState() : base() {
 			// InGameState constructor
@@ -76,13 +80,13 @@ namespace Project_Cows.Source.Application {
 
             fs_world = new FarseerPhysics.Dynamics.World(Vector2.Zero);
 
-            m_background = new Sprite(TextureHandler.m_gameBackground, new Vector2(Settings.m_screenWidth / 2, Settings.m_screenHeight / 2), 0.0f, Vector2.One);
-            m_grassbackground = new Sprite(TextureHandler.m_grassBackground, new Vector2(0.0f, 0.0f), 0.0f, new Vector2(2.0f,2.0f));
+            m_background = new Sprite(TextureHandler.gameTrack, new Vector2(Settings.m_screenWidth / 2, Settings.m_screenHeight / 2), 0.0f, Vector2.One);
+			m_grassbackground = new Sprite(TextureHandler.gameBackground, new Vector2(0.0f, 0.0f), 0.0f, new Vector2(2.0f, 2.0f));
 
             h_trackHandler.Initialise(fs_world);
 
             //Ready Up Stuff
-            PlayersReady = true;
+			PlayersReady = false;//true;
             NoPlayersReady = 0;
 
             // Initialise rankings
@@ -96,42 +100,46 @@ namespace Project_Cows.Source.Application {
             int playerIndex = 0;
 
             if (Settings.m_joinedPlayers[0]) {
-                m_players.Add(new Player(fs_world, TextureHandler.m_player_1_cow, TextureHandler.m_player_1_vehicle, TextureHandler.m_THELORDANDSAVIOUR, new Vector2(Settings.m_screenWidth - 100, Settings.m_screenHeight - 100), h_trackHandler.m_vehicles[playerIndex], 0, Quadrent.BOTTOM_LEFT, playerIndex + 1));
-                m_players[m_players.Count-1].m_controlScheme.SetSteeringSprite(new Sprite(TextureHandler.m_userInterfaceWheelBlue, new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
-                m_players[m_players.Count-1].m_controlScheme.SetInterfaceSprite(new Sprite(TextureHandler.m_userInterfaceSlider, new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
-                m_rankingSprites.Add(new Sprite(TextureHandler.m_player_1_vehicle, new Vector2(Settings.m_screenWidth / 2 - (500 - (m_players.Count * 100)), Settings.m_screenHeight / 2 - 30), 0, new Vector2(1.0f, 1.0f), true));
+				m_players.Add(new Player(fs_world, TextureHandler.player1Cow, TextureHandler.player1Vehicle, TextureHandler.readyUnselectedButton, new Vector2(100, Settings.m_screenHeight - 100), 0, h_trackHandler.m_vehicles[playerIndex], 0, Quadrent.BOTTOM_LEFT, playerIndex + 1));
+                m_players[m_players.Count-1].m_controlScheme.SetSteeringSprite(new Sprite(TextureHandler.controlWheelBlue, new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
+                m_players[m_players.Count-1].m_controlScheme.SetInterfaceSprite(new Sprite(TextureHandler.controlSliderBackground, new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
+				m_rankingSprites.Add(new Sprite(TextureHandler.player1Vehicle, new Vector2(Settings.m_screenWidth / 2 - (500 - (m_players.Count * 100)), Settings.m_screenHeight / 2 - 30), 0, new Vector2(1.0f, 1.0f), true));
                 playerIndex++;
             }
             if (Settings.m_joinedPlayers[1]) {
-                m_players.Add(new Player(fs_world, TextureHandler.m_player_2_cow, TextureHandler.m_player_2_vehicle, TextureHandler.m_THELORDANDSAVIOUR, new Vector2(Settings.m_screenWidth - 100, Settings.m_screenHeight - 100), h_trackHandler.m_vehicles[playerIndex], 0, Quadrent.BOTTOM_RIGHT, playerIndex + 1));
-                m_players[m_players.Count-1].m_controlScheme.SetSteeringSprite(new Sprite(TextureHandler.m_userInterfaceWheelOrange, new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
-                m_players[m_players.Count-1].m_controlScheme.SetInterfaceSprite(new Sprite(TextureHandler.m_userInterfaceSlider, new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
-                m_rankingSprites.Add(new Sprite(TextureHandler.m_player_2_vehicle, new Vector2(Settings.m_screenWidth / 2 - (500 - (m_players.Count * 100)), Settings.m_screenHeight / 2 - 30), 0, new Vector2(1.0f, 1.0f), true));
+				m_players.Add(new Player(fs_world, TextureHandler.player2Cow, TextureHandler.player2Vehicle, TextureHandler.readyUnselectedButton, new Vector2(Settings.m_screenWidth - 100, Settings.m_screenHeight - 100), 0, h_trackHandler.m_vehicles[playerIndex], 0, Quadrent.BOTTOM_RIGHT, playerIndex + 1));
+				m_players[m_players.Count - 1].m_controlScheme.SetSteeringSprite(new Sprite(TextureHandler.controlWheelOrange, new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
+				m_players[m_players.Count - 1].m_controlScheme.SetInterfaceSprite(new Sprite(TextureHandler.controlSliderBackground, new Vector2(100.0f, 100.0f), 0, new Vector2(1.0f, 1.0f), true));
+				m_rankingSprites.Add(new Sprite(TextureHandler.player2Vehicle, new Vector2(Settings.m_screenWidth / 2 - (500 - (m_players.Count * 100)), Settings.m_screenHeight / 2 - 30), 0, new Vector2(1.0f, 1.0f), true));
                 playerIndex++;
             }
             if (Settings.m_joinedPlayers[2]) {
-                m_players.Add(new Player(fs_world, TextureHandler.m_player_3_cow, TextureHandler.m_player_3_vehicle, TextureHandler.m_THELORDANDSAVIOUR, new Vector2(100, 100), h_trackHandler.m_vehicles[playerIndex], 0, Quadrent.TOP_LEFT, playerIndex + 1));
-                m_players[m_players.Count-1].m_controlScheme.SetSteeringSprite(new Sprite(TextureHandler.m_userInterfaceWheelPurple, new Vector2(100.0f, 100.0f), 180, new Vector2(1.0f, 1.0f), true));
-                m_players[m_players.Count-1].m_controlScheme.SetInterfaceSprite(new Sprite(TextureHandler.m_userInterfaceSlider, new Vector2(100.0f, 100.0f), 180, new Vector2(1.0f, 1.0f), true));
-                m_rankingSprites.Add(new Sprite(TextureHandler.m_player_3_vehicle, new Vector2(Settings.m_screenWidth / 2 - (500 - (m_players.Count * 100)), Settings.m_screenHeight / 2 - 30), 0, new Vector2(1.0f, 1.0f), true));
+				m_players.Add(new Player(fs_world, TextureHandler.player3Cow, TextureHandler.player3Vehicle, TextureHandler.readyUnselectedButton, new Vector2(100, 100), 180, h_trackHandler.m_vehicles[playerIndex], 0, Quadrent.TOP_LEFT, playerIndex + 1));
+				m_players[m_players.Count - 1].m_controlScheme.SetSteeringSprite(new Sprite(TextureHandler.controlWheelPurple, new Vector2(100.0f, 100.0f), 180, new Vector2(1.0f, 1.0f), true));
+				m_players[m_players.Count - 1].m_controlScheme.SetInterfaceSprite(new Sprite(TextureHandler.controlSliderBackground, new Vector2(100.0f, 100.0f), 180, new Vector2(1.0f, 1.0f), true));
+				m_rankingSprites.Add(new Sprite(TextureHandler.player3Vehicle, new Vector2(Settings.m_screenWidth / 2 - (500 - (m_players.Count * 100)), Settings.m_screenHeight / 2 - 30), 0, new Vector2(1.0f, 1.0f), true));
                 playerIndex++;
             }
             if (Settings.m_joinedPlayers[3]) {
-                m_players.Add(new Player(fs_world, TextureHandler.m_player_4_cow, TextureHandler.m_player_4_vehicle, TextureHandler.m_THELORDANDSAVIOUR, new Vector2(Settings.m_screenWidth - 100, 100), h_trackHandler.m_vehicles[playerIndex], 0, Quadrent.TOP_RIGHT, playerIndex + 1));
-                m_players[m_players.Count-1].m_controlScheme.SetSteeringSprite(new Sprite(TextureHandler.m_userInterfaceWheelYellow, new Vector2(100.0f, 100.0f), 180, new Vector2(1.0f, 1.0f), true));
-                m_players[m_players.Count-1].m_controlScheme.SetInterfaceSprite(new Sprite(TextureHandler.m_userInterfaceSlider, new Vector2(100.0f, 100.0f), 180, new Vector2(1.0f, 1.0f), true));
-                m_rankingSprites.Add(new Sprite(TextureHandler.m_player_4_vehicle, new Vector2(Settings.m_screenWidth / 2 - (500 - (m_players.Count * 100)), Settings.m_screenHeight / 2 - 30), 0, new Vector2(1.0f, 1.0f), true));
+				m_players.Add(new Player(fs_world, TextureHandler.player4Cow, TextureHandler.player4Vehicle, TextureHandler.readyUnselectedButton, new Vector2(Settings.m_screenWidth - 100, 100), 180, h_trackHandler.m_vehicles[playerIndex], 0, Quadrent.TOP_RIGHT, playerIndex + 1));
+				m_players[m_players.Count - 1].m_controlScheme.SetSteeringSprite(new Sprite(TextureHandler.controlWheelYellow, new Vector2(100.0f, 100.0f), 180, new Vector2(1.0f, 1.0f), true));
+				m_players[m_players.Count - 1].m_controlScheme.SetInterfaceSprite(new Sprite(TextureHandler.controlSliderBackground, new Vector2(100.0f, 100.0f), 180, new Vector2(1.0f, 1.0f), true));
+				m_rankingSprites.Add(new Sprite(TextureHandler.player4Vehicle, new Vector2(Settings.m_screenWidth / 2 - (500 - (m_players.Count * 100)), Settings.m_screenHeight / 2 - 30), 0, new Vector2(1.0f, 1.0f), true));
                 playerIndex++;
             }
 
             // Initialise sprites
-            //m_animatedSprites.Add(new AnimatedSprite(GraphicsHandler.m_content.Load<Texture2D>("Sprites\\Temp\\FlyingPig"), 
-                //new Vector2(0.0f, 0.0f), 39, 39, 250, true, 0, 5));
+           
+			// Music
+			MediaPlayer.Play(AudioHandler.raceMusic);
+			MediaPlayer.IsRepeating = true;
+
+			countdownBeeps = AudioHandler.countdownBeeps.CreateInstance();
 
             // Start timer
             startTimer.StartTimer(3000.0f);
 
-            finished = true;// false;
+            finished = false;
 
 			// Set initial next state
 			m_nextState = GameState.VICTORY_SCREEN;
@@ -178,7 +186,7 @@ namespace Project_Cows.Source.Application {
                         if (m_players[index].m_ReadyButton.Activated(tl.Position))
                         {
                             m_players[index].m_ReadyUp = true;
-                            //m_players[index].m_ReadyButton.m_sprite.SetTexture(TextureHandler.gameLogo);//changes texture so we know who has readied up
+                            m_players[index].m_ReadyButton.m_sprite.SetTexture(TextureHandler.readySelectedButton);
                         }
                     }
                 }
@@ -197,6 +205,8 @@ namespace Project_Cows.Source.Application {
                 //When all players have readied up, start main game
                 if (NoPlayersReady == m_players.Count)
                 {
+					countdownBeeps.IsLooped = false;
+					countdownBeeps.Play();
                     PlayersReady = true;
                 }
                 h_trackHandler.Update(m_players, ref m_rankings);

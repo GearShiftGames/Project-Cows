@@ -60,9 +60,7 @@ namespace Project_Cows.Source.Application {
 
             GraphicsHandler.Initialise(GraphicsDevice, Content);
 
-            TextureHandler.LoadContent();
-
-            AudioHandler.LoadContent();
+            
 
 			// Initialise states
             m_menuState = new MenuState();
@@ -88,11 +86,14 @@ namespace Project_Cows.Source.Application {
 		protected override void LoadContent() {
 			// Load any game content
 			// ================
+			TextureHandler.LoadContent();
+			AudioHandler.LoadContent();
           }
 
 		protected override void UnloadContent() {
 			// Unload any game content
 			// ================
+			Content.Unload();
 		}
 
 		protected override void Update(GameTime gameTime) {

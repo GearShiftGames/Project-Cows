@@ -117,8 +117,8 @@ namespace Project_Cows.Source.Application.Entity.Vehicle {
             // AUDIO
 
             //TouchPanel.EnableMouseTouchPoint = true;//ADDED
-            go = AudioHandler.cargo.CreateInstance();//ADDED
-            carbrake = AudioHandler.brake.CreateInstance();//ADDED
+            go = AudioHandler.vehicleEngine.CreateInstance();//ADDED
+            carbrake = AudioHandler.vehicleBrake.CreateInstance();//ADDED
         }
 
         public void Update(int ranking_, float steeringValue_ = 0, bool braking_ = false) {
