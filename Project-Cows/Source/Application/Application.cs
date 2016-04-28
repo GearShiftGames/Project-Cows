@@ -52,7 +52,7 @@ namespace Project_Cows.Source.Application {
             Settings.LoadSettings();
 
 			// Set up window
-			h_graphicsDeviceHandler.IsFullScreen = Settings.m_fullscreen;
+            h_graphicsDeviceHandler.IsFullScreen = false;// Settings.m_fullscreen;
 			h_graphicsDeviceHandler.PreferredBackBufferWidth = Settings.m_screenWidth;
 			h_graphicsDeviceHandler.PreferredBackBufferHeight = Settings.m_screenHeight;
 			
