@@ -12,6 +12,7 @@
 /// Settings.cs
 
 using System;
+using System.Collections.Generic;
 using Project_Cows.Source.System.StateMachine;
 
 namespace Project_Cows.Source.System {
@@ -28,9 +29,11 @@ namespace Project_Cows.Source.System {
 		public static int m_screenHeight = 1080;			            // Resolution height of the window
         public static GameState m_startState = GameState.MAIN_MENU;     // Starting game state
 		public static bool m_debug = false;                             // Debug screen state
-
+        public static int m_number_laps = 4;                            //number of laps
         // Game Settings
         public static int m_numberOfPlayers = 2;                        // Number of players
+        public static bool[] m_joinedPlayers = { false, false, false, false };
+        public static bool m_exit = false;
         //public static int m_track
 
 		// Methods

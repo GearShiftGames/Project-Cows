@@ -23,14 +23,16 @@ namespace Project_Cows.Source.System.Graphics.Particles {
         Vector2 m_position,
                 m_velocity;
         double m_life;
+        Color m_colour;
 
         // Initialiser
-        public Particle(Vector2 position_, double life_, int angle_, float speed_) {
+        public Particle(Vector2 position_, double life_, int angle_, float speed_, Color colour_) {
             m_position = position_;
             m_life = life_;
             double radians = angle_ * Math.PI / 180;
             m_velocity.X = (float)(speed_ * Math.Cos(radians));
             m_velocity.Y = (float)(speed_ * Math.Sin(radians));
+            m_colour = colour_;
         }
 
         // Getters
@@ -39,6 +41,9 @@ namespace Project_Cows.Source.System.Graphics.Particles {
         }
         public double GetLife() {
             return m_life;
+        }
+        public Color GetColour() {
+            return m_colour;
         }
 
         // Setters

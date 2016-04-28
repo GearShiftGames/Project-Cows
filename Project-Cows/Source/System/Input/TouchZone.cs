@@ -14,7 +14,7 @@
 using Microsoft.Xna.Framework;
 
 namespace Project_Cows.Source.System.Input {
-	class TouchZone {
+	public class TouchZone {
 		// Sets a rectangular zone which can check if a coordinate in within it
 		// ================
 

@@ -60,7 +60,7 @@ namespace Project_Cows.Source.Application {
 
             GraphicsHandler.Initialise(GraphicsDevice, Content);
 
-            TextureHandler.LoadContent();
+            
 
 			// Initialise states
             m_menuState = new MenuState();
@@ -86,11 +86,14 @@ namespace Project_Cows.Source.Application {
 		protected override void LoadContent() {
 			// Load any game content
 			// ================
+			TextureHandler.LoadContent();
+			AudioHandler.LoadContent();
           }
 
 		protected override void UnloadContent() {
 			// Unload any game content
 			// ================
+			Content.Unload();
 		}
 
 		protected override void Update(GameTime gameTime) {
@@ -112,6 +115,12 @@ namespace Project_Cows.Source.Application {
                 Settings.SaveSettings();
 				Exit();
 			}
+
+            if(Settings.m_exit == true)
+            {
+                Settings.SaveSettings();
+                Exit();
+            }
 
             // Reset state - TEMP
             if (Keyboard.GetState().IsKeyDown(Keys.F5)) {

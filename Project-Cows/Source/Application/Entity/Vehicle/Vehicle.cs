@@ -17,6 +17,8 @@ using System.Linq;
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Media;
 
 using FarseerPhysics.Dynamics;
 using FarseerPhysics.Dynamics.Joints;
@@ -25,7 +27,6 @@ using FarseerPhysics.Factories;
 using Project_Cows.Source.System;
 using Project_Cows.Source.System.Graphics;
 using Project_Cows.Source.System.Graphics.Sprites;
-using Project_Cows.Source.Application.Physics;
 
 namespace Project_Cows.Source.Application.Entity.Vehicle {
     class Vehicle {
@@ -39,7 +40,7 @@ namespace Project_Cows.Source.Application.Entity.Vehicle {
         private RevoluteJoint m_frontRightJoint;
         private RevoluteJoint m_backLeftJoint;
         private RevoluteJoint m_backRightJoint;
-
+        private SoundEffectInstance go, carbrake; // ADDED
 
         // Methods
         public Vehicle(World world_, Texture2D texture_, EntityStruct entityStruct_) {
@@ -47,7 +48,7 @@ namespace Project_Cows.Source.Application.Entity.Vehicle {
             // ================
 
             // Initialise the vehicle's main body
-            m_vehicleBody = new Entity(world_, texture_, entityStruct_.GetPosition(), 0, BodyType.Dynamic, 10);
+            m_vehicleBody = new Entity(world_, texture_, entityStruct_.GetPosition(), 0, BodyType.Dynamic, 10, 0.1f);
 
             m_vehicleBody.GetBody().AngularDamping = 1;
             m_vehicleBody.GetBody().LinearDamping = 1;
@@ -112,19 +113,37 @@ namespace Project_Cows.Source.Application.Entity.Vehicle {
 
             m_vehicleBody.SetRotationDegrees(entityStruct_.GetRotationDegrees());
             m_vehicleBody.UpdateSprites();
+
+            // AUDIO
+
+            //TouchPanel.EnableMouseTouchPoint = true;//ADDED
+            go = AudioHandler.vehicleEngine.CreateInstance();//ADDED
+            carbrake = AudioHandler.vehicleBrake.CreateInstance();//ADDED
         }
 
-        public void Update(float steeringValue_ = 0, bool braking_ = false) {
+        public void Update(int ranking_, float steeringValue_ = 0, bool braking_ = false) {
             // Updates the vehicle
             // ================
 
             foreach (Tyre t in m_vehicleTyres) {
-                t.UpdateTyre(steeringValue_, braking_);
+                t.UpdateTyre(ranking_, steeringValue_, braking_);
                 t.UpdateFriction();
             }
 
             foreach (Tyre t in m_vehicleTyres) {
                 t.UpdateDrive();
+
+                if (t.IsPowered()) {
+                    if (t.GetBody().LinearVelocity.Length() > 3.0f) {
+                        GraphicsHandler.StartFireTrail(t.GetPositionDisplay());
+                    } else if (t.GetBody().LinearVelocity.Length() > 2.0f) {
+                        GraphicsHandler.StartDriveTrail(t.GetPositionDisplay());
+                    } else if (t.GetBody().LinearVelocity.Length() > 0.0f) {
+                        GraphicsHandler.StartBrakeTrail(t.GetPositionDisplay());
+                    } else if (t.GetBody().LinearVelocity.Length() < 0.0f) {
+                        GraphicsHandler.StartBrakeTrail(t.GetPositionDisplay());
+                    }
+                }
 
                 float lockAngle = Util.DegreesToRadians(20);
                 float turnSpeedPerSec = Util.DegreesToRadians(320);
@@ -134,10 +153,27 @@ namespace Project_Cows.Source.Application.Entity.Vehicle {
                 float angleToTurn = desiredAngle - angleNow;
                 angleToTurn = FarseerPhysics.Common.MathUtils.Clamp(angleToTurn, -turnPerTimeStep, turnPerTimeStep);
                 float newAngle = angleNow + angleToTurn;
+
+                if (desiredAngle > 0.25) {
+                    GraphicsHandler.StartSkidMarks(t.GetPositionDisplay());
+                }
+
                 m_frontLeftJoint.SetLimits(newAngle, newAngle);
                 m_frontRightJoint.SetLimits(newAngle, newAngle);
 
                 t.UpdateSprites();
+
+                // AUDIO
+                if (!braking_)
+                {
+                    carbrake.Stop(); //ADDED
+                    go.Play(); // ADDED
+                }
+                else
+                {
+                    go.Stop(); //ADDED
+                    carbrake.Play(); // ADDED
+                }
             }
 
             Debug.AddText("Body position D: " + FarseerPhysics.ConvertUnits.ToDisplayUnits(m_vehicleBody.GetPosition()).ToString(), new Vector2(10, 300));
@@ -150,6 +186,14 @@ namespace Project_Cows.Source.Application.Entity.Vehicle {
             Debug.AddText("FR rotation: " + Util.RadiansToDegrees(m_frontRightJoint.JointAngle).ToString(), new Vector2(10, 460));
             m_vehicleBody.UpdateSprites();
         }
+
+        public void SetToSensor() {
+            m_vehicleBody.GetBody().IsSensor = true;
+            for (int i = 0; i < 4; i++) {
+                m_vehicleTyres[i].GetBody().IsSensor = true;
+            }
+        }
+    
     }
 }
 
