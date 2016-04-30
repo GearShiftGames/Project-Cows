@@ -106,14 +106,14 @@ namespace Project_Cows.Source.Application {
             for (int i = 0; i < m_rankings.Count; i++)
             {
                 // Set cow textures for victory podium
-                m_playerFirst.SetTexture(m_players[m_rankings[0]].GetCow().GetTexture());
+                m_playerFirst.SetTexture(m_players[m_rankings[0] - 1].GetCow().GetTexture());
                 if (Settings.m_numberOfPlayers > 1)
                 {
-                    m_playerSecond.SetTexture(m_players[m_rankings[1]].GetCow().GetTexture());
+                    m_playerSecond.SetTexture(m_players[m_rankings[1] - 1].GetCow().GetTexture());
                 }
                 if (Settings.m_numberOfPlayers > 2)
                 {
-                    m_playerThird.SetTexture(m_players[m_rankings[2]].GetCow().GetTexture());
+                    m_playerThird.SetTexture(m_players[m_rankings[2] - 1].GetCow().GetTexture());
                 }
             }
             
@@ -183,7 +183,7 @@ namespace Project_Cows.Source.Application {
                 GraphicsHandler.DrawText("Player " + m_rankings[0].ToString(), new Vector2(475, 200), Color.Black);
                 
             }
-            int time = m_players[m_rankings[0]].GetRaceTime() / 1000;
+            int time = m_players[m_rankings[0] - 1].GetRaceTime() / 1000;
             int mins = time / 60;
             int sec = time - (mins * 60);
             if (sec < 10)
